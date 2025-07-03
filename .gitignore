@@ -4,9 +4,10 @@ __pycache__/
 db.sqlite3
 .env
 
-# Entorno virtual
+# Entorno virtual y variables de entorno
 venv/
 .env/
+.venv/
 
 # Archivos de configuración de IDE
 .idea/
@@ -15,3 +16,5 @@ venv/
 # Archivos estáticos y media
 /static/
 media/
+
+
