@@ -19,6 +19,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    # apps personalizadas:
+    'filosofia',
+    'saberes',
+    'escuela',
+    'eventos',
+    'hospedaje',
+    'voluntariado',
+    'donaciones',
+    'tienda',
+    'noticias',
+    'contacto',
 ]
 
 # Middleware
