@@ -1,1 +1,83 @@
-<h1>contacto</h1>
+{% extends 'base.html' %}
+
+{% block title %}Contacto | Chambalabamba{% endblock %}
+
+{% block content %}
+<section class="wf100 p100 inner-header">
+  <div class="container">
+    <h2>Contactar con</h2>
+    <h1> Ecoaldea Chambalabamba</h1>    
+  </div>
+</section>
+
+<section class="contact-page wf100 p80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="contact-form">
+          <h3>Contactar con Nosotros</h3>
+          <form method="post">
+            {% csrf_token %}
+            <ul class="cform">
+              <li class="full">
+                {{ form.name }}
+                {{ form.name.errors }}
+              </li>
+              <li class="half pr-15">
+                {{ form.email }}
+                {{ form.email.errors }}
+              </li>
+              <li class="half pl-15">
+                {{ form.phone }}
+                {{ form.phone.errors }}
+              </li>
+              <li class="full">
+                {{ form.subject }}
+                {{ form.subject.errors }}
+              </li>
+              <li class="full">
+                {{ form.message }}
+                {{ form.message.errors }}
+              </li>
+              <li class="full">
+                <input type="submit" value="Contáctanos" class="fsubmit">
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="google-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4667.746564849565!2d-79.20696632433055!3d-4.273985246192333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cb2883c3dd5ff3%3A0x43f682d79e2d2dca!2sChambalabamba-Comunidad!5e1!3m2!1ses!2sde!4v1751679359755!5m2!1ses!2sde" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container contact-info">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Información de Contacto</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="c-info">
+          <h6>Dirección:</h6>
+          <p>Via a Yamburara Alto, Vilcambamba, Ecuador</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="c-info">
+          <h6>Contacto:</h6>
+          <p><strong>Teléfono:</strong> +593980290103</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="c-info">
+          <h6>Para más Información:</h6>
+          <p><strong>Email:</strong> info@ecoaldeachambalabamba.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
