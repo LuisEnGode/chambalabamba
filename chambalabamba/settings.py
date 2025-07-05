@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     # apps personalizadas:
+    'inicio',
     'filosofia',
     'saberes',
     'escuela',
