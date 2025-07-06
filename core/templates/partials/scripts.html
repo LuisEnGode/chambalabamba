@@ -1,6 +1,6 @@
 {% load static %}
 
-<!-- jQuery (solo una versión) -->
+<!-- jQuery y dependencias -->
 <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/jquery-migrate-1.4.1.min.js' %}"></script>
 
@@ -8,17 +8,16 @@
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-<!-- Plugins -->
-{# <script src="{% static 'js/wow.js' %}"></script> #}  <!-- No encontrado -->
+<!-- Plugins visuales -->
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
-<script src="{% static 'js/isotope.min.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
 
-<!-- Navegación y scroll -->
-{# <script src="{% static 'js/jquery.nav.js' %}"></script> #}  <!-- No encontrado -->
-{# <script src="{% static 'js/scrolling-nav.js' %}"></script> #}  <!-- No encontrado -->
-{# <script src="{% static 'js/jquery.easing.min.js' %}"></script> #}  <!-- No encontrado -->
+<!-- Navegación (si los usas en HTML) -->
+{# <script src="{% static 'js/jquery.nav.js' %}"></script> #}
+{# <script src="{% static 'js/scrolling-nav.js' %}"></script> #}
+{# <script src="{% static 'js/jquery.easing.min.js' %}"></script> #}
 
-<!-- Custom -->
+<!-- Personalizado -->
 <script src="{% static 'js/custom.js' %}"></script>
-{# <script src="{% static 'js/main.js' %}"></script> #}  <!-- No encontrado -->
