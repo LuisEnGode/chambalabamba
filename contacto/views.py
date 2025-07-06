@@ -7,21 +7,28 @@ def index(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Send email
-            subject = form.cleaned_data['subject']
+            subject = f"Nuevo mensaje de contacto: {form.cleaned_data['subject']}"
             message = f"De: {form.cleaned_data['name']} <{form.cleaned_data['email']}>\n\n"
             message += f"Teléfono: {form.cleaned_data['phone']}\n\n"
             message += form.cleaned_data['message']
             
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [settings.DEFAULT_FROM_EMAIL],
-                fail_silently=False,
-            )
-            return redirect('contacto:index') # Redirect after POST
+            try:
+                send_mail(
+                    subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [settings.EMAIL_HOST_USER],
+                    fail_silently=False,
+                )
+                return redirect('contacto:gracias')
+            except Exception as e:
+                # Podrías loggear el error si quieres: print(e)
+                print("Error al enviar el correo:", e)
+                form.add_error(None, "No se pudo enviar el correo. Por favor, inténtalo de nuevo más tarde.")
     else:
         form = ContactForm()
 
     return render(request, 'contacto/index.html', {'form': form})
+
+def gracias(request):
+    return render(request, 'contacto/gracias.html')

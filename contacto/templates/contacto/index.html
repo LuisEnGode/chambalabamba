@@ -16,8 +16,9 @@
       <div class="col-md-6">
         <div class="contact-form">
           <h3>Contactar con Nosotros</h3>
-          <form method="post">
+          <form method="post" action="{% url 'contacto:index' %}">
             {% csrf_token %}
+            {{ form.non_field_errors }}
             <ul class="cform">
               <li class="full">
                 {{ form.name }}
@@ -40,7 +41,7 @@
                 {{ form.message.errors }}
               </li>
               <li class="full">
-                <input type="submit" value="Contáctanos" class="fsubmit">
+                <button type="submit" class="fsubmit">Contáctanos</button>
               </li>
             </ul>
           </form>
