@@ -12,6 +12,12 @@ from django.core import mail
 from django.conf import settings
 from django.http import HttpRequest
 from contacto.views import index, gracias
+from django.middleware.csrf import CsrfViewMiddleware
+from django.core.exceptions import PermissionDenied
+import pytest
+from django.test import Client
+from django.urls import reverse
+
 
 class ContactoTests(TestCase):
     def setUp(self):
@@ -102,3 +108,17 @@ class ContactoTests(TestCase):
         gracias(request)
         
         mock_render.assert_called_once_with(request, 'contacto/gracias.html')
+
+    def test_csrf_middleware_rejection(self):
+        # Make a POST request to the contact form URL without CSRF token
+        client = Client(enforce_csrf_checks=True)
+        response = client.post(reverse("contacto:index"), {
+            "name": "CSRF Test",
+            "email": "csrf@example.com",
+            "phone": "1234567890",
+            "subject": "CSRF Test Subject",
+            "message": "This message should be blocked by CSRF.",
+        }, secure=True)
+
+        self.assertEqual(response.status_code, 403)  # Expect a redirect
+        self.assertIn("CSRF verification failed. Request aborted.", response.content.decode())  # Check the error message
