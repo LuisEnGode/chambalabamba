@@ -11,7 +11,7 @@ from contacto.forms import ContactForm
 from django.core import mail
 from django.conf import settings
 from django.http import HttpRequest
-from contacto.views import index, gracias
+from contacto.views import index
 from django.middleware.csrf import CsrfViewMiddleware
 from django.core.exceptions import PermissionDenied
 import pytest
@@ -62,8 +62,8 @@ class ContactoTests(TestCase):
         self.assertIsInstance(args[2]['form'], ContactForm)
 
     @patch('contacto.views.send_mail')
-    @patch('contacto.views.redirect')
-    def test_index_view_post_success(self, mock_redirect, mock_send_mail):
+    @patch('contacto.views.render')
+    def test_index_view_post_success(self, mock_render, mock_send_mail):
         request = HttpRequest()
         request.method = 'POST'
         request.POST = {
@@ -76,8 +76,13 @@ class ContactoTests(TestCase):
         
         index(request)
         
-        mock_send_mail.assert_called_once()
-        mock_redirect.assert_called_once_with('contacto:gracias')
+        self.assertEqual(mock_send_mail.call_count, 2)
+        mock_render.assert_called_once()
+        args, kwargs = mock_render.call_args
+        self.assertEqual(args[0], request)
+        self.assertEqual(args[1], 'contacto/index.html')
+        self.assertIsInstance(args[2]['form'], ContactForm)
+        self.assertEqual(args[2]['success_message'], "¡Mensaje enviado exitosamente!")
 
     @patch('contacto.views.render')
     def test_index_view_post_invalid_form(self, mock_render):
@@ -99,15 +104,6 @@ class ContactoTests(TestCase):
         self.assertEqual(args[1], 'contacto/index.html')
         self.assertIsInstance(args[2]['form'], ContactForm)
         self.assertFalse(args[2]['form'].is_valid())
-
-    @patch('contacto.views.render')
-    def test_gracias_view(self, mock_render):
-        request = HttpRequest()
-        request.method = 'GET'
-        
-        gracias(request)
-        
-        mock_render.assert_called_once_with(request, 'contacto/gracias.html')
 
     def test_csrf_middleware_rejection(self):
         # Make a POST request to the contact form URL without CSRF token
