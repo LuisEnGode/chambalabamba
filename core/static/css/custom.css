@@ -6780,3 +6780,31 @@ section.wf100.p80.fcampaigns {
 	-webkit-transition: all ease-in-out 0.3s;
 }
 
+
+
+/* Chambalabamba Slider Typography */
+.slider-caption.h2slider h1.slogan-principal {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 3.2rem !important;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-transform: none !important;
+}
+
+.slider-caption.h2slider p.sub-slogan {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  text-align: center; /* ✅ Alinea el texto horizontalmente */
+  margin: 0 auto;      /* ✅ En caso de display:block, asegura el centrado del contenedor */
+  display: block;
+}
+
+#home-slider .item img {
+  height: 100vh; /* Puedes ajustar: 50vh, 60vh, etc. */
+  object-fit: cover;
+  width: 100%;
+}
