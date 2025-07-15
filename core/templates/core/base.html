@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Chambalabamba{% endblock %}</title>
+    {% include "partials/head.html" %}
+</head>
+<body>
+<div class="wrapper home2">
+    {% include "partials/header.html" %}
+
+    {% block content %}{% endblock %}
+</div>
+    {% include "partials/footer.html" %}
+</body>
+</html>
