@@ -1,141 +1,165 @@
-{% extends 'base.html' %}
+{% extends "core/base.html" %}
 {% load static %}
 
+{% block title %}
+  Inicio – Chambalabamba
+{% endblock %}
+
 {% block content %}
-<!-- Slider principal -->
+<!-- Aquí va el contenido de index.html menos header y footer -->
+
+<!--Slider Start-->
 <section id="home-slider" class="owl-carousel owl-theme wf100">
   <div class="item">
-    <div class="slider-caption h2slider text-center d-flex align-items-center justify-content-center">
+    <div class="slider-caption h2slider">
       <div class="container">
-        <h1 class="slogan-principal">Chambalabamba es vida consciente</h1>
-        <p class="sub-slogan" >comunidad viva, creativa y sustentable</p>
+          <strong>Chambalabamba<span> </span></strong>
+          <h1>Ecoaldea Sostenible</h1>
+          <p>Un espacio de vida, arte y regeneración</p>
+          <a href="#" class="active">Descubre Más</a> <a href="#">Únete Hoy</a>
       </div>
     </div>
-    <img src="{% static 'inicio/images/home_slider/img_casa_arbol.png' %}" alt="">
+    <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
   </div>
+
+  <div class="item">
+  <div class="slider-caption h2slider">
+    <div class="container">
+      <strong><span>Maloca:</span> Aprendemos & </strong>
+      <h1>Creamos Futuro</h1>
+      <p>desde la <strong>conciencia y la cooperación</strong></p>
+      <a href="#" class="active">Explora Más</a> <a href="#">Súmate Hoy</a>
+    </div>
+  </div>
+  <img src="{% static 'images/slider/maloca.jpg' %}" alt="Maloca Chambalabamba">
+</div>
+
+
+ <div class="item">
+  <div class="slider-caption h2slider">
+    <div class="container">
+      <strong>Honremos <span>el agua, fuente de vida</span></strong>
+      <h1>Fluimos como el agua</h1>
+      <p>Antes de que <strong>seque nuestra conciencia</strong>...</p>
+      <a href="#" class="active">Conoce Más</a> <a href="#">Actúa con Nosotros</a>
+    </div>
+  </div>
+  <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
+</div>
+
 </section>
+<!--Slider end -->
 
-
-
-<!-- Sección de servicios / pilares -->
+<!--Service Area Start-->
 <section class="services-area wf100">
-   <div class="container">
-      <ul>
-         <li>
-            <div class="sinfo">
-               <img src="{% static 'inicio/images/subslider/img_economia_circular.png' %}" alt="">
-               <h6>Economía Circular</h6>
-               <p>Reutilizamos, compostamos y compartimos</p>
-            </div>
-         </li>
-         <li>
-            <div class="sinfo">
-               <img src="{% static 'inicio/images/subslider/img_huerta.png' %}" alt="">
-               <h6>Huerta Comunitaria</h6>
-               <p>Cultivamos en armonía con la Tierra</p>
-            </div>
-         </li>
-         <li>
-            <div class="sinfo">
-               <img src="{% static 'inicio/images/subslider/img_cuidado_agua.png' %}" alt="">
-               <h6>Cuidado del Agua Viva</h6>
-               <p>Respetamos el ciclo natural del agua</p>
-            </div>
-         </li>
-         <li>
-            <div class="sinfo">
-               <img src="{% static 'inicio/images/subslider/img_bioconstruccion.png' %}" alt="">
-               <h6>Construcción Natural</h6>
-               <p>Tierra, bambú y materiales reciclados</p>
-            </div>
-         </li>
-         <li>
-            <div class="sinfo">
-               <img src="{% static 'inicio/images/subslider/img_comunidad.png' %}" alt="">
-               <h6>Comunidad Viva</h6>
-               <p>Aprendizaje colectivo y arte libre</p>
-            </div>
-         </li>
-      </ul>
-   </div>
+    <div class="container">
+        <ul>
+            <!-- Economía Circular -->
+            <li>
+                <div class="sinfo">
+                    <img src="{% static 'images/economia-circular.png' %}" alt="Economía Circular">
+                    <h6>Economía Circular</h6>
+                    <p>Reutilizamos, compostamos y compartimos</p>
+                </div>
+            </li>
+
+            <!-- Huerta Comunitaria -->
+            <li>
+                <div class="sinfo">
+                    <img src="{% static 'images/huerta-comunitaria.png' %}" alt="Huerta Comunitaria">
+                    <h6>Huerta Comunitaria</h6>
+                    <p>Cultivamos en armonía con la Tierra</p>
+                </div>
+            </li>
+
+            <!-- Cuidado del Agua Viva -->
+            <li>
+                <div class="sinfo">
+                    <img src="{% static 'images/cuidado-agua.png' %}" alt="Cuidado del Agua Viva">
+                    <h6>Cuidado del Agua Viva</h6>
+                    <p>Respetamos el ciclo natural del agua</p>
+                </div>
+            </li>
+
+            <!-- Construcción Natural -->
+            <li>
+                <div class="sinfo">
+                    <img src="{% static 'images/construccion-natural.png' %}" alt="Construcción Natural">
+                    <h6>Construcción Natural</h6>
+                    <p>Tierra, bambú y materiales reciclados</p>
+                </div>
+            </li>
+
+            <!-- Comunidad Viva -->
+            <li>
+                <div class="sinfo">
+                    <img src="{% static 'images/comunidad-viva.png' %}" alt="Comunidad Viva">
+                    <h6>Comunidad Viva</h6>
+                    <p>Aprendizaje colectivo y arte libre</p>
+                </div>
+            </li>
+        </ul>
+    </div>
 </section>
- <!--Service Area End-->
-         <!--About Section Start-->
+<!--Service Area End-->
+
+<!--About Section Start-->
 <section class="home2-about wf100 p100 gallery">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-5">
-                     <div class="video-img"> <a href="https://www.youtube.com/watch?v=6aopmklhT88" data-rel="prettyPhoto" title="Vimeo video"><i class="fas fa-play"></i></a>
-                        <img src="{% static 'inicio/images/sobre_chambalabamba/sobre-chamba.png' %}" alt=""> </div>
+    <div class="container">
+        <div class="row">
+             <div class="col-md -5">
+                     <div class="video-img">
+                         <a href="https://vimeo.com/1101693344?share=copy&amp;width=700" data-rel="prettyPhoto" title="Vimeo video">
+                             <i class="fas fa-play"></i>
+                         </a> <img src="{% static 'videos/about/casa-arbol3.jpg'%}" alt=""> </div>
                   </div>
-         <div class="col-md-7">
-            <div class="h2-about-txt">
-               <h3>Sobre Chambalabamba</h3>
-               <h2>Ecoaldea viva para el arte, la conciencia y la regeneración</h2>
-               <p>Somos comunidad intencional en Vilcabamba, Ecuador.Impulsamos un estilo de vida sustentable, el arte libre, la educación alternativa y la sanación colectiva. Un espacio donde florecen los sueños, la tierra y los vínculos humanos.</p>
-               <a class="aboutus" href="#nosotros">Más sobre nosotros</a>
+            <div class="col-md-7">
+                <div class="h2-about-txt" style="text-align: justify;">
+                    <h3>Sobre Chambalabamba</h3>
+                    <h2>Una ecoaldea viva donde florece la libertad, el arte y la conciencia.</h2>
+                    <p>
+                        Chambalabamba es una comunidad ecológica ubicada en Vilcabamba, Ecuador. Aquí, aprendemos a
+                        convivir
+                        en armonía, cultivando relaciones desde el amor incondicional y el respeto mutuo. En este
+                        espacio
+                        orgánico, defendemos la libertad, reconocemos la diversidad humana y vivimos con la Tierra, no
+                        sobre
+                        ella.
+                    </p>
+                    <a class="aboutus" href="#">Conoce más sobre nosotros</a>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+  </div>
+</div>
 
-   <div class="home-facts counter pt80">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-3 col-sm-6 col-md-3">
-               <div class="counter-box">
-                  <p class="counter-count" data-sufijo="+">100</p>
-                  <p class="ctxt">Voluntarios acogidos</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-               <div class="counter-box">
-                  <p class="counter-count" data-sufijo="+">100</p>
-                  <p class="ctxt">Talleres de saberes vivos</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-               <div class="counter-box">
-                  <p class="counter-count" data-sufijo="+">100</p>
-                  <p class="ctxt">Eventos artísticos y culturales</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-               <div class="counter-box">
-                  <p class="counter-count" data-sufijo="+">100</p>
-                  <p class="ctxt">Semillas de conciencia</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+
+
 </section>
-
-
-<!--About Section End-->
+         <!--About Section End-->
          <!--Urgent Causes Start-->
-<section class="urgent-causes wf100 p80">
+        <section class="urgent-causes wf100 p80">
    <div class="container">
       <div class="row">
-         <!-- Lado Izquierdo: Texto -->
          <div class="col-md-6">
             <div class="section-title-2 white">
-               <h5>Causa urgente</h5>
-               <h2>Apoya la regeneración de la tierra</h2>
+               <h5>Llamado Consciente</h5>
+               <h2>Sanación y Regeneración en Chambalabamba</h2>
             </div>
-            <p>Tu contribución ayuda a sostener nuestros proyectos de agricultura, permacultura, sanacion, construcción natural y
-               educación consciente. En Chambalabamba vivimos una propuesta real hacia un mundo más armonioso.</p>
+            <p>
+               En nuestra ecoaldea, practicamos la <strong>sanación</strong>y el cultivo de una <strong>conciencia ecológica y espiritual</strong>. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan.
+            </p>
             <div class="progress">
-               <div class="progress-bar" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0"
-                    aria-valuemax="100"></div>
+               <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-
+            <ul class="funds">
+               <li class="text-left"><strong>55%</strong> Apoyado</li>
+               <li class="text-center"><strong>$948.00</strong> Recaudado</li>
+               <li class="text-right"><strong>$1750.00</strong> Meta</li>
+            </ul>
          </div>
-
-         <!-- Lado Derecho: Donación -->
          <div class="col-md-6">
             <div class="donation-amount">
-               <h5>Selecciona un monto</h5>
+               <h5>Apoya este Espacio</h5>
                <form>
                   <ul class="radio-boxes">
                      <li>
@@ -147,34 +171,46 @@
                      <li>
                         <div class="radio custom">
                            <input name="donation" id="d2" type="radio" class="css-radio">
-                           <label for="d2" class="css-label">$10</label>
+                           <label for="d2" class="css-label">$20</label>
                         </div>
                      </li>
                      <li>
                         <div class="radio custom">
                            <input name="donation" id="d3" type="radio" class="css-radio">
-                           <label for="d3" class="css-label">$25</label>
+                           <label for="d3" class="css-label">$50</label>
                         </div>
                      </li>
                      <li>
                         <div class="radio custom">
                            <input name="donation" id="d4" type="radio" class="css-radio">
-                           <label for="d4" class="css-label">$50</label>
+                           <label for="d4" class="css-label">$100</label>
                         </div>
                      </li>
                      <li>
                         <div class="radio custom">
                            <input name="donation" id="d5" type="radio" class="css-radio">
-                           <label for="d5" class="css-label">$100</label>
+                           <label for="d5" class="css-label">$250</label>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="radio custom">
+                           <input name="donation" id="d6" type="radio" class="css-radio">
+                           <label for="d6" class="css-label">$500</label>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="radio custom">
+                           <input name="donation" id="d7" type="radio" class="css-radio">
+                           <label for="d7" class="css-label">$1000</label>
                         </div>
                      </li>
                      <li>
                         <div class="inputs">
-                           <input class="enter" type="text" placeholder="$ Otro monto">
+                           <input class="enter" type="text" placeholder="$ Otro">
                         </div>
                      </li>
                      <li class="form-submit">
-                        <button type="submit">Contribuir ahora</button>
+                        <button type="submit">Contribuir con Amor</button>
                      </li>
                   </ul>
                </form>
@@ -186,451 +222,517 @@
 
          <!--Urgent Causes End-->
          <!--Current Projects Start-->
-         <section class="wf100 p80 current-projects">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-6">
-                     <div class="section-title-2">
-                        <h5>Estamos trabajando en esto:</h5>
-                        <h2>Proyectos Actuales</h2>
-                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                     <ul class="nav" id="myTab" role="tablist">
-                        <li class="nav-item"> <a class="nav-link active" id="wildlife-tab" data-toggle="tab" href="#wildlife" role="tab" aria-controls="wildlife-tab" aria-selected="true">Agricultura Sintrópica</a> </li>
-                        <li class="nav-item"> <a class="nav-link" id="water-tab" data-toggle="tab" href="#water" role="tab" aria-controls="water-tab" aria-selected="false">Medicina natural</a> </li>
-                        <li class="nav-item"> <a class="nav-link" id="solar-tab" data-toggle="tab" href="#solar" role="tab" aria-controls="solar-tab" aria-selected="false">Animales de granja</a> </li>
-                        <li class="nav-item"> <a class="nav-link" id="recycling-tab" data-toggle="tab" href="#recycling" role="tab" aria-controls="recycling-tab" aria-selected="false">Retiros revitalizadores </a> </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="tab-content" id="myTabContent">
-                        <!--WildLife Slider Start-->
-                        <div class="tab-pane fade show active" id="wildlife" role="tabpanel" aria-labelledby="wildlife-tab">
-                           <div class="cpro-slider owl-carousel owl-theme">
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'inicio/images/proyectos/huerta-sintropica.png' %}" alt="">
-                                    <h5>Agricultura Sintrópica</h5>
-                                    <div class="pro-hover">
-                                       <h6>Agricultura Sintrópica</h6>
-                                       <p>
-                                          Una huerta de agricultura sintrópica integra principios de regeneración natural del suelo,
-                                          imitando los patrones del bosque. En este tipo de huerta se cultivan de forma armoniosa plantas medicinales
-                                          junto con plantas comestibles </p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'inicio/images/proyectos/mediscina-natural.png' %}" alt="">
-                                    <h5>Mediscina Natural</h5>
-                                    <div class="pro-hover">
-                                       <h6>Mediscina Natural</h6>
-                                       <p>La medicina natural es una forma ancestral de sanación que utiliza plantas, minerales y técnicas holísticas para equilibrar el cuerpo, la mente y el espíritu.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'inicio/images/proyectos/cuidado-animales.jpg' %}" alt="">
-                                    <h5>Cuidado Animales
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Cuidado de animales
-                                       </h6>
-                                       <p>El cuidado de los animales refleja nuestro compromiso con la vida y el respeto por todos los seres. Implica brindarles alimento, refugio, atención médica y cariño</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'inicio/images/proyectos/retiros.jpg' %}" alt="">
-                                    <h5>Retiros Revitalizantes
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Retiros Revitalizantes
-                                       </h6>
-                                       <p>Los retiros revitalizantes son espacios de descanso profundo y reconexión con uno mismo. En ellos, se combinan prácticas como la meditación, la alimentación consciente y el contacto con la naturaleza </p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                           </div>
-                        </div>
-                        <!--WildLife Slider End-->
-                        <!--Water Resources Slider Start-->
-                        <div class="tab-pane fade" id="water" role="tabpanel" aria-labelledby="water-tab">
-                           <div class="cpro-slider owl-carousel owl-theme">
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro5.jpg' %}" alt="">
-                                    <h5>Forest & Tree Planting</h5>
-                                    <div class="pro-hover">
-                                       <h6>Forest & Tree Planting</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro6.jpg' %}" alt="">
-                                    <h5>Recycling & Waste Management</h5>
-                                    <div class="pro-hover">
-                                       <h6>Recycling & Waste Management</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro8.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
-                                    <h5>Forest & Tree Planting</h5>
-                                    <div class="pro-hover">
-                                       <h6>Forest & Tree Planting</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
-                                    <h5>Recycling & Waste Management</h5>
-                                    <div class="pro-hover">
-                                       <h6>Recycling & Waste Management</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                           </div>
-                        </div>
-                        <!--Water Resources Slider End-->
-                        <!--Solar Energy Slider Start-->
-                        <div class="tab-pane fade" id="solar" role="tabpanel" aria-labelledby="solar-tab">
-                           <div class="cpro-slider owl-carousel owl-theme">
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro8.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro5.jpg' %}" alt="">
-                                    <h5>Forest & Tree Planting</h5>
-                                    <div class="pro-hover">
-                                       <h6>Forest & Tree Planting</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro6.jpg' %}" alt="">
-                                    <h5>Recycling & Waste Management</h5>
-                                    <div class="pro-hover">
-                                       <h6>Recycling & Waste Management</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
-                                    <h5>Forest & Tree Planting</h5>
-                                    <div class="pro-hover">
-                                       <h6>Forest & Tree Planting</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
-                                    <h5>Recycling & Waste Management</h5>
-                                    <div class="pro-hover">
-                                       <h6>Recycling & Waste Management</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                           </div>
-                        </div>
-                        <!--Solar Energy Slider End-->
-                        <!--Recycling Slider Start-->
-                        <div class="tab-pane fade" id="recycling" role="tabpanel" aria-labelledby="recycling-tab">
-                           <div class="cpro-slider owl-carousel owl-theme">
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro8.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
-                                    <h5>Solar & Wind
-                                       Energy
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Solar & Wind
-                                          Energy
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
-                                    <h5>Saving Wildlife
-                                       & their Cubs
-                                    </h5>
-                                    <div class="pro-hover">
-                                       <h6>Saving Wildlife
-                                          & their Cubs
-                                       </h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
-                                    <h5>Forest & Tree Planting</h5>
-                                    <div class="pro-hover">
-                                       <h6>Forest & Tree Planting</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                              <!--Pro Box-->
-                              <div class="item">
-                                 <div class="pro-box">
-                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
-                                    <h5>Recycling & Waste Management</h5>
-                                    <div class="pro-hover">
-                                       <h6>Recycling & Waste Management</h6>
-                                       <p>We are working over 20 years on Waste Management & Material Recycling Projects.</p>
-                                       <a href="#">Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Pro Box End-->
-                           </div>
-                        </div>
-                        <!--Recycling Slider End-->
-                     </div>
-                  </div>
-               </div>
+<section class="wf100 p80 current-projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title-2">
+                    <h5>Semillas que florecen</h5>
+                    <h2>Proyectos en Movimiento</h2>
+                </div>
             </div>
-         </section>
+            <div class="col-lg-6">
+                <ul class="nav" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="dance-tab" data-toggle="tab" href="#dance" role="tab"
+                           aria-controls="dance" aria-selected="true">Ecstatic Dance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="retiros-tab" data-toggle="tab" href="#retiros" role="tab"
+                           aria-controls="retiros" aria-selected="false">Retiros revitalizantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="agricultura-tab" data-toggle="tab" href="#agricultura" role="tab"
+                           aria-controls="agricultura" aria-selected="false">Agricultura Regenerativa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="granja-tab" data-toggle="tab" href="#granja" role="tab"
+                           aria-controls="granja" aria-selected="false">Animales de Granja</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="apicultura-tab" data-toggle="tab" href="#granja" role="tab"
+                           aria-controls="granja" aria-selected="false">Apicultura</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-<!--Current Projects End-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-content" id="myTabContent">
+                    <!--WildLife Slider Start-->
+                    <div class="tab-pane fade show active" id="wildlife" role="tabpanel" aria-labelledby="wildlife-tab">
+                        <div class="cpro-slider owl-carousel owl-theme">
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/proyectos/ecstatic-dance.png' %}" alt="">
+                                    <h5>Ecstatic Dance</h5>
+                                    <div class="pro-hover">
+                                        <h6>Ecstatic Dance</h6>
+                                        <p>Celebramos la danza como medicina del alma. Cada encuentro es un espacio
+                                            libre de juicio donde nos movemos con autenticidad, liberamos emociones y
+                                            nos reconectamos con la tribu.</p>
+                                        <a href="#">Ver más</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/proyectos/retiros-revitalizadores.png' %}"
+                                         alt="Retiros revitalizadores en la naturaleza">
+                                    <h5>Retiros Revitalizantes</h5>
+                                    <div class="pro-hover">
+                                        <h6>Retiros Revitalizantes</h6>
+                                        <p>Ofrecemos espacios de descanso consciente y transformación personal en medio
+                                            de la naturaleza. A través de prácticas de meditación, alimentación organica y
+                                            reconexión con la tierra, los participantes renuevan cuerpo, mente y
+                                            espíritu.</p>
+                                        <a href="#">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/proyectos/agricultura-sintropica.png' %}"
+                                         alt="Agricultura Regenerativa en Chambalabamba">
+                                    <h5>Agricultura Regenerativa</h5>
+                                    <div class="pro-hover">
+                                        <h6>Agricultura Regenerativa</h6>
+                                        <p>Practicamos una agricultura y permacultura, en armonía con los ciclos de la naturaleza.
+                                            Cultivamos alimentos orgánicos respetando el suelo, la biodiversidad y
+                                            fomentando la autosuficiencia comunitaria.</p>
+                                        <a href="#">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/proyectos/animales-granja.png' %}"
+                                         alt="Animales de granja en libertad y armonía">
+                                    <h5>Animales de Granja</h5>
+                                    <div class="pro-hover">
+                                        <h6>Animales de Granja</h6>
+                                        <p>Convivimos con gallinas, patos, borregos y otros animales en un entorno de
+                                            respeto y libertad. Valoramos su presencia como parte viva del ecosistema y
+                                            cuidando su bienestar.</p>
+                                        <a href="#">Ver más</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--Pro Box End-->
+
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/proyectos/apicultura.png' %}"
+                                         alt="Apicultura natural en Chambalabamba">
+                                    <h5>Apicultura Consciente</h5>
+                                    <div class="pro-hover">
+                                        <h6>Apicultura conciente</h6>
+                                        <p>Las abejas son guardianas del equilibrio ecológico. En Chambalabamba cuidamos
+                                            colmenas de forma natural y
+                                            respetuosa, reconociendo su rol vital en la polinización y la regeneración
+                                            de la vida.</p>
+                                        <a href="#">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Pro Box End-->
+                        </div>
+                    </div>
+                    <!--WildLife Slider End-->
+                    <!--Water Resources Slider Start-->
+                    <div class="tab-pane fade" id="water" role="tabpanel" aria-labelledby="water-tab">
+                        <div class="cpro-slider owl-carousel owl-theme">
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro5.jpg' %}" alt="">
+                                    <h5>Forest & Tree Planting</h5>
+                                    <div class="pro-hover">
+                                        <h6>Forest & Tree Planting</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro6.jpg' %}" alt="">
+                                    <h5>Recycling & Waste Management</h5>
+                                    <div class="pro-hover">
+                                        <h6>Recycling & Waste Management</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro8.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+
+                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
+                                    <h5>Forest & Tree Planting</h5>
+                                    <div class="pro-hover">
+                                        <h6>Forest & Tree Planting</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
+                                    <h5>Recycling & Waste Management</h5>
+                                    <div class="pro-hover">
+                                        <h6>Recycling & Waste Management</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                        </div>
+                    </div>
+                    <!--Water Resources Slider End-->
+                    <!--Solar Energy Slider Start-->
+                    <div class="tab-pane fade" id="solar" role="tabpanel" aria-labelledby="solar-tab">
+                        <div class="cpro-slider owl-carousel owl-theme">
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro5.jpg' %}" alt="">
+                                    <h5>Forest & Tree Planting</h5>
+                                    <div class="pro-hover">
+                                        <h6>Forest & Tree Planting</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro6.jpg' %}" alt="">
+                                    <h5>Recycling & Waste Management</h5>
+                                    <div class="pro-hover">
+                                        <h6>Recycling & Waste Management</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
+                                    <h5>Forest & Tree Planting</h5>
+                                    <div class="pro-hover">
+                                        <h6>Forest & Tree Planting</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
+                                    <h5>Recycling & Waste Management</h5>
+                                    <div class="pro-hover">
+                                        <h6>Recycling & Waste Management</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                        </div>
+                    </div>
+                    <!--Solar Energy Slider End-->
+                    <!--Recycling Slider Start-->
+                    <div class="tab-pane fade" id="recycling" role="tabpanel" aria-labelledby="recycling-tab">
+                        <div class="cpro-slider owl-carousel owl-theme">
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro7.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro3.jpg' %}" alt="">
+                                    <h5>Solar & Wind
+                                        Energy
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Solar & Wind
+                                            Energy
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro4.jpg' %}" alt="">
+                                    <h5>Saving Wildlife
+                                        & their Cubs
+                                    </h5>
+                                    <div class="pro-hover">
+                                        <h6>Saving Wildlife
+                                            & their Cubs
+                                        </h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro1.jpg' %}" alt="">
+                                    <h5>Forest & Tree Planting</h5>
+                                    <div class="pro-hover">
+                                        <h6>Forest & Tree Planting</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                            <!--Pro Box-->
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro2.jpg' %}" alt="">
+                                    <h5>Recycling & Waste Management</h5>
+                                    <div class="pro-hover">
+                                        <h6>Recycling & Waste Management</h6>
+                                        <p>We are working over 20 years on Waste Management & Material Recycling
+                                            Projects.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Pro Box End-->
+                        </div>
+                    </div>
+                    <!--Recycling Slider End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+         <!--Current Projects End-->
          <!--News & Articles Start-->
          <section class="h2-news wf100 p80">
             <div class="container">
@@ -646,9 +748,7 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="blog-post-large">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a>
-                           <img src="{% static 'inicio/images/articulos/not1.jpg' %}" alt="Imagen artículo 1">
-                           </div>
+                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news1.jpg' %}" alt=""></div>
                         <div class="post-txt">
                            <ul class="post-meta">
                               <li><i class="fas fa-calendar-alt"></i> 29 September, 2018</li>
@@ -661,7 +761,8 @@
                   <div class="col-md-6">
                      <!--Blog Small Post Start-->
                      <div class="blog-small-post">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'inicio/images/articulos/not2.jpg' %}" alt=""> </div>
+                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news2.jpg' %}" alt="">
+ </div>
                         <div class="post-txt">
                            <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
                            <h5><a href="#">How you can keep alive wildlife long.</a></h5>
@@ -672,7 +773,8 @@
                      <!--Blog Small Post End-->
                      <!--Blog Small Post Start-->
                      <div class="blog-small-post">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'inicio/images/articulos/not3.jpg' %}" alt=""> </div>
+                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news3.jpg' %}" alt="">
+ </div>
                         <div class="post-txt">
                            <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
                            <h5><a href="#">The effort GoGreen has been felt across</a></h5>
@@ -687,19 +789,23 @@
          </section>
          <!--News & Articles End-->
          <!--Why Ecova + Facts Start-->
-         <section class="why-ecova wf100">
+        <section class="why-ecova wf100">
             <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <h1> ¿Por qué Chambalabamba?</h1>
-                     <p>Únete a nuestra comunidad viva: regeneramos la tierra con agricultura sintropica,permacultura,cuidamos el
-                        agua, compartimos saberes, celebramos el arte libre y sembramos conciencia día a día.
-                     </p>
-                     <a href="#" class="cus">Sé parte del cambio</a>
-                  </div>
-               </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>¿Por qué Chambalabamba?</h1>
+                        <p>
+                            Somos una comunidad viva que co-crea espacios de aprendizaje, arte, conexión y sanación en armonía
+                            con la naturaleza. Aquí los talleres, retiros y celebraciones no son solo eventos, sino experiencias
+                            profundas que inspiran transformación personal y colectiva.<br><br>
+                            Desde lo local hacia lo global, abrimos nuestras puertas a quienes deseen compartir, aprender y
+                            sembrar conciencia en un mundo que necesita volver a sus raíces.
+                        </p>
+                        <a href="#" class="cus">Únete y sé parte del cambio</a>
+                    </div>
+                </div>
             </div>
-         </section>
+        </section>
 
          <!--Why Ecova + Facts End-->
          <!--Online Products Start-->
@@ -708,8 +814,8 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="section-title-2 text-center">
-                        <h5>Descubre nuestras novedades</h5>
-                        <h2>Noticias, artículos y productos ecológicos</h2>
+                        <h5>Read Our Latest</h5>
+                        <h2>News &amp; Articles</h2>
                      </div>
                   </div>
                </div>
@@ -717,7 +823,7 @@
                   <!--Pro Box Start-->
                   <div class="col-md-3 col-sm-6">
                      <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'inicio/images/productos/fpro1.jpg' %}" alt=""></div>
+                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro1.jpg' %}" alt=""></div>
                         <div class="pro-txt">
                            <h6><a href="#">Happy Ninja Shirt</a></h6>
                            <p class="pro-price"><del>$25.00</del> $19.00</p>
@@ -728,7 +834,7 @@
                   <!--Pro Box Start-->
                   <div class="col-md-3 col-sm-6">
                      <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'inicio/images/productos/pro2.jpg' %}" alt=""></div>
+                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static  'images/pro2.jpg' %}" alt=""></div>
                         <div class="pro-txt">
                            <h6><a href="#">Woo corlor shirt</a></h6>
                            <p class="pro-price"><del>$25.00</del> $19.00</p>
@@ -739,7 +845,7 @@
                   <!--Pro Box Start-->
                   <div class="col-md-3 col-sm-6">
                      <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'inicio/images/productos/pro3.jpg' %}" alt=""></div>
+                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro3.jpg' %}" alt=""></div>
                         <div class="pro-txt">
                            <h6><a href="#">Premium Quality</a></h6>
                            <p class="pro-price"><del>$25.00</del> $19.00</p>
@@ -750,7 +856,7 @@
                   <!--Pro Box Start-->
                   <div class="col-md-3 col-sm-6">
                      <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'inicio/images/productos/pro4.jpg' %}" alt=""></div>
+                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro4.jpg' %}" alt=""></div>
                         <div class="pro-txt">
                            <h6><a href="#">Ninja Silhouette</a></h6>
                            <p class="pro-price"><del>$25.00</del> $19.00</p>
@@ -765,15 +871,24 @@
          <!--InstaGram Start-->
          <div class="instagram">
             <ul>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta1.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta2.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta3.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta4.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta5.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta6.jpg' %}" alt=""> </li>
-               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'inicio/images/articulos/insta7.jpg' %}" alt=""> </li>
+               {% load static %}
+
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/desidratador.jpg' %}" alt=""></li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/casa-arbol.jpg' %}" alt="">
+              </li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/casa-voluntarios.jpg' %}" alt="">
+              </li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/desidratador.jpg' %}" alt="">
+              </li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/domo.jpg' %}" alt="">
+              </li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/escuela2.jpg' %}" alt="">
+              </li>
+              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/lago2.jpg' %}" alt="">
+              </li>
+
             </ul>
          </div>
-<!-- Puedes seguir con más secciones como testimonios, actividades, contacto, etc. -->
+         <!--InstaGram End-->
 {% endblock %}
 git

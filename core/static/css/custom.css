@@ -97,14 +97,14 @@ Fonts Start
 @font-face {
 	font-family: 'droidSans';
 	src: url('../webfonts/DroidSans-webfont.eot');
-	src: url('../webfonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-webfont.woff') format('woff'), url('../webfonts/DroidSans-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
+	src: url('../webfonts/DroidSans-webfontd41d.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-webfont.woff') format('woff'), url('../webfonts/DroidSans-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'droidSans';
 	src: url('../webfonts/DroidSans-Bold-webfont.eot');
-	src: url('../webfonts/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-bold-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-Bold-webfont.woff') format('woff'), url('../webfonts/DroidSans-Bold-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
+	src: url('../webfonts/DroidSans-Bold-webfontd41d.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-bold-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-Bold-webfont.html') format('woff'), url('../webfonts/DroidSans-Bold-webfont-2.html') format('truetype'), url('../webfonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
 	font-weight: 700;
 	font-style: normal;
 }
@@ -1307,7 +1307,7 @@ Home Page Content End
 Footer Start
 *********************************/
 .footer {
-	background: url(../images/footer/footerbg.jpg) no-repeat;
+	background: url(../images/footerbg.jpg) no-repeat;
 	width: 100%;
 	float: left;
 	padding: 60px 0 0;
@@ -2172,7 +2172,7 @@ header .navbar-toggler {
 /*****************  WHY Ecova  ****************/
 
 .why-ecova {
-	background: url(../images/whybg.jpg) no-repeat;
+	background: url(/static/images/porquechamba/porque-chamba.jpg) no-repeat;
 	padding: 65px 0 65px;
 	background-size: cover;
 	text-align: center;
@@ -6778,64 +6778,4 @@ section.wf100.p80.fcampaigns {
 .volbox h5, .newsletter input[type=submit], #home-slider.owl-theme .owl-nav [class*=owl-], .add-2-cart input[type="submit"], a.view, .side-search button, #search .btn, .aboutus, .header-style-2 .dropdown-menu a, .header-style-1 .dropdown-menu a, .cus, .c-info, .post-thumb a, .blog-post-large .post-thumb:after, .h3footer .newsletter input[type=submit], .fsubmit, .side-widget.archives ul li a, .rp-box h6 a, .blog-single-content .rp-box .post-meta li a i, .blog-single-content .rp-box .post-meta li a, .project-list-widget ul li a, .side-widget .lastest-products strong a, .eco-box .econ-icon, .eco-box h5, .single-post-tags a, .about-text a, .about-video-img a, .slider-caption a, .donator-details input[type="submit"], p.stars a:before, a.contact-team, .single-counter-box a, .share-post a, .post-tags a, button.post-btn, .testimonials-section.bg-white .owl-theme .owl-dots .owl-dot span, .login-box button.login-btn, .login-box a.fp, .myaccount-form button.register, .myaccount-form a, .page-404-txt a, .gallery-img a, .gallery-img:before, .gallery-img:after, .cform .fsubmit, .bav, .vol-box, .vol-txt strong, .team-box .team-info, .team-box .team-info ul, .event-txt h4 a, .event-list-box .event-txt .attbtn, .event-list .pro-list-box .pro-txt h4 a, a.partibtn, .event-txt h5 a, .pro-txt h3 a, .ser-box .ser-thumb:after, .ser-thumb a, .projects-grid .ser-txt h5 a, .projects-grid .ser-box, .causes-grid .campaign-box, .causes-listing .campaign-box, .causes-listing .campaign-txt h4 a, .dn-btn, .blog-large .blog-post .blog-thumb:before, .post-txt h5 a, ul.post-meta li a, .blog-small-post, .gt-pagination .page-link, .blog-slider .owl-theme .owl-nav [class*=owl-], .blog-small-post .post-thumb:after, .event-thumb:after, .blog-thumb:after, .blog-txt ul.post-meta li a, a.read-post, .blog-txt h3 a, .team-box .team-info ul li a, .news-txt h4 a, .news-thumb a, .news-thumb:after, .ocp-box h5 a, .volbox a, .donation-wrap .radio-boxes input[type=radio].css-radio+label.css-label, button.sbtn, a.con-btn, .navrow .dropdown-menu li a, .navrow .navbar-expand-lg .navbar-nav .nav-link, .social-links a, .acclink, .h3-events .owl-theme .owl-nav button.owl-prev:after, .h3-events .owl-theme .owl-nav button.owl-next:after, .h3-events .owl-theme .owl-nav [class*=owl-], #h3-events .event-box .event-txt h4 a, .footer-social a, ul.ftags a, .instagram img, .instagram li a, .product-box .pro-txt h6 a, .pro-thumb:after, .pro-thumb a, .rm, a.view-more, .blog-small-post .post-thumb:after, .blog-small-post .post-thumb a, .blog-small-post .post-txt h5 a, .blog-post-large .post-txt h5 a, .current-projects .nav-link, .current-projects .owl-theme .owl-nav [class*=owl-], .pro-box h5, li.form-submit button, .video-img a, .services-area img, .services-area h6, .services-area p, .services-area ul li:after, .services-area ul li, .navbar-expand-lg .navbar-nav .nav-link, .mdonate span, .login-reg a, .mdonate:after, a.cart-icon, a.search-icon, .mdonate, .footer-widget a, ul.quick-links li a, .partner-logos .owl-carousel .owl-item img, .f-cat span:before, .f-cat span a, .f-cat span:after, ul.flinks li a, .volunteer-form input.fsubmit, .campaign-txt h5 a, a.dbutton, .campaign-thumb a, .campaign-thumb:after, a.dbutton, .event-thumb a, .event-thumb:after, .blog-txt h5 a, .blog-thumb a, .blog-list .blog-post .blog-thumb:after, .pic1, .pic2, span.aicon, .ser-txt h4 a, a.lm, .header-style-1 .nav-link, .dropdown-menu .dropdown-menu, .header-style-1 .dropdown-menu a, .topside-menu a {
 	transition: all ease-in-out 0.3s;
 	-webkit-transition: all ease-in-out 0.3s;
-}
-
-
-
-/* Chambalabamba Slider Typography */
-.slider-caption.h2slider h1.slogan-principal {
-  font-family: 'Dancing Script', cursive !important;
-  font-size: 3.2rem !important;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  text-transform: none !important;
-}
-
-.slider-caption.h2slider p.sub-slogan {
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 1.4rem !important;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-  text-align: center; /* ✅ Alinea el texto horizontalmente */
-  margin: 0 auto;      /* ✅ En caso de display:block, asegura el centrado del contenedor */
-  display: block;
-}
-
-#home-slider .item img {
-  height: 100vh; /* Puedes ajustar: 50vh, 60vh, etc. */
-  object-fit: cover;
-  width: 100%;
-}
-
-
-.error {
-  border: 1px solid red !important;
-}
-
-.contact-form-container {
-  padding-top: 20px;
-}
-
-.contact-page {
-  padding-top: 20px;
-  padding-bottom: 80px;
-}
-
-.col-md-6 {
-  padding-top: 20px;
-}
-
-.inner-header-contacto {
-  background-image: url("../images/contacto/inner-header-contacto.png");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: left;
-}
-
-.inner-header-contacto h1,
-.inner-header-contacto h2 {
-  color: white;
 }

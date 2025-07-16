@@ -1,115 +1,123 @@
 {% load static %}
-<header class="header-style-2 header-chambala">
-    <nav class="navbar navbar-expand-lg">
-        <!-- Menú izquierdo -->
-        <ul class="navbar-nav d-none d-lg-flex flex-row mr-auto">
-            <li class="nav-item px-2">
-                <a class="nav-link" href="{% url 'inicio:home' %}">Inicio</a>
-            </li>
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Nosotros</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Filosofía e Historia</a></li>
-                    <li><a href="#">En Qué Creemos</a></li>
-                    <li><a href="#">Gobernanza y Economía</a></li>
-                    <li><a href="#">Territorio (Reserva Natural)</a></li>
-                    <li><a href="#">Ecología y Agroforesta</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Aprendizajes</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Escuela para Niñ@s</a></li>
-                    <li><a href="#">Talleres</a></li>
-                    <li><a href="#">Retiros</a></li>
-                    <li><a href="#">Arte</a></li>
-                    <li><a href="#">Terapias</a></li>
-                    <li><a href="#">Prácticas y Exploraciones</a></li>
-                </ul>
-            </li>
-        </ul>
+<header class="header-style-2">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="">
+      <img src="{% static 'images/h2logo.png' %}" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
 
-        <!-- Logo centrado -->
-        <a class="navbar-brand mx-auto d-lg-block d-none" href="{% url 'inicio:home' %}">
-            <img src="{% static 'images/h2logo.png' %}" alt="Logo" class="logo-chambala">
-        </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+</li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Sobre Nosotros
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Filosofía e Historia</a></li>
+            <li><a href="#">Gobernanza y Economía</a></li>
+            <li><a href="#">Territorio (Reserva Natural)</a></li>
+            <li><a href="#">En qué creemos</a></li>
+            <li><a href="#">Ecología y Agroforesta</a></li>
+          </ul>
+        </li>
 
-        <!-- Menú derecho -->
-        <ul class="navbar-nav d-none d-lg-flex flex-row ml-auto">
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Eventos</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/eventos/ecstatic-dance/">Ecstatic Dance</a></li>
-                    <li><a href="/eventos/vacaciones-explorativas/">Vacaciones Explorativas</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Experiencia</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/experiencia/voluntariado/">Voluntariado</a></li>
-                    <li><a href="/experiencia/visitas-guiadas/">Visitas Guiadas</a></li>
-                    <li><a href="/experiencia/estancias/">Estancias</a></li>
-                    <li><a href="/experiencia/tienda/">Tienda</a></li>
-                    <li><a href="/experiencia/donaciones/">Donaciones</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Anuncios</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/anuncios/reflexiones/">Reflexiones</a></li>
-                    <li><a href="/anuncios/comunicados/">Comunicados</a></li>
-                </ul>
-            </li>
-            <li class="nav-item px-2">
-                <a class="nav-link" href="{% url 'contacto:index' %}">Contacto</a>
-            </li>
-        </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Aprendizajes para la Vida
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Escuela para niñ@s</a></li>
+            <li><a href="#">Talleres</a></li>
+            <li><a href="#">Retiros</a></li>
+            <li><a href="#">Arte</a></li>
+            <li><a href="#">Terapias</a></li>
+            <li><a href="#">Prácticas y exploraciones</a></li>
+            <li><a href="#">Facilitamos nuestros espacios</a></li>
+          </ul>
+        </li>
 
-        <!-- Botón móvil -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMobile">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Eventos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Ecstatic Dance</a></li>
+            <li><a href="#">Vacaciones explorativas</a></li>
+            <li><a href="#">Cocreación y espacio disponible</a></li>
+          </ul>
+        </li>
 
-    <!-- Menú móvil -->
-    <div class="collapse navbar-collapse" id="navbarMobile">
-        <ul class="navbar-nav text-center">
-            <li class="nav-item"><a class="nav-link" href="{% url 'inicio:home' %}">Inicio</a></li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Nosotros</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Filosofía e Historia</a></li>
-                    <li><a href="#">En Qué Creemos</a></li>
-                    <li><a href="#">Gobernanza y Economía</a></li>
-                    <li><a href="#">Territorio</a></li>
-                    <li><a href="#">Ecología</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Aprendizajes</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Escuela</a></li>
-                    <li><a href="#">Talleres</a></li>
-                    <li><a href="#">Retiros</a></li>
-                    <li><a href="#">Arte</a></li>
-                    <li><a href="#">Terapias</a></li>
-                    <li><a href="#">Exploraciones</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/eventos/">Eventos</a></li>
-            <li class="nav-item"><a class="nav-link" href="/experiencia/">Experiencia</a></li>
-            <li class="nav-item"><a class="nav-link" href="/anuncios/">Anuncios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Vive la Experiencia
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Voluntariado</a></li>
+            <li><a href="#">Visitas guiadas</a></li>
+            <li><a href="#">Estancias</a></li>
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Donaciones</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Anuncios
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Reflexiones</a></li>
+            <li><a href="#">Comunicados</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto:contacto' %}">Contactos</a>
+        </li>
+      </ul>
+
+      <!-- Íconos del lado derecho -->
+      <ul class="topnav-right">
+        <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
+        <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+        <li class="dropdown">
+          <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+          <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
+            Últimos artículos añadidos
+            <ul class="list">
+              <li class="item">
+                <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
+                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong></div>
+              </li>
+              <li class="item">
+                <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
+                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong></div>
+              </li>
+            </ul>
+            <div class="total">Total: <strong>$89.90</strong></div>
+            <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
+          </div>
+        </li>
+        <li class="login-reg">
+          <a href="#">Login</a> | <a href="#">Signup</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 </header>
+
+<!-- Buscador Overlay -->
 <div id="search">
-    <button type="button" class="close">×</button>
-    <form class="search-overlay-form">
-        <input type="search" value="" placeholder="type keyword(s) here"/>
-        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-    </form>
+  <button type="button" class="close">×</button>
+  <form class="search-overlay-form">
+    <input type="search" value="" placeholder="Buscar palabras clave..."/>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+  </form>
 </div>
