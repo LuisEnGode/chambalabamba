@@ -375,7 +375,7 @@ jQuery(document).ready(function($) {
 				$(this).removeClass('open');
 			}
 		});
-		$('#search > form').submit(function(event) {
+		$('form').submit(function(event) {
 			event.preventDefault();
 			return false;
 		})
