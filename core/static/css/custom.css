@@ -2172,7 +2172,7 @@ header .navbar-toggler {
 /*****************  WHY Ecova  ****************/
 
 .why-ecova {
-	background: url(../images/whybg.jpg) no-repeat;
+	background: url(/static/images/porquechamba/porque-chamba.jpg) no-repeat;
 	padding: 65px 0 65px;
 	background-size: cover;
 	text-align: center;
