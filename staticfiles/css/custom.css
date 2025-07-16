@@ -97,14 +97,14 @@ Fonts Start
 @font-face {
 	font-family: 'droidSans';
 	src: url('../webfonts/DroidSans-webfont.eot');
-	src: url('../webfonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-webfont.woff') format('woff'), url('../webfonts/DroidSans-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
+	src: url('../webfonts/DroidSans-webfontd41d.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-webfont.woff') format('woff'), url('../webfonts/DroidSans-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'droidSans';
 	src: url('../webfonts/DroidSans-Bold-webfont.eot');
-	src: url('../webfonts/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-bold-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-Bold-webfont.woff') format('woff'), url('../webfonts/DroidSans-Bold-webfont.ttf') format('truetype'), url('../webfonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
+	src: url('../webfonts/DroidSans-Bold-webfontd41d.eot?#iefix') format('embedded-opentype'), url('../webfonts/droidsans-bold-webfont.woff2') format('woff2'), url('../webfonts/DroidSans-Bold-webfont.html') format('woff'), url('../webfonts/DroidSans-Bold-webfont-2.html') format('truetype'), url('../webfonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
 	font-weight: 700;
 	font-style: normal;
 }
@@ -1307,7 +1307,7 @@ Home Page Content End
 Footer Start
 *********************************/
 .footer {
-	background: url(../images/footer/footerbg.jpg) no-repeat;
+	background: url(../images/footerbg.jpg) no-repeat;
 	width: 100%;
 	float: left;
 	padding: 60px 0 0;
@@ -2172,7 +2172,7 @@ header .navbar-toggler {
 /*****************  WHY Ecova  ****************/
 
 .why-ecova {
-	background: url(../images/porquechamba/whybg.jpg) no-repeat;
+	background: url(/static/images/porquechamba/porque-chamba.jpg) no-repeat;
 	padding: 65px 0 65px;
 	background-size: cover;
 	text-align: center;
@@ -6781,61 +6781,18 @@ section.wf100.p80.fcampaigns {
 }
 
 
-
-/* Chambalabamba Slider Typography */
-.slider-caption.h2slider h1.slogan-principal {
-  font-family: 'Dancing Script', cursive !important;
-  font-size: 3.2rem !important;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  text-transform: none !important;
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
 
-.slider-caption.h2slider p.sub-slogan {
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 1.4rem !important;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-  text-align: center; /* ✅ Alinea el texto horizontalmente */
-  margin: 0 auto;      /* ✅ En caso de display:block, asegura el centrado del contenedor */
-  display: block;
-}
-
-#home-slider .item img {
-  height: 100vh; /* Puedes ajustar: 50vh, 60vh, etc. */
-  object-fit: cover;
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-
-.error {
-  border: 1px solid red !important;
-}
-
-.contact-form-container {
-  padding-top: 20px;
-}
-
-.contact-page {
-  padding-top: 20px;
-  padding-bottom: 80px;
-}
-
-.col-md-6 {
-  padding-top: 20px;
-}
-
-.inner-header-contacto {
-  background-image: url("../images/contacto/inner-header-contacto.png");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: left;
-}
-
-.inner-header-contacto h1,
-.inner-header-contacto h2 {
-  color: white;
+  height: 100%;
 }
