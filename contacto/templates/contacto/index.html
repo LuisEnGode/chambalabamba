@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
 {% load contacto_tags %}
 
@@ -35,7 +35,7 @@
           {% if success_message %}
           <div class="alert alert-success">{{ success_message }}</div>
           {% endif %}
-          <form method="post" action="{% url 'contacto:index' %}">
+          <form method="post" action="{% url 'contacto:contacto' %}">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <ul class="cform">

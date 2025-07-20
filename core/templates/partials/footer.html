@@ -1,100 +1,94 @@
-<!-- partials/footer.html -->
-{% load static %}
-<!--InstaGram End-->
-         <!--Footer Start-->
-         <footer class="footer">
-            <div class="footer-top wf100">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--Footer Widget Start-->
-                        <div class="footer-widget">
-                           <h4>Sobre Chambalabamba</h4>
-                           <p>En nuestra ecoaldea cultivamos una vida consciente, creativa y sostenible. Regeneramos la tierra, compartimos saberes y celebramos la comunidad como camino hacia un futuro armonioso con la naturaleza.</p>
-                           <a href="#" class="lm">About us</a>
-                        </div>
-                        <!--Footer Widget End-->
-                     </div>
-                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--Footer Widget Start-->
-                        <div class="footer-widget">
-                           <h4>Our Promises</h4>
-                           <ul class="quick-links">
-                              <li><a href="#">Solar Energy</a></li>
-                              <li><a href="#">Waste Management</a></li>
-                              <li><a href="#">Eco Ideas</a></li>
-                              <li><a href="#">Recycling Materials</a></li>
-                              <li><a href="#">Plant Ecology</a></li>
-                              <li><a href="#">Saving Wildlife </a></li>
-                           </ul>
-                        </div>
-                        <!--Footer Widget End-->
-                     </div>
-                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--Footer Widget Start-->
-                        <div class="footer-widget">
-                           <h4>Latest Posts</h4>
-                           <ul class="lastest-products">
-                              <li> <img src="images/flp1.jpg" alt=""> <strong><a href="#">How you can keep alive wild animals for...</a></strong> <span class="pdate"><i>Posted:</i> 29 September, 2018</span> </li>
-                              <li> <img src="images/flp2.jpg" alt=""> <strong><a href="#">Eliminate your plastic bottle pollution & keep...</a></strong> <span class="pdate"><i>Posted:</i> 29 September, 2018</span> </li>
-                              <li> <img src="images/flp3.jpg" alt=""> <strong><a href="#">How you can keep alive wild animals for...</a></strong> <span class="pdate"><i>Posted:</i> 29 September, 2018</span> </li>
-                           </ul>
-                        </div>
-                        <!--Footer Widget End-->
-                     </div>
-                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--Footer Widget Start-->
-                        <div class="footer-widget">
-                           <div id="fpro-slider" class="owl-carousel owl-theme">
-                              <!--Footer Product Start-->
-                              <div class="item">
-                                 <div class="f-product">
-                                    <img src="images/fpro1.jpg" alt="">
-                                    <div class="fp-text">
-                                       <h6><a href="#">Buy T-Shirts</a></h6>
-                                       <strong>$19.00</strong>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Footer Product End-->
-                              <!--Footer Product Start-->
-                              <div class="item">
-                                 <div class="f-product">
-                                    <img src="images/fpro1.jpg" alt="">
-                                    <div class="fp-text">
-                                       <h6><a href="#">Buy T-Shirts</a></h6>
-                                       <strong>$19.00</strong>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Footer Product End-->
-                              <!--Footer Product Start-->
-                              <div class="item">
-                                 <div class="f-product">
-                                    <img src="images/fpro1.jpg" alt="">
-                                    <div class="fp-text">
-                                       <h6><a href="#">Buy T-Shirts</a></h6>
-                                       <strong>$19.00</strong>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!--Footer Product End-->
+{% load static%}
+<footer class="footer">
+   <div class="footer-top wf100">
+      <div class="container">
+         <div class="row">
+            <!-- Quiénes somos -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="footer-widget">
+                  <h4>Sobre Chambalabamba</h4>
+                  <p>Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia. Promovemos un estilo de vida autosostenible y en armonía con la Tierra.</p>
+                  <a href="{% url 'home' %}" class="lm">Conócenos</a>
+               </div>
+            </div>
+
+            <!-- Nuestra propuesta -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="footer-widget">
+                  <h4>Nuestra propuesta</h4>
+                  <ul class="quick-links">
+                     <li><a href="">Filosofía de vida</a></li>
+                     <li><a href="">Saberes y prácticas</a></li>
+                     <li><a href="">Escuela verde</a></li>
+                     <li><a href="">Voluntariado</a></li>
+                     <li><a href="">Eventos</a></li>
+                  </ul>
+               </div>
+            </div>
+
+            <!-- Noticias o últimas publicaciones -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="footer-widget">
+                  <h4>Últimas publicaciones</h4>
+                  <ul class="lastest-products">
+                     <li><img src="{% static 'images/flp1.jpg' %}" alt="">
+                        <strong><a href="#">Festival del Agua y la Tierra</a></strong>
+                        <span class="pdate"><i>Publicado:</i> 10 Julio, 2025</span>
+                     </li>
+                     <li><img src="{% static 'images/flp2.jpg' %}" alt="">
+                        <strong><a href="#">Nueva cúpula de bioconstrucción</a></strong>
+                        <span class="pdate"><i>Publicado:</i> 5 Julio, 2025</span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+
+            <!-- Productos / donaciones -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="footer-widget">
+                  <h4>Apóyanos</h4>
+                  <div id="fpro-slider" class="owl-carousel owl-theme">
+                     <div class="item">
+                        <div class="f-product">
+                           <img src="{% static 'images/fpro1.jpg' %}" alt="">
+                           <div class="fp-text">
+                              <h6><a href="#">Artesanía Andina</a></h6>
+                              <strong>$15.00</strong>
                            </div>
                         </div>
-                        <!--Footer Widget End-->
                      </div>
+
+
                   </div>
                </div>
             </div>
-            <div class="footer-copyr wf100">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-4 col-sm-4"> <img src="images/logo.png" alt=""> </div>
-                     <div class="col-md-8 col-sm-8">
-                        <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-                     </div>
-                  </div>
-               </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Pie de página -->
+   <div class="footer-copyr wf100">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-4 col-sm-4">
+               <img src="{% static 'images/logo.png' %}" alt="Chambalabamba Logo">
             </div>
-         </footer>
+            <div class="col-md-8 col-sm-8">
+               <p>© {{ now|date:"Y" }} Chambalabamba. Todos los derechos reservados. Desarrollado con 🌱 y 💻 por el equipo de Chambalabamba.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+
          <!--Footer End-->
+
+<!--   JS Files Start  -->
+     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-1.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
