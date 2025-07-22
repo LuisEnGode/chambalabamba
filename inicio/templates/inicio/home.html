@@ -9,45 +9,56 @@
 <!-- Aquí va el contenido de index.html menos header y footer -->
 
 <!--Slider Start-->
-<section id="home-slider" class="owl-carousel owl-theme wf100">
-  <div class="item">
-    <div class="slider-caption h2slider">
-      <div class="container">
+<!-- Contenedor envolvente relativo para el carrusel y la marca de agua -->
+<div class="slider-wrapper position-relative">
+
+  <!-- Marca de agua superpuesta (fuera del carrusel pero dentro del wrapper) -->
+  <div class="logo-overlay">
+    <img src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
+  </div>
+
+  <!-- Carrusel -->
+  <section id="home-slider" class="owl-carousel owl-theme wf100">
+    <div class="item">
+      <div class="slider-caption h2slider">
+        <div class="container">
           <strong>Chambalabamba<span> </span></strong>
           <h1>Ecoaldea Sostenible</h1>
           <p>Un espacio de vida, arte y regeneración</p>
           <a href="#" class="active">Descubre Más</a> <a href="#">Únete Hoy</a>
+        </div>
       </div>
+      <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
     </div>
-    <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
-  </div>
 
-  <div class="item">
-  <div class="slider-caption h2slider">
-    <div class="container">
-      <strong><span>Maloca:</span> Aprendemos & </strong>
-      <h1>Creamos Futuro</h1>
-      <p>desde la <strong>conciencia y la cooperación</strong></p>
-      <a href="#" class="active">Explora Más</a> <a href="#">Súmate Hoy</a>
+    <div class="item">
+      <div class="slider-caption h2slider">
+        <div class="container">
+          <strong><span>Maloca:</span> Aprendemos & </strong>
+          <h1>Creamos Futuro</h1>
+          <p>desde la <strong>conciencia y la cooperación</strong></p>
+          <a href="#" class="active">Explora Más</a> <a href="#">Súmate Hoy</a>
+        </div>
+      </div>
+      <img src="{% static 'images/slider/maloca.jpg' %}" alt="Maloca Chambalabamba">
     </div>
-  </div>
-  <img src="{% static 'images/slider/maloca.jpg' %}" alt="Maloca Chambalabamba">
+
+    <div class="item">
+      <div class="slider-caption h2slider">
+        <div class="container">
+          <strong>Honremos <span>el agua, fuente de vida</span></strong>
+          <h1>Fluimos como el agua</h1>
+          <p>Antes de que <strong>seque nuestra conciencia</strong>...</p>
+          <a href="#" class="active">Conoce Más</a> <a href="#">Actúa con Nosotros</a>
+        </div>
+      </div>
+      <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
+    </div>
+  </section>
+
 </div>
 
 
- <div class="item">
-  <div class="slider-caption h2slider">
-    <div class="container">
-      <strong>Honremos <span>el agua, fuente de vida</span></strong>
-      <h1>Fluimos como el agua</h1>
-      <p>Antes de que <strong>seque nuestra conciencia</strong>...</p>
-      <a href="#" class="active">Conoce Más</a> <a href="#">Actúa con Nosotros</a>
-    </div>
-  </div>
-  <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
-</div>
-
-</section>
 <!--Slider end -->
 
 <!--Service Area Start-->
@@ -150,11 +161,13 @@
             <div class="progress">
                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+             <!--
             <ul class="funds">
                <li class="text-left"><strong>55%</strong> Apoyado</li>
                <li class="text-center"><strong>$948.00</strong> Recaudado</li>
                <li class="text-right"><strong>$1750.00</strong> Meta</li>
             </ul>
+            -->
          </div>
          <div class="col-md-6">
             <div class="donation-amount">
@@ -788,6 +801,7 @@
          </section>
          <!--News & Articles End-->
          <!--Why Ecova + Facts Start-->
+        <!--
         <section class="why-ecova wf100">
             <div class="container">
                 <div class="row">
@@ -805,6 +819,7 @@
                 </div>
             </div>
         </section>
+        -->
 
          <!--Why Ecova + Facts End-->
          <!--Online Products Start-->
