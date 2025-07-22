@@ -6796,3 +6796,61 @@ section.wf100.p80.fcampaigns {
   width: 100%;
   height: 100%;
 }
+/* === Logo superpuesto como marca de agua sobre el slider === */
+#home-slider {
+  position: relative;
+}
+
+/* Contenedor principal debe tener posición relativa */
+.slider-wrapper {
+  position: relative;
+}
+
+/* Logo superpuesto como marca de agua centrada */
+.slider-wrapper .logo-overlay {
+  position: absolute;
+  top: 50%; /* Centrado vertical */
+  left: 50%; /* Centrado horizontal */
+  transform: translate(-50%, 15%); /* Ligeramente hacia arriba */
+  z-index: 10;
+  opacity: 0.45;
+  pointer-events: none;
+  filter: brightness(1.2) contrast(1.2);
+}
+
+.slider-wrapper .logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 15%);
+  z-index: 10;
+  opacity: 0.45;
+  pointer-events: none;
+  filter: brightness(1.2) contrast(1.2);
+  animation: slow-rotation 60s linear infinite;
+}
+
+/* Versión responsive para móviles */
+@media (max-width: 767px) {
+  .slider-wrapper .logo-overlay {
+    top: 40%;
+    transform: translate(-50%, 10%) rotate(0deg);
+    opacity: 0.45;
+    animation: slow-rotation 90s linear infinite;
+  }
+
+  .slider-wrapper .logo-overlay img {
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes slow-rotation {
+  from {
+    transform: translate(-50%, 15%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, 15%) rotate(360deg);
+  }
+}
