@@ -11,45 +11,30 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-</li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Sobre Nosotros
+            Conócenos
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Filosofía e Historia</a></li>
+            <li><a href="#">Nuestro camino </a></li>
             <li><a href="#">Gobernanza y Economía</a></li>
-            <li><a href="#">Territorio (Reserva Natural)</a></li>
-            <li><a href="#">En qué creemos</a></li>
-            <li><a href="#">Ecología y Agroforesta</a></li>
+            <li><a href="#">Reserva Natural </a></li>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Aprendizajes para la Vida
+            Aprendizajes de Vida
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Escuela para niñ@s</a></li>
-            <li><a href="#">Talleres</a></li>
-            <li><a href="#">Retiros</a></li>
+            <li><a href="#">Escuela</a></li>
             <li><a href="#">Arte</a></li>
-            <li><a href="#">Terapias</a></li>
-            <li><a href="#">Prácticas y exploraciones</a></li>
-            <li><a href="#">Facilitamos nuestros espacios</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Eventos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Ecstatic Dance</a></li>
-            <li><a href="#">Vacaciones explorativas</a></li>
-            <li><a href="#">Cocreación y espacio disponible</a></li>
+            <li><a href="#">Recursos disponibles</a></li>
           </ul>
         </li>
 
@@ -58,11 +43,22 @@
             Vive la Experiencia
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Voluntariado</a></li>
             <li><a href="#">Visitas guiadas</a></li>
-            <li><a href="#">Estancias</a></li>
-            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Facilitamos nuestros espacios</a></li>
+            <li><a href="#">Cocreación y espacio disponible</a></li>
             <li><a href="#">Donaciones</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            Actividades y Eventos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Vacaciones explorativas</a></li>
+            <li><a href="#">Talleres</a></li>
+            <li><a href="#">Retiros</a></li>
+            <li><a href="#">Terapias</a></li>
           </ul>
         </li>
 
@@ -77,8 +73,9 @@
         </li>
 
         <li class="nav-item">
-              <a class="nav-link" href="{% url 'contacto:contacto' %}">Contactos</a>
+          <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
         </li>
+
       </ul>
 
       <!-- Íconos del lado derecho -->
@@ -94,11 +91,13 @@
             <ul class="list">
               <li class="item">
                 <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
-                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong></div>
+                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong>
+                </div>
               </li>
               <li class="item">
                 <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
-                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong></div>
+                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong>
+                </div>
               </li>
             </ul>
             <div class="total">Total: <strong>$89.90</strong></div>
@@ -110,6 +109,7 @@
         </li>
       </ul>
     </div>
+
   </nav>
 </header>
 
