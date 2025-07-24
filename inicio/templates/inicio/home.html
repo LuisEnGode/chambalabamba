@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  Inicio – Chambalabamba
+Inicio – Chambalabamba
 {% endblock %}
 
 {% block content %}
@@ -12,49 +12,53 @@
 <!-- Contenedor envolvente relativo para el carrusel y la marca de agua -->
 <div class="slider-wrapper position-relative">
 
-  <!-- Marca de agua superpuesta (fuera del carrusel pero dentro del wrapper) -->
-  <div class="logo-overlay">
-    <img src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
-  </div>
+    <div class="logo-overlay-s ">
+      <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="">
+   </div>
 
-  <!-- Carrusel -->
-  <section id="home-slider" class="owl-carousel owl-theme wf100">
-    <div class="item">
-      <div class="slider-caption h2slider">
-        <div class="container">
-          <strong>Chambalabamba<span> </span></strong>
-          <h1>Ecoaldea Sostenible</h1>
-          <p>Un espacio de vida, arte y regeneración</p>
-          <a href="#" class="active">Descubre Más</a> <a href="#">Únete Hoy</a>
-        </div>
-      </div>
-      <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
+    <!-- Marca de agua superpuesta (fuera del carrusel pero dentro del wrapper) -->
+    <div class="logo-overlay ">
+        <img src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
     </div>
 
-    <div class="item">
-      <div class="slider-caption h2slider">
-        <div class="container">
-          <strong><span>Maloca:</span> Aprendemos & </strong>
-          <h1>Creamos Futuro</h1>
-          <p>desde la <strong>conciencia y la cooperación</strong></p>
-          <a href="#" class="active">Explora Más</a> <a href="#">Súmate Hoy</a>
+    <!-- Carrusel -->
+    <section id="home-slider" class="owl-carousel owl-theme wf100">
+        <div class="item">
+            <div class="slider-caption h2slider">
+                <div class="container">
+                    <strong>Chambalabamba<span> </span></strong>
+                    <h1>Ecoaldea Sostenible</h1>
+                    <p>Un espacio de vida, arte y regeneración</p>
+                    <a href="#" class="active">Descubre Más</a> <a href="#">Únete Hoy</a>
+                </div>
+            </div>
+            <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
         </div>
-      </div>
-      <img src="{% static 'images/slider/maloca.jpg' %}" alt="Maloca Chambalabamba">
-    </div>
 
-    <div class="item">
-      <div class="slider-caption h2slider">
-        <div class="container">
-          <strong>Honremos <span>el agua, fuente de vida</span></strong>
-          <h1>Fluimos como el agua</h1>
-          <p>Antes de que <strong>seque nuestra conciencia</strong>...</p>
-          <a href="#" class="active">Conoce Más</a> <a href="#">Actúa con Nosotros</a>
+        <div class="item">
+            <div class="slider-caption h2slider">
+                <div class="container">
+                    <strong><span>Maloca:</span> Aprendemos & </strong>
+                    <h1>Creamos Futuro</h1>
+                    <p>desde la <strong>conciencia y la cooperación</strong></p>
+                    <a href="#" class="active">Explora Más</a> <a href="#">Súmate Hoy</a>
+                </div>
+            </div>
+            <img src="{% static 'images/slider/maloca.jpg' %}" alt="Maloca Chambalabamba">
         </div>
-      </div>
-      <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
-    </div>
-  </section>
+
+        <div class="item">
+            <div class="slider-caption h2slider">
+                <div class="container">
+                    <strong>Honremos <span>el agua, fuente de vida</span></strong>
+                    <h1>Fluimos como el agua</h1>
+                    <p>Antes de que <strong>seque nuestra conciencia</strong>...</p>
+                    <a href="#" class="active">Conoce Más</a> <a href="#">Actúa con Nosotros</a>
+                </div>
+            </div>
+            <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
+        </div>
+    </section>
 
 </div>
 
@@ -118,122 +122,128 @@
 <section class="home2-about wf100 p100 gallery">
     <div class="container">
         <div class="row">
-             <div class="col-md -5">
-                 <div class="video-responsive">
-                     <iframe src="https://player.vimeo.com/video/1101693344?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>
-                 </div>
+            <div class="col-md -5">
+                <div class="video-responsive">
+                    <iframe src="https://player.vimeo.com/video/1101693344?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                            width="1280" height="720" frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>
+                </div>
 
                 <div class="col-md-7">
-                <div class="h2-about-txt" style="text-align: justify;">
-                    <h3>Sobre Chambalabamba</h3>
-                    <h2>Una ecoaldea viva donde florece la libertad, el arte y la conciencia.</h2>
-                    <p>
-                        Chambalabamba es una comunidad ecológica ubicada en Vilcabamba, Ecuador. Aquí, aprendemos a
-                        convivir
-                        en armonía, cultivando relaciones desde el amor incondicional y el respeto mutuo. En este
-                        espacio
-                        orgánico, defendemos la libertad, reconocemos la diversidad humana y vivimos con la Tierra, no
-                        sobre
-                        ella.
-                    </p>
-                    <a class="aboutus" href="#">Conoce más sobre nosotros</a>
+                    <div class="h2-about-txt" style="text-align: justify;">
+                        <h3>Sobre Chambalabamba</h3>
+                        <h2>Una ecoaldea viva donde florece la libertad, el arte y la conciencia.</h2>
+                        <p>
+                            Chambalabamba es una comunidad ecológica ubicada en Vilcabamba, Ecuador. Aquí, aprendemos a
+                            convivir
+                            en armonía, cultivando relaciones desde el amor incondicional y el respeto mutuo. En este
+                            espacio
+                            orgánico, defendemos la libertad, reconocemos la diversidad humana y vivimos con la Tierra,
+                            no
+                            sobre
+                            ella.
+                        </p>
+                        <a class="aboutus" href="#">Conoce más sobre nosotros</a>
+                    </div>
                 </div>
             </div>
-  </div>
-</div>
-
+        </div>
 
 
 </section>
-         <!--About Section End-->
-         <!--Urgent Causes Start-->
-        <section class="urgent-causes wf100 p80">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-6">
-            <div class="section-title-2 white">
-               <h5>Llamado Consciente</h5>
-               <h2>Sanación y Regeneración en Chambalabamba</h2>
+<!--About Section End-->
+<!--Urgent Causes Start-->
+<section class="urgent-causes wf100 p80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-title-2 white">
+                    <h5>Llamado Consciente</h5>
+                    <h2>Sanación y Regeneración en Chambalabamba</h2>
+                </div>
+                <p>
+                    En nuestra ecoaldea, practicamos la <strong>sanación</strong>y el cultivo de una <strong>conciencia
+                    ecológica y espiritual</strong>. Tu apoyo nos ayuda a expandir este espacio de transformación, donde
+                    la tierra y el ser se armonizan.
+                </p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0"
+                         aria-valuemax="100"></div>
+                </div>
+                <!--
+               <ul class="funds">
+                  <li class="text-left"><strong>55%</strong> Apoyado</li>
+                  <li class="text-center"><strong>$948.00</strong> Recaudado</li>
+                  <li class="text-right"><strong>$1750.00</strong> Meta</li>
+               </ul>
+               -->
             </div>
-            <p>
-               En nuestra ecoaldea, practicamos la <strong>sanación</strong>y el cultivo de una <strong>conciencia ecológica y espiritual</strong>. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan.
-            </p>
-            <div class="progress">
-               <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="col-md-6">
+                <div class="donation-amount">
+                    <h5>Apoya este Espacio</h5>
+                    <form>
+                        <ul class="radio-boxes">
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d1" type="radio" class="css-radio">
+                                    <label for="d1" class="css-label">$5</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d2" type="radio" class="css-radio">
+                                    <label for="d2" class="css-label">$20</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d3" type="radio" class="css-radio">
+                                    <label for="d3" class="css-label">$50</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d4" type="radio" class="css-radio">
+                                    <label for="d4" class="css-label">$100</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d5" type="radio" class="css-radio">
+                                    <label for="d5" class="css-label">$250</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d6" type="radio" class="css-radio">
+                                    <label for="d6" class="css-label">$500</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio custom">
+                                    <input name="donation" id="d7" type="radio" class="css-radio">
+                                    <label for="d7" class="css-label">$1000</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inputs">
+                                    <input class="enter" type="text" placeholder="$ Otro">
+                                </div>
+                            </li>
+                            <li class="form-submit">
+                                <button type="submit">Contribuir con Amor</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
             </div>
-             <!--
-            <ul class="funds">
-               <li class="text-left"><strong>55%</strong> Apoyado</li>
-               <li class="text-center"><strong>$948.00</strong> Recaudado</li>
-               <li class="text-right"><strong>$1750.00</strong> Meta</li>
-            </ul>
-            -->
-         </div>
-         <div class="col-md-6">
-            <div class="donation-amount">
-               <h5>Apoya este Espacio</h5>
-               <form>
-                  <ul class="radio-boxes">
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d1" type="radio" class="css-radio">
-                           <label for="d1" class="css-label">$5</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d2" type="radio" class="css-radio">
-                           <label for="d2" class="css-label">$20</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d3" type="radio" class="css-radio">
-                           <label for="d3" class="css-label">$50</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d4" type="radio" class="css-radio">
-                           <label for="d4" class="css-label">$100</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d5" type="radio" class="css-radio">
-                           <label for="d5" class="css-label">$250</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d6" type="radio" class="css-radio">
-                           <label for="d6" class="css-label">$500</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="radio custom">
-                           <input name="donation" id="d7" type="radio" class="css-radio">
-                           <label for="d7" class="css-label">$1000</label>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="inputs">
-                           <input class="enter" type="text" placeholder="$ Otro">
-                        </div>
-                     </li>
-                     <li class="form-submit">
-                        <button type="submit">Contribuir con Amor</button>
-                     </li>
-                  </ul>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </section>
 
-         <!--Urgent Causes End-->
-         <!--Current Projects Start-->
+<!--Urgent Causes End-->
+<!--Current Projects Start-->
 <section class="wf100 p80 current-projects">
     <div class="container">
         <div class="row">
@@ -300,7 +310,8 @@
                                     <div class="pro-hover">
                                         <h6>Retiros Revitalizantes</h6>
                                         <p>Ofrecemos espacios de descanso consciente y transformación personal en medio
-                                            de la naturaleza. A través de prácticas de meditación, alimentación organica y
+                                            de la naturaleza. A través de prácticas de meditación, alimentación organica
+                                            y
                                             reconexión con la tierra, los participantes renuevan cuerpo, mente y
                                             espíritu.</p>
                                         <a href="#">Ver más</a>
@@ -316,7 +327,8 @@
                                     <h5>Agricultura Regenerativa</h5>
                                     <div class="pro-hover">
                                         <h6>Agricultura Regenerativa</h6>
-                                        <p>Practicamos una agricultura y permacultura, en armonía con los ciclos de la naturaleza.
+                                        <p>Practicamos una agricultura y permacultura, en armonía con los ciclos de la
+                                            naturaleza.
                                             Cultivamos alimentos orgánicos respetando el suelo, la biodiversidad y
                                             fomentando la autosuficiencia comunitaria.</p>
                                         <a href="#">Ver más</a>
@@ -744,165 +756,191 @@
         </div>
     </div>
 </section>
-         <!--Current Projects End-->
-         <!--News & Articles Start-->
-         <section class="h2-news wf100 p80">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="section-title-2">
-                        <h5>Read Our Latest</h5>
-                        <h2>News & Articles</h2>
-                     </div>
-                  </div>
-                  <div class="col-md-6"> <a href="#" class="view-more">View More News</a> </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="blog-post-large">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news1.jpg' %}" alt=""></div>
-                        <div class="post-txt">
-                           <ul class="post-meta">
-                              <li><i class="fas fa-calendar-alt"></i> 29 September, 2018</li>
-                              <li><i class="fas fa-comments"></i> 134 Comments</li>
-                           </ul>
-                           <h5><a href="#">Planting Trees for Better Future</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6">
-                     <!--Blog Small Post Start-->
-                     <div class="blog-small-post">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news2.jpg' %}" alt="">
- </div>
-                        <div class="post-txt">
-                           <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
-                           <h5><a href="#">How you can keep alive wildlife long.</a></h5>
-                           <p>According to a survey the perceived higher cost of environmentally.</p>
-                           <a href="#" class="rm">Read More</a>
-                        </div>
-                     </div>
-                     <!--Blog Small Post End-->
-                     <!--Blog Small Post Start-->
-                     <div class="blog-small-post">
-                        <div class="post-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/h2news3.jpg' %}" alt="">
- </div>
-                        <div class="post-txt">
-                           <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
-                           <h5><a href="#">The effort GoGreen has been felt across</a></h5>
-                           <p>Majority have suffered alteration in some form by injected humour.</p>
-                           <a href="#" class="rm">Read More</a>
-                        </div>
-                     </div>
-                     <!--Blog Small Post End-->
-                  </div>
-               </div>
+<!--Current Projects End-->
+<!--News & Articles Start-->
+<section class="h2-news wf100 p80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-title-2">
+                    <h5>Read Our Latest</h5>
+                    <h2>News & Articles</h2>
+                </div>
             </div>
-         </section>
-         <!--News & Articles End-->
-         <!--Why Ecova + Facts Start-->
-        <!--
-        <section class="why-ecova wf100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>¿Por qué Chambalabamba?</h1>
-                        <p>
-                            Somos una comunidad viva que co-crea espacios de aprendizaje, arte, conexión y sanación en armonía
-                            con la naturaleza. Aquí los talleres, retiros y celebraciones no son solo eventos, sino experiencias
-                            profundas que inspiran transformación personal y colectiva.<br><br>
-                            Desde lo local hacia lo global, abrimos nuestras puertas a quienes deseen compartir, aprender y
-                            sembrar conciencia en un mundo que necesita volver a sus raíces.
-                        </p>
-                        <a href="#" class="cus">Únete y sé parte del cambio</a>
+            <div class="col-md-6"><a href="#" class="view-more">View More News</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="blog-post-large">
+                    <div class="post-thumb"><a href="#"><i class="fas fa-link"></i></a> <img
+                            src="{% static 'images/h2news1.jpg' %}" alt=""></div>
+                    <div class="post-txt">
+                        <ul class="post-meta">
+                            <li><i class="fas fa-calendar-alt"></i> 29 September, 2018</li>
+                            <li><i class="fas fa-comments"></i> 134 Comments</li>
+                        </ul>
+                        <h5><a href="#">Planting Trees for Better Future</a></h5>
                     </div>
                 </div>
             </div>
-        </section>
-        -->
-
-         <!--Why Ecova + Facts End-->
-         <!--Online Products Start-->
-         <section class="online-shop wf100 p80">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="section-title-2 text-center">
-                        <h5>Read Our Latest</h5>
-                        <h2>News &amp; Articles</h2>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <!--Pro Box Start-->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro1.jpg' %}" alt=""></div>
-                        <div class="pro-txt">
-                           <h6><a href="#">Happy Ninja Shirt</a></h6>
-                           <p class="pro-price"><del>$25.00</del> $19.00</p>
-                        </div>
-                     </div>
-                  </div>
-                  <!--Pro Box End-->
-                  <!--Pro Box Start-->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static  'images/pro2.jpg' %}" alt=""></div>
-                        <div class="pro-txt">
-                           <h6><a href="#">Woo corlor shirt</a></h6>
-                           <p class="pro-price"><del>$25.00</del> $19.00</p>
-                        </div>
-                     </div>
-                  </div>
-                  <!--Pro Box End-->
-                  <!--Pro Box Start-->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro3.jpg' %}" alt=""></div>
-                        <div class="pro-txt">
-                           <h6><a href="#">Premium Quality</a></h6>
-                           <p class="pro-price"><del>$25.00</del> $19.00</p>
-                        </div>
-                     </div>
-                  </div>
-                  <!--Pro Box End-->
-                  <!--Pro Box Start-->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="product-box">
-                        <div class="pro-thumb"> <a href="#">Add To Cart</a> <img src="{% static 'images/pro4.jpg' %}" alt=""></div>
-                        <div class="pro-txt">
-                           <h6><a href="#">Ninja Silhouette</a></h6>
-                           <p class="pro-price"><del>$25.00</del> $19.00</p>
-                        </div>
-                     </div>
-                  </div>
-                  <!--Pro Box End-->
-               </div>
+            <div class="col-md-6">
+                <!--Blog Small Post Start-->
+                <div class="blog-small-post">
+                    <div class="post-thumb"><a href="#"><i class="fas fa-link"></i></a> <img
+                            src="{% static 'images/h2news2.jpg' %}" alt="">
+                    </div>
+                    <div class="post-txt">
+                        <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
+                        <h5><a href="#">How you can keep alive wildlife long.</a></h5>
+                        <p>According to a survey the perceived higher cost of environmentally.</p>
+                        <a href="#" class="rm">Read More</a>
+                    </div>
+                </div>
+                <!--Blog Small Post End-->
+                <!--Blog Small Post Start-->
+                <div class="blog-small-post">
+                    <div class="post-thumb"><a href="#"><i class="fas fa-link"></i></a> <img
+                            src="{% static 'images/h2news3.jpg' %}" alt="">
+                    </div>
+                    <div class="post-txt">
+                        <span class="pdate"> <i class="fas fa-calendar-alt"></i> 29 September, 2018</span>
+                        <h5><a href="#">The effort GoGreen has been felt across</a></h5>
+                        <p>Majority have suffered alteration in some form by injected humour.</p>
+                        <a href="#" class="rm">Read More</a>
+                    </div>
+                </div>
+                <!--Blog Small Post End-->
             </div>
-         </section>
-         <!--Online Products End-->
-         <!--InstaGram Start-->
-         <div class="instagram">
-            <ul>
-               {% load static %}
+        </div>
+    </div>
+</section>
+<!--News & Articles End-->
+<!--Why Ecova + Facts Start-->
+<!--
+<section class="why-ecova wf100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>¿Por qué Chambalabamba?</h1>
+                <p>
+                    Somos una comunidad viva que co-crea espacios de aprendizaje, arte, conexión y sanación en armonía
+                    con la naturaleza. Aquí los talleres, retiros y celebraciones no son solo eventos, sino experiencias
+                    profundas que inspiran transformación personal y colectiva.<br><br>
+                    Desde lo local hacia lo global, abrimos nuestras puertas a quienes deseen compartir, aprender y
+                    sembrar conciencia en un mundo que necesita volver a sus raíces.
+                </p>
+                <a href="#" class="cus">Únete y sé parte del cambio</a>
+            </div>
+        </div>
+    </div>
+</section>
+-->
 
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/desidratador.jpg' %}" alt=""></li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/casa-arbol.jpg' %}" alt="">
-              </li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/casa-voluntarios.jpg' %}" alt="">
-              </li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/desidratador.jpg' %}" alt="">
-              </li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/domo.jpg' %}" alt="">
-              </li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/escuela2.jpg' %}" alt="">
-              </li>
-              <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/lago2.jpg' %}" alt="">
-              </li>
+<!--Why Ecova + Facts End-->
+<!--Online Products Start-->
+<section class="online-shop wf100 p80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-2 text-center">
+                    <h5>Read Our Latest</h5>
+                    <h2>News &amp; Articles</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--Pro Box Start-->
+            <div class="col-md-3 col-sm-6">
+                <div class="product-box">
+                    <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'images/pro1.jpg' %}" alt="">
+                    </div>
+                    <div class="pro-txt">
+                        <h6><a href="#">Happy Ninja Shirt</a></h6>
+                        <p class="pro-price">
+                            <del>$25.00</del>
+                            $19.00
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--Pro Box End-->
+            <!--Pro Box Start-->
+            <div class="col-md-3 col-sm-6">
+                <div class="product-box">
+                    <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static  'images/pro2.jpg' %}"
+                                                                            alt=""></div>
+                    <div class="pro-txt">
+                        <h6><a href="#">Woo corlor shirt</a></h6>
+                        <p class="pro-price">
+                            <del>$25.00</del>
+                            $19.00
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--Pro Box End-->
+            <!--Pro Box Start-->
+            <div class="col-md-3 col-sm-6">
+                <div class="product-box">
+                    <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'images/pro3.jpg' %}" alt="">
+                    </div>
+                    <div class="pro-txt">
+                        <h6><a href="#">Premium Quality</a></h6>
+                        <p class="pro-price">
+                            <del>$25.00</del>
+                            $19.00
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--Pro Box End-->
+            <!--Pro Box Start-->
+            <div class="col-md-3 col-sm-6">
+                <div class="product-box">
+                    <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'images/pro4.jpg' %}" alt="">
+                    </div>
+                    <div class="pro-txt">
+                        <h6><a href="#">Ninja Silhouette</a></h6>
+                        <p class="pro-price">
+                            <del>$25.00</del>
+                            $19.00
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--Pro Box End-->
+        </div>
+    </div>
+</section>
+<!--Online Products End-->
+<!--InstaGram Start-->
+<div class="instagram">
+    <ul>
+        {% load static %}
 
-            </ul>
-         </div>
-         <!--InstaGram End-->
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
+                src="{% static 'images/galeria-final/desidratador.jpg' %}" alt=""></li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
+                src="{% static 'images/galeria-final/casa-arbol.jpg' %}" alt="">
+        </li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
+                src="{% static 'images/galeria-final/casa-voluntarios.jpg' %}" alt="">
+        </li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
+                src="{% static 'images/galeria-final/desidratador.jpg' %}" alt="">
+        </li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/domo.jpg' %}"
+                                                                 alt="">
+        </li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/escuela2.jpg' %}"
+                                                                 alt="">
+        </li>
+        <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galeria-final/lago2.jpg' %}"
+                                                                 alt="">
+        </li>
+
+    </ul>
+</div>
+<!--InstaGram End-->
 {% endblock %}
 git

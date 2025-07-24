@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     # apps personalizadas:
     'core',
     'inicio',
+    'nosotros',
     'filosofia',
     'saberes',
     'escuela',

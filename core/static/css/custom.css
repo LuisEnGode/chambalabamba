@@ -1479,7 +1479,7 @@ header.header-style-2 .navbar {
 	margin: 0px;
 }
 header.header-style-2 .navbar-brand {
-	background: #33691e;
+	background: #1b5e20;
 	width: 270px;
 	text-align: center;
 	padding: 13px 0;
@@ -6780,6 +6780,7 @@ section.wf100.p80.fcampaigns {
 	-webkit-transition: all ease-in-out 0.3s;
 }
 
+/*Video de la seccion home responsive*/
 
 .video-responsive {
   position: relative;
@@ -6796,6 +6797,8 @@ section.wf100.p80.fcampaigns {
   width: 100%;
   height: 100%;
 }
+
+
 /* === Logo superpuesto como marca de agua sobre el slider === */
 #home-slider {
   position: relative;
@@ -6809,20 +6812,9 @@ section.wf100.p80.fcampaigns {
 /* Logo superpuesto como marca de agua centrada */
 .slider-wrapper .logo-overlay {
   position: absolute;
-  top: 50%; /* Centrado vertical */
-  left: 50%; /* Centrado horizontal */
-  transform: translate(-50%, 15%); /* Ligeramente hacia arriba */
-  z-index: 10;
-  opacity: 0.45;
-  pointer-events: none;
-  filter: brightness(1.2) contrast(1.2);
-}
-
-.slider-wrapper .logo-overlay {
-  position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, 15%);
+  left: 80%;
+  transform: translate(-50%, 30%); /* Ajusta aquí */
   z-index: 10;
   opacity: 0.45;
   pointer-events: none;
@@ -6830,10 +6822,19 @@ section.wf100.p80.fcampaigns {
   animation: slow-rotation 60s linear infinite;
 }
 
+/* Aumentar tamaño en pantallas grandes */
+.slider-wrapper .logo-overlay img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+
 /* Versión responsive para móviles */
 @media (max-width: 767px) {
   .slider-wrapper .logo-overlay {
     top: 40%;
+    left: 50%;
     transform: translate(-50%, 10%) rotate(0deg);
     opacity: 0.45;
     animation: slow-rotation 90s linear infinite;
@@ -6848,9 +6849,57 @@ section.wf100.p80.fcampaigns {
 
 @keyframes slow-rotation {
   from {
-    transform: translate(-50%, 15%) rotate(0deg);
+    transform: translate(-50%, 30%) rotate(0deg);
   }
   to {
-    transform: translate(-50%, 15%) rotate(360deg);
+    transform: translate(-50%, 30%) rotate(360deg);
   }
+}
+
+
+/*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
+
+/* Logo superpuesto como marca de agua centrada */
+.slider-wrapper .logo-overlay-s {
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  transform: translate(-50%, -30%); /* Ajusta aquí */
+  z-index: 10;
+  opacity: 5;
+  pointer-events: none;
+  filter: brightness(1.2) contrast(1.2);
+}
+
+/* Aumentar tamaño en pantallas grandes */
+.slider-wrapper .logo-overlay-s img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+
+/* Versión responsive para móviles */
+@media (max-width: 767px) {
+  .slider-wrapper .logo-overlay-s {
+    top: 0%;
+    left: 10%;
+    transform: translate(-50%, -50%)
+    opacity: 5;
+    pointer-events: none;
+    filter: brightness(1.2) contrast(1.2);
+
+  }
+
+  .slider-wrapper .logo-overlay-s img {
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+  }
+}
+/*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
+.header-style-1 .navbar-brand {
+  background-color: #227431; /* Asegúrate que sea el mismo verde del header */
+  box-shadow: none;          /* Quita cualquier sombra */
+  border: none;              /* Quita cualquier borde */
 }
