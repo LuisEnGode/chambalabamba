@@ -470,3 +470,20 @@ jQuery(document).ready(function($) {
 		}
 	});
 	// ------- Masonry End ------- //
+
+
+/*Codigo para comportamiento del menu con click */
+$(document).ready(function () {
+  $('.dropdown-submenu > a').on("click", function (e) {
+    e.preventDefault(); // Evita que el navegador vaya a href="#"
+    var submenu = $(this).next('.dropdown-menu');
+    $('.dropdown-submenu .dropdown-menu').not(submenu).hide(); // Cierra otros submenús
+    submenu.toggle(); // Abre o cierra el actual
+    e.stopPropagation(); // Evita que el menú principal se cierre
+  });
+
+  // Opcional: cerrar todos los submenús al hacer clic fuera
+  $('body').on("click", function () {
+    $('.dropdown-submenu .dropdown-menu').hide();
+  });
+});

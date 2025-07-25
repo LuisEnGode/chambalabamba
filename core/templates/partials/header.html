@@ -1,129 +1,133 @@
 {% load static %}
 <header class="header-style-2">
-  <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
 
-        <a class="navbar-brand" >
-          <!--
-          <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="">
-           -->
+        <a class="navbar-brand">
+            <!--
+            <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="">
+             -->
         </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        Nosotros
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Nuestro camino</a></li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Nosotros
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Nuestro camino</a></li>
-
-            <!-- Pilares con submenú -->
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle">Pilares</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Ecologia</a></li>
-                <li><a class="dropdown-item" href="#">Economia comunitaria</a></li>
-                <li><a class="dropdown-item" href="#">Bienestar integral</a></li>
-                <li><a class="dropdown-item" href="#">Sociocultural</a></li>
-              </ul>
-            </li>
-
-            <li><a class="dropdown-item" href="#">Gobernanza</a></li>
-            <li><a class="dropdown-item" href="#">Principios y valores</a></li>
-            <li><a class="dropdown-item" href="#">Territorio</a></li>
-          </ul>
-        </li>
+                        <!-- Pilares con submenú -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Pilares</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Ecologia</a></li>
+                                <li><a class="dropdown-item" href="#">Economia comunitaria</a></li>
+                                <li><a class="dropdown-item" href="#">Bienestar integral</a></li>
+                                <li><a class="dropdown-item" href="#">Sociocultural</a></li>
+                            </ul>
+                        </li>
 
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Eventos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Escuela viva</a></li>
-            <li><a href="#">Talleres</a></li>
-            <li><a href="#">Retiros</a></li>
-            <li><a href="#">Artes</a></li>
-            <li><a href="#">Terapias</a></li>
-            <li><a href="#">Festivales</a></li>
-          </ul>
-        </li>
+                        <li><a class="dropdown-item" href="#">Gobernanza</a></li>
+                        <li><a class="dropdown-item" href="#">Principios y valores</a></li>
+                        <li><a class="dropdown-item" href="#">Territorio</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Participa
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Voluntariado</a></li>
-            <li><a href="#">Estancias</a></li>
-            <li><a href="#">Visitas guiadas</a></li>
-             <li><a href="#">Tienda comunitaria</a></li>
-            <li><a href="#">Donaciones</a></li>
-          </ul>
-        </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            Blog
-          </a>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        Eventos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Escuela viva</a></li>
+                        <li><a href="#">Talleres</a></li>
+                        <li><a href="#">Retiros</a></li>
+                        <li><a href="#">Artes</a></li>
+                        <li><a href="#">Terapias</a></li>
+                        <li><a href="#">Festivales</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        Participa
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Voluntariado</a></li>
+                        <li><a href="#">Estancias</a></li>
+                        <li><a href="#">Visitas guiadas</a></li>
+                        <li><a href="#">Tienda comunitaria</a></li>
+                        <li><a href="#">Donaciones</a></li>
+                    </ul>
+                </li>
 
-      </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        Blog
+                    </a>
+                </li>
 
-      <!-- Íconos del lado derecho -->
-      <ul class="topnav-right">
-        <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
-        <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
-        <li class="dropdown">
-          <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-          <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
-            Últimos artículos añadidos
-            <ul class="list">
-              <li class="item">
-                <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
-                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong>
-                </div>
-              </li>
-              <li class="item">
-                <a href="#" class="preview-image"><img class="preview" src="{% static 'images/pro.jpg' %}" alt=""></a>
-                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x $44.95</strong>
-                </div>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
+                </li>
+
             </ul>
-            <div class="total">Total: <strong>$89.90</strong></div>
-            <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
-          </div>
-        </li>
-        <li class="login-reg">
-          <a href="#">Login</a> | <a href="#">Signup</a>
-        </li>
-      </ul>
-    </div>
 
-  </nav>
+            <!-- Íconos del lado derecho -->
+            <ul class="topnav-right">
+                <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
+                <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                <li class="dropdown">
+                    <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
+                        Últimos artículos añadidos
+                        <ul class="list">
+                            <li class="item">
+                                <a href="#" class="preview-image"><img class="preview"
+                                                                       src="{% static 'images/pro.jpg' %}" alt=""></a>
+                                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                    $44.95</strong>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <a href="#" class="preview-image"><img class="preview"
+                                                                       src="{% static 'images/pro.jpg' %}" alt=""></a>
+                                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                    $44.95</strong>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="total">Total: <strong>$89.90</strong></div>
+                        <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
+                    </div>
+                </li>
+                <li class="login-reg">
+                    <a href="#">Login</a> | <a href="#">Signup</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
 </header>
 
 <!-- Buscador Overlay -->
 <div id="search">
-  <button type="button" class="close">×</button>
-  <form class="search-overlay-form">
-    <input type="search" value="" placeholder="Buscar palabras clave..."/>
-    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-  </form>
+    <button type="button" class="close">×</button>
+    <form class="search-overlay-form">
+        <input type="search" value="" placeholder="Buscar palabras clave..."/>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+    </form>
 </div>

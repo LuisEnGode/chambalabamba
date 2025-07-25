@@ -6903,3 +6903,16 @@ section.wf100.p80.fcampaigns {
   box-shadow: none;          /* Quita cualquier sombra */
   border: none;              /* Quita cualquier borde */
 }
+
+/*Codigo para comportamiento del menu con click */
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
