@@ -6866,7 +6866,7 @@ section.wf100.p80.fcampaigns {
   left: 10%;
   transform: translate(-50%, -30%); /* Ajusta aquí */
   z-index: 10;
-  opacity: 5;
+  opacity: 1;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
 }
@@ -6885,7 +6885,7 @@ section.wf100.p80.fcampaigns {
     top: 0%;
     left: 10%;
     transform: translate(-50%, -50%)
-    opacity: 5;
+    opacity: 1;
     pointer-events: none;
     filter: brightness(1.2) contrast(1.2);
 
@@ -6902,4 +6902,17 @@ section.wf100.p80.fcampaigns {
   background-color: #227431; /* Asegúrate que sea el mismo verde del header */
   box-shadow: none;          /* Quita cualquier sombra */
   border: none;              /* Quita cualquier borde */
+}
+
+/*Codigo para comportamiento del menu con click */
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
 }
