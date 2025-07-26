@@ -4,5 +4,10 @@ from . import views
 app_name = 'eventos'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('escuela-viva/', views.escuela_viva, name='escuela_viva'),
+    path('talleres/', views.talleres, name='talleres'),
+    path('retiros/', views.retiros, name='retiros'),
+    path('artes/', views.artes, name='artes'),
+    path('terapias/', views.terapias, name='terapias'),
+    path('festivales/', views.festivales, name='festivales'),
 ]
