@@ -314,7 +314,9 @@ Inner Header Start
 *********************************/
 
 .inner-header {
-	background: url(../images/innerheader.jpg) no-repeat;
+  background: url(../images/innerheader.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
 }
 .inner-header h1 {
 	color: #fff;
@@ -6779,12 +6781,13 @@ section.wf100.p80.fcampaigns {
 	transition: all ease-in-out 0.3s;
 	-webkit-transition: all ease-in-out 0.3s;
 }
-
-/*Video de la seccion home responsive*/
+/*****************************************************************/
+/********************* VIDEO RESPONSIVO HOME *********************/
+/*****************************************************************/
 
 .video-responsive {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; /* Relación 16:9 */
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -6799,63 +6802,64 @@ section.wf100.p80.fcampaigns {
 }
 
 
-/* === Logo superpuesto como marca de agua sobre el slider === */
+/*****************************************************************/
+/*********************** SLIDER + LOGO ROTATOR *******************/
+/*****************************************************************/
+
+/* Contenedor del slider */
 #home-slider {
   position: relative;
 }
 
-/* Contenedor principal debe tener posición relativa */
+/* Wrapper del slider, requerido para posicionar el logo */
 .slider-wrapper {
   position: relative;
 }
 
-/* Logo superpuesto como marca de agua centrada */
+/* === Logo grande superpuesto como marca de agua centrada === */
 .slider-wrapper .logo-overlay {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 80%;
-  transform: translate(-50%, 30%); /* Ajusta aquí */
+  transform: translate(-50%, -55%);
   z-index: 10;
-  opacity: 0.45;
+  opacity: 0.55;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
   animation: slow-rotation 60s linear infinite;
 }
 
-/* Aumentar tamaño en pantallas grandes */
+/* Tamaño del logo rotatorio en pantallas grandes */
 .slider-wrapper .logo-overlay img {
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
   height: auto;
 }
 
-
 /* Versión responsive para móviles */
 @media (max-width: 767px) {
   .slider-wrapper .logo-overlay {
-    top: 40%;
+    top: 80%; /* más arriba */
     left: 50%;
-    transform: translate(-50%, 10%) rotate(0deg);
-    opacity: 0.45;
-    animation: slow-rotation 90s linear infinite;
+    transform: translate(-50%, 25%) rotate(0deg); /* se respetará ahora */
+    animation: none; /* 🔑 esto evita el conflicto */
+    opacity: 0.6;
   }
 
   .slider-wrapper .logo-overlay img {
     max-width: 120px;
-    width: 100%;
-    height: auto;
   }
 }
 
+/* Animacion para rotacion - posicionamiento x y */
 @keyframes slow-rotation {
   from {
-    transform: translate(-50%, 30%) rotate(0deg);
+    transform: translate(-50%, 55%) rotate(0deg);
   }
   to {
-    transform: translate(-50%, 30%) rotate(360deg);
+    transform: translate(-50%, 55%) rotate(360deg);
   }
 }
-
 
 /*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
 
@@ -6864,7 +6868,7 @@ section.wf100.p80.fcampaigns {
   position: absolute;
   top: 0%;
   left: 10%;
-  transform: translate(-50%, -30%); /* Ajusta aquí */
+  transform: translate(-33%, -55%); /* Ajusta aquí */
   z-index: 10;
   opacity: 1;
   pointer-events: none;
@@ -6873,8 +6877,8 @@ section.wf100.p80.fcampaigns {
 
 /* Aumentar tamaño en pantallas grandes */
 .slider-wrapper .logo-overlay-s img {
-  max-width: 500px;
-  width: 100%;
+  max-width: 457px;
+  width: 25%;
   height: auto;
 }
 
@@ -6897,6 +6901,8 @@ section.wf100.p80.fcampaigns {
     height: auto;
   }
 }
+/***************************************************************/
+
 /*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
 .header-style-1 .navbar-brand {
   background-color: #227431; /* Asegúrate que sea el mismo verde del header */
