@@ -314,7 +314,9 @@ Inner Header Start
 *********************************/
 
 .inner-header {
-	background: url(../images/innerheader.jpg) no-repeat;
+  background: url(../images/innerheader.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
 }
 .inner-header h1 {
 	color: #fff;
@@ -6779,7 +6781,8 @@ section.wf100.p80.fcampaigns {
 	transition: all ease-in-out 0.3s;
 	-webkit-transition: all ease-in-out 0.3s;
 }
-
+/*****************************************************************/
+/*****************************************************************/
 /*Video de la seccion home responsive*/
 
 .video-responsive {
