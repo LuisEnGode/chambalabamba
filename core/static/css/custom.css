@@ -314,7 +314,8 @@ Inner Header Start
 *********************************/
 
 .inner-header {
-	background: url(../images/innerheader.jpg) no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 .inner-header h1 {
 	color: #fff;
@@ -1776,7 +1777,7 @@ section.services-area ul li.active:after {
 	margin-bottom: 10px;
 }
 .section-title-2 h2 {
-	color: #222222;
+	color: #66bb6a;
 	font-family: 'Poppins', sans-serif;
 	font-weight: 700;
 	margin-bottom: 25px;
@@ -5847,48 +5848,20 @@ About Us Page
 .our-success-story {
 	padding: 40px 0 80px;
 }
+
 .story-title-bg {
-	background: url(../images/storybg.jpg) no-repeat;
-	background-size: cover;
-	width: 100%;
-	float: left;
-	position: relative;
-	padding: 88px 67px;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
-.story-title-bg strong {
-	color: #fff;
-	display: block;
-	position: relative;
-	z-index: 999;
-	font-family: 'Poppins', sans-serif;
+.story-title-bg::after {
+  display: none;
 }
-.story-title-bg strong.t1 {
-	font-size: 72px;
-	font-weight: 700;
-	line-height: 72px;
-}
-.story-title-bg strong.t2 {
-	font-size: 120px;
-	font-weight: 400;
-	line-height: 130px;
-}
-.story-title-bg strong.t3 {
-	font-size: 48px;
-	font-weight: 700;
-	line-height: 60px;
-}
-.story-title-bg:after {
-	position: absolute;
-	width: 82%;
-	height: 83%;
-	margin: auto;
-	left: 0;
-	top: -10px;
-	bottom: 0;
-	right: 0;
-	background: rgba(102,187,106,.70);
-	content: "";
-}
+
 .timeline {
 	text-align: left;
 }
@@ -6780,12 +6753,13 @@ section.wf100.p80.fcampaigns {
 	transition: all ease-in-out 0.3s;
 	-webkit-transition: all ease-in-out 0.3s;
 }
-
-/*Video de la seccion home responsive*/
+/*****************************************************************/
+/********************* VIDEO RESPONSIVO HOME *********************/
+/*****************************************************************/
 
 .video-responsive {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; /* Relación 16:9 */
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -6800,63 +6774,64 @@ section.wf100.p80.fcampaigns {
 }
 
 
-/* === Logo superpuesto como marca de agua sobre el slider === */
+/*****************************************************************/
+/*********************** SLIDER + LOGO ROTATOR *******************/
+/*****************************************************************/
+
+/* Contenedor del slider */
 #home-slider {
   position: relative;
 }
 
-/* Contenedor principal debe tener posición relativa */
+/* Wrapper del slider, requerido para posicionar el logo */
 .slider-wrapper {
   position: relative;
 }
 
-/* Logo superpuesto como marca de agua centrada */
+/* === Logo grande superpuesto como marca de agua centrada === */
 .slider-wrapper .logo-overlay {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 80%;
-  transform: translate(-50%, 30%); /* Ajusta aquí */
+  transform: translate(-50%, -55%);
   z-index: 10;
-  opacity: 0.45;
+  opacity: 0.55;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
   animation: slow-rotation 60s linear infinite;
 }
 
-/* Aumentar tamaño en pantallas grandes */
+/* Tamaño del logo rotatorio en pantallas grandes */
 .slider-wrapper .logo-overlay img {
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
   height: auto;
 }
 
-
 /* Versión responsive para móviles */
 @media (max-width: 767px) {
   .slider-wrapper .logo-overlay {
-    top: 40%;
+    top: 80%; /* más arriba */
     left: 50%;
-    transform: translate(-50%, 10%) rotate(0deg);
-    opacity: 0.45;
-    animation: slow-rotation 90s linear infinite;
+    transform: translate(-50%, 25%) rotate(0deg); /* se respetará ahora */
+    animation: none; /* 🔑 esto evita el conflicto */
+    opacity: 0.6;
   }
 
   .slider-wrapper .logo-overlay img {
     max-width: 120px;
-    width: 100%;
-    height: auto;
   }
 }
 
+/* Animacion para rotacion - posicionamiento x y */
 @keyframes slow-rotation {
   from {
-    transform: translate(-50%, 30%) rotate(0deg);
+    transform: translate(-50%, 55%) rotate(0deg);
   }
   to {
-    transform: translate(-50%, 30%) rotate(360deg);
+    transform: translate(-50%, 55%) rotate(360deg);
   }
 }
-
 
 /*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
 
@@ -6865,7 +6840,7 @@ section.wf100.p80.fcampaigns {
   position: absolute;
   top: 0%;
   left: 10%;
-  transform: translate(-50%, -30%); /* Ajusta aquí */
+  transform: translate(-33%, -55%); /* Ajusta aquí */
   z-index: 10;
   opacity: 1;
   pointer-events: none;
@@ -6874,8 +6849,8 @@ section.wf100.p80.fcampaigns {
 
 /* Aumentar tamaño en pantallas grandes */
 .slider-wrapper .logo-overlay-s img {
-  max-width: 500px;
-  width: 100%;
+  max-width: 457px;
+  width: 25%;
   height: auto;
 }
 
@@ -6898,6 +6873,8 @@ section.wf100.p80.fcampaigns {
     height: auto;
   }
 }
+/***************************************************************/
+
 /*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
 .header-style-1 .navbar-brand {
   background-color: #227431; /* Asegúrate que sea el mismo verde del header */
@@ -6916,4 +6893,50 @@ section.wf100.p80.fcampaigns {
   position: absolute;
   left: 100%;
   top: 0;
+}
+
+/************************************/
+
+
+/* === Logo superpuesto en sección "Nosotros" === */
+.logo-testimonios-overlay {
+  position: absolute;
+  top: 205%;
+  left: 80%;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 0.4;
+  pointer-events: none;
+  filter: brightness(1.1) contrast(1.2);
+  animation: slow-rotation 60s linear infinite;
+}
+
+.logo-testimonios-overlay img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+/* Ocultar en móviles */
+@media (max-width: 991px) {
+  .logo-testimonios-overlay {
+    display: none;
+  }
+}
+/*bloque para ecologia seccion current projects responsive*/
+
+.mt-custom {
+  margin-top: 400px;
+}
+
+@media (max-width: 991px) {
+  .mt-custom {
+    margin-top: 100px; /* o incluso 50px si queda mejor */
+  }
+}
+
+@media (max-width: 576px) {
+  .mt-custom {
+    margin-top: 40px; /* para celulares pequeños */
+  }
 }

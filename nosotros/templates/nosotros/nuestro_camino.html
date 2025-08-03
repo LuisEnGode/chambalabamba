@@ -1,10 +1,377 @@
 {% extends 'core/base.html' %}
-
+{% load static%}
 {% block content %}
-<section class="nosotros">
-  <div class="container">
-    <h1>Nuestro Camino</h1>
-    <p>Aquí puedes contar la historia de la comunidad...</p>
-  </div>
-</section>
+
+<!--Inner Header Start-->
+ <section class="wf100 p100 inner-header" style="background-image: url({% static 'nosotros/images/conocenos-header.png' %}); background-size: cover; background-position: center;">
+    <div class="container">
+      <h1>Nosotros</h1>
+      <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="#">Nuestro camino</a></li>
+      </ul>
+    </div>
+  </section>
+ <!--Inner Header End-->
+
+<!--About Start-->
+         <section class="wf100 about">
+
+
+            <!--About Txt Video Start-->
+            <div class="about-video-section wf100">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <div class="about-text">
+                           <h5>Un camino de vida en comunidad que nos ha nutrido con experiencia, arte y conciencia</h5>
+                           <h2>Chambalabamba, ecoaldea viva</h2>
+                           <p><strong>Vivimos una propuesta libre, fuera del sistema convencional, cuidando la Tierra,
+                              el agua y la energía, floreciendo como seres conscientes.</strong></p>
+                           <p>En Chambalabamba, abrazamos la autosuficiencia, la bioconstrucción, el aprendizaje
+                              colectivo y el arte como forma de sanación y transformación. La Tierra no está en crisis,
+                              es la humanidad la que necesita volver a la raíz: reconectar con lo esencial, vivir en
+                              armonía y celebrar la vida.</p>
+                           <a href="#">Contact Us</a>
+                        </div>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="video-responsive">
+                    <iframe src="https://player.vimeo.com/video/1101693344?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                            width="1280" height="720" frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>
+                </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--About Txt Video End-->
+            <!--Our Success Story Start-->
+            <div class="our-success-story wf100">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-4">
+                    <div class="story-title-bg"
+     style='background-image: url("{% static "nosotros/images/mofufo.png" %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;'>
+</div>
+                     </div>
+                     <div class="col-lg-8">
+                        <div class="section-title-2">
+                           <h5>About our History</h5>
+                           <h2>Our Success Story</h2>
+                        </div>
+                        <!--eco History Start-->
+                        <div class="eco-history">
+                           <div class="timeline-slider">
+                              <div class="timeline-nav">
+                                 <div><span><strong>2000 - 2002</strong></span></div>
+                                 <div><span><strong>2002 - 2006</strong></span></div>
+                                 <div><span><strong>2006 - 2009</strong></span></div>
+                                 <div><span><strong>2009 - 2012</strong></span></div>
+                                 <div><span><strong>2012 - 2015</strong></span></div>
+                                 <div><span><strong>2015 - 2018</strong></span></div>
+                              </div>
+                              <div class="timeline">
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Project </h6>
+                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Project </h6>
+                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Project </h6>
+                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Project </h6>
+                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Project </h6>
+                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                                 <!--Timeline Text Start-->
+                                 <div>
+                                    <div class="row">
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Results of Hardwork</h6>
+                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>Espíritu Visionario</h6>
+                                             <p>
+                                                Nacido y criado en San Francisco, Mofoowoo es un visionario y agricultor
+                                                de enorme corazón.
+                                                Viajó por todo el mundo conociendo ecoaldeas hasta que finalmente
+                                                decidió asentarse en el valle sagrado de Vilcabamba, en Ecuador,
+                                                creando la ecoaldea Chambalabamba.
+                                             </p>
+                                          </div>
+                                       </div>
+                                       <div class=" col-4">
+                                          <div class="timeline-box">
+                                             <h6>We Started</h6>
+                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--Timeline Text End-->
+                              </div>
+                           </div>
+                        </div>
+                        <!--Political History End-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--Our Success Story End-->
+            <!--Why you Need to Choose Ecova Start-->
+            <!-- Sección EcoAldea Adaptada -->
+            <div class="choose-ecova wf100 p80">
+               <div class="container">
+                  <div class="section-title-2 text-center">
+                     <h2>Se parte de la Eco Aldea</h2>
+                  </div>
+                  <div class="row text-center justify-content-center">
+                     <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+                        <div class="eco-box text-center">
+                           <img src="{% static 'nosotros/images/logo-chambalabamba.png' %}" alt="Icono"
+                                style="height: 60px;">
+                           <h5>Conoce el voluntariado</h5>
+                           <p>Lorem ipsum dolor amet consectetur adipiscing elit, sed eiusmod tempor incididunt ut
+                              labore et dolore.</p>
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+                        <div class="eco-box text-center">
+                           <img src="{% static 'nosotros/images/logo-chambalabamba.png' %}" alt="Icono"
+                                style="height: 60px;">
+                           <h5>Cómo donar</h5>
+                           <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                              anim id.</p>
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+                        <div class="eco-box text-center">
+                           <img src="{% static 'nosotros/images/logo-chambalabamba.png' %}" alt="Icono"
+                                style="height: 60px;">
+                           <h5>
+                              <a href="{% url 'contacto:contacto' %}" class="text-success text-decoration-none">Escríbenos</a>
+                           </h5>
+                           <p>Quien tiene derecho a juzgar a quien elige disfrutar un placer sin consecuencias.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!--Why you Need to Choose Ecova End-->
+            <!--Testimonials Start-->
+            <section class="testimonials-section bg-white wf100 p80">
+                <!-- Logo superpuesto encima de todo (solo en pantallas grandes) -->
+               <!-- Logo sobre testimonios (solo desktop) -->
+               <div class="logo-testimonios-overlay">
+                  <img src="{% static 'nosotros/images/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
+               </div>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="section-title-2 text-center">
+                           <h5>Vivencias</h5>
+                           <h2>Experiencias que dejan huellas</h2>
+                           <h5>Residentes - Voluntarios - Amigos</h5>
+                        </div>
+                        <div id="testimonials" class="owl-carousel owl-theme">
+
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using lorem sum is that it has a more or less normal distribution.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>As opposed to using 'Content here, content here', making it look like readable English. Many Desktop and Web Pages are using lorem ipsum.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Richardson</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Anna Lillian</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>Those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using lorem sum is that it has a more or less normal distribution.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>As opposed to using 'Content here, content here', making it look like readable English. Many Desktop and Web Pages are using lorem ipsum.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Richardson</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Anna Lillian</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>Those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using lorem sum is that it has a more or less normal distribution.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>As opposed to using 'Content here, content here', making it look like readable English. Many Desktop and Web Pages are using lorem ipsum.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Richardson</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Anna Lillian</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                           <!--testimonials box start-->
+                           <div class="item">
+                              <p>Those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain.</p>
+                              <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Danny Scotten</strong> Florida Partner </div>
+                           </div>
+                           <!--testimonials box End-->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!--Testimonials End-->
+         </section>
+         <!--About End-->
+
 {% endblock %}
