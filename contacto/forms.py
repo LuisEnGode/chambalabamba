@@ -20,47 +20,28 @@ def validate_no_rude_words(value):
             raise ValidationError(f"Por favor, evita el uso de palabras inapropiadas como '{word}'.")
 
 
-class ContactForm(forms.Form):
-    name = forms.CharField(
-        label='Nombres',
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombres'}),
-        min_length=3,
-        max_length=100,
-        validators=[validate_no_rude_words]
-    )
-    email = forms.EmailField(
-        label='Correo Electrónico',
-        required=True,
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electrónico'}),
-        min_length=5,
-        max_length=150,
-        validators=[validate_no_rude_words]
-    )
-    phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$',
-        message="El número de teléfono debe tener el formato: '+999999999'. Se permiten hasta 15 dígitos."
-    )
-    phone = forms.CharField(
-        validators=[phone_regex, validate_no_rude_words],
-        label='Teléfono',
-        required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
-        max_length=17
-    )
-    subject = forms.CharField(
-        label='Asunto',
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Asunto'}),
-        min_length=5,
-        max_length=100,
-        validators=[validate_no_rude_words]
-    )
-    message = forms.CharField(
-        label='Mensaje',
-        required=True,
-        widget=forms.Textarea(attrs={'class': 'textarea-control', 'placeholder': 'Mensaje'}),
-        min_length=10,
-        max_length=1000,
-        validators=[validate_no_rude_words]
-    )
+from .models import Contacto
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['name', 'email', 'phone', 'subject', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombres'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electrónico'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Asunto'}),
+            'message': forms.Textarea(attrs={'class': 'textarea-control', 'placeholder': 'Mensaje'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].validators.append(validate_no_rude_words)
+        self.fields['email'].validators.append(validate_no_rude_words)
+        self.fields['phone'].validators.append(RegexValidator(
+            regex=r'^\+?1?\d{9,15}$',
+            message="El número de teléfono debe tener el formato: '+999999999'. Se permiten hasta 15 dígitos."
+        ))
+        self.fields['phone'].validators.append(validate_no_rude_words)
+        self.fields['subject'].validators.append(validate_no_rude_words)
+        self.fields['message'].validators.append(validate_no_rude_words)
