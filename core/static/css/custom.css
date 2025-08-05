@@ -6939,3 +6939,25 @@ section.wf100.p80.fcampaigns {
     margin-top: 40px; /* para celulares pequeños */
   }
 }
+
+/*PARA QUE LA FOTO DE MOFUFO - NOSOTROS SE ADAPTE AL CELULAR*/
+/* Estilo general */
+.story-title-bg {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .story-title-bg {
+    height: auto;
+    aspect-ratio: 3 / 4; /* más vertical, imagen tipo retrato */
+    background-size: cover;
+    background-position: top center;
+    border-radius: 20px;
+  }
+}
