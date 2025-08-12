@@ -15,7 +15,7 @@ def blog(request):
     posts = Post.objects.all()
    # categorias = Categoria.objects.all()
     categorias = Categoria.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
-    return render(request, "blog/blog-layout-v4.html",{"posts":posts,"categorias":categorias})
+    return render(request, "blog/blog-panel.html",{"posts":posts,"categorias":categorias})
 
 def categoria(request,categoria_id):
     # Obtiene la categoría por su ID
