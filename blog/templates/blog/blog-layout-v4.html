@@ -1,0 +1,258 @@
+{% extends "natureweb/base.html" %}
+
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+
+
+    <!-- Page content -->
+    <main class="content-wrapper">
+
+
+      <!-- Featured posts -->
+      <section class="container pt-4 mt-2 mt-lg-3">
+        <!-- Breadcrumb -->
+        <nav class="pb-2 pb-sm-3 pb-lg-4" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%url 'Home'%}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'Blog' %}">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ post.titulo|lower|capfirst }}</li>
+          </ol>
+        </nav>
+
+        <h1 class="h2 pb-2 pb-md-3 titulo-sanitazul" align="center">Blog de Sanita</h1>
+        <div class="row row-cols-1 row-cols-sm-2 gy-5 gx-4 g-sm-3 g-md-4 pb-4 pb-sm-5 mb-3 mb-sm-0 mb-md-2 mb-lg-3 mb-xl-4">
+
+          <!-- Post -->
+          {% for post in posts %}
+          <article class="col">
+            <a class="ratio d-flex hover-effect-scale rounded overflow-hidden mb-3 mb-sm-4" href="{% url 'detalle_post' post.id %}" style="--fn-aspect-ratio: calc(421 / 636 * 100%)">
+              {% if post.imagen %}
+                <img src="{{ post.imagen.url }}" class="hover-effect-target" alt="Image">
+              {% else %}
+                <img src="{% static 'images/default-image.jpg' %}" class="hover-effect-target" alt="Image not available">
+              {% endif %}
+            </a>
+            <div class="d-flex align-items-center gap-1 text-body-secondary pt-1 pt-sm-0 mb-3">
+              <div class="position-relative nav flex-nowrap align-items-center">
+                <div class="ratio ratio-1x1 flex-shrink-0 me-2" style="width: 24px">
+                  {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" class="hover-effect-target" alt="Image">
+                  {% else %}
+                    <img src="{% static 'images/default-image.jpg' %}" class="hover-effect-target" alt="Image not available">
+                  {% endif %}
+                </div>
+                <a class="nav-link stretched-link p-0" href="#!">{{ post.autor.username }}</a>
+              </div>
+              <i class="fi-bullet"></i>
+              <div class="fs-sm">{{ post.created }}</div>
+            </div>
+            <h3 class="h4">
+              <a class="hover-effect-underline titulo-sanitazul" href="{% url 'detalle_post' post.id %}" >{{ post.titulo }}</a>
+            </h3>
+            <a class="badge text-secondary-emphasis bg-body-secondary text-uppercase text-decoration-none" href="#!">
+              {% for categoria in post.categorias.all %}
+                Categoria:
+                <a href="{% url 'Categoria' categoria.id %}" class="badge bg-light text-dark fw-normal fs-sm me-2">
+                   {{ categoria.nombre|upper|lower|capfirst }}
+                </a>
+              {% endfor %}
+            </a>
+          </article>
+          {%endfor%}
+
+
+        </div>
+        <hr class="m-0">
+      </section>
+
+
+      <!-- Blog posts list + Sidebar -->
+      <section class="container pb-5 pt-4 pt-sm-5 mt-3 mt-sm-0 mt-md-2 mt-lg-3 mt-xl-4">
+        <div class="row pb-2 pb-sm-3 pb-md-4 pb-lg-5 mb-xxl-3">
+
+          <!-- Blog posts list -->
+          <div class="col-lg-8 position-relative z-2">
+
+
+            <!-- Posts list + Pagination -->
+            <div class="vstack gap-3 gap-lg-4">
+
+              <!-- Post -->
+               {% for post in posts %}
+              <article class="d-sm-flex align-items-center justify-content-between">
+                <a class="ratio d-flex hover-effect-scale rounded overflow-hidden order-sm-2" href="{% url 'detalle_post' post.id %}" style="max-width: 132px; --fn-aspect-ratio: calc(124 / 132 * 100%)">
+                  {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" class="hover-effect-target" alt="Image">
+                  {% else %}
+                    <img src="{% static 'images/default-image.jpg' %}" class="hover-effect-target" alt="Image not available">
+                  {% endif %}
+                </a>
+                <div class="order-sm-1 pt-4 pt-sm-0 pe-sm-4 pe-md-5 me-sm-2 me-md-0">
+                  <div class="d-flex align-items-center gap-1 text-body-secondary pt-1 pt-sm-0 mb-3">
+                    <div class="position-relative nav flex-nowrap align-items-center">
+                      <div class="ratio ratio-1x1 flex-shrink-0 me-2" style="width: 24px">
+                        {% if post.imagen %}
+                        <img src="{{ post.imagen.url }}" class="hover-effect-target" alt="Image">
+                      {% else %}
+                        <img src="{% static 'images/default-image.jpg' %}" class="hover-effect-target" alt="Image not available">
+                      {% endif %}
+                      </div>
+                      <a class="nav-link stretched-link p-0" href="#!">{{ post.autor.username }}</a>
+                    </div>
+                    <i class="fi-bullet"></i>
+                    <div class="fs-sm">{{ post.created }}</div>
+                  </div>
+                  <h3 class="h5 mb-2">
+
+                    <a class="hover-effect-underline titulo-sanitazul" href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a>
+
+                  </h3>
+                  <p>
+                    {{ post.contenido|striptags|first_sentence }}
+                    <a class="hover-effect-underline titulo-sanitazul" href="{% url 'detalle_post' post.id %}">
+                      Leer mas.
+                    </a>
+                  </p>
+                  <a class="badge text-secondary-emphasis bg-body-secondary text-uppercase text-decoration-none" href="#!">
+
+                   {% for categoria in post.categorias.all %}
+                    <a href="{% url 'Categoria' categoria.id %}" class="badge bg-light text-dark fw-normal fs-sm me-2">
+                        {{ categoria.nombre|upper|lower|capfirst }}
+                    </a>
+                  {% endfor %}
+                  </a>
+                </div>
+              </article>
+              {%endfor%}
+
+              <!-- Divider -->
+              <hr class="my-3">
+
+
+
+              <!-- Divider -->
+              <hr class="my-3">
+
+              <!-- Pagination -->
+              <nav aria-label="Blog pagination">
+                <ul class="pagination pagination-lg">
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">
+                      1
+                      <span class="visually-hidden">(current)</span>
+                    </span>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#!">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#!">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#!">4</a>
+                  </li>
+                  <li class="page-item">
+                    <span class="page-link pe-none">...</span>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#!">8</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+          <!-- Sidebar that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+          <aside class="col-lg-4 col-xl-3 offset-xl-1" style="margin-top: -105px">
+            <div class="offcanvas-lg offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0" id="blogSidebar">
+              <div class="d-none d-lg-block" style="height: 105px"></div>
+              <div class="offcanvas-header border-bottom py-3">
+                <h3 class="h5 offcanvas-title">Sidebar</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#blogSidebar" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body d-block">
+
+                <!-- Categories -->
+                <div class="pb-3 mb-3 mb-lg-4">
+                  <h4 class="h5 d-none d-lg-block titulo-sanitazul">Categorias</h4>
+                  <h4 class="h6 d-lg-none">Categorias</h4>
+                  <ul class="nav flex-column gap-1 my-n1">
+                    <li class="nav-item">
+                      <a class="nav-link position-relative justify-content-between fw-semibold py-1 px-0" href="#!">
+                        <span class="hover-effect-underline stretched-link">Todas las categorias</span>
+                        <span class="fs-xs text-body-secondary">({{ posts|length }})</span>
+
+                      </a>
+                    </li>
+                     {% for categoria in categorias %}
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0"
+                           href="{% url 'Categoria' categoria.id %}">
+                          <span class="hover-effect-underline stretched-link">
+                            {{ categoria.nombre }}
+                          </span>
+                          <span class="fs-xs text-body-secondary">
+                            ({{ categoria.post_set.count }})
+                          </span>
+                          </a>
+                        </li>
+                      {% endfor %}
+
+                  </ul>
+
+                  <!-- Categories collapse -->
+                  <div class="collapse" id="moreCategories">
+                    <ul class="nav flex-column gap-1 mt-2">
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0" href="#!">
+                          <span class="hover-effect-underline stretched-link">Medical news</span>
+                          <span class="fs-xs text-body-secondary">(18)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0" href="#!">
+                          <span class="hover-effect-underline stretched-link">Health tips</span>
+                          <span class="fs-xs text-body-secondary">(11)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0" href="#!">
+                          <span class="hover-effect-underline stretched-link">Doctor advice</span>
+                          <span class="fs-xs text-body-secondary">(25)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0" href="#!">
+                          <span class="hover-effect-underline stretched-link">Treatment options</span>
+                          <span class="fs-xs text-body-secondary">(6)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link position-relative justify-content-between fw-normal py-1 px-0" href="#!">
+                          <span class="hover-effect-underline stretched-link">Healthcare trends</span>
+                          <span class="fs-xs text-body-secondary">(2)</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Show more button -->
+
+                </div>
+
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+
+      <!-- Mobile app CTA -->
+
+    </main>
+
+{% endblock %}
