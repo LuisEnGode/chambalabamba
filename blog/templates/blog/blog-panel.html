@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!--Blog Start-->
+<section class="wf100 p80 blog">
+   <div class="blog-grid">
+      <div class="container">
+         <div class="row">
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'blog/images/comida-saludable.png' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="{% url 'detalle_post' 2 %}">Delicias saludables de nuestro jardin.</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'blog/images/trabajo-comunitario.png' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="#">Trabajo comunitario</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'blog/images/danza-vida.png' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="#">Danza con la vida</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/blog/bg1-4.jpg' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="#">Duis vel est sit amet sapien laoreet posuere.</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/blog/bg1-5.jpg' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="#">Curabitur vitae massa nec nisl rutrum aliquet.</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+            <!--Blog Small Post Start-->
+            <div class="col-md-4 col-sm-6">
+               <div class="blog-post">
+                  <div class="blog-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/blog/bg1-6.jpg' %}" alt=""> </div>
+                  <div class="post-txt">
+                     <h5><a href="#">Sed eu purus ut eros egestas aliquet.</a></h5>
+                     <ul class="post-meta">
+                        <li> <a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a> </li>
+                        <li> <a href="#"><i class="fas fa-comments"></i> 134 Comments</a> </li>
+                     </ul>
+                     <p>According to a survey the perceived higher cost of environmentally-friendly products is the major holdup to consumers going green.</p>
+                     <a href="#" class="read-post">Read Post</a>
+                  </div>
+               </div>
+            </div>
+            <!--Blog Small Post End-->
+
+         <div class="gt-pagination">
+            <nav>
+               <ul class="pagination">
+                  <li class="page-item"> <a class="page-link" href="#" aria-label="Previous"> <i class="fas fa-angle-left"></i> </a> </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"> <a class="page-link" href="#" aria-label="Next"> <i class="fas fa-angle-right"></i> </a> </li>
+               </ul>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Blog End-->
+
+</div>
+
+{% endblock %}
