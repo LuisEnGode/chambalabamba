@@ -46,7 +46,8 @@ def crear_post(request):
 
 
 def detalle_post(request, id):
-    post = get_object_or_404(Post, id=id)
+   """"
+   post = get_object_or_404(Post, id=id)
 
     # Obtén todas las categorías asociadas a ese post
     categorias = post.categorias.all()
@@ -67,8 +68,10 @@ def detalle_post(request, id):
         tipo_usuario__nombre="Profesional"
     ).order_by('usuario__date_joined')[:6]
 
-    return render(request, 'blog/ver_post.html', {
+    return render(request, 'blog/blog-details.html', {
         'post': post,'posts_relacionados':posts_relacionados,
         'subscripciones_profesionales': subscripciones_profesionales,
         'destacados': profesionales_nuevos,
     })
+    """
+   return render(request, 'blog/blog-details.html')
