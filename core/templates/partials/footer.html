@@ -1,6 +1,12 @@
 {% load static%}
 <footer class="footer">
    <div class="footer-top wf100">
+      <!-- Marca de agua en el footer -->
+      <!--
+      <div class="footer-logo-overlay">
+         <img src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
+      </div>
+      -->
       <div class="container">
          <div class="row">
             <!-- Quiénes somos -->
@@ -50,10 +56,11 @@
                   <div id="fpro-slider" class="owl-carousel owl-theme">
                      <div class="item">
                         <div class="f-product">
-                           <img src="{% static 'images/fpro1.jpg' %}" alt="">
+                           <img src="{% static 'images/footer/producto.png' %}" alt="">
                            <div class="fp-text">
-                              <h6><a href="#">Artesanía Andina</a></h6>
-                              <strong>$15.00</strong>
+                              <h6><a href="#">Yacon</a></h6>
+
+                              <strong> $15.00</strong>
                            </div>
                         </div>
                      </div>
@@ -68,17 +75,21 @@
 
    <!-- Pie de página -->
    <div class="footer-copyr wf100">
+
       <div class="container">
          <div class="row">
+            <!--
             <div class="col-md-4 col-sm-4">
-               <img src="{% static 'images/logo.png' %}" alt="Chambalabamba Logo">
+               <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="Chambalabamba Logo">
             </div>
+            -->
             <div class="col-md-8 col-sm-8">
-               <p>© {{ now|date:"Y" }} Chambalabamba. Todos los derechos reservados. Desarrollado con 🌱 y 💻 por el equipo de Chambalabamba.</p>
+               <p>© {{ now|date:"Y" }} Chambalabamba. Todos los derechos reservados.</p>
             </div>
          </div>
       </div>
    </div>
+
 </footer>
 
          <!--Footer End-->

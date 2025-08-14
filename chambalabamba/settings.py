@@ -18,6 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # apps personalizadas:
     'core',
@@ -33,6 +35,8 @@ INSTALLED_APPS = [
     'tienda',
     'noticias',
     'contacto',
+    'blog',
+    'autenticacion',
 ]
 
 # Middleware
@@ -48,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'chambalabamba.urls'
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 TEMPLATES = [
     {
@@ -67,12 +72,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'chambalabamba.wsgi.application'
 
 # Archivos estáticos
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core', 'static'),
     os.path.join(BASE_DIR, 'contacto', 'static'),
     os.path.join(BASE_DIR, 'inicio', 'static'),
     os.path.join(BASE_DIR, 'nosotros', 'static'),
+    os.path.join(BASE_DIR, 'blog', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

@@ -3,6 +3,16 @@ from django.shortcuts import render
 def nuestro_camino(request):
     return render(request, 'nosotros/nuestro_camino.html')
 
+def gobernanza(request):
+    return render(request, 'nosotros/gobernanza.html')
+
+def principios_valores(request):
+    return render(request, 'nosotros/principios_valores.html')
+
+def territorio(request):
+    return render(request, 'nosotros/territorio.html')
+
+
 def pilar_bienestar(request):
     return render(request, 'nosotros/pilares/pilar_bienestar.html')
 

@@ -37,9 +37,9 @@
                         </li>
 
 
-                        <li><a class="dropdown-item" href="#">Gobernanza</a></li>
-                        <li><a class="dropdown-item" href="#">Principios y valores</a></li>
-                        <li><a class="dropdown-item" href="#">Territorio</a></li>
+                        <li><a class="dropdown-item" href="{% url 'gobernanza' %}">Gobernanza</a></li>
+                        <li><a class="dropdown-item" href="{% url 'principios-valores' %}">Principios y valores</a></li>
+                        <li><a class="dropdown-item" href="{% url 'territorio' %}">Territorio</a></li>
                     </ul>
                 </li>
 
@@ -71,11 +71,12 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        Blog
-                    </a>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'Blog' %}">
+                    Blog
+                  </a>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
