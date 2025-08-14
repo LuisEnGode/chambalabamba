@@ -1,0 +1,71 @@
+
+{% extends "natureweb/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+  <!-- Body -->
+  <body>
+
+
+    <!-- Page content -->
+    <main class="content-wrapper">
+      <section class="container pt-4 pb-5 mb-xxl-3">
+
+        <!-- Breadcrumb -->
+        <nav class="pb-2 pb-sm-3 pb-lg-4" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%url 'Home'%}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'Blog' %}">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ post.titulo|lower|capfirst }}</li>
+          </ol>
+        </nav>
+
+
+        <!-- Title + Post meta -->
+        <h1 align="center">{{ post.titulo }}</h1>
+        <div class="d-flex flex-wrap align-items-center gap-2 text-body-secondary pb-4 mb-3">
+          <div class="position-relative nav flex-nowrap align-items-center">
+            <div class="ratio ratio-1x1 flex-shrink-0 me-2" style="width: 24px">
+           {% if post.autor.perfilusuario.imagen %}
+            <img class="rounded-circle" src="{{ post.autor.perfilusuario.imagen.url }}" alt="Avatar">
+          {% else %}
+            <img class="rounded-circle" src="{% static 'images/default-avatar.jpg' %}" alt="Avatar por defecto">
+          {% endif %}
+            </div>
+            <a class="nav-link stretched-link p-0" href="#!">{{ post.autor.username }}</a>
+          </div>
+          <i class="fi-bullet mx-n1"></i>
+          <div class="fs-sm me-2">{{post.created}}</div>
+           <a class="badge text-secondary-emphasis bg-body-secondary text-uppercase text-decoration-none" href="#!">
+            {% for categoria in post.categorias.all %}
+                    {{ categoria.nombre|lower|capfirst }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+          </a>
+        </div>
+
+
+
+        <!-- Post content + Sidebar -->
+        <div class="row pt-4 pt-md-5 pb-2 pb-sm-3 pb-md-4 pb-lg-5 mt-3 mt-md-0 mt-lg-3">
+
+          <!-- Post content -->
+          <div class="contenido-post">
+            {{ post.contenido|safe }}
+        </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Vendor scripts -->
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Bootstrap + Theme scripts -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+{% endblock %}
