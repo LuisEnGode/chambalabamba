@@ -487,3 +487,5 @@ $(document).ready(function () {
     $('.dropdown-submenu .dropdown-menu').hide();
   });
 });
+
+/*CODIGO PARA GALERIA DE IMAGENES*/
