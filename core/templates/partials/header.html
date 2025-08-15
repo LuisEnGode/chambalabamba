@@ -49,12 +49,12 @@
                         Eventos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Escuela viva</a></li>
-                        <li><a href="#">Talleres</a></li>
-                        <li><a href="#">Retiros</a></li>
-                        <li><a href="#">Artes</a></li>
-                        <li><a href="#">Terapias</a></li>
-                        <li><a href="#">Festivales</a></li>
+                        <li><a href="{% url 'eventos:escuela_viva' %}">Escuela viva</a></li>
+                        <li><a href="{% url 'eventos:talleres' %}">Talleres</a></li>
+                        <li><a href="{% url 'eventos:retiros' %}">Retiros</a></li>
+                        <li><a href="{% url 'eventos:artes' %}">Artes</a></li>
+                        <li><a href="{% url 'eventos:terapias' %}">Terapias</a></li>
+                        <li><a href="{% url 'eventos:festivales' %}">Festivales</a></li>
                     </ul>
                 </li>
 
@@ -65,7 +65,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'voluntariado' %}">Voluntariado</a></li>
                         <li><a href="#">Estancias</a></li>
-                        <li><a href="#">Visitas guiadas</a></li>
+                        <li><a href="{% url 'visitas-guiadas' %}">Visitas guiadas</a></li>
                         <li><a href="#">Tienda comunitaria</a></li>
                         <li><a href="#">Donaciones</a></li>
                     </ul>
