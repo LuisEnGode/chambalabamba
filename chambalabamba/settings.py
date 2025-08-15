@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'noticias',
     'contacto',
     'blog',
+    'participa',
     'autenticacion',
+
 ]
 
 # Middleware
