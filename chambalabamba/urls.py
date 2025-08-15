@@ -24,6 +24,7 @@ urlpatterns = [
     path('contacto/', include('contacto.urls')),
     path('nosotros/', include('nosotros.urls')),
     path('blog/', include('blog.urls')),
+    path('participa/', include('participa.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
 ]
