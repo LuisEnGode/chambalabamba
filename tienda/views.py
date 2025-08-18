@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'tienda/index.html')
+    return render(request, 'tienda/donaciones.html')

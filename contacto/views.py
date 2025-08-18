@@ -46,11 +46,11 @@ def index(request):
 
                 success_message = "¡Mensaje enviado exitosamente!"
                 form = ContactForm()  # Clear the form
-                return render(request, 'contacto/index.html', {'form': form, 'success_message': success_message})
+                return render(request, 'contacto/donaciones.html', {'form': form, 'success_message': success_message})
             except Exception as e:
                 logger.error("Error al enviar el correo", exc_info=True)
                 form.add_error(None, "No se pudo enviar el correo. Por favor, inténtalo de nuevo más tarde.")
     else:
         form = ContactForm()
 
-    return render(request, 'contacto/index.html', {'form': form})
+    return render(request, 'contacto/donaciones.html', {'form': form})

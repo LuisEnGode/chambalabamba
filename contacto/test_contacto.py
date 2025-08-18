@@ -58,7 +58,7 @@ class ContactoTests(TestCase):
         mock_render.assert_called_once()
         args, kwargs = mock_render.call_args
         self.assertEqual(args[0], request)
-        self.assertEqual(args[1], 'contacto/index.html')
+        self.assertEqual(args[1], 'contacto/donaciones.html')
         self.assertIsInstance(args[2]['form'], ContactForm)
 
     @patch('contacto.views.send_mail')
@@ -80,7 +80,7 @@ class ContactoTests(TestCase):
         mock_render.assert_called_once()
         args, kwargs = mock_render.call_args
         self.assertEqual(args[0], request)
-        self.assertEqual(args[1], 'contacto/index.html')
+        self.assertEqual(args[1], 'contacto/donaciones.html')
         self.assertIsInstance(args[2]['form'], ContactForm)
         self.assertEqual(args[2]['success_message'], "¡Mensaje enviado exitosamente!")
 
@@ -101,7 +101,7 @@ class ContactoTests(TestCase):
         mock_render.assert_called_once()
         args, kwargs = mock_render.call_args
         self.assertEqual(args[0], request)
-        self.assertEqual(args[1], 'contacto/index.html')
+        self.assertEqual(args[1], 'contacto/donaciones.html')
         self.assertIsInstance(args[2]['form'], ContactForm)
         self.assertFalse(args[2]['form'].is_valid())
 
