@@ -35,7 +35,7 @@ EOF
   echo -e "\n\ndef index(request):\n    return render(request, '$app/index.html')" >> $app/views.py
 
   # Crear template base
-  echo "<h1>$app</h1>" > $app/templates/$app/index.html
+  echo "<h1>$app</h1>" > $app/templates/$app/donaciones.html
 
 done
 
