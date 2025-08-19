@@ -87,6 +87,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'donaciones', 'static'),
     os.path.join(BASE_DIR, 'blog', 'static'),
     os.path.join(BASE_DIR, 'participa', 'static'),
+    os.path.join(BASE_DIR, 'tienda', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
