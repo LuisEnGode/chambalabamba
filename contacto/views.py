@@ -53,4 +53,4 @@ def index(request):
     else:
         form = ContactForm()
 
-    return render(request, 'contacto/donaciones.html', {'form': form})
+    return render(request, 'contacto/index.html', {'form': form})
