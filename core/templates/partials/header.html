@@ -30,9 +30,12 @@
                             <a class="dropdown-item dropdown-toggle" href="#">Pilares</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'pilar_ecologia' %}">Ecologia</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_economia' %}">Economia comunitaria</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_bienestar' %}">Bienestar integral</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_sociocultural' %}">Sociocultural</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pilar_economia' %}">Economia comunitaria</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'pilar_bienestar' %}">Bienestar integral</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'pilar_sociocultural' %}">Sociocultural</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -72,9 +75,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'Blog' %}">
-                    Blog
-                  </a>
+                    <a class="nav-link" href="{% url 'Blog' %}">
+                        Blog
+                    </a>
                 </li>
 
 
@@ -84,6 +87,8 @@
 
             </ul>
 
+            {% if user.is_authenticated %}
+            <strong> - {{ user.username }} - </strong>
             <!-- Íconos del lado derecho -->
             <ul class="topnav-right">
                 <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
@@ -114,10 +119,51 @@
                         <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
                     </div>
                 </li>
-                <li class="login-reg">
-                    <a href="#">Login</a> | <a href="#">Signup</a>
-                </li>
-            </ul>
+
+                    <li class="login-reg">
+
+                        <a href="{% url 'actualizar_perfil' %}">Actualizar Perfil</a> | <a href="{% url 'cerrar_sesion' %}">Salir</a>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="topnav-right">
+                    <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
+                    <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                    <li class="dropdown">
+                        <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
+                            Últimos artículos añadidos
+                            <ul class="list">
+                                <li class="item">
+                                    <a href="#" class="preview-image"><img class="preview"
+                                                                           src="{% static 'images/pro.jpg' %}"
+                                                                           alt=""></a>
+                                    <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                        $44.95</strong>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="preview-image"><img class="preview"
+                                                                           src="{% static 'images/pro.jpg' %}"
+                                                                           alt=""></a>
+                                    <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                        $44.95</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="total">Total: <strong>$89.90</strong></div>
+                            <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
+                        </div>
+                    </li>
+                    <li class="login-reg">
+                        <a href="{% url 'logear' %}">Login</a> | <a href="{% url 'Autenticacion' %}">Registrarse</a>
+                    </li>
+
+
+                </ul>
+                {% endif %}
         </div>
 
     </nav>

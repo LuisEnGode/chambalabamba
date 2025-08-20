@@ -32,7 +32,7 @@ class VRegistro(View):
 
             # Iniciar sesión después del registro
             login(request, usuario)
-            return redirect('Home')  # Redirige a la página principal
+            return redirect('home')  # Redirige a la página principal
         else:
             return render(request, "autenticacion/autenticacion.html", {"formulario": form})
 
@@ -40,7 +40,7 @@ class VRegistro(View):
 def cerrar_sesion(request):
     print("Cerrando sesion")
     logout(request)
-    return redirect('Home')
+    return redirect('home')
 
 def logear(request):
     if request.method == "POST":
@@ -51,7 +51,7 @@ def logear(request):
             usuario = authenticate(username=usuario, password=password)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('Home')
+                return redirect('home')
             else:
                 messages.error(request,"usuario no valido")
                 return render(request, "login/login.html", {"formulario": form})

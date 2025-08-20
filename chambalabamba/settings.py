@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
+    "crispy_forms",
+    "crispy_bootstrap4",
     # apps personalizadas:
     'core',
     'inicio',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'participa',
     'autenticacion',
 
+
 ]
 
 # Middleware
@@ -52,6 +55,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# CRISPY FORMS
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 
 ROOT_URLCONF = 'chambalabamba.urls'
 CKEDITOR_UPLOAD_PATH = "uploads/"
