@@ -7,8 +7,11 @@
     <!--Inner Header Start-->
     <section class="wf100 p100 inner-header" style="background: url('{% static "images/retiros-header.png" %}') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1>Retiros</h1>
-            <h3 style="color: #1b5e20">Encuentra tu paz interior</h3>        
+            <h1>Retiros</h1>  
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="#">Retiros</a></li>
+            </ul>
         </div>
     </section>
     <!--Inner Header End-->
@@ -24,8 +27,10 @@
                         <div class="blog-single-thumb">
                             <img src="{% static 'images/retiros-00.png' %}" alt="Retiro en la naturaleza de Chambalabamba">
                         </div>
-
-                        <h2 style="color: #1b5e20">Descubre y conecta con tu esencia</h2>
+                        <div class="section-title-2">
+                            <h2>Descubre y conecta con tu esencia</h2>
+                        </div>
+                        
                         <p/>
                         <blockquote>
                             <p>En el silencio de la naturaleza, el alma encuentra su verdadero hogar. Cada respiración es una oportunidad de renacer, cada momento una invitación a la paz interior.</p>
@@ -38,7 +43,9 @@
                     <div class="sidebar">
                         <!--Blog Single Content Start-->
                         <div class="blog-single-content">
-                            <h4 style="color: #1b5e20">Un viaje hacia tu interior</h4>
+                            <div class="section-title-2">
+                                <h2>Un viaje hacia tu interior</h2>
+                            </div>                            
                             <p/>                       
                             <p>Nuestros retiros en Chambalabamba son una invitación sagrada a desconectar del mundo exterior para reconectar contigo mismo en un entorno de paz y belleza natural excepcional. Ofrecemos una variedad de experiencias transformadoras enfocadas en el bienestar integral del ser.</p>
                             <p>Combinamos sabiamente prácticas ancestrales como la meditación, el yoga, la sonoterapia, los baños de bosque y el contacto directo con los elementos naturales. Cada retiro está cuidadosamente diseñado para facilitar un profundo proceso de introspección, sanación y renovación espiritual.</p>
@@ -53,8 +60,10 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="blog-single-content">
                         <!--Tipos de Retiros Start-->
-                        <div class="chief-guest team-grid wf100">
-                            <h4 style="color: #1b5e20">Modalidades de transformación</h4>
+                        <div class="chief-guest team-grid wf100">                        
+                            <div class="section-title-2">
+                                 <h2>Modalidades de transformación</h2>
+                            </div> 
                             <p>Cada persona es única y por eso ofrecemos diferentes modalidades de retiro para honrar tu proceso personal. Ya sea que busques una experiencia individual de profunda introspección o prefieras la riqueza del intercambio grupal, tenemos el espacio perfecto para tu crecimiento espiritual.</p>
                             <div class="row">
                                 <!--Retiro Box Start-->
@@ -96,22 +105,32 @@
 
                         <!--Actividades del Retiro Start-->
                         <div class="wf100" style="margin-top: 50px;">
-                            <h4 style="color: #1b5e20">Prácticas y experiencias</h4>
+                            <div class="section-title-2">
+                                 <h2>Prácticas y experiencias</h2>
+                            </div>
                             <p>Nuestros retiros integran una rica variedad de prácticas milenarias y contemporáneas, todas orientadas a facilitar tu proceso de autoconocimiento y sanación. Cada actividad está pensada para nutrir diferentes aspectos de tu ser: cuerpo, mente y espíritu.</p>
                             
                             <div class="row" style="margin-top: 30px;">
                                 <div class="col-md-6">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">🧘‍♀️ Meditación y Mindfulness</h5>
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♀️ Meditación y Mindfulness</h5>
+                                    </div>
                                     <p>Sesiones diarias de meditación en diferentes modalidades: silenciosa, guiada, caminando y en conexión con la naturaleza.</p>
                                     
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px; margin-top: 25px;">🌿 Baños de Bosque</h5>
+                                    <div class="section-title-2">
+                                       <h5>🌿 Baños de Bosque</h5> 
+                                    </div>
                                     <p>Inmersión consciente en la naturaleza para activar tus sentidos y conectar profundamente con los ritmos naturales.</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">🎵 Sonoterapia</h5>
+                                    <div class="section-title-2">
+                                        <h5>🎵 Sonoterapia</h5>
+                                    </div>
                                     <p>Sesiones de sanación através del sonido con cuencos tibetanos, tambores chamánicos y instrumentos ancestrales.</p>
                                     
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px; margin-top: 25px;">🧘‍♂️ Yoga y Movimiento</h5>
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♂️ Yoga y Movimiento</h5>
+                                    </div>
                                     <p>Prácticas de yoga adaptadas a todos los niveles, focalizadas en la conexión cuerpo-mente-espíritu.</p>
                                 </div>
                             </div>
@@ -124,74 +143,74 @@
 
                         <!--Event Gallery Start-->
                         <div class="event-gallery gallery wf100" style="margin-top: 50px;">
-                            <h4 style="color: #1b5e20">Espacios sagrados de transformación</h4>
+                            <div class="section-title-2">
+                                <h2>Espacios sagrados de transformación</h2>
+                            </div> 
+                            
                             <p>Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura.</p>
-                            <ul>
-                                <li>
+                            <div id="retiros-gallery-carousel" class="owl-carousel owl-theme">
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-02.png' %}" alt="Meditación al amanecer en Chambalabamba"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-03.png' %}" alt="Espacios naturales para la contemplación"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-04.png' %}" alt="Conexión profunda con la naturaleza"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-07.png' %}" alt="Retiros en armonía con los elementos"> </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                         <!--Event Gallery End-->
 
                         <!--Testimonial Start-->
-                        <div class="wf100 testimonials-section" style="margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 10px;">
-                            <h4 style="color: #1b5e20; text-align: center; margin-bottom: 30px;">Voces de transformación</h4>
-                            <div class="testimonials-container">
-                                <blockquote class="testimonial-box">
-                                    <p>"Mi retiro en Chambalabamba fue mucho más que unas vacaciones espirituales. Fue un verdadero renacer. La conexión con la naturaleza y conmigo misma fue tan profunda que regresé siendo una persona completamente renovada."</p>
-                                    <footer>- María Elena, México</footer>
-                                </blockquote>
-                                <blockquote class="testimonial-box">
-                                    <p>"Los facilitadores de Chambalabamba tienen un don especial para crear espacios sagrados. Me sentí acompañado y contenido en cada momento de mi proceso de autoconocimiento."</p>
-                                    <footer>- Carlos, Argentina</footer>
-                                </blockquote>
-                                <blockquote class="testimonial-box">
-                                    <p>"Nunca imaginé que el silencio pudiera ser tan revelador. En Chambalabamba aprendí a escuchar mi propia voz interior y a encontrar paz en medio del caos. Una experiencia que recomiendo a todos."</p>
-                                    <footer>- Ana, Colombia</footer>
-                                </blockquote>
-                                <blockquote class="testimonial-box">
-                                    <p>"La combinación de prácticas de sanación y el entorno natural de Chambalabamba es simplemente mágica. Volví a casa con una sensación de claridad y propósito que no había sentido en años."</p>
-                                    <footer>- Javier, España</footer>
-                                </blockquote>
+                        <section class="testimonials-section bg-white wf100" style="margin-top: 50px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section-title-2 text-center">
+                                            <h2>Voces de transformación</h2>
+                                        </div>
+                                        <div id="retiros-testimonials" class="owl-carousel owl-theme">
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Mi retiro en Chambalabamba fue mucho más que unas vacaciones espirituales. Fue un verdadero renacer. La conexión con la naturaleza y conmigo misma fue tan profunda que regresé siendo una persona completamente renovada."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>María Elena</strong> México </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Los facilitadores de Chambalabamba tienen un don especial para crear espacios sagrados. Me sentí acompañado y contenido en cada momento de mi proceso de autoconocimiento."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Carlos</strong> Argentina </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Nunca imaginé que el silencio pudiera ser tan revelador. En Chambalabamba aprendí a escuchar mi propia voz interior y a encontrar paz en medio del caos. Una experiencia que recomiendo a todos."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Ana</strong> Colombia </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"La combinación de prácticas de sanación y el entorno natural de Chambalabamba es simplemente mágica. Volví a casa con una sensación de claridad y propósito que no había sentido en años."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Javier</strong> España </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
                         <!--Testimonial End-->
                         <style>
+                            /* Remove previous testimonial styles as they are replaced by owl-carousel styles */
                             .testimonials-container {
-                                display: flex;
-                                justify-content: space-between;
-                                flex-wrap: wrap;
+                                display: none; /* Hide the old container */
                             }
                             .testimonials-section .testimonial-box {
-                                background: #ffffff;
-                                border-left: 4px solid #1b5e20;
-                                padding: 15px;
-                                margin-bottom: 20px;
-                                border-radius: 5px;
-                                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                                width: 24%;
-                            }
-                            .testimonials-section .testimonial-box p {
-                                font-style: italic;
-                                font-size: 15px;
-                                line-height: 1.5;
-                                margin-bottom: 10px;
-                            }
-                            .testimonials-section .testimonial-box footer {
-                                text-align: right;
-                                font-weight: bold;
-                                color: #555;
-                                font-size: 14px;
+                                display: none; /* Hide the old boxes */
                             }
                         </style>
                     </div>
@@ -200,5 +219,50 @@
         </div>
     </div>
     </section>
-    <!--Retiros End--> 
+    <!--Retiros End-->
+    <script>
+        $(document).ready(function() {
+            $("#retiros-gallery-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+
+            $("#retiros-testimonials").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
