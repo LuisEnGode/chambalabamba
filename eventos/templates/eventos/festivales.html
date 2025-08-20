@@ -57,100 +57,26 @@
     <div class="event-grid-2">
         <div class="container">
             <div class="row equal-height">
+                {% for festival in festivales %}
                 <!--Blog Post Start-->
                 <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_01.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Festival de la Cosecha</a></h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> Cada Solsticio de Verano</li>
-                            <li><strong>Hora:</strong> Todo el día</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Plaza Central, Chambalabamba</p>
+                    <div class="event-post">
+                        <div class="event-thumb">
+                            <a href="{% url 'eventos:festival_detail' festival.slug %}"><i class="fas fa-link"></i></a>
+                            <img src="{% static festival.image %}" alt="{{ festival.name }}">
+                        </div>
+                        <div class="event-txt">
+                            <h5><a href="{% url 'eventos:festival_detail' festival.slug %}">{{ festival.name }}</a></h5>
+                            <ul class="etime">
+                                <li><strong>Fecha:</strong> {{ festival.date }}</li>
+                                <li><strong>Hora:</strong> {{ festival.time }}</li>
+                            </ul>
+                            <p class="venue"><span>Lugar:</span> {{ festival.place }}</p>
+                        </div>
                     </div>
-                </div>
-                </div>
-                <!--Blog Post End--> 
-                <!--Blog Post Start-->
-                <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_02.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Encuentro de Músicas del Mundo</a>
-                        </h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> Equinoccio de Otoño</li>
-                            <li><strong>Hora:</strong> 18:00 - 23:00</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Anfiteatro Natural, Chambalabamba</p>
-                    </div>
-                </div>
-                </div>
-                <!--Blog Post End--> 
-                <!--Blog Post Start-->
-                <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_03.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Feria de Intercambio de Semillas</a>
-                        </h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> Primer fin de semana de Primavera</li>
-                            <li><strong>Hora:</strong> 10:00 - 17:00</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Mercado Comunitario, Chambalabamba</p>
-                    </div>
-                </div>
                 </div>
                 <!--Blog Post End-->
-                <!--Blog Post Start-->
-                <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_04.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Festival de Arte y Permacultura</a></h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> Segunda semana de Julio</li>
-                            <li><strong>Hora:</strong> Todo el día</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Toda la comunidad, Chambalabamba</p>
-                    </div>
-                </div>
-                </div>
-                <!--Blog Post End--> 
-                <!--Blog Post Start-->
-                <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_05.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Celebración del Día de la Tierra</a>
-                        </h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> 22 de Abril</li>
-                            <li><strong>Hora:</strong> 12:00 - 20:00</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Bosque Comunitario, Chambalabamba</p>
-                    </div>
-                </div>
-                </div>
-                <!--Blog Post End--> 
-                <!--Blog Post Start-->
-                <div class="col-lg-4 col-md-6">
-                <div class="event-post">
-                    <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a> <img src="{% static 'images/artes_06.png' %}" alt=""></div>
-                    <div class="event-txt">
-                        <h5><a href="#">Festival de Cine Consciente</a>
-                        </h5>
-                        <ul class="etime">
-                            <li><strong>Fecha:</strong> Tercer fin de semana de Noviembre</li>
-                            <li><strong>Hora:</strong> 19:00 - 22:00</li>
-                        </ul>
-                        <p class="venue"><span>Lugar:</span> Maloka Audiovisual, Chambalabamba</p>
-                    </div>
-                </div>
-                </div>
-                <!--Blog Post End--> 
+                {% endfor %}
             </div>
         </div>
     </div>

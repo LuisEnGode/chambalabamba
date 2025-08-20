@@ -10,4 +10,5 @@ urlpatterns = [
     path('artes/', views.artes, name='artes'),
     path('terapias/', views.terapias, name='terapias'),
     path('festivales/', views.festivales, name='festivales'),
+    path('festivales/<slug:slug>/', views.festival_detail, name='festival_detail'),
 ]
