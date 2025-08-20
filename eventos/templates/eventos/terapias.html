@@ -5,10 +5,13 @@
 
 {% block content %}
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url('{% static "images/retiros-header.png" %}') no-repeat center center; background-size: cover;">
+    <section class="wf100 p100 inner-header" style="background: url('{% static "images/terapias-header.png" %}') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1>Terapias Holísticas</h1>
-            <h3 style="color: white">Un camino hacia el bienestar integral</h3>
+            <h1>Terapias</h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="#">Terapias</a></li>
+            </ul>
         </div>
     </section>
     <!--Inner Header End-->
@@ -26,7 +29,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h2 style="color: #1b5e20">Sanación y Equilibrio para tu Ser</h2>
+                                    <div class="section-title-2">
+                                        <h2>Sanación y Equilibrio para tu Ser</h2>
+                                    </div>
                                     <p>Nuestras terapias en Chambalabamba son un acompañamiento amoroso en tu proceso de autoconocimiento y sanación. Ofrecemos un abanico de terapias holísticas diseñadas para nutrir tu cuerpo, mente y espíritu en un entorno de paz y conexión con la naturaleza.</p>
                                     <p>Integramos saberes ancestrales y técnicas contemporáneas para ofrecerte una experiencia terapéutica integral. Cada sesión es un espacio sagrado, adaptado a tus necesidades particulares, para que puedas liberar lo que ya no te sirve y florecer en tu máximo potencial.</p>
                                 </div>
@@ -42,14 +47,18 @@
 
                         <!--Therapies Section Start-->
                         <div class="wf100 team-grid" style="margin-top: 50px;">
-                            <h3 style="color: #1b5e20; text-align: center; margin-bottom: 30px;">Nuestras Propuestas Terapéuticas</h3>
+                            <div class="section-title-2 text-center">
+                                <h2>Nuestras Propuestas Terapéuticas</h2>
+                            </div>
                             <div class="row">
                                 <!--Terapia Box Start-->
                                 <div class="col-md-4">
                                     <div class="team-box">
                                         <img src="{% static 'images/retiros-03.png' %}" alt="Terapia de Sonido">
                                         <div class="team-info">
-                                            <h5>Terapia de Sonido</h5>
+                                            <div class="section-title-2">
+                                                <h5>Terapia de Sonido</h5>
+                                            </div>
                                             <p>Vibraciones que sanan. Un viaje sonoro con cuencos, gongs y otros instrumentos para armonizar tu energía.</p>
                                         </div>
                                     </div>
@@ -60,7 +69,9 @@
                                     <div class="team-box">
                                         <img src="{% static 'images/retiros-06.png' %}" alt="Reiki y Sanación Energética">
                                         <div class="team-info">
-                                            <h5>Reiki y Sanación Energética</h5>
+                                            <div class="section-title-2">
+                                                <h5>Reiki y Sanación Energética</h5>
+                                            </div>
                                             <p>Canalización de energía vital para equilibrar tus chakras, liberar bloqueos y promover la autosanación.</p>
                                         </div>
                                     </div>
@@ -71,7 +82,9 @@
                                     <div class="team-box">
                                         <img src="{% static 'images/retiros-05.png' %}" alt="Masajes Terapéuticos">
                                         <div class="team-info">
-                                            <h5>Masajes Terapéuticos</h5>
+                                            <div class="section-title-2">
+                                                <h5>Masajes Terapéuticos</h5>
+                                            </div>
                                             <p>Técnicas de masaje que liberan la tensión física y emocional, conectando cuerpo y alma.</p>
                                         </div>
                                     </div>
@@ -83,22 +96,32 @@
 
                         <!--Benefits Section Start-->
                         <div class="wf100" style="margin-top: 50px;">
-                            <h3 style="color: #1b5e20; text-align: center; margin-bottom: 30px;">Beneficios de Nuestras Terapias</h3>
+                            <div class="section-title-2 text-center">
+                                <h2>Beneficios de Nuestras Terapias</h2>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">🌿 Reducción de Estrés y Ansiedad</h5>
+                                    <div class="section-title-2">
+                                        <h5>✨ Claridad Mental y Enfoque</h5>
+                                    </div>
                                     <p>Aprende a gestionar tus emociones y a encontrar calma interior a través de técnicas de relajación y conciencia plena.</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">✨ Claridad Mental y Enfoque</h5>
+                                    <div class="section-title-2">
+                                        <h5>✨ Claridad Mental y Enfoque</h5>
+                                    </div>
                                     <p>Despeja tu mente, mejora tu concentración y toma decisiones más alineadas con tu propósito de vida.</p>
                                 </div>
                                 <div class="col-md-6" style="margin-top: 25px;">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">💖 Sanación Emocional</h5>
+                                    <div class="section-title-2">
+                                        <h5>💖 Sanación Emocional</h5>
+                                    </div>
                                     <p>Libera cargas del pasado, sana heridas emocionales y abre tu corazón a nuevas posibilidades de amor y alegría.</p>
                                 </div>
                                 <div class="col-md-6" style="margin-top: 25px;">
-                                    <h5 style="color: #1b5e20; margin-bottom: 15px;">🧘‍♀️ Conexión Cuerpo-Mente-Espíritu</h5>
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♀️ Conexión Cuerpo-Mente-Espíritu</h5>
+                                    </div>
                                     <p>Integra todos los aspectos de tu ser, logrando un estado de coherencia y armonía que se refleja en tu salud y vitalidad.</p>
                                 </div>
                             </div>
@@ -111,21 +134,23 @@
 
                         <!--Event Gallery Start-->
                         <div class="event-gallery gallery wf100" style="margin-top: 50px;">
-                            <h4 style="color: #1b5e20; text-align: center; margin-bottom: 30px;">Espacios de Contención y Sanación</h4>
-                            <ul>
-                                <li>
+                            <div class="section-title-2 text-center">
+                                <h2>Espacios de Contención y Sanación</h2>
+                            </div>
+                            <div id="terapias-gallery-carousel" class="owl-carousel owl-theme">
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-02.png' %}" alt="Espacio de terapia en la naturaleza"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-03.png' %}" alt="Armonía y paz en Chambalabamba"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-04.png' %}" alt="Conexión terapéutica con la naturaleza"> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/retiros-07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-07.png' %}" alt="Terapias en un entorno sagrado"> </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                         <!--Event Gallery End-->
                     </div>
@@ -134,4 +159,28 @@
         </div>
     </section>
     <!--Terapias Content End-->
+    <script>
+        $(document).ready(function() {
+            $("#terapias-gallery-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
