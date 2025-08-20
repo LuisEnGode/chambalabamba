@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Retiros | Chambalabamba{% endblock %}
+
+{% block content %}
+    <!--Inner Header Start-->
+    <section class="wf100 p100 inner-header" style="background: url({% static 'images/retiros-header.png' %}) no-repeat center center; background-size: cover;">
+    <div class="container">
+        <h1>Retiros</h1>
+        <h3 style="color: white;">Encuentra tu paz interior</h3>        
+    </div>
+    </section>
+    <!--Inner Header End--> 
+    <!--Retiros Start-->
+    <section class="wf100 p80 blog">
+    <div class="blog-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                <!--Blog Single Content Start-->
+                <div class="blog-single-content">
+                    <div class="blog-single-thumb"><img src="{% static 'eventos/images/retiro_01.jpg' %}" alt=""></div>
+                    <div class="single-counter-box">
+                        <ul>
+                            <li class="col1"><strong>Próximo Retiro<br> Luna Llena</strong></li>
+                            <li class="col2">
+                            <div class="countdown"></div>
+                            </li>
+                            <li class="col3"> <a href="#">Reserva tu Lugar</a> </li>
+                        </ul>
+                    </div>
+                    <ul class="post-meta">
+                        <li><i class="fas fa-user-circle"></i> Guías de la Comunidad</li>
+                        <li><i class="fas fa-calendar-alt"></i> Fechas por Temporada</li>
+                        <li><i class="fas fa-comments"></i> Conecta y Comparte</li>
+                        <li class="tags"><i class="fas fa-tags"></i> <a href="#">Meditación</a> <a href="#">Yoga</a> <a href="#">Sanación</a> <a href="#">Naturaleza</a></li>
+                    </ul>
+                    <p>Nuestros retiros en Chambalabamba son una invitación a desconectar de la rutina y reconectar contigo mismo en un entorno de paz y belleza natural. Ofrecemos una variedad de retiros enfocados en el bienestar integral, combinando prácticas como la meditación, el yoga, la sonoterapia, y el contacto directo con la naturaleza.</p>
+                    <p>Cada retiro está diseñado para facilitar un proceso de introspección, sanación y renovación. Acompañado por guías experimentados, tendrás la oportunidad de explorar tu mundo interior, liberar tensiones y encontrar un estado de equilibrio y armonía. Es una pausa para nutrir el alma, calmar la mente y fortalecer el cuerpo.</p>
+                    <blockquote>
+                        <p>El silencio es el lienzo donde el alma pinta sus más bellos paisajes. Permítete este regalo de paz y autodescubrimiento.</p>
+                    </blockquote>
+
+                    <!--Event Gallery Start-->
+                    <div class="event-gallery gallery wf100">
+                        <h4>Espacios de Paz</h4>
+                        <ul>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_01.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_01.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_02.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_02.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_03.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_03.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_04.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_04.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_05.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_05.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_06.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_06.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_07.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_07.jpg' %}" alt=""> </div>
+                            </li>
+                            <li>
+                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_08.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_08.jpg' %}" alt=""> </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Event Gallery End-->                            
+                </div>
+                <!--Blog Single Content End--> 
+                </div>                     
+            </div>
+        </div>
+    </div>
+    </section>
+    <!--Retiros End--> 
+{% endblock %}

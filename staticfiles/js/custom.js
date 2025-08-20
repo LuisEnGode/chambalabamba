@@ -375,7 +375,7 @@ jQuery(document).ready(function($) {
 				$(this).removeClass('open');
 			}
 		});
-		$('form').submit(function(event) {
+		$('#search form').submit(function(event) {
 			event.preventDefault();
 			return false;
 		})
@@ -487,3 +487,5 @@ $(document).ready(function () {
     $('.dropdown-submenu .dropdown-menu').hide();
   });
 });
+
+/*CODIGO PARA GALERIA DE IMAGENES*/

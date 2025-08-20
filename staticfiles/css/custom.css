@@ -4915,6 +4915,7 @@ Blog Details Start
 	color: #555;
 	margin: 0 0 25px;
 	line-height: 26px;
+	text-align: justify;
 }
 .blog-single-content h5 {
 	font-weight: 600;
@@ -6989,3 +6990,5 @@ section.wf100.p80.fcampaigns {
   position: relative;
   z-index: 1;
 }
+
+/*  ==GALERIA PARA SECCION PARTICIPA==*/
