@@ -21,3 +21,23 @@ class Festival(models.Model):
     class Meta:
         verbose_name = "Festival"
         verbose_name_plural = "Festivales"
+
+class Taller(models.Model):
+    name = models.CharField(max_length=200, verbose_name="Nombre")
+    description = models.TextField(verbose_name="Descripción")
+    schedule = models.CharField(max_length=200, verbose_name="Horario")
+    place = models.CharField(max_length=200, verbose_name="Lugar")
+    image = models.CharField(max_length=255, verbose_name="Imagen")
+    slug = models.SlugField(unique=True, max_length=200, blank=True, help_text="Dejar en blanco para autogenerar.")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Taller"
+        verbose_name_plural = "Talleres"
