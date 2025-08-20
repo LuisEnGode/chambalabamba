@@ -1,0 +1,348 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Estancias | Chambalabamba{% endblock %}
+
+{% block content %}
+
+
+<!--Inner Header Start-->
+<section class="wf100 p100 inner-header"
+         style="background-image: url({% static '/images/innerheader.jpg' %}); background-size: cover; background-position: center;"
+>
+    <div class="container">
+        <h1>Estancias</h1>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'estancias' %}"> Estancias </a></li>
+            <li><a href="#"> Detalle </a></li>
+        </ul>
+    </div>
+</section>
+<!--Inner Header End-->
+<!--Estancia - Detail Start-->
+<section class="wf100 p80 shop">
+    <div class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pro-large"><img src="{% static 'participa/images/estancias/casas/casa-madera-555x499.png' %}" alt=""></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-text">
+                        <h2>Estancia Tierra — Habitación privada en la ecoaldea</h2>
+                        <div class="pro-rating"><a href="#"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                class="fas fa-star-half-alt"></i></a></div>
+                        <div class="pro-pricing">
+                            <del>$50.00</del>
+                            $39.00 por noche
+                        </div>
+                        <p> En Estancia Aire te invitamos a pausar y reconectar. La habitación ofrece comodidad simple y
+                            cálida, inspirada en la vida en comunidad. Durante tu estadía podrás caminar por los
+                            senderos,
+                            meditar junto al río y compartir fogatas o círculos si te resuena.
+
+                            Nuestra propuesta es un alojamiento consciente: cuidamos el agua, la energía y los espacios
+                            compartidos con prácticas regenerativas. Aquí los amaneceres son lentos y las noches,
+                            serenas.</p>
+                        <!--
+                        <div class="add-2-cart"><strong>Quantity:</strong>
+                            <input type="number" name="quantity" min="1" max="99">
+                            <input type="submit" value="Add to Cart" name="Add to Cart">
+                        </div>
+                        -->
+                        <!-- WhatsApp 1 -->
+                        <a href="https://wa.me/{{ phone }}"
+                           class="btn btn-outline-success d-inline-flex align-items-center gap-2"
+                           target="_blank" rel="noopener">
+                            <i class="fi-whatsapp"></i> WhatsApp-Contact
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="products-tabs wf100 p80">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active"
+                                                                                     id="nav-one-tab" data-toggle="tab"
+                                                                                     href="#nav-one" role="tab"
+                                                                                     aria-controls="nav-one"
+                                                                                     aria-selected="true">Description</a>
+                                <a class="nav-item nav-link" id="nav-two-tab" data-toggle="tab" href="#nav-two"
+                                   role="tab" aria-controls="nav-two" aria-selected="true">Additional Information</a> <a
+                                        class="nav-item nav-link" id="nav-three-tab" data-toggle="tab" href="#nav-three"
+                                        role="tab" aria-controls="nav-three" aria-selected="false">Reviews</a></div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-one" role="tabpanel"
+                                 aria-labelledby="nav-one-tab">
+                                <p> En Estancia Aire te invitamos a pausar y reconectar. La habitación ofrece comodidad
+                                    simple y cálida, inspirada en la vida en comunidad. Durante tu estadía podrás
+                                    caminar por los senderos, meditar junto al río y compartir fogatas o círculos si te
+                                    resuena.
+
+                                    Nuestra propuesta es un alojamiento consciente: cuidamos el agua, la energía y los
+                                    espacios compartidos con prácticas regenerativas. Aquí los amaneceres son lentos y
+                                    las noches, serenas. </p>
+                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text.
+                                    To take a trivial example, which of us ever undertakes laborious physical exercise,
+                                    except to obtain some advantage. </p>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
+                                <table class="table table-sm align-middle mb-0">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Tipo de estancia</th>
+                                        <td>Estancia Aire — Habitación privada (ejemplo)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Capacidad</th>
+                                        <td>1–2 personas (cama matrimonial) • Opcional: cuna o cama extra</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Camas</th>
+                                        <td>Matrimonial / 2 sencillas (según disponibilidad)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Baño</th>
+                                        <td>Baño seco compartido • Ducha con agua caliente solar</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Cocina / Comedor</th>
+                                        <td>Acceso a cocina común equipada • Uso de comedor comunitario</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Conectividad</th>
+                                        <td>Wi-Fi básico en áreas comunes • Energía 110V • Tomacorrientes en la
+                                            habitación
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ropa de cama / Toallas</th>
+                                        <td>Incluidas • Reposición cada 3 noches (opción sostenible)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ubicación / Acceso</th>
+                                        <td>Ecoaldea Chambalabamba • 10–15 min caminando desde el estacionamiento</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Horarios</th>
+                                        <td>Check-in 14:00–18:00 • Check-out 11:00</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Estancia mínima</th>
+                                        <td>2 noches (fines de semana y feriados pueden variar)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Silencio / Convivencia</th>
+                                        <td>Silencio 21:30–07:00 • Cuidado de espacios compartidos • No fumar dentro
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Mascotas</th>
+                                        <td>Consultar previamente (por fauna y huertos)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Alimentación</th>
+                                        <td>Opcional: menú vegetariano previo aviso • Acceso a huertos según
+                                            actividades
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Actividades incluidas</th>
+                                        <td>Senderos, río y áreas de descanso • Participación libre en fogatas/círculos
+                                            (si hay)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Extras opcionales</th>
+                                        <td>Talleres, terapias, visitas guiadas, transporte local (con costo
+                                            adicional)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Pago</th>
+                                        <td>Efectivo/transferencia • Reserva con seña 30%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Cancelación</th>
+                                        <td>Gratuita hasta 72h antes del check-in • Luego se aplica la seña</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <small class="text-muted d-block mt-2">
+                                    *Datos referenciales. Confirma disponibilidad y condiciones al reservar.
+                                </small>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab">
+                                <ul class="comments">
+                                    <!--Comment Start-->
+                                    <li class="comment">
+                                        <div class="user-thumb"><img src="images/auser.jpg" alt=""></div>
+                                        <div class="comment-txt">
+                                            <h6> Mason Gray </h6>
+                                            <p> Personally I think a combination of all these methods is most effective,
+                                                but in today’s post I will be focusing specifically on how to use and
+                                                style WordPress’ built-in sticky post feature and highlighting it’s best
+                                                use case based on my own experience. </p>
+                                            <ul class="comment-time">
+                                                <li>Posted: 09 July, 2018 at 2:37 pm</li>
+                                                <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
+                                            </ul>
+                                        </div>
+                                        <ul class="children">
+                                            <!--Comment Start-->
+                                            <li class="comment">
+                                                <div class="user-thumb"><img src="images/auser.jpg" alt=""></div>
+                                                <div class="comment-txt">
+                                                    <h6> Rog Kelly </h6>
+                                                    <p> Personally I think a combination of all these methods is most
+                                                        effective, but in today’s post I will be focusing specifically
+                                                        on how to use and style WordPress’ built-in sticky post feature
+                                                        and highlighting it’s best use case based on my own
+                                                        experience. </p>
+                                                    <ul class="comment-time">
+                                                        <li>Posted: 09 July, 2018 at 2:37 pm</li>
+                                                        <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <!--Comment End-->
+                                        </ul>
+                                    </li>
+                                    <!--Comment End-->
+                                    <!--Comment Start-->
+                                    <li class="comment">
+                                        <div class="user-thumb"><img src="images/auser.jpg" alt=""></div>
+                                        <div class="comment-txt">
+                                            <h6> Harry Butler </h6>
+                                            <p> Personally I think a combination of all these methods is most effective,
+                                                but in today’s post I will be focusing specifically on how to use and
+                                                style WordPress’ built-in sticky post feature and highlighting it’s best
+                                                use case based on my own experience. </p>
+                                            <ul class="comment-time">
+                                                <li>Posted: 09 July, 2018 at 2:37 pm</li>
+                                                <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!--Comment End-->
+                                </ul>
+                                <div class="wf100 comment-form">
+                                    <h4>Leave a Review</h4>
+                                    <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>
+                                        Required fields are marked <span class="required">*</span></p>
+                                    <div class="comment-form-rating">
+                                        <label>Your rating</label>
+                                        <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2"
+                                                                                                  href="#">2</a><a
+                                                class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a
+                                                class="star-5" href="#">5</a></span></p>
+                                    </div>
+                                    <ul>
+                                        <li class="w3">
+                                            <input type="text" class="form-control" placeholder="Full Name">
+                                        </li>
+                                        <li class="w3">
+                                            <input type="text" class="form-control" placeholder="Email">
+                                        </li>
+                                        <li class="w3 np">
+                                            <input type="text" class="form-control" placeholder="Subject">
+                                        </li>
+                                        <li class="full">
+                                            <textarea class="form-control" placeholder="Write Comments"></textarea>
+                                        </li>
+                                        <li class="full">
+                                            <button class="post-btn">Post Your Review</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="online-shop wf100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Estancias Relacionadas</h2>
+                </div>
+            </div>
+            <div class="row">
+                <!--Pro Box Start-->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-box">
+                        <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'participa/images/estancias/casas/arbol.png' %}"
+                                                                                alt=""></div>
+                        <div class="pro-txt">
+                            <h6><a href="#">Happy Ninja Shirt</a></h6>
+                            <p class="pro-price">
+                                <del>$25.00</del>
+                                $19.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Pro Box End-->
+                <!--Pro Box Start-->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-box">
+                        <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'participa/images/estancias/casas/casa-bioconstruccion.png' %}"
+                                                                                alt=""></div>
+                        <div class="pro-txt">
+                            <h6><a href="#">Woo corlor shirt</a></h6>
+                            <p class="pro-price">
+                                <del>$25.00</del>
+                                $19.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Pro Box End-->
+                <!--Pro Box Start-->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-box">
+                        <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'participa/images/estancias/casas/casa-loma.png' %}"
+                                                                                alt=""></div>
+                        <div class="pro-txt">
+                            <h6><a href="#">Premium Quality</a></h6>
+                            <p class="pro-price">
+                                <del>$25.00</del>
+                                $19.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Pro Box End-->
+                <!--Pro Box Start-->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-box">
+                        <div class="pro-thumb"><a href="#">Add To Cart</a> <img src="{% static 'participa/images/estancias/casas/domo-paja.png' %}"
+                                                                                alt=""></div>
+                        <div class="pro-txt">
+                            <h6><a href="#">Ninja Silhouette</a></h6>
+                            <p class="pro-price">
+                                <del>$25.00</del>
+                                $19.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Pro Box End-->
+            </div>
+        </div>
+    </section>
+</section>
+<!--Estancia - detail -->
+</div>
+
+{% endblock %}

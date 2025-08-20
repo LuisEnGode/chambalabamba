@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
+    "crispy_forms",
+    "crispy_bootstrap4",
     # apps personalizadas:
     'core',
     'inicio',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'participa',
     'autenticacion',
 
+
 ]
 
 # Middleware
@@ -52,6 +55,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# CRISPY FORMS
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 
 ROOT_URLCONF = 'chambalabamba.urls'
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -84,7 +93,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'contacto', 'static'),
     os.path.join(BASE_DIR, 'inicio', 'static'),
     os.path.join(BASE_DIR, 'nosotros', 'static'),
+    os.path.join(BASE_DIR, 'donaciones', 'static'),
     os.path.join(BASE_DIR, 'blog', 'static'),
+    os.path.join(BASE_DIR, 'participa', 'static'),
+    os.path.join(BASE_DIR, 'tienda', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
