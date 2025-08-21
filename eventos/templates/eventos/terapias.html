@@ -21,79 +21,35 @@
         <div class="blog-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
                         <!--Intro Content Start-->
                         <div class="blog-single-content">
                             <div class="blog-single-thumb">
-                                <img src="{% static 'images/retiros-00.png' %}" alt="Terapia holística en Chambalabamba">
+                                <img src="{% static 'images/terapias-00.png' %}" alt="Terapia holística en Chambalabamba">
                             </div>
                             <div class="row">
-                                <div class="col-lg-7">
-                                    <div class="section-title-2">
-                                        <h2>Sanación y Equilibrio para tu Ser</h2>
-                                    </div>
-                                    <p>Nuestras terapias en Chambalabamba son un acompañamiento amoroso en tu proceso de autoconocimiento y sanación. Ofrecemos un abanico de terapias holísticas diseñadas para nutrir tu cuerpo, mente y espíritu en un entorno de paz y conexión con la naturaleza.</p>
-                                    <p>Integramos saberes ancestrales y técnicas contemporáneas para ofrecerte una experiencia terapéutica integral. Cada sesión es un espacio sagrado, adaptado a tus necesidades particulares, para que puedas liberar lo que ya no te sirve y florecer en tu máximo potencial.</p>
+                                <div class="section-title-2">
+                                    <h2>Sanación y Equilibrio para tu Ser</h2>
                                 </div>
-                                <div class="col-lg-5">
-                                    <blockquote class="testimonial-box" style="margin-top: 20px; width: 100%; border-left: 4px solid #1b5e20; padding: 15px; background: #f8f9fa; border-radius: 5px;">
-                                        <p>"La terapia de sonido en Chambalabamba fue una experiencia transformadora. Sentí cómo las vibraciones disolvían bloqueos que ni siquiera sabía que tenía. Salí flotando, en un estado de paz profunda."</p>
-                                        <footer>- Laura, Chile</footer>
-                                    </blockquote>
-                                </div>
+                                <p>Integramos saberes ancestrales y técnicas contemporáneas para ofrecerte una experiencia terapéutica integral. Cada sesión es un espacio sagrado, adaptado a tus necesidades particulares, para que puedas liberar lo que ya no te sirve y florecer en tu máximo potencial.</p>
                             </div>
                         </div>
                         <!--Intro Content End-->
-
-                        <!--Therapies Section Start-->
-                        <div class="wf100 team-grid" style="margin-top: 50px;">
-                            <div class="section-title-2 text-center">
-                                <h2>Nuestras Propuestas Terapéuticas</h2>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-single-content">
+                            <div class="section-title-2">
+                                <h2>Bienestar</h2>
+                                <h5>Físico, emocional, mental, espiritual</h5>
                             </div>
-                            <div class="row">
-                                <!--Terapia Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/retiros-03.png' %}" alt="Terapia de Sonido">
-                                        <div class="team-info">
-                                            <div class="section-title-2">
-                                                <h5>Terapia de Sonido</h5>
-                                            </div>
-                                            <p>Vibraciones que sanan. Un viaje sonoro con cuencos, gongs y otros instrumentos para armonizar tu energía.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Terapia Box End-->
-                                <!--Terapia Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/retiros-06.png' %}" alt="Reiki y Sanación Energética">
-                                        <div class="team-info">
-                                            <div class="section-title-2">
-                                                <h5>Reiki y Sanación Energética</h5>
-                                            </div>
-                                            <p>Canalización de energía vital para equilibrar tus chakras, liberar bloqueos y promover la autosanación.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Terapia Box End-->
-                                <!--Terapia Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/retiros-05.png' %}" alt="Masajes Terapéuticos">
-                                        <div class="team-info">
-                                            <div class="section-title-2">
-                                                <h5>Masajes Terapéuticos</h5>
-                                            </div>
-                                            <p>Técnicas de masaje que liberan la tensión física y emocional, conectando cuerpo y alma.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Terapia Box End-->
-                            </div>
+                            <p>Nuestras terapias en Chambalabamba son un acompañamiento amoroso en tu proceso de autoconocimiento y sanación. Ofrecemos un abanico de terapias holísticas diseñadas para nutrir tu cuerpo, mente y espíritu en un entorno de paz y conexión con la naturaleza.</p>
                         </div>
-                        <!--Therapies Section End-->
+                        {% include 'core/contact_button.html' %}
+                    </div>
 
+
+                    <div class="col-lg-12">
+                        
                         <!--Benefits Section Start-->
                         <div class="wf100" style="margin-top: 50px;">
                             <div class="section-title-2 text-center">
@@ -139,21 +95,28 @@
                             </div>
                             <div id="terapias-gallery-carousel" class="owl-carousel owl-theme">
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-02.png' %}" alt="Espacio de terapia en la naturaleza"> </div>
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-01.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-01.png' %}" alt="Espacio de terapia en la naturaleza"> </div>
                                 </div>
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-03.png' %}" alt="Armonía y paz en Chambalabamba"> </div>
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-02.png' %}" alt="Armonía y paz en Chambalabamba"> </div>
                                 </div>
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-04.png' %}" alt="Conexión terapéutica con la naturaleza"> </div>
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-03.png' %}" alt="Conexión terapéutica con la naturaleza"> </div>
                                 </div>
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-07.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-04.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-05.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-06.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-06.png' %}" alt="Terapias en un entorno sagrado"> </div>
                                 </div>
                             </div>
                         </div>
                         <!--Event Gallery End-->
                     </div>
+
                 </div>
             </div>
         </div>
