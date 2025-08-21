@@ -40,6 +40,11 @@
 <section class="wf100 p100 inner-header" style="background: url('{% static taller.image %}') no-repeat center center; background-size: cover;">
     <div class="container">
         <h1>{{ taller.name }}</h1>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'eventos:talleres' %}">Talleres</a></li>
+            <li><a href="#">{{ taller.name }}</a></li>
+        </ul>
     </div>
 </section>
 <!--Inner Header End-->

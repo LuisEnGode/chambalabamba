@@ -24,7 +24,10 @@
     <section class="wf100 p100 inner-header" style="background: url({% static 'images/talleres-header.png' %}) no-repeat center center; background-size: cover;">
     <div class="container">
         <h1>Talleres</h1>
-        <h3 style="color: white;">Actualizando saberes</h3>   
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="#">Talleres</a></li>
+        </ul>   
     </div>
     </section>
     <!--Inner Header End--> 
@@ -34,7 +37,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto text-center">
-                    <h2 style="color: #1b5e20; margin-bottom: 20px;">¡Únete a nuestros talleres transformadores!</h2>
+                    <div class="section-title-2">
+                            <h2>¡Únete a nuestros talleres transformadores!</h2>
+                        </div>
                     <p style="font-size: 18px; line-height: 1.6; color: #555;">
                         En Chambalabamba, cada taller es una oportunidad de crecimiento personal y colectivo. 
                         Aquí no solo aprendes nuevas habilidades, sino que te conectas contigo mismo, con otros y con la naturaleza. 
@@ -44,7 +49,7 @@
                         "El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"
                     </p>
                     <div style="margin-top: 30px;">
-                        <a href="#talleres-grid" style="background-color: #1b5e20; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">Ver todos los talleres</a>
+                        <a href="#talleres-grid" style="background-color: #66bb6a; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">Ver todos los talleres</a>
                     </div>
                 </div>
             </div>
