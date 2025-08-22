@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'filosofia',
     'saberes',
     'escuela',
-    'eventos',
     'hospedaje',
     'voluntariado',
     'donaciones',
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'blog',
     'participa',
     'autenticacion',
+    "eventos.apps.EventosConfig",
 
 
 ]
