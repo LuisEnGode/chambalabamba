@@ -1,83 +1,268 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block title %}Retiros | Chambalabamba{% endblock %}
 
 {% block content %}
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url({% static 'images/retiros-header.png' %}) no-repeat center center; background-size: cover;">
-    <div class="container">
-        <h1>Retiros</h1>
-        <h3 style="color: white;">Encuentra tu paz interior</h3>        
-    </div>
+    <section class="wf100 p100 inner-header" style="background: url('{% static "images/retiros-header.png" %}') no-repeat center center; background-size: cover;">
+        <div class="container">
+            <h1>Retiros</h1>  
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="#">Retiros</a></li>
+            </ul>
+        </div>
     </section>
-    <!--Inner Header End--> 
+    <!--Inner Header End-->
+    
     <!--Retiros Start-->
     <section class="wf100 p80 blog">
     <div class="blog-details">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12">
-                <!--Blog Single Content Start-->
-                <div class="blog-single-content">
-                    <div class="blog-single-thumb"><img src="{% static 'eventos/images/retiro_01.jpg' %}" alt=""></div>
-                    <div class="single-counter-box">
-                        <ul>
-                            <li class="col1"><strong>Próximo Retiro<br> Luna Llena</strong></li>
-                            <li class="col2">
-                            <div class="countdown"></div>
-                            </li>
-                            <li class="col3"> <a href="#">Reserva tu Lugar</a> </li>
-                        </ul>
+                <div class="col-lg-8 col-md-8">
+                    <!--Blog Single Content Start-->
+                    <div class="blog-single-content">
+                        <div class="blog-single-thumb">
+                            <img src="{% static 'images/retiros-00.png' %}" alt="Retiro en la naturaleza de Chambalabamba">
+                        </div>
+                        <div class="section-title-2">
+                            <h2>Descubre y conecta con tu esencia</h2>
+                        </div>
+                        
+                        <p/>
+                        <blockquote>
+                            <p>En el silencio de la naturaleza, el alma encuentra su verdadero hogar. Cada respiración es una oportunidad de renacer, cada momento una invitación a la paz interior.</p>
+                        </blockquote>                          
                     </div>
-                    <ul class="post-meta">
-                        <li><i class="fas fa-user-circle"></i> Guías de la Comunidad</li>
-                        <li><i class="fas fa-calendar-alt"></i> Fechas por Temporada</li>
-                        <li><i class="fas fa-comments"></i> Conecta y Comparte</li>
-                        <li class="tags"><i class="fas fa-tags"></i> <a href="#">Meditación</a> <a href="#">Yoga</a> <a href="#">Sanación</a> <a href="#">Naturaleza</a></li>
-                    </ul>
-                    <p>Nuestros retiros en Chambalabamba son una invitación a desconectar de la rutina y reconectar contigo mismo en un entorno de paz y belleza natural. Ofrecemos una variedad de retiros enfocados en el bienestar integral, combinando prácticas como la meditación, el yoga, la sonoterapia, y el contacto directo con la naturaleza.</p>
-                    <p>Cada retiro está diseñado para facilitar un proceso de introspección, sanación y renovación. Acompañado por guías experimentados, tendrás la oportunidad de explorar tu mundo interior, liberar tensiones y encontrar un estado de equilibrio y armonía. Es una pausa para nutrir el alma, calmar la mente y fortalecer el cuerpo.</p>
-                    <blockquote>
-                        <p>El silencio es el lienzo donde el alma pinta sus más bellos paisajes. Permítete este regalo de paz y autodescubrimiento.</p>
-                    </blockquote>
-
-                    <!--Event Gallery Start-->
-                    <div class="event-gallery gallery wf100">
-                        <h4>Espacios de Paz</h4>
-                        <ul>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_01.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_01.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_02.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_02.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_03.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_03.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_04.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_04.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_05.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_05.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_06.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_06.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_07.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_07.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/retiro_galeria_08.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/retiro_galeria_08.jpg' %}" alt=""> </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Event Gallery End-->                            
+                    <!--Blog Single Content End--> 
                 </div>
-                <!--Blog Single Content End--> 
-                </div>                     
+                
+                <div class="col-lg-4 col-md-4">
+                    <div class="sidebar">
+                        <!--Blog Single Content Start-->
+                        <div class="blog-single-content">
+                            <div class="section-title-2">
+                                <h2>Un viaje hacia tu interior</h2>
+                            </div>                            
+                            <p/>                       
+                            <p>Nuestros retiros en Chambalabamba son una invitación sagrada a desconectar del mundo exterior para reconectar contigo mismo en un entorno de paz y belleza natural excepcional. Ofrecemos una variedad de experiencias transformadoras enfocadas en el bienestar integral del ser.</p>
+                            <p>Combinamos sabiamente prácticas ancestrales como la meditación, el yoga, la sonoterapia, los baños de bosque y el contacto directo con los elementos naturales. Cada retiro está cuidadosamente diseñado para facilitar un profundo proceso de introspección, sanación y renovación espiritual.</p>
+                            <p>Acompañado por facilitadores experimentados y en un ambiente de total respeto y contención, tendrás la oportunidad única de explorar las profundidades de tu mundo interior, liberar tensiones acumuladas y encontrar ese estado natural de equilibrio y armonía que todos llevamos dentro.</p>
+                        </div>
+                        <!--Blog Single Content End-->    
+                    </div>    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="blog-single-content">
+                        <!--Tipos de Retiros Start-->
+                        <div class="chief-guest team-grid wf100">                        
+                            <div class="section-title-2">
+                                 <h2>Modalidades de transformación</h2>
+                            </div> 
+                            <p>Cada persona es única y por eso ofrecemos diferentes modalidades de retiro para honrar tu proceso personal. Ya sea que busques una experiencia individual de profunda introspección o prefieras la riqueza del intercambio grupal, tenemos el espacio perfecto para tu crecimiento espiritual.</p>
+                            <div class="row">
+                                <!--Retiro Box Start-->
+                                <div class="col-md-4">
+                                    <div class="team-box">
+                                        <img src="{% static 'images/retiros-03.png' %}" alt="Retiros Individuales">
+                                        <div class="team-info">
+                                            <h5>Retiros Individuales</h5>
+                                            <p>Un espacio íntimo para el encuentro contigo mismo, con acompañamiento personalizado y total privacidad.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Retiro Box End--> 
+                                <!--Retiro Box Start-->
+                                <div class="col-md-4">
+                                    <div class="team-box">
+                                        <img src="{% static 'images/retiros-06.png' %}" alt="Retiros Grupales">
+                                        <div class="team-info">
+                                            <h5>Retiros Grupales</h5>
+                                            <p>La magia del crecimiento compartido, donde cada participante enriquece la experiencia colectiva.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Retiro Box End--> 
+                                <!--Retiro Box Start-->
+                                <div class="col-md-4">
+                                    <div class="team-box">
+                                        <img src="{% static 'images/retiros-05.png' %}" alt="Retiros Temáticos">
+                                        <div class="team-info">
+                                            <h5>Retiros Temáticos</h5>
+                                            <p>Experiencias especializadas en meditación, yoga, sonoterapia o conexión con los elementos.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Retiro Box End--> 
+                            </div>
+                        </div>
+                        <!--Tipos de Retiros End--> 
+
+                        <!--Actividades del Retiro Start-->
+                        <div class="wf100" style="margin-top: 50px;">
+                            <div class="section-title-2">
+                                 <h2>Prácticas y experiencias</h2>
+                            </div>
+                            <p>Nuestros retiros integran una rica variedad de prácticas milenarias y contemporáneas, todas orientadas a facilitar tu proceso de autoconocimiento y sanación. Cada actividad está pensada para nutrir diferentes aspectos de tu ser: cuerpo, mente y espíritu.</p>
+                            
+                            <div class="row" style="margin-top: 30px;">
+                                <div class="col-md-6">
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♀️ Meditación y Mindfulness</h5>
+                                    </div>
+                                    <p>Sesiones diarias de meditación en diferentes modalidades: silenciosa, guiada, caminando y en conexión con la naturaleza.</p>
+                                    
+                                    <div class="section-title-2">
+                                       <h5>🌿 Baños de Bosque</h5> 
+                                    </div>
+                                    <p>Inmersión consciente en la naturaleza para activar tus sentidos y conectar profundamente con los ritmos naturales.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="section-title-2">
+                                        <h5>🎵 Sonoterapia</h5>
+                                    </div>
+                                    <p>Sesiones de sanación através del sonido con cuencos tibetanos, tambores chamánicos y instrumentos ancestrales.</p>
+                                    
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♂️ Yoga y Movimiento</h5>
+                                    </div>
+                                    <p>Prácticas de yoga adaptadas a todos los niveles, focalizadas en la conexión cuerpo-mente-espíritu.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Actividades del Retiro End-->
+
+                        <blockquote style="margin-top: 40px;">
+                            <p>El silencio es el lienzo donde el alma pinta sus más bellos paisajes. En Chambalabamba, cada amanecer es una nueva oportunidad de renacer, cada atardecer una invitación a la gratitud.</p>
+                        </blockquote>
+
+                        <!--Event Gallery Start-->
+                        <div class="event-gallery gallery wf100" style="margin-top: 50px;">
+                            <div class="section-title-2">
+                                <h2>Espacios sagrados de transformación</h2>
+                            </div> 
+                            
+                            <p>Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura.</p>
+                            <div id="retiros-gallery-carousel" class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/retiros-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-02.png' %}" alt="Meditación al amanecer en Chambalabamba"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/retiros-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-03.png' %}" alt="Espacios naturales para la contemplación"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/retiros-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-04.png' %}" alt="Conexión profunda con la naturaleza"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/retiros-07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-07.png' %}" alt="Retiros en armonía con los elementos"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Event Gallery End-->
+
+                        <!--Testimonial Start-->
+                        <section class="testimonials-section bg-white wf100" style="margin-top: 50px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section-title-2 text-center">
+                                            <h2>Voces de transformación</h2>
+                                        </div>
+                                        <div id="retiros-testimonials" class="owl-carousel owl-theme">
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Mi retiro en Chambalabamba fue mucho más que unas vacaciones espirituales. Fue un verdadero renacer. La conexión con la naturaleza y conmigo misma fue tan profunda que regresé siendo una persona completamente renovada."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>María Elena</strong> México </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Los facilitadores de Chambalabamba tienen un don especial para crear espacios sagrados. Me sentí acompañado y contenido en cada momento de mi proceso de autoconocimiento."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Carlos</strong> Argentina </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"Nunca imaginé que el silencio pudiera ser tan revelador. En Chambalabamba aprendí a escuchar mi propia voz interior y a encontrar paz en medio del caos. Una experiencia que recomiendo a todos."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Ana</strong> Colombia </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                            <!--testimonials box start-->
+                                            <div class="item">
+                                                <p>"La combinación de prácticas de sanación y el entorno natural de Chambalabamba es simplemente mágica. Volví a casa con una sensación de claridad y propósito que no había sentido en años."</p>
+                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Javier</strong> España </div>
+                                            </div>
+                                            <!--testimonials box End-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--Testimonial End-->
+                        <style>
+                            /* Remove previous testimonial styles as they are replaced by owl-carousel styles */
+                            .testimonials-container {
+                                display: none; /* Hide the old container */
+                            }
+                            .testimonials-section .testimonial-box {
+                                display: none; /* Hide the old boxes */
+                            }
+                        </style>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     </section>
-    <!--Retiros End--> 
+    <!--Retiros End-->
+    <script>
+        $(document).ready(function() {
+            $("#retiros-gallery-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+
+            $("#retiros-testimonials").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

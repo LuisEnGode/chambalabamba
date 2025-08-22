@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{ festival.name }} | Chambalabamba{% endblock %}
+
+{% block content %}
+<style>
+    .festival-detail-container {
+        padding: 80px 0;
+    }
+    .festival-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-bottom: 30px;
+    }
+    .festival-title {
+        color: #1b5e20;
+        margin-bottom: 20px;
+    }
+    .festival-meta {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .festival-meta li {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .festival-meta i {
+        color: #1b5e20;
+        margin-right: 10px;
+    }
+    .festival-description {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+</style>
+
+<!--Inner Header Start-->
+<section class="wf100 p100 inner-header" style="background: url('{% static festival.image %}') no-repeat center center; background-size: cover;">
+    <div class="container">
+        <h1>{{ festival.name }}</h1>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'eventos:festivales' %}">Festivales</a></li>
+            <li><a href="#">{{ festival.name }}</a></li>
+        </ul>
+    </div>
+</section>
+<!--Inner Header End-->
+
+<section class="festival-detail-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto" style="margin-top: 80px;">                
+                <ul class="festival-meta">
+                    <li><i class="fas fa-calendar-alt"></i><strong>Fecha:</strong> {{ festival.date }}</li>
+                    <li><i class="fas fa-clock"></i><strong>Hora:</strong> {{ festival.time }}</li>
+                    <li><i class="fas fa-map-marker-alt"></i><strong>Lugar:</strong> {{ festival.place }}</li>
+                </ul>
+                <div class="festival-description">
+                    {{ festival.description|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

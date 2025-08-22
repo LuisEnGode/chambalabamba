@@ -1,0 +1,80 @@
+[
+    {
+        "model": "eventos.festival",
+        "pk": 1,
+        "fields": {
+            "name": "Festival de la Cosecha",
+            "description": "Celebramos la abundancia de la tierra con música, danza y comida. Un día para agradecer y compartir los frutos de nuestro trabajo.",
+            "date": "Cada Solsticio de Verano",
+            "time": "Todo el día",
+            "place": "Plaza Central, Chambalabamba",
+            "image": "images/artes_01.png",
+            "slug": "festival-de-la-cosecha"
+        }
+    },
+    {
+        "model": "eventos.festival",
+        "pk": 2,
+        "fields": {
+            "name": "Encuentro de Músicas del Mundo",
+            "description": "Un viaje sonoro que nos conecta con diferentes culturas y tradiciones. Artistas de todo el mundo se reúnen para compartir su arte.",
+            "date": "Equinoccio de Otoño",
+            "time": "18:00 - 23:00",
+            "place": "Anfiteatro Natural, Chambalabamba",
+            "image": "images/artes_02.png",
+            "slug": "encuentro-de-musicas-del-mundo"
+        }
+    },
+    {
+        "model": "eventos.festival",
+        "pk": 3,
+        "fields": {
+            "name": "Feria de Intercambio de Semillas",
+            "description": "Un espacio para compartir y preservar la diversidad de nuestras semillas. Talleres, charlas y un gran mercado de intercambio.",
+            "date": "Primer fin de semana de Primavera",
+            "time": "10:00 - 17:00",
+            "place": "Mercado Comunitario, Chambalabamba",
+            "image": "images/artes_03.png",
+            "slug": "feria-de-intercambio-de-semillas"
+        }
+    },
+    {
+        "model": "eventos.festival",
+        "pk": 4,
+        "fields": {
+            "name": "Festival de Arte y Permacultura",
+            "description": "La creatividad y la sostenibilidad se unen en este festival. Instalaciones de arte, talleres de permacultura y soluciones ecológicas.",
+            "date": "Segunda semana de Julio",
+            "time": "Todo el día",
+            "place": "Toda la comunidad, Chambalabamba",
+            "image": "images/artes_04.png",
+            "slug": "festival-de-arte-y-permacultura"
+        }
+    },
+    {
+        "model": "eventos.festival",
+        "pk": 5,
+        "fields": {
+            "name": "Celebración del Día de la Tierra",
+            "description": "Un día para honrar a nuestra Madre Tierra. Actividades de reforestación, ceremonias y talleres de conciencia ambiental.",
+            "date": "22 de Abril",
+            "time": "12:00 - 20:00",
+            "place": "Bosque Comunitario, Chambalabamba",
+            "image": "images/artes_05.png",
+            "slug": "celebracion-del-dia-de-la-tierra"
+        }
+    },
+    {
+        "model": "eventos.festival",
+        "pk": 6,
+        "fields": {
+            "name": "Festival de Cine Consciente",
+            "description": "Proyecciones de películas y documentales que inspiran un cambio positivo en el mundo. Debates con directores y protagonistas.",
+            "date": "Tercer fin de semana de Noviembre",
+            "time": "19:00 - 22:00",
+            "place": "Maloka Audiovisual, Chambalabamba",
+            "image": "images/artes_06.png",
+            "slug": "festival-de-cine-consciente"
+        }
+    }
+]
