@@ -24,7 +24,10 @@
     <section class="wf100 p100 inner-header" style="background: url('{% static "images/escuela-header.png" %}') no-repeat center center; background-size: cover;">
     <div class="container">
         <h1>Escuela Viva</h1>
-        <h3 style="color: white;">Aprendizajes para la vida</h3>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="#">Escuela</a></li>
+        </ul>
     </div>
 
     </section>
@@ -39,7 +42,9 @@
                     <div class="blog-single-content">                        
                         <div class="blog-single-thumb"><img src="{% static 'images/escuela_01.png' %}" alt=""></div>
 
-                        <h2 style="color: #1b5e20">Conoce la escuela, nuestra filosofía e infraestructura</h2>
+                        <div class="section-title-2">
+                            <h2>Conoce la escuela, nuestra filosofía e infraestructura</h2>
+                        </div>
                         <p/>
                         <p>Ofrecemos talleres y cursos en áreas como la permacultura, la bioconstrucción, la agroecología, la salud natural y el desarrollo personal. Creemos en una educación que integra el cuerpo, la mente y el espíritu, preparando a las personas para ser agentes de cambio positivo en sus vidas y en el mundo.</p>                        
                         <blockquote>
@@ -48,37 +53,35 @@
                     
                         <!--Event Gallery Start-->
                         <div class="event-gallery gallery">
-                            <h4 style="color: #1b5e20">Nuestro dia a dia</h4>
-                            <ul>
-                                <li>
+                            <div class="section-title-2">
+                                <h5>Nuestro dia a dia</h5>
+                            </div>
+                            <div id="escuela-gallery-carousel" class="owl-carousel owl-theme">
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela1.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela1.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela2.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela2.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela3.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela3.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela4.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela4.png' %}" alt=""> </div>
-                                </li>                                 
-                            </ul>
-                        </div>
-                        <div class="event-gallery gallery wf100">
-                            <ul>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela5.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela5.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela6.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela6.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela7.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela7.png' %}" alt=""> </div>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="item">
                                     <div class="gallery-img"> <a href="{% static 'images/galeria-escuela8.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/galeria-escuela8.png' %}" alt=""> </div>
-                                </li>                                 
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                         <!--Event Gallery End-->                            
                     </div>
@@ -88,7 +91,9 @@
                     <div class="sidebar">
                         <!--Blog Single Content Start-->
                         <div class="blog-single-content">
-                            <h4 style="color: #1b5e20">Un ambiente diseñado para el desarrollo infantil</h4>
+                            <div class="section-title-2">
+                                <h5>Un ambiente diseñado para el desarrollo infantil</h5>
+                            </div>
                             <p/>                       
                             <p>La Escuela Viva de Chambalabamba es un espacio de aprendizaje dinámico y en constante evolución, donde niños, jóvenes y adultos tienen la oportunidad de conectar con saberes ancestrales y prácticas sostenibles. Nuestro enfoque pedagógico se basa en la experiencia directa, el respeto por los ciclos de la naturaleza y el fomento de la autonomía y el pensamiento crítico.</p>
                             <blockquote class="instagram-media" 
@@ -112,7 +117,9 @@
 
                         <!--Project List Widget Start-->    
                         <div class="side-widget project-list-widget">
-                            <h5 style="color: #1b5e20">Proyectos de la escuela en curso</h5>
+                            <div class="section-title-2">
+                                <h5>Proyectos de la escuela en curso</h5>
+                            </div>
                             <ul>
                                 <li><a href="#">Aprendizajes ancestrales</a></li>
                                 <li><a href="#">Aprendiendo y desaprendiendo</a></li>
@@ -127,4 +134,50 @@
     </div>
     </section>
     <!--Escuela End--> 
+
+    <script>
+        $(document).ready(function() {
+            $("#escuela-gallery-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+
+            $("#escuela-gallery-carousel-2").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
