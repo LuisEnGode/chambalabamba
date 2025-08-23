@@ -12,6 +12,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [
+    'autenticacion.apps.AutenticacionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,11 +39,12 @@ INSTALLED_APPS = [
     'contacto',
     'blog',
     'participa',
-    'autenticacion',
     "eventos.apps.EventosConfig",
-
-
 ]
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "perfil"
+LOGOUT_REDIRECT_URL = "home"
 
 # Middleware
 MIDDLEWARE = [

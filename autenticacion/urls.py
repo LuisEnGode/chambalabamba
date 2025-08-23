@@ -1,14 +1,17 @@
-from django.conf.urls.static import static
+# apps/autenticacion/urls.py
+from django.urls import path
 from django.contrib import admin
-from django.urls import path, include
-
-from .views import VRegistro,cerrar_sesion,logear,actualizar_perfil
+from .views import (
+    IngresarView, SalirView, registro, perfil, editar_perfil,
+    area_residentes, cambiar_rol_usuario
+)
 
 urlpatterns = [
-
-
-    path("", VRegistro.as_view(), name="Autenticacion"),
-    path("cerrar_sesion/", cerrar_sesion, name="cerrar_sesion"),
-    path("logear/", logear, name="logear"),
-    path("actualizar_perfil/", actualizar_perfil, name="actualizar_perfil"),
+    path("login/", IngresarView.as_view(), name="login"),
+    path("logout/", SalirView.as_view(), name="logout"),
+    path("registro/", registro, name="registro"),
+    path("perfil/", perfil, name="perfil"),
+    path("perfil/editar/", editar_perfil, name="perfil_editar"),
+    path("residentes/", area_residentes, name="area_residentes"),
+    path("cambiar-rol/<int:user_id>/", cambiar_rol_usuario, name="cambiar_rol_usuario"),
 ]

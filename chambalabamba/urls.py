@@ -32,8 +32,8 @@ urlpatterns = [
     path('donaciones/', include('donaciones.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('tienda/', include('tienda.urls')),
-    path('autenticacion/',include('autenticacion.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
+    path("auth/", include("autenticacion.urls")),
+   # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 
 ]
 

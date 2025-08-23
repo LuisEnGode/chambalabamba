@@ -5,7 +5,7 @@ from .models import Post
 from django.shortcuts import render, redirect
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
-from autenticacion.models import PerfilUsuario, TipoUsuario, Especialidad
+
 
 
 from django.db.models import Count

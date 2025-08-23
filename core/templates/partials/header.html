@@ -121,8 +121,12 @@
                 </li>
 
                     <li class="login-reg">
-
-                        <a href="{% url 'actualizar_perfil' %}">Actualizar Perfil</a> | <a href="{% url 'cerrar_sesion' %}">Salir</a>
+                        <a href="{% url 'perfil' %}">Mi perfil</a>
+                         <a href="{% url 'perfil_editar' %}">Actualizar Perfil</a> |
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">Salir</button>
+                          </form>
                     </li>
                 </ul>
                 {% else %}
@@ -158,7 +162,7 @@
                         </div>
                     </li>
                     <li class="login-reg">
-                        <a href="{% url 'logear' %}">Login</a> | <a href="{% url 'Autenticacion' %}">Registrarse</a>
+                         <a href="{% url 'login' %}">Login</a> | <a href="{% url 'registro' %}">Registrarse</a>
                     </li>
 
 
