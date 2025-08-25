@@ -4,6 +4,6 @@
   <h1>Cambiar rol de {{ perfil.user.username }}</h1>
   <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Actualizar rol</button>
+    <button type="submit" class="btn btn-primary">Actualizar rol</button>
   </form>
 {% endblock %}

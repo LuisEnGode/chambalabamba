@@ -13,5 +13,5 @@ urlpatterns = [
     path("perfil/", perfil, name="perfil"),
     path("perfil/editar/", editar_perfil, name="perfil_editar"),
     path("residentes/", area_residentes, name="area_residentes"),
-    path("cambiar-rol/<int:user_id>/", cambiar_rol_usuario, name="cambiar_rol_usuario"),
+    #path("cambiar-rol/<int:user_id>/", cambiar_rol_usuario, name="cambiar_rol_usuario"),
 ]
