@@ -12,7 +12,7 @@ class TipoUsuario(models.Model):
     y asignarles permisos via Group.
     """
     nombre = models.CharField(max_length=30, unique=True)
-    slug = models.SlugField(max_length=30, unique=True, help_text="Identificador único (ej. 'externo', 'residente').")
+    slug = models.SlugField(max_length=30, unique=True, help_text="Identificador único (ej. 'externo', 'residente').",blank=True)
     descripcion = models.TextField(blank=True)
 
     # Grupo de permisos asociado a este rol (se crea automáticamente en signals)
