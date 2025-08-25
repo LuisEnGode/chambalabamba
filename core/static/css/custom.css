@@ -6992,3 +6992,50 @@ section.wf100.p80.fcampaigns {
 }
 
 /*  ==GALERIA PARA SECCION PARTICIPA==*/
+
+
+/* PARA COLOCAR EL CSS DE FLYER */
+
+/* =======================
+   Flyers y Galerías
+   ======================= */
+.flyer-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: .75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+  background: #f8f9fa;
+}
+
+.flyer-1x1::before  { content:""; display:block; padding-top:100%; }
+.flyer-4x5::before  { content:""; display:block; padding-top:125%; }
+.flyer-16x9::before { content:""; display:block; padding-top:56.25%; }
+.flyer-9x16::before { content:""; display:block; padding-top:177.78%; }
+
+.flyer-frame > img {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+}
+
+.flyer-badge {
+  position:absolute; top:.5rem; right:.5rem;
+}
+
+
+/*para seccion flyer */
+
+/* Asegura separación real desde la sección anterior */
+#home-events {
+  margin-top: 64px;              /* espacio externo por arriba */
+  border-top: 1px solid #e9ecef; /* separador sutil */
+}
+
+/* Por si la sección anterior anula márgenes o tiene overflow */
+.services-area { padding-bottom: 32px; } /* da aire hacia abajo */
+.services-area + #home-events { margin-top: 72px; } /* fuerza gap extra cuando son adyacentes */
+
+/* Centrado/ancho máximo del flyer (si aún no lo tienes) */
+.flyer-max-480 { max-width: 480px; }
+.flyer-max-480 .flyer-frame { margin: 0 auto; }

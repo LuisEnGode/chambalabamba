@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'contacto',
     'blog',
     'participa',
+    'contenido',
     "eventos.apps.EventosConfig",
 ]
 
