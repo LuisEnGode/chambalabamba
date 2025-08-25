@@ -15,9 +15,10 @@ def fill_slugs(apps, schema_editor):
             tu.save(update_fields=['slug'])
 
 class Migration(migrations.Migration):
-    dependencies = [
-        ('autenticacion', '0004_fix_tipousuario_slug_column'),
-    ]
+
+    dependencies = [("autenticacion", "0002_add_tipousuario_slug")]
+
+
     operations = [
         migrations.RunPython(fill_slugs, migrations.RunPython.noop),
     ]
