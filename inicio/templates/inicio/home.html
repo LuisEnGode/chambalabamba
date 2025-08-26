@@ -7,7 +7,6 @@ Inicio – Chambalabamba
 {% endblock %}
 
 {% block content %}
-<!-- Aquí va el contenido de donaciones.html menos header y footer -->
 
 <!--Slider Start-->
 <!-- Contenedor envolvente relativo para el carrusel y la marca de agua -->
@@ -119,19 +118,20 @@ Inicio – Chambalabamba
 </section>
 <!--Service Area End-->
 <section id="home-events" class="pt-5 pb-5">
-  <div class="container">
-    <h3 class="h4 text-center mb-4 pt-2">Últimos eventos</h3>
-<small class="text-muted">asd{{ slot.flyer.imagen.url }}</small>
-    {% get_placement 'home_hero' as slot %}
-    {% if slot and slot.flyer %}
-      <div class="flyer-max-480 mx-auto text-center">
-        <h4 class="h6 mb-3">{{ slot.flyer.titulo }}</h4>
-        {% include "contenido/_flyer.html" with flyer=slot.flyer show_badge=False %}
-      </div>
-    {% else %}
-      <p class="text-center text-muted mb-0">Pronto nuevos eventos.</p>
-    {% endif %}
-  </div>
+    <div class="container">
+        <h3 class="h4 text-center mb-4 pt-2">Últimos eventos</h3>
+
+        {% get_placement 'home_hero' as slot %}
+         <small class="text-muted">asd{{ slot.flyer.imagen.url }}</small>
+        {% if slot and slot.flyer %}
+        <div class="flyer-max-480 mx-auto text-center">
+            <h4 class="h6 mb-3">{{ slot.flyer.titulo }}</h4>
+            {% include "contenido/_flyer.html" with flyer=slot.flyer show_badge=False %}
+        </div>
+        {% else %}
+        <p class="text-center text-muted mb-0">Pronto nuevos eventos.</p>
+        {% endif %}
+    </div>
 </section>
 
 
