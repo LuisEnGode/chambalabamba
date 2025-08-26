@@ -36,6 +36,3 @@ urlpatterns = [
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

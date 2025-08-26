@@ -121,7 +121,7 @@ Inicio – Chambalabamba
 <section id="home-events" class="pt-5 pb-5">
   <div class="container">
     <h3 class="h4 text-center mb-4 pt-2">Últimos eventos</h3>
-
+<small class="text-muted">asd{{ slot.flyer.imagen.url }}</small>
     {% get_placement 'home_hero' as slot %}
     {% if slot and slot.flyer %}
       <div class="flyer-max-480 mx-auto text-center">
