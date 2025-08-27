@@ -122,7 +122,9 @@ Inicio – Chambalabamba
         <h3 class="h4 text-center mb-4 pt-2">Últimos eventos</h3>
 
         {% get_placement 'home_hero' as slot %}
-         <small class="text-muted">asd{{ slot.flyer.imagen.url }}</small>
+        <!--
+         <small class="text-muted">{{ slot.flyer.imagen.url }}</small>
+         -->
         {% if slot and slot.flyer %}
         <div class="flyer-max-480 mx-auto text-center">
             <h4 class="h6 mb-3">{{ slot.flyer.titulo }}</h4>
