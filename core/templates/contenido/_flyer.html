@@ -1,0 +1,9 @@
+{# templates/contenido/_flyer.html #}
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/flyer.css' %}">
+<div class="flyer-frame flyer-{{ flyer.ratio }}">
+  <img src="{{ flyer.imagen.url }}" alt="{{ flyer.alt|default:flyer.titulo }}">
+  <!--
+    <span class="badge badge-light flyer-badge">{{ flyer.ratio }}</span>
+  -->
+</div>

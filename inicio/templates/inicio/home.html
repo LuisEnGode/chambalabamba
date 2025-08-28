@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load contenido_extras %}
 {% load static %}
 
 {% block title %}
@@ -117,15 +118,34 @@ Inicio – Chambalabamba
     </div>
 </section>
 <!--Service Area End-->
-<div>
-    seccion administrable
+<section id="home-events" class="pt-5 pb-5">
+    <div class="container">
+        <h3 class="h4 text-center mb-4 pt-2">Últimos eventos</h3>
 
+        {% get_placement 'home_hero' as slot %}
+        <!--
+         <small class="text-muted">{{ slot.flyer.imagen.url }}</small>
+         -->
+        {% if slot and slot.flyer %}
+        <div class="flyer-max-480 mx-auto text-center">
+            <h4 class="h6 mb-3">{{ slot.flyer.titulo }}</h4>
+            {% include "contenido/_flyer.html" with flyer=slot.flyer show_badge=False %}
+        </div>
+        {% else %}
+        <p class="text-center text-muted mb-0">Pronto nuevos eventos.</p>
+        {% endif %}
+    </div>
+</section>
+
+
+<!--About Section Start-->
 </div>
 <!--About Section Start
 <section class="home2-about wf100 p100 gallery">
     <div class="container">
         <div class="row">
             <div class="col-md -5">
+                 <h3 align="center">Sobre Chambalabamba</h3>
                 <div class="video-responsive">
                     <iframe src="https://player.vimeo.com/video/1101693344?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                             width="1280" height="720" frameborder="0"
@@ -135,7 +155,7 @@ Inicio – Chambalabamba
 
                 <div class="col-md-7">
                     <div class="h2-about-txt" style="text-align: justify;">
-                        <h3>Sobre Chambalabamba</h3>
+
                         <h2>Una Ecocentro viva donde florece la libertad, el arte y la conciencia.</h2>
                         <p>
                             Chambalabamba es una comunidad ecológica ubicada en Vilcabamba, Ecuador. Aquí, aprendemos a
@@ -152,6 +172,8 @@ Inicio – Chambalabamba
                 </div>
             </div>
         </div>
+
+
 </section>
 -->
 <!--About Section End-->
