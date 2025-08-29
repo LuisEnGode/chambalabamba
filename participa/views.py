@@ -13,5 +13,8 @@ def estancias(request):
 def estancia_detail(request,id):
     return render(request, 'participa/estancias/estancia-detail.html')
 
+def donaciones(request,id):
+    return render(request, 'donaciones/donaciones.html')
+
 
 # Create your views here.
