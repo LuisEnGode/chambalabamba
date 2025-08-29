@@ -12,6 +12,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [
+    'autenticacion.apps.AutenticacionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,7 +31,6 @@ INSTALLED_APPS = [
     'filosofia',
     'saberes',
     'escuela',
-    'eventos',
     'hospedaje',
     'voluntariado',
     'donaciones',
@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'contacto',
     'blog',
     'participa',
-    'autenticacion',
-
-
+    'contenido',
+    "eventos.apps.EventosConfig",
 ]
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "perfil"
+LOGOUT_REDIRECT_URL = "home"
 
 # Middleware
 MIDDLEWARE = [
@@ -85,7 +88,7 @@ WSGI_APPLICATION = 'chambalabamba.wsgi.application'
 # Archivos estáticos
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

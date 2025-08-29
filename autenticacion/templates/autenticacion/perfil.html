@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+  <h1>Mi perfil</h1>
+  <p><b>Usuario:</b> {{ request.user.username }}</p>
+  <p><b>Rol:</b> {{ perfil.tipo_usuario.nombre }} ({{ perfil.tipo_usuario.slug }})</p>
+  <p><b>Nombre público:</b> {{ perfil.display_name }}</p>
+  <p><b>Teléfono:</b> {{ perfil.telefono }}</p>
+  <p><b>Bio:</b> {{ perfil.bio }}</p>
+
+  {% if perfil.es_residente %}
+    <h3>Datos de residente</h3>
+    <p><b>Rol en comunidad:</b> {{ perfil.rol_en_comunidad }}</p>
+    <p><b>Áreas de aporte:</b> {{ perfil.areas_aporte }}</p>
+    <p><b>Disponibilidad:</b> {{ perfil.disponibilidad }}</p>
+    <p><b>Desde:</b> {{ perfil.fecha_residencia_desde }}</p>
+  {% endif %}
+{% endblock %}
