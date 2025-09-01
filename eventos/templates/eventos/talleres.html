@@ -69,6 +69,7 @@
                         <div class="event-thumb">
                             <a href="{% url 'eventos:taller_detail' taller.slug %}"><i class="fas fa-link"></i></a>
                             <img src="{{ taller.image.url }}" alt="{{ taller.name }}">
+                            {{taller.image.url}}
                         </div>
                         <div class="event-txt">
                             <h5><a href="{% url 'eventos:taller_detail' taller.slug %}">{{ taller.name }}</a></h5>
