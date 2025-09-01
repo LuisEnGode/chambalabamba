@@ -1,0 +1,22 @@
+{% if items %}
+<div class="cpro-slider owl-carousel owl-theme">
+  {% for gi in items %}
+    <div class="item">
+      <div class="pro-box">
+        <img src="{{ gi.asset.imagen.url }}"
+             alt="{{ gi.asset.alt|default:gi.asset.titulo }}"
+             style="width:100%;height:260px;object-fit:cover;display:block;">
+        <h5>{{ gi.asset.titulo }} </h5>
+        <div class="pro-hover">
+          <h6>{{ gi.asset.titulo }}</h6>
+            <p>{{ gi.asset.credito }}</p>
+          {% if gi.caption %}<p>{{ gi.credito }}</p>{% endif %}
+          {% if cta_url %}<a href="{{ cta_url }}">{{ cta_text }}</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="text-center text-muted mb-0">Pronto subiremos fotos.</p>
+{% endif %}
