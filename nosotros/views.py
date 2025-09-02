@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import NosotrosPage
 
 def nuestro_camino(request):
-    return render(request, 'nosotros/nuestro_camino.html')
+    page = get_object_or_404(NosotrosPage, enabled=True)
+    return render(request, 'nosotros/nuestro_camino.html', {"page": page})
 
 def gobernanza(request):
     return render(request, 'nosotros/gobernanza.html')

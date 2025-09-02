@@ -24,6 +24,7 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap4",
+    "django_cleanup.apps.CleanupConfig",
     # apps personalizadas:
     'core',
     'inicio',
