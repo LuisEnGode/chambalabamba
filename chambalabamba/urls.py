@@ -35,5 +35,8 @@ urlpatterns = [
     path('tienda/', include('tienda.urls')),
     path("auth/", include("autenticacion.urls")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
-    re_path(r"^media/(?P<path>.*)$", serve_static, {"document_root": settings.MEDIA_ROOT}),
-]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
