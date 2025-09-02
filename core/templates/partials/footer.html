@@ -57,13 +57,11 @@
                 {% url 'donaciones' as donaciones_url %}
                 {% get_placement 'donaciones_banner' as slot %}
                 {% if slot and slot.flyer and slot.flyer.publicado and slot.flyer.imagen %}
-                <div class="item">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="f-product">
                         <a href="{{ donaciones_url }}" class="d-block">
-                            <img
-                                    src="{{ slot.flyer.imagen.url }}?v={{ slot.flyer.updated_at|date:'U' }}"
-                                    alt="{{ slot.flyer.alt|default:slot.flyer.titulo }}"
-                                    style="display:block;width:100%;height:240px;object-fit:cover;">
+                            {% include "contenido/_flyer.html" with flyer=slot.flyer show_badge=False %}
+
                         </a>
                         <div class="fp-text">
                             <h6><a href="{{ donaciones_url }}">{{ slot.flyer.titulo }}</a></h6>
@@ -72,8 +70,6 @@
                     </div>
                 </div>
                 {% endif %}
-
-
             </div>
         </div>
     </div>
