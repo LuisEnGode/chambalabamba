@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     # apps personalizadas:
     'core',
     'inicio',
-    'nosotros',
     'filosofia',
     'saberes',
     'escuela',
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'participa',
     'contenido',
     "eventos.apps.EventosConfig",
+    "nosotros.apps.NosotrosConfig",
 ]
 
 LOGIN_URL = "login"

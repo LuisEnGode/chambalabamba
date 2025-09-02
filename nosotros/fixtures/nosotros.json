@@ -1,0 +1,89 @@
+[
+  {
+    "model": "nosotros.innerheader",
+    "pk": 1,
+    "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Nuestro camino",
+      "background": "nosotros/conocenos-header.png"
+    }
+  },
+  {
+    "model": "nosotros.aboutsection",
+    "pk": 1,
+    "fields": {
+      "title": "Chambalabamba, ecoaldea viva",
+      "lead": "Vivimos una propuesta libre, fuera del sistema convencional, cuidando la Tierra, el agua y la energía, floreciendo como seres conscientes.",
+      "body": "En Chambalabamba, abrazamos la autosuficiencia, la bioconstrucción, el aprendizaje colectivo y el arte como forma de sanación y transformación.",
+      "cta_text": "Contáctanos",
+      "cta_url": "/contacto/",
+      "video_url": "https://player.vimeo.com/video/1101693344?title=0&byline=0&portrait=0&badge=0&autopause=0"
+    }
+  },
+  {
+    "model": "nosotros.historysection",
+    "pk": 1,
+    "fields": {
+      "subtitle": "About our History",
+      "title": "Our Success Story",
+      "side_image": ""
+    }
+  },
+  {
+    "model": "nosotros.ecoaldeasection",
+    "pk": 1,
+    "fields": {
+      "title": "Sé parte de la Eco Aldea"
+    }
+  },
+  {
+    "model": "nosotros.nosotrospage",
+    "pk": 1,
+    "fields": {
+      "enabled": true,
+      "header": 1,
+      "about": 1,
+      "history": 1,
+      "ecoaldea": 1
+    }
+  },
+
+
+  {
+    "model": "nosotros.timelineperiod",
+    "pk": 1,
+    "fields": { "history": 1, "label": "2015 - 2018", "order": 0 }
+  },
+  { "model": "nosotros.timelineitem", "pk": 1,
+    "fields": { "period": 1, "title": "We Started", "body": "Inicio del proceso comunitario.", "order": 0 } },
+  { "model": "nosotros.timelineitem", "pk": 2,
+    "fields": { "period": 1, "title": "Results of Hardwork", "body": "Cosecha de aprendizajes y expansión.", "order": 1 } },
+  { "model": "nosotros.timelineitem", "pk": 3,
+    "fields": { "period": 1, "title": "Project", "body": "Consolidación de proyectos clave.", "order": 2 } },
+
+
+  {
+    "model": "nosotros.ecoaldeacard",
+    "pk": 1,
+    "fields": {
+      "section": 1, "icon": "", "title": "Conoce el voluntariado",
+      "text": "Sumarte desde el corazón, aprendiendo y aportando.", "link_text": "", "link_url": "", "order": 0
+    }
+  },
+  {
+    "model": "nosotros.ecoaldeacard",
+    "pk": 2,
+    "fields": {
+      "section": 1, "icon": "", "title": "Cómo donar",
+      "text": "Acompaña y fortalece el proyecto.", "link_text": "Donar", "link_url": "/donaciones/", "order": 1
+    }
+  },
+  {
+    "model": "nosotros.ecoaldeacard",
+    "pk": 3,
+    "fields": {
+      "section": 1, "icon": "", "title": "Escríbenos",
+      "text": "Estamos para escucharte.", "link_text": "Contacto", "link_url": "/contacto/", "order": 2
+    }
+  }
+]
