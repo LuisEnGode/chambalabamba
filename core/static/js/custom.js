@@ -490,27 +490,3 @@ $(document).ready(function () {
 
 /*CODIGO PARA GALERIA DE IMAGENES*/
 
-<script>
-  (function () {
-    var $sliders = $('.cpro-slider');
-    $sliders.each(function(){
-      $(this).owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: true,
-        dots: false,
-        autoplay: false,
-        responsive: {
-          0:   { items: 1 },
-          576: { items: 2 },
-          992: { items: 3 },
-          1200:{ items: 4 }
-        }
-      });
-    });
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      var $pane = $($(e.target).attr('href'));
-      $pane.find('.cpro-slider').trigger('refresh.owl.carousel');
-    });
-  })();
-</script>
