@@ -87,7 +87,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'chambalabamba.wsgi.application'
 
 # Archivos estáticos
-
+STATIC_URL = "/static/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -101,6 +101,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog', 'static'),
     os.path.join(BASE_DIR, 'participa', 'static'),
     os.path.join(BASE_DIR, 'tienda', 'static'),
+    os.path.join(BASE_DIR, 'eventos', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
