@@ -42,25 +42,21 @@
                   <div class="row">
                      <div class="col-lg-6">
                         <div class="about-text">
-
-                           <h2>Chambalabamba, ecoaldea viva</h2>
-                           <p><strong>Vivimos una propuesta libre, fuera del sistema convencional, cuidando la Tierra,
-                              el agua y la energía, floreciendo como seres conscientes.</strong></p>
-                           <p>En Chambalabamba, abrazamos la autosuficiencia, la bioconstrucción, el aprendizaje
-                              colectivo y el arte como forma de sanación y transformación. La Tierra no está en crisis,
-                              es la humanidad la que necesita volver a la raíz: reconectar con lo esencial, vivir en
-                              armonía y celebrar la vida.</p>
-                           <a href="#">Contact Us</a>
+                           <h2>{{ page.about.title }}</h2>
+                           <p><strong>{{ page.about.lead }}</strong></p>
+                           <p>{{ page.about.body }}</p>
+                           {% if page.about.cta_url %}
+                           <a href="{{ page.about.cta_url }}">{{ page.about.cta_text }}</a>
+                           {% endif %}
                         </div>
                      </div>
                      <div class="col-lg-6">
+                        {% if page.about.video_url %}
                         <div class="video-responsive">
-                    <iframe src="https://player.vimeo.com/video/1101693344?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                            width="1280" height="720" frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>
-                </div>
-                     </div>
+                           <iframe src="{{ page.about.video_url }}" width="1280" height="720" frameborder="0"
+                                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"></iframe>
+                        </div>
+                        {% endif %}
                   </div>
                </div>
             </div>
@@ -70,180 +66,49 @@
                <div class="container">
                   <div class="row">
                      <div class="col-lg-4">
-                    <div class="story-title-bg"
-     style='background-image: url("{% static "nosotros/images/mofufo.png" %}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;'>
-</div>
+                        <!--<div class="story-title-bg"
+         style='background-image: url("{% static "nosotros/images/mofufo.png" %}");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;'>
+    </div>-->
+                        {% if page.history.side_image %}
+  <div class="story-title-bg"
+       style='background-image:url("{{ page.history.side_image.url }}");
+              background-size:cover;background-position:center;background-repeat:no-repeat;'></div>
+  {% endif %}
                      </div>
                      <div class="col-lg-8">
                         <div class="section-title-2">
-                           <h5>About our History</h5>
-                           <h2>Our Success Story</h2>
+                           <h5>{{ page.history.subtitle }}</h5>
+                           <h2>{{ page.history.title }}</h2>
                         </div>
                         <!--eco History Start-->
                         <div class="eco-history">
                            <div class="timeline-slider">
                               <div class="timeline-nav">
-                                 <div><span><strong>2000 - 2002</strong></span></div>
-                                 <div><span><strong>2002 - 2006</strong></span></div>
-                                 <div><span><strong>2006 - 2009</strong></span></div>
-                                 <div><span><strong>2009 - 2012</strong></span></div>
-                                 <div><span><strong>2012 - 2015</strong></span></div>
-                                 <div><span><strong>2015 - 2018</strong></span></div>
+                                 {% for per in page.history.periods.all %}
+                                 <div><span><strong>{{ per.label }}</strong></span></div>
+                                 {% endfor %}
                               </div>
                               <div class="timeline">
-                                 <!--Timeline Text Start-->
+                                 {% for per in page.history.periods.all %}
                                  <div>
                                     <div class="row">
-                                       <div class=" col-4">
+                                       {% for it in per.items.all %}
+                                       <div class="col-4">
                                           <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
+                                             <h6>{{ it.title }}</h6>
+                                             <p>{{ it.body }}</p>
                                           </div>
                                        </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Project </h6>
-                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
-                                          </div>
-                                       </div>
+                                       {% endfor %}
                                     </div>
                                  </div>
-                                 <!--Timeline Text End-->
-                                 <!--Timeline Text Start-->
-                                 <div>
-                                    <div class="row">
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Project </h6>
-                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!--Timeline Text End-->
-                                 <!--Timeline Text Start-->
-                                 <div>
-                                    <div class="row">
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Project </h6>
-                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!--Timeline Text End-->
-                                 <!--Timeline Text Start-->
-                                 <div>
-                                    <div class="row">
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Project </h6>
-                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!--Timeline Text End-->
-                                 <!--Timeline Text Start-->
-                                 <div>
-                                    <div class="row">
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Project </h6>
-                                             <p> On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. </p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!--Timeline Text End-->
-                                 <!--Timeline Text Start-->
-                                 <div>
-                                    <div class="row">
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Results of Hardwork</h6>
-                                             <p> We have a very strong group of our senior team members and volunteers. But I must explain to you how all this mistaken idea of denounce pleasure and praising pain was born and I will give you a complete account. </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>Espíritu Visionario</h6>
-                                             <p>
-                                                Nacido y criado en San Francisco, Mofoowoo es un visionario y agricultor
-                                                de enorme corazón.
-                                                Viajó por todo el mundo conociendo ecoaldeas hasta que finalmente
-                                                decidió asentarse en el valle sagrado de Vilcabamba, en Ecuador,
-                                                creando la ecoaldea Chambalabamba.
-                                             </p>
-                                          </div>
-                                       </div>
-                                       <div class=" col-4">
-                                          <div class="timeline-box">
-                                             <h6>We Started</h6>
-                                             <p> In 1998, We took step towards to make healthy and safe Eco Environment in the different fields, and our passion is: to clean the Eco Environment for the next generations who shall face the problem in future. </p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!--Timeline Text End-->
+                                 {% endfor %}
+                              </div>
+
+                              <!--Timeline Text End-->
                               </div>
                            </div>
                         </div>
@@ -258,8 +123,9 @@
             <div class="choose-ecova wf100 p80">
                <div class="container">
                   <div class="section-title-2 text-center">
-                     <h2>Se parte de la Eco Aldea</h2>
+                     <h2>{{ page.ecoaldea.title }}</h2>
                   </div>
+                  <!--fututo administracion -->
                   <div class="row text-center justify-content-center">
                      <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
                         <div class="eco-box text-center">
