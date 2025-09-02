@@ -119,11 +119,16 @@ class EcoAldeaSection(models.Model):
 
 class EcoAldeaCard(models.Model):
     section = models.ForeignKey(EcoAldeaSection, on_delete=models.CASCADE, related_name="cards")
-    icon = models.ImageField(upload_to="nosotros/", help_text="Icono 60px aprox.")
+    icon = models.ImageField(
+        upload_to="nosotros/",
+        help_text="Icono ~60px de alto",
+        blank=True,
+        null=True
+    )
     title = models.CharField(max_length=120)
-    text  = models.TextField()
-    link_text = models.CharField(max_length=120, blank=True)
-    link_url  = models.CharField(max_length=300, blank=True)
+    text = models.TextField()
+    link_text = models.CharField("Texto del enlace", max_length=120, blank=True)
+    link_url = models.CharField("URL del enlace", max_length=300, blank=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:

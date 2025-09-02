@@ -26,7 +26,7 @@
     "fields": {
       "subtitle": "About our History",
       "title": "Our Success Story",
-      "side_image": "mofufo.png"
+      "side_image": "nosotros/mofufo.png"
     }
   },
   {
@@ -63,27 +63,39 @@
 
 
   {
-    "model": "nosotros.ecoaldeacard",
-    "pk": 1,
-    "fields": {
-      "section": 1, "icon": "", "title": "Conoce el voluntariado",
-      "text": "Sumarte desde el corazón, aprendiendo y aportando.", "link_text": "", "link_url": "", "order": 0
-    }
-  },
-  {
-    "model": "nosotros.ecoaldeacard",
-    "pk": 2,
-    "fields": {
-      "section": 1, "icon": "", "title": "Cómo donar",
-      "text": "Acompaña y fortalece el proyecto.", "link_text": "Donar", "link_url": "/donaciones/", "order": 1
-    }
-  },
-  {
-    "model": "nosotros.ecoaldeacard",
-    "pk": 3,
-    "fields": {
-      "section": 1, "icon": "", "title": "Escríbenos",
-      "text": "Estamos para escucharte.", "link_text": "Contacto", "link_url": "/contacto/", "order": 2
-    }
+  "model": "nosotros.ecoaldeacard",
+  "pk": 1,
+  "fields": {
+    "section": 1,
+    "title": "Conoce el voluntariado",
+    "text": "Lorem ipsum dolor amet consectetur adipiscing elit...",
+    "link_text": "",
+    "link_url": "",
+    "order": 0
   }
+},
+{
+  "model": "nosotros.ecoaldeacard",
+  "pk": 2,
+  "fields": {
+    "section": 1,
+    "title": "Como donar",
+    "text": "Excepteur sint occaecat cupidatat non proident...",
+    "link_text": "Como donar",
+    "link_url": "/donaciones/",
+    "order": 1
+  }
+},
+{
+  "model": "nosotros.ecoaldeacard",
+  "pk": 3,
+  "fields": {
+    "section": 1,
+    "title": "Escríbenos",
+    "text": "Quien tiene derecho a juzgar a quien elige disfrutar...",
+    "link_text": "Escríbenos",
+    "link_url": "/contacto/",
+    "order": 2
+  }
+}
 ]
