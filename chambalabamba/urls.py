@@ -21,6 +21,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.views.static import serve as serve_static
 from django.urls import re_path
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,8 +36,8 @@ urlpatterns = [
     path('tienda/', include('tienda.urls')),
     path("auth/", include("autenticacion.urls")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
-
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if not settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]
