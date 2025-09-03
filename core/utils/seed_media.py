@@ -5,7 +5,7 @@ from django.conf import settings
 
 DEFAULT_PAIRS = [
     (Path("eventos/static/images"), Path("images")),
-    (Path("nosotros/seed_media/nosotros"), Path("nosotros")),
+    (Path("nosotros/static/nosotros/images"), Path("nosotros")),
 ]
 
 def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:
