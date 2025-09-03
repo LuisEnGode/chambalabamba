@@ -4,7 +4,7 @@ from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -13,6 +13,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 # Aplicaciones instaladas
 INSTALLED_APPS = [
     'autenticacion.apps.AutenticacionConfig',
+    "core.apps.CoreConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,7 +27,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "django_cleanup.apps.CleanupConfig",
     # apps personalizadas:
-    'core',
+
     'inicio',
     'filosofia',
     'saberes',
