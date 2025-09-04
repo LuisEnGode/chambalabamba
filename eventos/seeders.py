@@ -1,7 +1,7 @@
 from django.core.management import call_command
 from django.db import connection, transaction
 
-SEED_TAG = "eventos:v1"  # cámbialo a v2 cuando quieras resembrar
+SEED_TAG = "eventos:v2"  # cámbialo a v2 cuando quieras resembrar
 
 def _seed_eventos_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
