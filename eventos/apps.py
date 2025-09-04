@@ -1,13 +1,11 @@
 from django.apps import AppConfig
-from django.apps import AppConfig
-
-class EventosConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'eventos'
-
+from django.db.models.signals import post_migrate
+from .seeders import _seed_eventos_once  # lo defines en otro archivo (ej. seeders.py)
 
 class EventosConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "eventos"
+    name = "eventos"  # ← debe coincidir con la carpeta real
+    label = "eventos"  # ← opcional pero recomendable
+
     def ready(self):
-        from . import signals  # carga señales
+        post_migrate.connect(_seed_eventos_once, sender=self)

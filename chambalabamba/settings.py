@@ -4,15 +4,16 @@ from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [
     'autenticacion.apps.AutenticacionConfig',
+    "core.apps.CoreConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,10 +25,10 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap4",
+    "django_cleanup.apps.CleanupConfig",
     # apps personalizadas:
-    'core',
+
     'inicio',
-    'nosotros',
     'filosofia',
     'saberes',
     'escuela',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'participa',
     'contenido',
     "eventos.apps.EventosConfig",
+    "nosotros.apps.NosotrosConfig",
 ]
 
 LOGIN_URL = "login"
@@ -86,7 +88,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'chambalabamba.wsgi.application'
 
 # Archivos estáticos
-
+STATIC_URL = "/static/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -100,6 +102,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog', 'static'),
     os.path.join(BASE_DIR, 'participa', 'static'),
     os.path.join(BASE_DIR, 'tienda', 'static'),
+    os.path.join(BASE_DIR, 'eventos', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

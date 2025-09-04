@@ -14,3 +14,4 @@ whitenoise==6.9.0
 django-ckeditor==6.7.3
 django-crispy-forms>=2.0
 crispy-bootstrap4>=2022.1
+django-cleanup==8.1.0
