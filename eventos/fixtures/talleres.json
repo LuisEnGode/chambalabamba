@@ -1,6 +1,6 @@
 [
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 1,
         "fields": {
             "name": "Taller de Bioconstrucción",
@@ -12,7 +12,7 @@
         }
     },
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 2,
         "fields": {
             "name": "Taller de Huertos Orgánicos",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 3,
         "fields": {
             "name": "Taller de Cocina Saludable",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 4,
         "fields": {
             "name": "Taller de Comunicación No Violenta",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 5,
         "fields": {
             "name": "Taller de Círculos de Palabra",
@@ -60,7 +60,7 @@
         }
     },
     {
-        "model": "eventos.taller",
+        "model": "eventos.tallerdetail",
         "pk": 6,
         "fields": {
             "name": "Taller de Elaboración de Productos Naturales",
