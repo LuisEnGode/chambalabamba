@@ -9,6 +9,11 @@ class FestivalAdmin(admin.ModelAdmin):
 
 @admin.register(Taller)
 class TallerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'schedule', 'place')
+    list_display = ('name', 'schedule', 'place', 'flyer')
     search_fields = ('name', 'description')
     prepopulated_fields = {'slug': ('name',)}
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'slug', 'description', 'schedule', 'place', 'image', 'flyer')
+        }),
+    )

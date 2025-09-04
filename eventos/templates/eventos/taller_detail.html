@@ -52,7 +52,7 @@
 <section class="taller-detail-container">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-8">
                 
                 <ul class="taller-meta" style="margin-top: 80px;">
                     <li><i class="fas fa-calendar-alt"></i><strong>Fecha:</strong> {{ taller.schedule }}</li>
@@ -62,6 +62,11 @@
                     {{ taller.description|safe }}
                 </div>
             </div>
+            {% if taller.flyer %}
+            <div class="col-lg-4">
+                <img src="{{ taller.flyer.url }}" alt="{{ taller.name }} Flyer" class="img-fluid rounded">
+            </div>
+            {% endif %}
         </div>
     </div>
 </section>

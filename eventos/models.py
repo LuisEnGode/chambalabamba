@@ -28,6 +28,7 @@ class Taller(models.Model):
     schedule = models.CharField(max_length=200, verbose_name="Horario")
     place = models.CharField(max_length=200, verbose_name="Lugar")
     image = models.ImageField(upload_to='talleres', verbose_name="Imagen")
+    flyer = models.ImageField(upload_to='talleres/flyers', verbose_name="Flyer", null=True, blank=True)
     slug = models.SlugField(unique=True, max_length=200, blank=True, help_text="Dejar en blanco para autogenerar.")
 
     def save(self, *args, **kwargs):
