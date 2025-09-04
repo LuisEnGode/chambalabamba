@@ -1,0 +1,102 @@
+[
+  {
+    "model": "inicio.heroslide",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Bienvenidos a Chambalabamba",
+      "subtitulo": "Una ecoaldea viva en conexión con la Tierra",
+      "boton1_texto": "Explorar",
+      "boton1_url": "https://ecoaldeachambalabamba.org/explorar",
+      "boton2_texto": "Voluntariado",
+      "boton2_url": "https://ecoaldeachambalabamba.org/voluntariado",
+      "imagen": "inicio/hero/maloca.jpg"
+    }
+  },
+  {
+    "model": "inicio.valorcard",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Economía Circular",
+      "descripcion": "Prácticas sostenibles que regeneran la vida",
+      "icono": "inicio/icons/economia.png",
+      "slug": "economia-circular"
+    }
+  },
+  {
+    "model": "inicio.valorcard",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "titulo": "Huerta Comunitaria",
+      "descripcion": "Cultivamos alimentos orgánicos en comunidad",
+      "icono": "inicio/icons/huerta.png",
+      "slug": "huerta-comunitaria"
+    }
+  },
+  {
+    "model": "inicio.proyectocard",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Ecstatic Dance",
+      "resumen": "Un espacio de danza libre y sanadora",
+      "imagen": "inicio/proyectos/ecstatic.jpg",
+      "url": "https://ecoaldeachambalabamba.org/eventos/ecstatic-dance",
+      "etiqueta": "Danza"
+    }
+  },
+  {
+    "model": "inicio.productoitem",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Miel Orgánica",
+      "imagen": "inicio/productos/miel.jpg",
+      "precio": "8.50",
+      "precio_tachado": "10.00",
+      "url": "https://ecoaldeachambalabamba.org/productos/miel"
+    }
+  },
+  {
+    "model": "inicio.productoitem",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "titulo": "Kombucha Artesanal",
+      "imagen": "inicio/productos/kombucha.jpg",
+      "precio": "3.50",
+      "precio_tachado": null,
+      "url": "https://ecoaldeachambalabamba.org/productos/kombucha"
+    }
+  },
+  {
+    "model": "inicio.instafoto",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "imagen": "inicio/galerias/galeria1.jpg",
+      "alt": "Ceremonia en la maloca",
+      "enlace": "https://instagram.com/chambalabamba"
+    }
+  },
+  {
+    "model": "inicio.instafoto",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "imagen": "inicio/galerias/galeria2.jpg",
+      "alt": "Taller de bioconstrucción",
+      "enlace": "https://instagram.com/chambalabamba"
+    }
+  }
+]

@@ -24,18 +24,23 @@ Inicio – Chambalabamba
 
     <!-- Carrusel -->
     <section id="home-slider" class="owl-carousel owl-theme wf100">
+        {% if hero_slides %}
+
+        {% for s in hero_slides %}
         <div class="item">
             <div class="slider-caption h2slider">
                 <div class="container">
-                    <strong>Chambalabamba<span> </span></strong>
-                    <h1>Ecocentro Sostenible</h1>
-                    <p>Un espacio de vida, arte y regeneración</p>
-                    <a href="#" class="active">Descubre Más</a> <a href="#">Únete Hoy</a>
+                    <strong>{{ s.titulo }}<span> </span></strong>
+                     {% if s.subtitulo %}<h1>{{ s.subtitulo }}</h1>{% endif %}
+                    {% if s.boton1_texto and s.boton1_url %}<a href="{{ s.boton1_url }}" class="active">{{ s.boton1_texto }}</a>{% endif %}
+                    {% if s.boton2_texto and s.boton2_url %}<a href="{{ s.boton2_url }}">{{ s.boton2_texto }}</a>{% endif %}
                 </div>
             </div>
-            <img src="{% static 'images/slider/casa-arbol2.jpg' %}" alt="">
+            {{ s.imagen.url }}
+              <img src="{{ s.imagen.url }}" alt="{{ s.titulo }}">
         </div>
-
+        {% endfor %}
+        {% endif %}
         <div class="item">
             <div class="slider-caption h2slider">
                 <div class="container">
@@ -60,7 +65,6 @@ Inicio – Chambalabamba
             <img src="{% static 'images/slider/lago.jpg' %}" alt="Laguna Chambalabamba">
         </div>
     </section>
-
 </div>
 
 

@@ -4,10 +4,16 @@ from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = config('DEBUG', default=True, cast=bool)
+# Archivos estáticos
+STATIC_URL = "/static/"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
 print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Aplicaciones instaladas
@@ -87,12 +93,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chambalabamba.wsgi.application'
 
-# Archivos estáticos
-STATIC_URL = "/static/"
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
 
-STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core', 'static'),
     os.path.join(BASE_DIR, 'contacto', 'static'),
