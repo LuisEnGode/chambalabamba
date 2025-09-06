@@ -82,6 +82,7 @@ class Gallery(BaseOrdenPublicado):
         ("home_ult_evento", "Home – Último evento"),
         ("nosotros_cabecera", "Nosotros – Cabecera"),
         ("proyectos_movimiento", "Home – Proyecto movimiento"),
+        ("participa_estancias", "Participa – Estancias"),
     ]
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)

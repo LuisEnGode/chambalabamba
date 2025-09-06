@@ -1,0 +1,80 @@
+[
+  {
+    "model": "participa.estancia",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "seccion": "participa_estancias",
+      "titulo": "Casa de la Loma",
+      "slug": "casa-de-la-loma",
+      "resumen": "Habitación privada en la ecoaldea. Comodidad simple, naturaleza y quietud interior.",
+      "descripcion": "En Estancia Casa Loma te invitamos a pausar y reconectar...",
+      "tipo": "Casa de madera",
+      "lugar": "Ecocentro Chambalabamba",
+      "portada": "estancias/portadas/estancias-loma.png",
+      "alt_portada": "Casa de la Loma",
+      "precio_tachado": "50.00",
+      "precio": "39.00",
+      "phone_whatsapp": "5939XXXXXXXX"
+    }
+  },
+  {
+    "model": "participa.estancia",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "seccion": "participa_estancias",
+      "titulo": "Estancia Koala",
+      "slug": "estancia-koala",
+      "resumen": "Descanso consciente en madera y naturaleza.",
+      "descripcion": "",
+      "tipo": "Casa madera",
+      "lugar": "Ecocentro Chambalabamba",
+      "portada": "estancias/portadas/estancias-koala.png",
+      "alt_portada": "Estancia Koala",
+      "precio_tachado": null,
+      "precio": null,
+      "phone_whatsapp": "5939XXXXXXXX"
+    }
+  },
+  {
+    "model": "participa.estancia",
+    "pk": 3,
+    "fields": {
+      "publicado": true,
+      "orden": 3,
+      "seccion": "participa_estancias",
+      "titulo": "Estancia Bosque",
+      "slug": "estancia-bosque",
+      "resumen": "Entre árboles y senderos, ideal para reconectar.",
+      "descripcion": "",
+      "tipo": "Madera",
+      "lugar": "Ecocentro Chambalabamba",
+      "portada": "estancias/portadas/estancias-bosque.png",
+      "alt_portada": "Estancia Bosque",
+      "precio_tachado": null,
+      "precio": null,
+      "phone_whatsapp": "5939XXXXXXXX"
+    }
+  },
+
+  {
+    "model": "participa.participaheader",
+    "pk": 1,
+    "fields": {
+      "title": "Participa",
+      "breadcrumb_label": "Estancias",
+      "background": "participa/headers/cabeza-estancias.png"
+    }
+  },
+  {
+    "model": "participa.participapage",
+    "pk": 1,
+    "fields": {
+      "enabled": true,
+      "header": 1
+    }
+  }
+]

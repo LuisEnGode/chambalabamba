@@ -1,0 +1,15 @@
+[
+  { "model": "participa.estanciaspec", "pk": 1,  "fields": { "estancia": 1, "orden": 1, "clave": "Capacidad",              "valor": "1–2 personas (cama matrimonial)" } },
+  { "model": "participa.estanciaspec", "pk": 2,  "fields": { "estancia": 1, "orden": 2, "clave": "Camas",                 "valor": "Matrimonial / 2 sencillas (según disponibilidad)" } },
+  { "model": "participa.estanciaspec", "pk": 3,  "fields": { "estancia": 1, "orden": 3, "clave": "Baño",                 "valor": "Baño seco compartido • Ducha con agua caliente solar" } },
+  { "model": "participa.estanciaspec", "pk": 4,  "fields": { "estancia": 1, "orden": 4, "clave": "Cocina / Comedor",     "valor": "Acceso a cocina común equipada • Uso de comedor comunitario" } },
+  { "model": "participa.estanciaspec", "pk": 5,  "fields": { "estancia": 1, "orden": 5, "clave": "Conectividad",         "valor": "Wi-Fi básico en áreas comunes • Energía 110V" } },
+  { "model": "participa.estanciaspec", "pk": 6,  "fields": { "estancia": 1, "orden": 6, "clave": "Horarios",             "valor": "Check-in 14:00–18:00 • Check-out 11:00" } },
+  { "model": "participa.estanciaspec", "pk": 7,  "fields": { "estancia": 1, "orden": 7, "clave": "Estancia mínima",      "valor": "2 noches" } },
+
+  { "model": "participa.estanciaspec", "pk": 8,  "fields": { "estancia": 2, "orden": 1, "clave": "Capacidad",            "valor": "2–3 personas" } },
+  { "model": "participa.estanciaspec", "pk": 9,  "fields": { "estancia": 2, "orden": 2, "clave": "Camas",                "valor": "Matrimonial" } },
+
+  { "model": "participa.estanciaspec", "pk": 10, "fields": { "estancia": 3, "orden": 1, "clave": "Capacidad",            "valor": "2 personas" } },
+  { "model": "participa.estanciaspec", "pk": 11, "fields": { "estancia": 3, "orden": 2, "clave": "Camas",                "valor": "Matrimonial" } }
+]

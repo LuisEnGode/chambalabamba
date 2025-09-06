@@ -1,0 +1,10 @@
+[
+  { "model": "participa.estanciafoto", "pk": 1, "fields": { "publicado": true, "orden": 1, "estancia": 1, "titulo": "Vista exterior",  "imagen": "estancias/fotos/estancias-bosque.png",  "alt": "Exterior Casa Loma" } },
+
+
+  { "model": "participa.estanciafoto", "pk": 3, "fields": { "publicado": true, "orden": 1, "estancia": 2, "titulo": "Koala exterior",  "imagen": "estancias/fotos/estancias-koala.png", "alt": "Exterior Koala" } },
+
+
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/estancias-loma.png", "alt": "Exterior Bosque" } }
+
+]
