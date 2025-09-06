@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import HeroSlide, ValorCard, ProyectoCard, ProductoItem, InstaFoto
+from .models import Gallery, GalleryItem
 
 class BaseOrdenPublicadoAdmin(admin.ModelAdmin):
     list_editable = ("publicado", "orden")
@@ -40,3 +41,29 @@ class InstaFotoAdmin(BaseOrdenPublicadoAdmin):
     list_display = ("mini", "alt", "enlace", "publicado", "orden")
     def mini(self, obj):
         return format_html('<img src="{}" style="height:32px">', obj.imagen.url) if obj.imagen else "—"
+
+
+#GALERIA INICIAL ULTIMOS EVENTOS
+
+
+
+class GalleryItemInline(admin.TabularInline):
+    model = GalleryItem
+    extra = 1
+    fields = ("publicado", "orden", "titulo", "imagen", "alt", "credito", "tags")
+    ordering = ("orden",)
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "seccion", "publicado", "orden", "creado")
+    list_filter = ("seccion", "publicado")
+    search_fields = ("titulo", "descripcion", "slug")
+    prepopulated_fields = {"slug": ("titulo",)}
+    inlines = [GalleryItemInline]
+
+@admin.register(GalleryItem)
+class GalleryItemAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "publicado", "orden", "creado")
+    list_filter = ("publicado",)
+    search_fields = ("titulo", "alt", "tags", "credito", "galeria__titulo")
+    ordering = ("orden",)

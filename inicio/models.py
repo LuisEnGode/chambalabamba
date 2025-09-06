@@ -73,3 +73,49 @@ class InstaFoto(BaseOrdenPublicado):
 
     def __str__(self):
         return self.alt or f"Foto #{self.pk}"
+
+#GALERIA INICIAL ULTIMOS EVENTOS
+
+class Gallery(BaseOrdenPublicado):
+    SECCIONES = [
+        ("home_cabecera", "Home – Cabecera"),
+        ("home_ult_evento", "Home – Último evento"),
+        ("nosotros_cabecera", "Nosotros – Cabecera"),
+        ("proyectos_movimiento", "Home – Proyecto movimiento"),
+    ]
+    titulo = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
+    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_cabecera")
+    descripcion = models.TextField(blank=True)
+    portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
+    alt_portada = models.CharField(max_length=200, blank=True)
+
+    # ... (campos que ya tienes)
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "Galeria ultimo evento"
+        verbose_name_plural = "Galeria ultimos eventos"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulo
+
+
+class GalleryItem(BaseOrdenPublicado):
+    galeria = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name="items")
+    titulo = models.CharField(max_length=200, blank=True)
+    imagen = models.ImageField(upload_to="inicio/galerias/items/")
+    alt = models.CharField(max_length=200, blank=True)
+    credito = models.CharField(max_length=200, blank=True)
+    tags = models.CharField(max_length=200, blank=True, help_text="Separar por comas")
+
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "Galeria ultimo evento item"
+        verbose_name_plural = "Galeria ultimo evento item"
+
+    def __str__(self):
+        base = self.titulo or self.alt or self.imagen.name
+        return f"{self.galeria.titulo} – {base}"

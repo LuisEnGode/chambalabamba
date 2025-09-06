@@ -12,6 +12,10 @@ DEFAULT_PAIRS = [
     (Path("inicio/static/inicio/icons"), Path("inicio/icons")),
     (Path("inicio/static/inicio/proyectos"), Path("inicio/proyectos")),
     (Path("inicio/static/inicio/productos"), Path("inicio/productos")),
+    (Path("inicio/static/images/galerias/galerias_ultimos_eventos/portadas"), Path("inicio/galerias/portadas")),
+    (Path("inicio/static/images/galerias/galerias_ultimos_eventos/items"), Path("inicio/galerias/items")),
+    (Path("inicio/static/images/proyectos"), Path("inicio/galerias/portadas")),
+    (Path("inicio/static/images/proyectos/items"), Path("inicio/galerias/items/")),
 ]
 
 def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:

@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ gal.titulo }} – Galería{% endblock %}
+
+{% block content %}
+<section class="wf100 p80">
+  <div class="container">
+    <header class="mb-6">
+      <h1>{{ gal.titulo }}</h1>
+      {% if gal.descripcion %}<p>{{ gal.descripcion }}</p>{% endif %}
+    </header>
+    <div class="row">
+      {% for it in items %}
+        <div class="col-md-4 mb-4">
+          <figure class="card h-100">
+            <img class="card-img-top" src="{{ it.imagen.url }}" alt="{{ it.alt|default:it.titulo }}">
+            {% if it.titulo or it.credito %}
+            <figcaption class="card-body">
+              {% if it.titulo %}<h5 class="card-title">{{ it.titulo }}</h5>{% endif %}
+              {% if it.credito %}<p class="card-text"><small>Crédito: {{ it.credito }}</small></p>{% endif %}
+            </figcaption>
+            {% endif %}
+          </figure>
+        </div>
+      {% empty %}
+        <p>No hay imágenes publicadas aún.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
