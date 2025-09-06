@@ -1,0 +1,141 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{ e.titulo }} | Chambalabamba{% endblock %}
+{% block content %}
+
+<!--
+<section class="wf100 p100 inner-header"
+  style="background-image:url({{ STATIC_URL }}images/innerheader.jpg);
+         background-size:cover;background-position:center;">
+  <div class="container">
+    <h1>Estancias</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="{% url 'estancias' %}"> Estancias </a></li>
+      <li><a href="#"> {{ e.titulo }} </a></li>
+    </ul>
+  </div>
+</section>
+-->
+<section class="wf100 p100 inner-header"
+  style="background-image:url({% if page.header and page.header.background %}
+                               {{ page.header.background.url }}
+                               {% else %}
+                               {% static 'participa/images/estancias/cabeza-estancias.png' %}
+                               {% endif %});
+         background-size:cover;background-position:center;">
+  <div class="container">
+    <h1>{{ page.header.title|default:"Participa" }}</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="{% url 'estancias' %}">{{ page.header.breadcrumb_label|default:"Estancias" }}</a></li>
+      <li><a href="#">{{ e.titulo }}</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="wf100 p80 shop">
+  <div class="product-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="pro-large">
+            {% if e.portada %}
+              <img src="{{ e.portada.url }}" alt="{{ e.alt_portada|default:e.titulo }}">
+            {% else %}
+              <img src="{% static 'participa/images/estancias/casas/estancias-loma.png' %}" alt="{{ e.titulo }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-text">
+            <h2>{{ e.titulo }} — {{ e.tipo }}</h2>
+
+            {% if e.precio or e.precio_tachado %}
+            <div class="pro-pricing">
+              {% if e.precio_tachado %}<del>${{ e.precio_tachado }}</del>{% endif %}
+              {% if e.precio %}${{ e.precio }} por noche{% endif %}
+            </div>
+            {% endif %}
+
+            {% if e.descripcion %}
+              <p>{{ e.descripcion }}</p>
+            {% elif e.resumen %}
+              <p>{{ e.resumen }}</p>
+            {% endif %}
+
+            {% if phone %}
+              <a href="https://wa.me/{{ phone }}"
+                 class="btn btn-outline-success d-inline-flex align-items-center gap-2"
+                 target="_blank" rel="noopener">
+                <i class="fi-whatsapp"></i> WhatsApp-Contact
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="products-tabs wf100 p80">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-one-tab" data-toggle="tab" href="#nav-one"
+                   role="tab" aria-controls="nav-one" aria-selected="true">Descripción</a>
+                <a class="nav-item nav-link" id="nav-two-tab" data-toggle="tab" href="#nav-two"
+                   role="tab" aria-controls="nav-two" aria-selected="true">Información adicional</a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+                <p>{{ e.descripcion|default:e.resumen }}</p>
+              </div>
+
+              <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
+                <table class="table table-sm align-middle mb-0">
+                  <tbody>
+                  {% for s in specs %}
+                    <tr>
+                      <th scope="row">{{ s.clave }}</th>
+                      <td>{{ s.valor }}</td>
+                    </tr>
+                  {% empty %}
+                    <tr><td colspan="2"><em>Sin información adicional</em></td></tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+                <small class="text-muted d-block mt-2">
+                  *Datos referenciales. Confirma disponibilidad y condiciones al reservar.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if fotos %}
+      <section class="online-shop wf100">
+        <div class="container">
+          <div class="row"><div class="col-md-12"><h2>Interiores</h2></div></div>
+          <div class="row">
+            {% for f in fotos %}
+            <div class="col-md-3 col-sm-6">
+              <div class="product-box">
+                <div class="pro-thumb">
+                  <img src="{{ f.imagen.url }}" alt="{{ f.alt|default:f.titulo }}">
+                </div>
+                {% if f.titulo %}
+                <div class="pro-txt"><h6>{{ f.titulo }}</h6></div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -19,6 +19,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 # Aplicaciones instaladas
 INSTALLED_APPS = [
     'autenticacion.apps.AutenticacionConfig',
+
     "core.apps.CoreConfig",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,7 +34,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "django_cleanup.apps.CleanupConfig",
     # apps personalizadas:
-
+    "participa.apps.ParticipaConfig",
     'inicio',
     'filosofia',
     'saberes',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'noticias',
     'contacto',
     'blog',
-    'participa',
     'contenido',
     "eventos.apps.EventosConfig",
     "nosotros.apps.NosotrosConfig",
