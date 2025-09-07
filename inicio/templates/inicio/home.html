@@ -2,6 +2,7 @@
 {% load static %}
 {% load contenido_extras %}
 {% load inicio_extras %}
+{% load participa_extras %}
 {% block title %}
 Inicio – Chambalabamba
 {% endblock %}
@@ -486,7 +487,14 @@ Inicio – Chambalabamba
 <!-- ===== /Intermedio estático ===== -->
 <!--Online Products End-->
 <!--InstaGram Start-->
-{% gallery_headers "proyectos_movimiento" title="PROYECTOS MOVIMIENTO" subtitle="Proyectos que florecen" %}
+
+
+
+
+
+
+{% gallery_headers_estancias "participa_estancias" title="ÚLTIMOS ALOJAMIENTOS" subtitle="Semillas que florecen" limit=6 %}
+<!--
 <div class="instagram">
     <ul>
         {% load static %}
@@ -506,5 +514,6 @@ Inicio – Chambalabamba
                 src="{% static 'images/galerias/casas/domo-paja.png' %}" alt=""></li>
     </ul>
 </div>
+-->
 <!--InstaGram End-->
 {% endblock %}

@@ -43,3 +43,29 @@ class ParticipaHeaderAdmin(SingletonAdmin):
 @admin.register(ParticipaPage)
 class ParticipaPageAdmin(SingletonAdmin):
     list_display = ("enabled","header")
+
+
+# participa/admin.py
+from django.contrib import admin
+from .models import InstaGallery, InstaItem
+
+class InstaItemInline(admin.TabularInline):
+    model = InstaItem
+    extra = 1
+    fields = ("publicado","orden","titulo","imagen","alt","enlace")
+    ordering = ("orden",)
+
+@admin.register(InstaGallery)
+class InstaGalleryAdmin(admin.ModelAdmin):
+    list_display = ("__str__","seccion","publicado","orden","creado")
+    list_filter = ("seccion","publicado")
+    search_fields = ("titulo","slug")
+    prepopulated_fields = {"slug": ("titulo",)}
+    inlines = [InstaItemInline]
+
+@admin.register(InstaItem)
+class InstaItemAdmin(admin.ModelAdmin):
+    list_display = ("__str__","galeria","publicado","orden")
+    list_filter = ("galeria","publicado")
+    search_fields = ("titulo","alt","enlace","galeria__titulo")
+    ordering = ("galeria","orden")

@@ -1,0 +1,9 @@
+[
+  { "model": "participa.instaitem", "pk": 1, "fields": { "publicado": true, "orden": 1, "galeria": 1, "titulo": "Voluntarios",         "imagen": "participa/instagram/voluntarios.png",          "alt": "Voluntarios",                "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 2, "fields": { "publicado": true, "orden": 2, "galeria": 1, "titulo": "Árbol",               "imagen": "participa/instagram/arbol.png",                "alt": "Árbol",                      "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 3, "fields": { "publicado": true, "orden": 3, "galeria": 1, "titulo": "Bioconstrucción",     "imagen": "participa/instagram/casa-bioconstruccion.png", "alt": "Casa bioconstrucción",       "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 4, "fields": { "publicado": true, "orden": 4, "galeria": 1, "titulo": "Casa Loma",          "imagen": "participa/instagram/casa-loma.png",            "alt": "Casa Loma",                  "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 5, "fields": { "publicado": true, "orden": 5, "galeria": 1, "titulo": "Casa Madera",        "imagen": "participa/instagram/casa-madera.png",          "alt": "Casa de madera",             "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 6, "fields": { "publicado": true, "orden": 6, "galeria": 1, "titulo": "Domo",               "imagen": "participa/instagram/domo.png",                  "alt": "Domo",                       "enlace": "" } },
+  { "model": "participa.instaitem", "pk": 7, "fields": { "publicado": true, "orden": 7, "galeria": 1, "titulo": "Domo Paja",          "imagen": "participa/instagram/domo-paja.png",             "alt": "Domo de paja",               "enlace": "" } }
+]

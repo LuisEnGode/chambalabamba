@@ -94,3 +94,40 @@ class EstanciaSpec(models.Model):
 
     def __str__(self):
         return f"{self.clave}: {self.valor[:40]}"
+
+
+class InstaGallery(BaseOrdenPublicado):
+    SECCIONES = [
+        ("participa_instagram", "Participa – Instagram"),
+        ("home_instagram", "Home – Instagram"),  # por si luego lo usas
+    ]
+    titulo = models.CharField(max_length=120, blank=True)
+    slug = models.SlugField(max_length=160, unique=True, blank=True)
+    seccion = models.CharField(max_length=40, choices=SECCIONES, default="participa_instagram")
+
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "Galería Instagram"
+        verbose_name_plural = "Galerías Instagram"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo or self.seccion)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulo or self.seccion
+
+
+class InstaItem(BaseOrdenPublicado):
+    galeria = models.ForeignKey(InstaGallery, on_delete=models.CASCADE, related_name="items")
+    titulo = models.CharField(max_length=120, blank=True)
+    imagen = models.ImageField(upload_to="participa/instagram/")
+    alt = models.CharField(max_length=160, blank=True)
+    enlace = models.URLField(blank=True)  # link del icono (o deja vacío para "#")
+
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "Foto Instagram"
+        verbose_name_plural = "Fotos Instagram"
+
+    def __str__(self):
+        return self.titulo or self.alt or self.imagen.name

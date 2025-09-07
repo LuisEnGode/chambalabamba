@@ -1,0 +1,13 @@
+[
+  {
+    "model": "participa.instagallery",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Tira Instagram Participa",
+      "slug": "participa-instagram",
+      "seccion": "participa_instagram"
+    }
+  }
+]

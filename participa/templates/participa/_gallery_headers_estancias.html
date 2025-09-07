@@ -1,0 +1,43 @@
+{% if estancias %}
+<section class="wf100 p80 current-projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-title-2">
+          {% if subtitle %}<h5>{{ subtitle }}</h5>{% endif %}
+          {% if title %}<h2>{{ title }}</h2>{% else %}<h2>Estancias</h2>{% endif %}
+        </div>
+      </div>
+      <div class="col-lg-6"><!-- opcional: tabs --></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="estancias-slider" role="tabpanel">
+            <div class="cpro-slider owl-carousel owl-theme">
+              {% for e in estancias %}
+              <div class="item">
+                <div class="pro-box">
+                  <a href="{% url 'estancia_detail' e.slug %}">
+                    <img src="{{ e.portada.url }}"
+                         alt="{{ e.alt_portada|default:e.titulo }}"
+                         class="img-fluid">
+                    <h5>{{ e.titulo }}</h5>
+                    <div class="pro-hover">
+                      <h6>{{ e.titulo }}</h6>
+                      <p>{{ e.resumen|default:"Ver detalle de la estancia" }}</p>
+                      <span class="btn btn-sm btn-primary">Ver más</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div><!-- tab -->
+        </div><!-- tab-content -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

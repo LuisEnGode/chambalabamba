@@ -2,7 +2,7 @@ from django.core.management import call_command
 from django.db import connection, transaction
 from pathlib import Path
 
-SEED_TAG = "estancias:v3"  # súbelo (v2, v3, …) cuando quieras resembrar
+SEED_TAG = "estancias:v5"  # súbelo (v2, v3, …) cuando quieras resembrar
 
 def _seed_estancias_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
