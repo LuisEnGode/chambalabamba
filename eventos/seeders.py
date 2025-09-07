@@ -1,7 +1,7 @@
 from django.core.management import call_command
 from django.db import connection, transaction
 
-SEED_TAG = "eventos:v1"  # cámbialo a v2 cuando quieras resembrar
+SEED_TAG = "eventos:v3"  # cámbialo a v3 cuando quieras resembrar
 
 def _seed_eventos_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
@@ -14,7 +14,7 @@ def _seed_eventos_once(sender, **kwargs):
             return
 
         # Cargar fixtures en orden
-        fixtures = ["festivales", "talleres"]
+        fixtures = ["festivales", "talleres", "talleres_page"]
         for fx in fixtures:
             call_command("loaddata", fx, verbosity=0)
             print(f"[seed_eventos] Cargado fixture: {fx}")

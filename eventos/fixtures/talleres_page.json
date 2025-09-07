@@ -1,0 +1,31 @@
+[
+    {
+        "model": "eventos.talleresheader",
+        "pk": 1,
+        "fields": {
+            "title": "Talleres",
+            "breadcrumb_label": "Talleres",
+            "background": "images/talleres-header.png"
+        }
+    },
+    {
+        "model": "eventos.talleresintrosection",
+        "pk": 1,
+        "fields": {
+            "title": "¡Únete a nuestros talleres transformadores!",
+            "paragraph1": "En Chambalabamba, cada taller es una oportunidad de crecimiento personal y colectivo. Aquí no solo aprendes nuevas habilidades, sino que te conectas contigo mismo, con otros y con la naturaleza. Nuestros facilitadores experimentados te guiarán en un viaje de autodescubrimiento y aprendizaje práctico que transformará tu manera de vivir.",
+            "quote": "El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría",
+            "cta_text": "Ver todos los talleres",
+            "cta_url": "#talleres-grid"
+        }
+    },
+    {
+        "model": "eventos.tallerespage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1
+        }
+    }
+]
