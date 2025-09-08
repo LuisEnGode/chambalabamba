@@ -26,8 +26,8 @@ class HeroSlide(BaseOrdenPublicado):
     imagen = models.ImageField(upload_to="inicio/hero/")
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "1. Cabeceras"
-        verbose_name_plural = "1. Cabeceras"
+        verbose_name = "1. Cabeceras / Hero Slides"
+        verbose_name_plural = "1. Cabeceras / Hero Slides"
 
     def __str__(self):
         return self.titulo
@@ -45,8 +45,8 @@ class ValorCard(BaseOrdenPublicado):
         super().save(*args, **kwargs)
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "2. Pilares"
-        verbose_name_plural = "2. Pilares"
+        verbose_name = "2. Pilares / Value Cards"
+        verbose_name_plural = "2. Pilares / Value Cards"
 
     def __str__(self):
         return self.titulo
@@ -68,8 +68,8 @@ class Gallery(BaseOrdenPublicado):
     alt_portada = models.CharField(max_length=200, blank=True)
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "3. Galerias"
-        verbose_name_plural = "3. Galerias"
+        verbose_name = "3. Galerías / Galleries"
+        verbose_name_plural = "3. Galerías / Galleries"
 
     def save(self, *args, **kwargs):
         if not self.slug:

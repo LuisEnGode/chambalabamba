@@ -16,8 +16,8 @@ class NosotrosPage(models.Model):
     # testimonios: a futuro
 
     class Meta:
-        verbose_name = "1. Página: Nosotros"
-        verbose_name_plural = "1. Página: Nosotros"
+        verbose_name = "1. Página: Nosotros / About Us Page"
+        verbose_name_plural = "1. Página: Nosotros / About Us Page"
 
     def __str__(self):
         return "Página Nosotros"
@@ -32,8 +32,8 @@ class InnerHeader(models.Model):
     background = models.ImageField(upload_to="nosotros/", help_text="Imagen de fondo del header")
 
     class Meta:
-        verbose_name = "2. Sección: Cabecera"
-        verbose_name_plural = "2. Sección: Cabecera"
+        verbose_name = "2. Sección: Cabecera / Header Section"
+        verbose_name_plural = "2. Sección: Cabecera / Header Section"
 
     def __str__(self):
         return self.title
@@ -51,8 +51,8 @@ class AboutSection(models.Model):
     video_url = models.CharField("URL de video (Vimeo/YouTube)", max_length=500, validators=[URLValidator()], blank=True)
 
     class Meta:
-        verbose_name = "3. Sección: Acerca + Video"
-        verbose_name_plural = "3. Sección: Acerca + Video"
+        verbose_name = "3. Sección: Acerca + Video / About + Video"
+        verbose_name_plural = "3. Sección: Acerca + Video / About + Video"
 
     def __str__(self):
         return self.title
@@ -67,8 +67,8 @@ class HistorySection(models.Model):
     side_image = models.ImageField(upload_to="nosotros/", blank=True, null=True)
 
     class Meta:
-        verbose_name = "4. Sección: Historia"
-        verbose_name_plural = "4. Sección: Historia"
+        verbose_name = "4. Sección: Historia / History Section"
+        verbose_name_plural = "4. Sección: Historia / History Section"
 
     def __str__(self):
         return self.title
@@ -81,8 +81,8 @@ class TimelinePeriod(models.Model):
 
     class Meta:
         ordering = ["order"]
-        verbose_name = "Periodo (Timeline)"
-        verbose_name_plural = "Periodos (Timeline)"
+        verbose_name = "Periodo (Timeline) / Timeline Period"
+        verbose_name_plural = "Periodos (Timeline) / Timeline Periods"
 
     def __str__(self):
         return self.label
@@ -110,8 +110,8 @@ class EcoAldeaSection(models.Model):
     title = models.CharField(max_length=160, default="Sé parte de la Eco Aldea")
 
     class Meta:
-        verbose_name = "5. Sección: EcoAldea"
-        verbose_name_plural = "5. Sección: EcoAldea"
+        verbose_name = "5. Sección: EcoAldea / EcoVillage Section"
+        verbose_name_plural = "5. Sección: EcoAldea / EcoVillage Section"
 
     def __str__(self):
         return self.title
@@ -133,8 +133,8 @@ class EcoAldeaCard(models.Model):
 
     class Meta:
         ordering = ["order"]
-        verbose_name = "Tarjeta EcoAldea"
-        verbose_name_plural = "Tarjetas EcoAldea"
+        verbose_name = "Tarjeta EcoAldea / EcoVillage Card"
+        verbose_name_plural = "Tarjeta EcoAldea / EcoVillage Card"
 
     def __str__(self):
         return self.title
