@@ -79,7 +79,7 @@
   },
 
   {
-    "model": "inicio.proyectocard",
+    "model": "inicio.valorcard",
     "pk": 1,
     "fields": {
       "publicado": true,
