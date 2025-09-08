@@ -41,3 +41,5 @@ class GalleryAdmin(admin.ModelAdmin):
     inlines = [GalleryItemInline]
 
 
+
+
