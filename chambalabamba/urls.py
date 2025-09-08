@@ -18,7 +18,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
+from django.urls import re_path
+from django.views.static import serve
 
 urlpatterns = [
 
@@ -35,14 +36,15 @@ urlpatterns = [
     path("auth/", include("autenticacion.urls")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 ]
-"""
+
 # PROD (Render): si optaste por servir media con Django (no CDN), deja este fallback:
 if not settings.DEBUG:
     urlpatterns += [
         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     ]
-"""
 
+"""
 # DEV: sirve media automáticamente si DEBUG=True
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+"""
