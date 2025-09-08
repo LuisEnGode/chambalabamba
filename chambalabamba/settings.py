@@ -19,7 +19,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 # Aplicaciones instaladas
 INSTALLED_APPS = [
     'autenticacion.apps.AutenticacionConfig',
-
     "core.apps.CoreConfig",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,10 +44,11 @@ INSTALLED_APPS = [
     'tienda',
     'noticias',
     'contacto',
-    'blog',
+    'blog.apps.BlogConfig',
     'contenido',
     "eventos.apps.EventosConfig",
     "nosotros.apps.NosotrosConfig",
+
 ]
 
 LOGIN_URL = "login"
@@ -65,7 +65,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
 
 
 # CRISPY FORMS

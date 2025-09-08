@@ -25,6 +25,10 @@ class HeroSlide(BaseOrdenPublicado):
     boton2_url = models.URLField(blank=True)
     imagen = models.ImageField(upload_to="inicio/hero/")
 
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "1. Cabeceras"
+        verbose_name_plural = "1. Cabeceras"
+
     def __str__(self):
         return self.titulo
 
@@ -40,61 +44,32 @@ class ValorCard(BaseOrdenPublicado):
             self.slug = slugify(self.titulo)[:90]
         super().save(*args, **kwargs)
 
-    def __str__(self):
-        return self.titulo
-
-# 3) PROYECTOS EN MOVIMIENTO (cards del carrusel)
-class ProyectoCard(BaseOrdenPublicado):
-    titulo = models.CharField(max_length=120)
-    resumen = models.CharField(max_length=220, blank=True)
-    imagen = models.ImageField(upload_to="inicio/proyectos/")
-    url = models.URLField(blank=True)
-    etiqueta = models.CharField(max_length=30, blank=True)  # p.ej. “Ecstatic Dance”
+    class Meta(BaseOrdenPublicado.Meta):
+        verbose_name = "2. Pilares"
+        verbose_name_plural = "2. Pilares"
 
     def __str__(self):
         return self.titulo
-
-# 4) PRODUCTOS (grid de 4)
-class ProductoItem(BaseOrdenPublicado):
-    titulo = models.CharField(max_length=100)
-    imagen = models.ImageField(upload_to="inicio/productos/")
-    precio = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    precio_tachado = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
-    url = models.URLField(blank=True)  # o reversa a url de detalle
-
-    def __str__(self):
-        return self.titulo
-
-# 5) GALERÍA / INSTAGRAM
-class InstaFoto(BaseOrdenPublicado):
-    imagen = models.ImageField(upload_to="inicio/galerias/")
-    alt = models.CharField(max_length=160, blank=True)
-    enlace = models.URLField(blank=True)  # si quieres que haga click a algo
-
-    def __str__(self):
-        return self.alt or f"Foto #{self.pk}"
 
 #GALERIA INICIAL ULTIMOS EVENTOS
 
 class Gallery(BaseOrdenPublicado):
     SECCIONES = [
-        ("home_cabecera", "Home – Cabecera"),
-        ("home_ult_evento", "Home – Último evento"),
+        ("home_ultimos_eventos", "Home – Ultimos-Eventos"),
         ("nosotros_cabecera", "Nosotros – Cabecera"),
         ("proyectos_movimiento", "Home – Proyecto movimiento"),
         ("participa_estancias", "Participa – Estancias"),
     ]
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_cabecera")
+    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_ultimo_evento")
     descripcion = models.TextField(blank=True)
     portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
     alt_portada = models.CharField(max_length=200, blank=True)
 
-    # ... (campos que ya tienes)
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "Galeria ultimo evento"
-        verbose_name_plural = "Galeria ultimos eventos"
+        verbose_name = "3. Galerias"
+        verbose_name_plural = "3. Galerias"
 
     def save(self, *args, **kwargs):
         if not self.slug:

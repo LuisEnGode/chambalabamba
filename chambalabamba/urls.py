@@ -18,12 +18,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
-from django.views.static import serve as serve_static
-from django.urls import re_path
-from django.views.static import serve
+
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', include('inicio.urls')),
     path('contacto/', include('contacto.urls')),

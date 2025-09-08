@@ -16,8 +16,8 @@ class NosotrosPage(models.Model):
     # testimonios: a futuro
 
     class Meta:
-        verbose_name = "Página: Nosotros"
-        verbose_name_plural = "Página: Nosotros"
+        verbose_name = "1. Página: Nosotros"
+        verbose_name_plural = "1. Página: Nosotros"
 
     def __str__(self):
         return "Página Nosotros"
@@ -32,8 +32,8 @@ class InnerHeader(models.Model):
     background = models.ImageField(upload_to="nosotros/", help_text="Imagen de fondo del header")
 
     class Meta:
-        verbose_name = "Sección: Header"
-        verbose_name_plural = "Sección: Header"
+        verbose_name = "2. Sección: Cabecera"
+        verbose_name_plural = "2. Sección: Cabecera"
 
     def __str__(self):
         return self.title
@@ -51,8 +51,8 @@ class AboutSection(models.Model):
     video_url = models.CharField("URL de video (Vimeo/YouTube)", max_length=500, validators=[URLValidator()], blank=True)
 
     class Meta:
-        verbose_name = "Sección: About + Video"
-        verbose_name_plural = "Sección: About + Video"
+        verbose_name = "3. Sección: Acerca + Video"
+        verbose_name_plural = "3. Sección: Acerca + Video"
 
     def __str__(self):
         return self.title
@@ -67,8 +67,8 @@ class HistorySection(models.Model):
     side_image = models.ImageField(upload_to="nosotros/", blank=True, null=True)
 
     class Meta:
-        verbose_name = "Sección: Historia"
-        verbose_name_plural = "Sección: Historia"
+        verbose_name = "4. Sección: Historia"
+        verbose_name_plural = "4. Sección: Historia"
 
     def __str__(self):
         return self.title
@@ -110,8 +110,8 @@ class EcoAldeaSection(models.Model):
     title = models.CharField(max_length=160, default="Sé parte de la Eco Aldea")
 
     class Meta:
-        verbose_name = "Sección: EcoAldea"
-        verbose_name_plural = "Sección: EcoAldea"
+        verbose_name = "5. Sección: EcoAldea"
+        verbose_name_plural = "5. Sección: EcoAldea"
 
     def __str__(self):
         return self.title

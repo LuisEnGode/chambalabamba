@@ -8,7 +8,6 @@ from .models import (
 @admin.register(NosotrosPage)
 class NosotrosPageAdmin(admin.ModelAdmin):
     list_display = ("id", "enabled", "header", "about", "history", "ecoaldea")
-    # opcional: impedir más de 1
     def has_add_permission(self, request):
         return not NosotrosPage.objects.exists()
 
@@ -24,13 +23,21 @@ class TimelineItemInline(admin.TabularInline):
     model = TimelineItem
     extra = 1
 
+# --- ADMIN OCULTO: registrado pero no aparece en el índice ---
+class HiddenModelAdmin(admin.ModelAdmin):
+    def get_model_perms(self, request):
+        # Al devolver {} el modelo no se muestra en la página de apps,
+        # pero sigue teniendo URLs y vistas para add/change/delete.
+        return {}
+
 @admin.register(TimelinePeriod)
-class TimelinePeriodAdmin(admin.ModelAdmin):
+class TimelinePeriodAdmin(HiddenModelAdmin):
     inlines = [TimelineItemInline]
     list_display = ("label", "history", "order")
     list_filter = ("history",)
     ordering = ("history", "order")
 
+# Inline dentro de HistorySection con link a "Change"
 class TimelinePeriodInline(admin.StackedInline):
     model = TimelinePeriod
     extra = 0
@@ -49,6 +56,3 @@ class EcoAldeaCardInline(admin.TabularInline):
 class EcoAldeaSectionAdmin(admin.ModelAdmin):
     list_display = ("title",)
     inlines = [EcoAldeaCardInline]
-from django.contrib import admin
-
-# Register your models here.

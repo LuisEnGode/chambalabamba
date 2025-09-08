@@ -86,57 +86,9 @@
       "orden": 1,
       "titulo": "Ecstatic Dance",
       "resumen": "Un espacio de danza libre y sanadora",
-      "imagen": "inicio/proyectos/ecstatic.jpg",
+      "imagen": "inicio/proyectos/ecstatic-dance.png",
       "url": "https://ecoaldeachambalabamba.org/eventos/ecstatic-dance",
       "etiqueta": "Danza"
-    }
-  },
-  {
-    "model": "inicio.productoitem",
-    "pk": 1,
-    "fields": {
-      "publicado": true,
-      "orden": 1,
-      "titulo": "Miel Orgánica",
-      "imagen": "inicio/productos/miel.jpg",
-      "precio": "8.50",
-      "precio_tachado": "10.00",
-      "url": "https://ecoaldeachambalabamba.org/productos/miel"
-    }
-  },
-  {
-    "model": "inicio.productoitem",
-    "pk": 2,
-    "fields": {
-      "publicado": true,
-      "orden": 2,
-      "titulo": "Kombucha Artesanal",
-      "imagen": "inicio/productos/kombucha.jpg",
-      "precio": "3.50",
-      "precio_tachado": null,
-      "url": "https://ecoaldeachambalabamba.org/productos/kombucha"
-    }
-  },
-  {
-    "model": "inicio.instafoto",
-    "pk": 1,
-    "fields": {
-      "publicado": true,
-      "orden": 1,
-      "imagen": "inicio/galerias/galeria1.jpg",
-      "alt": "Ceremonia en la maloca",
-      "enlace": "https://instagram.com/chambalabamba"
-    }
-  },
-  {
-    "model": "inicio.instafoto",
-    "pk": 2,
-    "fields": {
-      "publicado": true,
-      "orden": 2,
-      "imagen": "inicio/galerias/galeria2.jpg",
-      "alt": "Taller de bioconstrucción",
-      "enlace": "https://instagram.com/chambalabamba"
     }
   },
   {
@@ -147,7 +99,7 @@
       "orden": 1,
       "titulo": "Vida en Chambalabamba",
       "slug": "vida-en-chambalabamba",
-      "seccion": "home_cabecera",
+      "seccion": "home_ultimos_eventos",
       "descripcion": "Nuestra esencia en imágenes.",
       "portada": "inicio/galerias/portadas/flyer-dorado-cab1.png",
       "alt_portada": "Maloca al atardecer"
@@ -161,7 +113,7 @@
       "orden": 2,
       "titulo": "Ecstatic Dance",
       "slug": "ecstatic-dance",
-      "seccion": "home_cabecera",
+      "seccion": "home_ultimos_eventos",
       "descripcion": "Danza libre y medicina del movimiento.",
       "portada": "inicio/galerias/portadas/flyer-dorado-cab2.png",
       "alt_portada": "Ecstatic Dance en la maloca"
@@ -175,7 +127,7 @@
       "orden": 3,
       "titulo": "Retiros Revitalizantes",
       "slug": "retiros-revitalizantes",
-      "seccion": "home_cabecera",
+      "seccion": "home_ultimos_eventos",
       "descripcion": "Descanso consciente en la naturaleza.",
       "portada": "inicio/galerias/portadas/flyer-dorado-cab3.png",
       "alt_portada": "Retiro junto al río"
