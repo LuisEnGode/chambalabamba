@@ -1,4 +1,4 @@
-gfrom django.contrib import admin
+from django.contrib import admin
 from .models import Festival, TallerDetail, TalleresPage, TalleresHeader, TalleresIntroSection
 
 @admin.register(Festival)
