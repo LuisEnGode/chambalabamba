@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'escuela',
     'hospedaje',
     'voluntariado',
-    'donaciones',
+    "donaciones.apps.DonacionesConfig",
     'tienda',
     'noticias',
     'contacto',
