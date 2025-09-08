@@ -25,7 +25,7 @@ class ProductoAdmin(admin.ModelAdmin):
     list_filter = ("publicado", "categoria")
     search_fields = ("titulo", "descripcion", "descripcion_corta", "slug")
     prepopulated_fields = {"slug": ("titulo",)}
-    inlines = [ProductoImagenInline]
+
 
     def mini(self, obj):
         if obj.imagen_portada:

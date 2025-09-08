@@ -55,11 +55,16 @@
                         {% if producto.descripcion %}
                         <p>{{ producto.descripcion|linebreaksbr }}</p>
                         {% endif %}
-
+                        <!--
                         <div class="add-2-cart">
                             <strong>Cantidad:</strong>
                             <input type="number" name="quantity" min="1" max="99" value="1">
                             <input type="submit" value="Add to Cart" name="Add to Cart">
+                        </div>
+                        -->
+                         <div class="add-2-cart">
+                            <input type="submit" value="PEDIR" name="Add to Cart" class="btn btn-primary btn-lg">
+
                         </div>
                     </div>
                 </div>
