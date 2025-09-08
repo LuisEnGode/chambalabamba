@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'hospedaje',
     'voluntariado',
     "donaciones.apps.DonacionesConfig",
-    'tienda',
+    "tienda.apps.TiendaConfig",
     'noticias',
     'contacto',
     'blog.apps.BlogConfig',

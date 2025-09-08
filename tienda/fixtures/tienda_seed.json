@@ -1,0 +1,104 @@
+[
+  {
+    "model": "tienda.productocategoria",
+    "pk": 1,
+    "fields": {
+      "nombre": "Bebidas",
+      "slug": "bebidas",
+      "descripcion": "Fermentos y bebidas naturales",
+      "orden": 1,
+      "publicado": true
+    }
+  },
+  {
+    "model": "tienda.productocategoria",
+    "pk": 2,
+    "fields": {
+      "nombre": "Alimentos",
+      "slug": "alimentos",
+      "descripcion": "Miel, vinagres y otros productos de la ecoaldea",
+      "orden": 2,
+      "publicado": true
+    }
+  },
+  {
+    "model": "tienda.productocategoria",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cuidado personal",
+      "slug": "cuidado-personal",
+      "descripcion": "Productos artesanales de higiene y cuidado",
+      "orden": 3,
+      "publicado": true
+    }
+  },
+
+  {
+    "model": "tienda.producto",
+    "pk": 1,
+    "fields": {
+      "categoria": 1,
+      "titulo": "Kombucha",
+      "slug": "kombucha",
+      "descripcion_corta": "Bebida probiótica artesanal.",
+      "descripcion": "Kombucha viva elaborada en Chambalabamba, con sabores naturales.",
+      "imagen_portada": "productos/portadas/kombucha.png",
+      "precio": "10.00",
+      "precio_tachado": "12.00",
+      "publicado": true,
+      "orden": 1,
+      "creado": "2025-09-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "tienda.producto",
+    "pk": 2,
+    "fields": {
+      "categoria": 2,
+      "titulo": "Miel de abeja",
+      "slug": "miel-de-abeja",
+      "descripcion_corta": "Miel pura de colmenas locales.",
+      "descripcion": "Recolectada en el valle, 100% natural y sin aditivos.",
+      "imagen_portada": "productos/portadas/miel.png",
+      "precio": "10.00",
+      "precio_tachado": null,
+      "publicado": true,
+      "orden": 2,
+      "creado": "2025-09-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "tienda.producto",
+    "pk": 3,
+    "fields": {
+      "categoria": 2,
+      "titulo": "Vinagre artesanal",
+      "slug": "vinagre",
+      "descripcion_corta": "Vinagre de frutas fermentado naturalmente.",
+      "descripcion": "Elaborado en la ecoaldea siguiendo procesos de fermentación natural.",
+      "imagen_portada": "productos/portadas/vinagre.png",
+      "precio": "8.00",
+      "precio_tachado": null,
+      "publicado": true,
+      "orden": 3,
+      "creado": "2025-09-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "tienda.producto",
+    "pk": 4,
+    "fields": {
+      "categoria": 3,
+      "titulo": "Jabón artesanal",
+      "slug": "jabon-artesanal",
+      "descripcion_corta": "Jabón natural hecho a mano.",
+      "descripcion": "Elaborado con aceites vegetales y hierbas locales.",
+      "imagen_portada": "productos/portadas/jabon.png",
+      "precio": "5.00",
+      "precio_tachado": null,
+      "publicado": true,
+      "orden": 4,
+      "creado": "2025-09-08T00:00:00Z"
+    }
+  }
+]

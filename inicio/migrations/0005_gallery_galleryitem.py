@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(blank=True, max_length=220, unique=True)),
                 ('seccion', models.CharField(choices=[('home_cabecera', 'Home – Cabecera'), ('home_ult_evento', 'Home – Último evento'), ('nosotros_cabecera', 'Nosotros – Cabecera')], default='home_cabecera', max_length=50)),
                 ('descripcion', models.TextField(blank=True)),
-                ('portada', models.ImageField(blank=True, upload_to='inicio/galerias/portadas/')),
+                ('portadas', models.ImageField(blank=True, upload_to='inicio/galerias/portadas/')),
                 ('alt_portada', models.CharField(blank=True, max_length=200)),
             ],
             options={

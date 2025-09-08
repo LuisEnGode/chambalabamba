@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('descripcion', models.TextField(blank=True)),
                 ('tipo', models.CharField(blank=True, max_length=120)),
                 ('lugar', models.CharField(blank=True, default='Ecocentro Chambalabamba', max_length=200)),
-                ('portada', models.ImageField(blank=True, upload_to='estancias/portadas/')),
+                ('portadas', models.ImageField(blank=True, upload_to='estancias/portadas/')),
                 ('alt_portada', models.CharField(blank=True, max_length=200)),
                 ('precio', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),
                 ('precio_tachado', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),

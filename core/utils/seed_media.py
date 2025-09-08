@@ -21,6 +21,8 @@ DEFAULT_PAIRS = [
     (Path("participa/static/participa/images/estancias/casas"), Path("estancias/fotos")),
     (Path("participa/static/participa/images/estancias"), Path("participa/headers")),
     (Path("inicio/static/images/galerias/casas"), Path("participa/instagram")),
+
+    (Path("tienda/static/images"), Path("productos/portadas")),
 ]
 
 def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:
