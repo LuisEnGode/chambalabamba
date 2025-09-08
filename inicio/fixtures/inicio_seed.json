@@ -77,20 +77,6 @@
       "slug": "comunidad-viva"
     }
   },
-
-  {
-    "model": "inicio.valorcard",
-    "pk": 1,
-    "fields": {
-      "publicado": true,
-      "orden": 1,
-      "titulo": "Ecstatic Dance",
-      "resumen": "Un espacio de danza libre y sanadora",
-      "imagen": "inicio/proyectos/ecstatic-dance.png",
-      "url": "https://ecoaldeachambalabamba.org/eventos/ecstatic-dance",
-      "etiqueta": "Danza"
-    }
-  },
   {
     "model": "inicio.gallery",
     "pk": 1,
