@@ -21,12 +21,12 @@
     }
 </style>
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url({% static 'images/festivales-header.png' %}) no-repeat center center; background-size: cover;">
+    <section class="wf100 p100 inner-header" style="background: url({{ page.header.background.url }}) no-repeat center center; background-size: cover;">
     <div class="container">
-        <h1>Festivales</h1>
+        <h1>{{ page.header.title }}</h1>
         <ul>
             <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Festivales</a></li>
+            <li><a href="#">{{ page.header.breadcrumb_label }}</a></li>
         </ul>   
     </div>
     </section>
@@ -38,18 +38,16 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto text-center">
                     <div class="section-title-2">
-                        <h2>¡Vive la magia de nuestros festivales!</h2>
+                        <h2>{{ page.intro.title }}</h2>
                     </div>
                     <p style="font-size: 18px; line-height: 1.6; color: #555;">
-                        En Chambalabamba, cada festival es una explosión de alegría, cultura y conexión. 
-                        Son momentos para celebrar la vida, honrar nuestras tradiciones y fortalecer los lazos comunitarios. 
-                        Únete a nosotros y sé parte de experiencias inolvidables que alimentan el alma y encienden el espíritu.
+                        {{ page.intro.paragraph1 }}
                     </p>
                     <p style="font-size: 16px; color: #666; font-style: italic;">
-                        "La celebración es el alimento del espíritu comunitario, la alegría compartida es el motor de la transformación"
+                        "{{ page.intro.quote }}"
                     </p>
                     <div style="margin-top: 30px;">
-                        <a href="#festivales-grid" style="background-color: #66bb6a; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">Descubre los festivales</a>
+                        <a href="{{ page.intro.cta_url }}" style="background-color: #66bb6a; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">{{ page.intro.cta_text }}</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +66,11 @@
                     <div class="event-post">
                         <div class="event-thumb">
                             <a href="{% url 'eventos:festival_detail' festival.slug %}"><i class="fas fa-link"></i></a>
-                            <img src="{% static festival.image %}" alt="{{ festival.name }}">
+                            {% if festival.image %}
+                                <img src="{{ festival.image.url }}" alt="{{ festival.name }}">
+                            {% else %}
+                                <img src="{% static festival.image %}" alt="{{ festival.name }}">
+                            {% endif %}
                         </div>
                         <div class="event-txt">
                             <h5><a href="{% url 'eventos:festival_detail' festival.slug %}">{{ festival.name }}</a></h5>

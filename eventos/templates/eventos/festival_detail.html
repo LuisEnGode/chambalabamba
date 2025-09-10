@@ -37,7 +37,7 @@
 </style>
 
 <!--Inner Header Start-->
-<section class="wf100 p100 inner-header" style="background: url('{% static festival.image %}') no-repeat center center; background-size: cover;">
+<section class="wf100 p100 inner-header" style="background: url('{% if festival.image %}{{ festival.image.url }}{% else %}{% static festival.image %}{% endif %}') no-repeat center center; background-size: cover;">
     <div class="container">
         <h1>{{ festival.name }}</h1>
         <ul>
@@ -52,8 +52,9 @@
 <section class="festival-detail-container">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto" style="margin-top: 80px;">                
-                <ul class="festival-meta">
+            <div class="col-lg-8">
+                
+                <ul class="festival-meta" style="margin-top: 80px;">
                     <li><i class="fas fa-calendar-alt"></i><strong>Fecha:</strong> {{ festival.date }}</li>
                     <li><i class="fas fa-clock"></i><strong>Hora:</strong> {{ festival.time }}</li>
                     <li><i class="fas fa-map-marker-alt"></i><strong>Lugar:</strong> {{ festival.place }}</li>
@@ -62,6 +63,11 @@
                     {{ festival.description|safe }}
                 </div>
             </div>
+            {% if festival.flyer %}
+            <div class="col-lg-4">
+                <img src="{{ festival.flyer.url }}" alt="{{ festival.name }} Flyer" class="img-fluid rounded">
+            </div>
+            {% endif %}
         </div>
     </div>
 </section>
