@@ -7,6 +7,16 @@ DEFAULT_PAIRS = [
     (Path("eventos/static/images"), Path("images")),
     # NOSOTROS (coinciden con upload_to de los modelos)
     (Path("nosotros/static/nosotros/images"), Path("nosotros")),
+    (Path("nosotros/static/nosotros/images/pilares/ecologia"), Path("nosotros/headers")),
+    (Path("nosotros/static/nosotros/images/pilares/ecologia"), Path("nosotros/pilares/hero")),
+(Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
+(Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
+(Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/headers")),
+(Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/pilares/hero")),
+
+    (Path("nosotros/static/nosotros/images/pilares"), Path("nosotros/pilares/hero")),
+    (Path("nosotros/static/nosotros/images/pilares"), Path("nosotros/headers")),
+
     # INICIO (coinciden con upload_to de los modelos)
     (Path("inicio/static/inicio/hero"), Path("inicio/hero")),
     (Path("inicio/static/inicio/icons"), Path("inicio/icons")),
@@ -23,6 +33,8 @@ DEFAULT_PAIRS = [
     (Path("inicio/static/images/galerias/casas"), Path("participa/instagram")),
 
     (Path("tienda/static/images"), Path("productos/portadas")),
+
+
 ]
 
 def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:

@@ -2,20 +2,37 @@ from django.core.management import call_command
 from django.db import connection, transaction
 from pathlib import Path
 
-SEED_TAG = "nosotros:v6"  # súbelo a v2 cuando quieras resembrar
+# (fixture, tag) — cada tag se guarda en la tabla seed_run para no recargar
+SEEDS = [
+    ("nosotros.json", "nosotros:v7"),                 # el que ya tienes
+    ("pilar_ecologia.json", "nosotros:pilar:ecologia:v3"),  # nuevo
+    ("pilar_economia.json", "nosotros:pilar:economia:v2"),  # nuevo
+    ("pilar_sociocultural.json", "nosotros:pilar:sociocultural:v2"),  # nuevo
+    ("pilar_bienestar.json", "nosotros:pilar:bienestar:v2"),  # nuevo
+]
 
 def _seed_nosotros_once(sender, **kwargs):
+    if sender.label != "nosotros":
+        return
+
+    base_dir = Path(__file__).resolve().parent
     with connection.cursor() as cur, transaction.atomic():
         cur.execute("CREATE TABLE IF NOT EXISTS seed_run(tag TEXT PRIMARY KEY)")
-        cur.execute("SELECT 1 FROM seed_run WHERE tag=%s", [SEED_TAG])
-        if cur.fetchone():
-            print(f"[seed_nosotros] Ya corrido {SEED_TAG}, no se recarga")
-            return
 
-        # Ruta absoluta al fixture para evitar problemas de búsqueda
-        fixture_path = Path(__file__).resolve().parent / "fixtures" / "nosotros.json"
-        call_command("loaddata", str(fixture_path), verbosity=0)
-        print(f"[seed_nosotros] Cargado fixture: {fixture_path.name}")
+        for filename, tag in SEEDS:
+            # ¿ya corrido?
+            cur.execute("SELECT 1 FROM seed_run WHERE tag=%s", [tag])
+            if cur.fetchone():
+                print(f"[seed_nosotros] Ya corrido {tag}, no se recarga")
+                continue
 
-        cur.execute("INSERT INTO seed_run(tag) VALUES(%s)", [SEED_TAG])
-        print(f"[seed_nosotros] Marcado {SEED_TAG}")
+            fixture_path = base_dir / "fixtures" / filename
+            if not fixture_path.exists():
+                print(f"[seed_nosotros] Omitido: no existe {fixture_path}")
+                continue
+
+            call_command("loaddata", str(fixture_path), verbosity=0)
+            print(f"[seed_nosotros] Cargado fixture: {fixture_path.name}")
+
+            cur.execute("INSERT INTO seed_run(tag) VALUES(%s)", [tag])
+            print(f"[seed_nosotros] Marcado {tag}")

@@ -1,0 +1,49 @@
+[
+  { "model": "nosotros.pageheader", "pk": 12, "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Bienestar",
+      "background": "nosotros/headers/cabeza-ecologia.png"
+  }},
+  { "model": "nosotros.pilarpage", "pk": 102, "fields": {
+      "slug": "bienestar",
+      "header": 12,
+      "hero_image": "nosotros/pilares/hero/bienestar.png",
+      "title": "Pilar Bienestar",
+      "lead": "Cuidamos el equilibrio cuerpo–mente–espíritu con prácticas accesibles y comunitarias."
+  }},
+
+  { "model": "nosotros.pilarparagraph", "pk": 3001, "fields": {
+      "page": 102, "publicado": true, "orden": 1,
+      "body": "Promovemos alimentación consciente, descanso adecuado y movimiento diario como base de la salud integral.",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 3002, "fields": {
+      "page": 102, "publicado": true, "orden": 2,
+      "body": "Facilitamos espacios de meditación, yoga y terapias complementarias para el bienestar emocional y mental.",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 3003, "fields": {
+      "page": 102, "publicado": true, "orden": 3,
+      "body": "La naturaleza es nuestra aliada: caminatas, respiración consciente y contacto con el agua y los bosques.",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }},
+
+  { "model": "nosotros.pilarquote", "pk": 3101, "fields": {
+      "page": 102, "publicado": true, "orden": 1,
+      "text": "El bienestar florece cuando habitamos el presente con compasión.",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }},
+
+  { "model": "nosotros.pilarsidebarwidget", "pk": 3201, "fields": {
+      "page": 102, "publicado": true, "orden": 1,
+      "title": "Fundamentos del bienestar integral",
+      "text": "Escucha del cuerpo, respeto por los ritmos personales y cuidado emocional en comunidad.",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }},
+  { "model": "nosotros.pilarsidebarwidget", "pk": 3202, "fields": {
+      "page": 102, "publicado": true, "orden": 2,
+      "title": "Proyectos actuales",
+      "text": "- Clases de yoga\n- Ceremonias y círculos\n- Senderismo terapéutico",
+      "creado": "2025-09-11T16:36:00Z", "actualizado": "2025-09-11T16:36:00Z"
+  }}
+]

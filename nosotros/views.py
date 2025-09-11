@@ -15,6 +15,16 @@ def territorio(request):
     return render(request, 'nosotros/territorio.html')
 
 
+from .models import PilarPage
+
+def pilar_detail(request, slug):
+    page = get_object_or_404(
+        PilarPage.objects.select_related("header").prefetch_related("paragraphs", "quotes", "sidebar"),
+        slug=slug
+    )
+    return render(request, f"nosotros/pilares/pilar_{slug}.html", {"page": page})
+
+
 def pilar_bienestar(request):
     return render(request, 'nosotros/pilares/pilar_bienestar.html')
 
@@ -26,3 +36,5 @@ def pilar_economia(request):
 
 def pilar_sociocultural(request):
     return render(request, 'nosotros/pilares/pilar_sociocultural.html')
+
+                        #PILARES
