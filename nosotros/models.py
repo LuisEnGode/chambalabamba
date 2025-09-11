@@ -16,8 +16,8 @@ class NosotrosPage(models.Model):
     # testimonios: a futuro
 
     class Meta:
-        verbose_name = "1. Nuestro camino - Página: Nosotros / About Us Page"
-        verbose_name_plural = "1. Nuestro camino - Página: Nosotros / About Us Page"
+        verbose_name = "1. Nuestro camino / About Us Page"
+        verbose_name_plural = "1. Nuestro camino  / About Us Page"
 
     def __str__(self):
         return "Página Nosotros"
@@ -161,10 +161,6 @@ class PageHeader(models.Model):
     breadcrumb_label = models.CharField(max_length=120, blank=True, help_text="Texto del breadcrumb nivel 2/3")
     background = models.ImageField(upload_to="nosotros/headers/", blank=True, null=True)
 
-    class Meta:
-        verbose_name = "2.1 Cabeceras Pilares"
-        verbose_name_plural = "2.1 Pilares Cabeceras"
-
     def __str__(self):
         return self.title
 
@@ -252,3 +248,23 @@ class TopicSidebarWidget(BaseOrdenPublicado):
     title = models.CharField(max_length=120)
     text = models.TextField()
     def __str__(self): return f"Sidebar: {self.title} · {self.page}"
+
+
+# === PROXIES ===
+class GobernanzaPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "3. Gobernanza"
+        verbose_name_plural = "3. Gobernanza"
+
+class PrincipiosValoresPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "4. Principios y valores"
+        verbose_name_plural = "4. Principios y valores"
+
+class TerritorioPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "5. Territorio"
+        verbose_name_plural = "5. Territorio"

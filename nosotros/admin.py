@@ -96,10 +96,6 @@ class PilarSidebarInline(admin.TabularInline):
     fields = ("orden", "publicado", "title", "text")
     ordering = ("orden",)  # idem
 
-@admin.register(PageHeader)
-class PageHeaderAdmin(admin.ModelAdmin):
-    list_display = ("title", "breadcrumb_label")
-    search_fields = ("title", "breadcrumb_label")
 
 @admin.register(PilarPage)
 class PilarPageAdmin(admin.ModelAdmin):
@@ -145,3 +141,67 @@ class TopicPageAdmin(admin.ModelAdmin):
     inlines = [TopicParagraphInline, TopicQuoteInline, TopicSidebarInline]
     save_on_top = True
 
+
+
+# nosotros/admin.py
+from django.contrib import admin
+from .models import (
+    TopicPage, GobernanzaPage, PrincipiosValoresPage, TerritorioPage,
+    TopicParagraph, TopicQuote, TopicSidebarWidget
+)
+
+class ParagraphInline(admin.StackedInline):
+    model = TopicParagraph
+    extra = 0
+
+class QuoteInline(admin.StackedInline):
+    model = TopicQuote
+    extra = 0
+
+class SidebarInline(admin.StackedInline):
+    model = TopicSidebarWidget
+    extra = 0
+
+class _BaseTopicAdmin(admin.ModelAdmin):
+    inlines = [ParagraphInline, QuoteInline, SidebarInline]
+    fields = ("title", "header", "slug")  # o los campos que edites
+    readonly_fields = ("slug",)           # fijamos slug
+
+    # Evita que creen más de 1 registro por proxy
+    def has_add_permission(self, request):
+        return self.get_queryset(request).count() == 0
+
+    # Oculta cualquier otro registro que no sea el de este slug
+    filter_slug = None  # lo define cada subclase
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(slug=self.filter_slug)
+
+    # Si quisieras autocrear el registro al entrar por 1a vez:
+    def changelist_view(self, request, extra_context=None):
+        if self.model.objects.filter(slug=self.filter_slug).count() == 0:
+            self.model.objects.create(slug=self.filter_slug, title=self.model._meta.verbose_name.split(". ",1)[1])
+        return super().changelist_view(request, extra_context)
+
+@admin.register(GobernanzaPage)
+class GobernanzaAdmin(_BaseTopicAdmin):
+    filter_slug = "gobernanza"
+
+@admin.register(PrincipiosValoresPage)
+class PrincipiosValoresAdmin(_BaseTopicAdmin):
+    filter_slug = "principios-y-valores"
+
+@admin.register(TerritorioPage)
+class TerritorioAdmin(_BaseTopicAdmin):
+    filter_slug = "territorio"
+
+
+from django.contrib import admin
+from .models import TopicPage
+
+# Oculta el modelo base del índice del admin
+try:
+    admin.site.unregister(TopicPage)
+except admin.sites.NotRegistered:
+    pass
