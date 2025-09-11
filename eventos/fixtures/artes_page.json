@@ -1,0 +1,143 @@
+[
+    {
+        "model": "eventos.artespage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1,
+            "diversity": 1,
+            "gallery": 1
+        }
+    },
+    {
+        "model": "eventos.artesheader",
+        "pk": 1,
+        "fields": {
+            "title": "Artes",
+            "breadcrumb_label": "Artes",
+            "background": "images/artes-header.png"
+        }
+    },
+    {
+        "model": "eventos.artesintrosection",
+        "pk": 1,
+        "fields": {
+            "main_image": "images/artes_00.png",
+            "subtitle": "En Chambalabamba el arte se vive",
+            "quote": "El arte nos permite sanar, transformar y celebrar la vida. Es el lenguaje universal que nos conecta con lo más profundo de nuestro ser y con el alma del mundo.",
+            "sidebar_title": "El arte no se detiene en Chambalabamba",
+            "sidebar_paragraph1": "En Chambalabamba, el arte es una manifestación del espíritu y una herramienta para la conexión con la naturaleza y la comunidad. Fomentamos la libre expresión a través de diversas disciplinas como la pintura, la escultura, la música y la danza. Nuestros talleres y encuentros artísticos están diseñados para despertar la creatividad innata que todos llevamos dentro, utilizando materiales naturales y técnicas sostenibles.",
+            "sidebar_paragraph2": "Creemos que el arte es un pilar fundamental para el desarrollo personal y colectivo, un puente que une corazones y mentes en un diálogo constante con nuestro entorno. Invitamos a artistas, creadores y a cualquier persona con el deseo de explorar su lado creativo a unirse a nosotros. Aquí encontrarás un espacio de inspiración, colaboración y crecimiento, donde cada obra es un reflejo de nuestra filosofía de vida en armonía con la Pachamama."
+        }
+    },
+    {
+        "model": "eventos.artesdiversitysection",
+        "pk": 1,
+        "fields": {
+            "title": "Danza, teatro, música y DIVERSIDAD",
+            "paragraph": "La diversidad cultural de Chambalabamba se manifiesta en una vibrante amalgama de expresiones artísticas. La danza, el teatro y la música son pilares de nuestra comunidad, espacios donde celebramos nuestras raíces, exploramos nuevas formas de comunicación y nos conectamos con la esencia de la vida. Cada movimiento, cada nota y cada palabra es un tributo a la creatividad y a la riqueza de la experiencia humana."
+        }
+    },
+    {
+        "model": "eventos.arte",
+        "pk": 1,
+        "fields": {
+            "page": 1,
+            "title": "Danza y Expresión",
+            "description": "Movimiento que libera el alma y conecta con la naturaleza.",
+            "image": "images/artes_01.png"
+        }
+    },
+    {
+        "model": "eventos.arte",
+        "pk": 2,
+        "fields": {
+            "page": 1,
+            "title": "Música y Comunidad",
+            "description": "Sonidos ancestrales que unen corazones y despiertan el espíritu.",
+            "image": "images/artes_02.png"
+        }
+    },
+    {
+        "model": "eventos.arte",
+        "pk": 3,
+        "fields": {
+            "page": 1,
+            "title": "Teatro y Transformación",
+            "description": "Historias que inspiran el cambio y celebran la diversidad.",
+            "image": "images/artes_03.png"
+        }
+    },
+    {
+        "model": "eventos.artesgallerysection",
+        "pk": 1,
+        "fields": {
+            "title": "Momentos de creación colectiva",
+            "paragraph": "Nuestro espacio natural se convierte en el escenario perfecto para el arte. Aquí, bajo el cielo infinito y rodeados de la energía de la Pachamama, cada expresión artística cobra vida de manera única. La naturaleza misma participa como cómplice silencioso de nuestras creaciones, ofreciendo su belleza como telón de fondo para momentos inolvidables de pura inspiración."
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_04.png",
+            "alt_text": "Arte al aire libre en Chambalabamba"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_05.png",
+            "alt_text": "Expresiones artísticas en la naturaleza"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_06.png",
+            "alt_text": "Creatividad bajo el cielo abierto"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_07.png",
+            "alt_text": "Arte comunitario en Chambalabamba"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 5,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_08.png",
+            "alt_text": "Talleres de arte colaborativo"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 6,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_09.png",
+            "alt_text": "Encuentros artísticos comunitarios"
+        }
+    },
+    {
+        "model": "eventos.artesgalleryimage",
+        "pk": 7,
+        "fields": {
+            "section": 1,
+            "image": "images/artes_10.png",
+            "alt_text": "Creación colectiva en Chambalabamba"
+        }
+    }
+]

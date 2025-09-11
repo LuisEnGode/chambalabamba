@@ -76,6 +76,99 @@ class TalleresHeader(models.Model):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Página de Artes
+# ──────────────────────────────────────────────────────────────────────────────
+
+class ArtesPage(models.Model):
+    enabled = models.BooleanField(default=True, verbose_name="Habilitado")
+    header = models.OneToOneField("ArtesHeader", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Header")
+    intro = models.OneToOneField("ArtesIntroSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Introducción")
+    diversity = models.OneToOneField("ArtesDiversitySection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Diversidad")
+    gallery = models.OneToOneField("ArtesGallerySection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Galería")
+
+    class Meta:
+        verbose_name = "3. Página: Artes"
+        verbose_name_plural = "3. Página: Artes"
+
+    def __str__(self):
+        return "Página de Artes"
+
+class ArtesHeader(models.Model):
+    title = models.CharField(max_length=120, default="Artes", verbose_name="Título")
+    breadcrumb_label = models.CharField(max_length=120, default="Artes", verbose_name="Breadcrumb actual")
+    background = models.ImageField(upload_to="eventos/", help_text="Imagen de fondo del header", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "3.1 Sección: Header de Artes"
+        verbose_name_plural = "3.1 Sección: Header de Artes"
+
+    def __str__(self):
+        return self.title
+
+class ArtesIntroSection(models.Model):
+    main_image = models.ImageField(upload_to="eventos/", help_text="Imagen principal de la sección de introducción", null=True, blank=True)
+    subtitle = models.CharField(max_length=160, default="En Chambalabamba el arte se vive", verbose_name="Subtítulo")
+    quote = models.CharField(max_length=255, blank=True, verbose_name="Cita")
+    sidebar_title = models.CharField(max_length=160, default="El arte no se detiene en Chambalabamba", verbose_name="Título del sidebar")
+    sidebar_paragraph1 = models.TextField(blank=True, verbose_name="Párrafo 1 del sidebar")
+    sidebar_paragraph2 = models.TextField(blank=True, verbose_name="Párrafo 2 del sidebar")
+
+    class Meta:
+        verbose_name = "3.2 Sección: Introducción de Artes"
+        verbose_name_plural = "3.2 Sección: Introducción de Artes"
+
+    def __str__(self):
+        return self.subtitle
+
+class ArtesDiversitySection(models.Model):
+    title = models.CharField(max_length=160, default="Danza, teatro, música y DIVERSIDAD", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "3.3 Sección: Diversidad de Artes"
+        verbose_name_plural = "3.3 Sección: Diversidad de Artes"
+
+    def __str__(self):
+        return self.title
+
+class Arte(models.Model):
+    page = models.ForeignKey(ArtesDiversitySection, on_delete=models.CASCADE, related_name='artes')
+    title = models.CharField(max_length=120, verbose_name="Título")
+    description = models.CharField(max_length=255, verbose_name="Descripción")
+    image = models.ImageField(upload_to="eventos/", help_text="Imagen del arte", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Arte"
+        verbose_name_plural = "Artes"
+
+    def __str__(self):
+        return self.title
+
+class ArtesGallerySection(models.Model):
+    title = models.CharField(max_length=160, default="Momentos de creación colectiva", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "3.4 Sección: Galería de Artes"
+        verbose_name_plural = "3.4 Sección: Galería de Artes"
+
+    def __str__(self):
+        return self.title
+
+class ArtesGalleryImage(models.Model):
+    section = models.ForeignKey(ArtesGallerySection, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to="eventos/gallery/", help_text="Imagen para la galería")
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Texto alternativo")
+
+    class Meta:
+        verbose_name = "Imagen de la Galería"
+        verbose_name_plural = "Imágenes de la Galería"
+
+    def __str__(self):
+        return self.alt_text or f"Imagen {self.id}"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Página de Festivales
 # ──────────────────────────────────────────────────────────────────────────────
 
