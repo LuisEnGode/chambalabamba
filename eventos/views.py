@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Festival, TallerDetail, TalleresPage, FestivalesPage, ArtesPage, EscuelaPage
+from .models import Festival, TallerDetail, TalleresPage, FestivalesPage, ArtesPage, EscuelaPage, RetirosPage
 
 # Create your views here.
 
@@ -17,7 +17,8 @@ def taller_detail(request, slug):
     return render(request, 'eventos/taller_detail.html', {'taller': taller})
 
 def retiros(request):
-    return render(request, 'eventos/retiros.html')
+    page_content = RetirosPage.objects.first()
+    return render(request, 'eventos/retiros.html', {'page': page_content})
 
 def artes(request):
     page_content = ArtesPage.objects.first()

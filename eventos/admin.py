@@ -5,7 +5,10 @@ from .models import (
     ArtesPage, ArtesHeader, ArtesIntroSection, ArtesDiversitySection, Arte,
     ArtesGallerySection, ArtesGalleryImage,
     EscuelaPage, EscuelaHeader, EscuelaIntroSection, EscuelaGalleryImage,
-    EscuelaSidebar, EscuelaProject
+    EscuelaSidebar, EscuelaProject,
+    RetirosPage, RetirosHeader, RetirosIntroSection, RetirosTypesSection, RetiroType,
+    RetirosActivitiesSection, RetiroActivity, RetirosGallerySection, RetirosGalleryImage,
+    RetirosTestimonialSection, RetiroTestimonial
 )
 
 @admin.register(FestivalesPage)
@@ -117,3 +120,53 @@ class EscuelaIntroSectionAdmin(admin.ModelAdmin):
 class EscuelaSidebarAdmin(admin.ModelAdmin):
     list_display = ("title",)
     inlines = [EscuelaProjectInline]
+
+class RetiroTypeInline(admin.TabularInline):
+    model = RetiroType
+    extra = 1
+
+class RetiroActivityInline(admin.TabularInline):
+    model = RetiroActivity
+    extra = 1
+
+class RetirosGalleryImageInline(admin.TabularInline):
+    model = RetirosGalleryImage
+    extra = 1
+
+class RetiroTestimonialInline(admin.TabularInline):
+    model = RetiroTestimonial
+    extra = 1
+
+@admin.register(RetirosPage)
+class RetirosPageAdmin(admin.ModelAdmin):
+    list_display = ("id", "enabled", "header", "intro", "types_section", "activities_section", "gallery_section", "testimonial_section")
+    def has_add_permission(self, request):
+        return not RetirosPage.objects.exists()
+
+@admin.register(RetirosHeader)
+class RetirosHeaderAdmin(admin.ModelAdmin):
+    list_display = ("title", "breadcrumb_label")
+
+@admin.register(RetirosIntroSection)
+class RetirosIntroSectionAdmin(admin.ModelAdmin):
+    list_display = ("title", "sidebar_title")
+
+@admin.register(RetirosTypesSection)
+class RetirosTypesSectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [RetiroTypeInline]
+
+@admin.register(RetirosActivitiesSection)
+class RetirosActivitiesSectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [RetiroActivityInline]
+
+@admin.register(RetirosGallerySection)
+class RetirosGallerySectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [RetirosGalleryImageInline]
+
+@admin.register(RetirosTestimonialSection)
+class RetirosTestimonialSectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [RetiroTestimonialInline]

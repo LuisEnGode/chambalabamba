@@ -306,3 +306,147 @@ class TalleresIntroSection(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Página de Retiros
+# ──────────────────────────────────────────────────────────────────────────────
+
+class RetirosPage(models.Model):
+    enabled = models.BooleanField(default=True, verbose_name="Habilitado")
+    header = models.OneToOneField("RetirosHeader", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Header")
+    intro = models.OneToOneField("RetirosIntroSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Introducción")
+    types_section = models.OneToOneField("RetirosTypesSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Tipos de Retiros")
+    activities_section = models.OneToOneField("RetirosActivitiesSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Actividades")
+    second_quote = models.TextField(blank=True, verbose_name="Segunda Cita")
+    gallery_section = models.OneToOneField("RetirosGallerySection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Galería")
+    testimonial_section = models.OneToOneField("RetirosTestimonialSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Testimonios")
+
+    class Meta:
+        verbose_name = "5. Página: Retiros"
+        verbose_name_plural = "5. Página: Retiros"
+
+    def __str__(self):
+        return "Página de Retiros"
+
+class RetirosHeader(models.Model):
+    title = models.CharField(max_length=120, default="Retiros", verbose_name="Título")
+    breadcrumb_label = models.CharField(max_length=120, default="Retiros", verbose_name="Breadcrumb actual")
+    background = models.ImageField(upload_to="eventos/", help_text="Imagen de fondo del header", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "5.1 Sección: Header de Retiros"
+        verbose_name_plural = "5.1 Sección: Header de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetirosIntroSection(models.Model):
+    main_image = models.ImageField(upload_to="eventos/", help_text="Imagen principal de la sección de introducción", null=True, blank=True)
+    title = models.CharField(max_length=160, default="Descubre y conecta con tu esencia", verbose_name="Título")
+    quote = models.CharField(max_length=255, blank=True, verbose_name="Cita")
+    sidebar_title = models.CharField(max_length=160, default="Un viaje hacia tu interior", verbose_name="Título del sidebar")
+    sidebar_paragraph1 = models.TextField(blank=True, verbose_name="Párrafo 1 del sidebar")
+    sidebar_paragraph2 = models.TextField(blank=True, verbose_name="Párrafo 2 del sidebar")
+    sidebar_paragraph3 = models.TextField(blank=True, verbose_name="Párrafo 3 del sidebar")
+
+    class Meta:
+        verbose_name = "5.2 Sección: Introducción de Retiros"
+        verbose_name_plural = "5.2 Sección: Introducción de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetirosTypesSection(models.Model):
+    title = models.CharField(max_length=160, default="Modalidades de transformación", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "5.3 Sección: Tipos de Retiros"
+        verbose_name_plural = "5.3 Sección: Tipos de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetiroType(models.Model):
+    section = models.ForeignKey(RetirosTypesSection, on_delete=models.CASCADE, related_name='types')
+    image = models.ImageField(upload_to="eventos/", help_text="Imagen del tipo de retiro", null=True, blank=True)
+    title = models.CharField(max_length=120, verbose_name="Título")
+    description = models.CharField(max_length=255, verbose_name="Descripción")
+
+    class Meta:
+        verbose_name = "Tipo de Retiro"
+        verbose_name_plural = "Tipos de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetirosActivitiesSection(models.Model):
+    title = models.CharField(max_length=160, default="Prácticas y experiencias", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "5.4 Sección: Actividades de Retiros"
+        verbose_name_plural = "5.4 Sección: Actividades de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetiroActivity(models.Model):
+    section = models.ForeignKey(RetirosActivitiesSection, on_delete=models.CASCADE, related_name='activities')
+    title = models.CharField(max_length=120, verbose_name="Título")
+    description = models.TextField(verbose_name="Descripción")
+
+    class Meta:
+        verbose_name = "Actividad de Retiro"
+        verbose_name_plural = "Actividades de Retiro"
+
+    def __str__(self):
+        return self.title
+
+class RetirosGallerySection(models.Model):
+    title = models.CharField(max_length=160, default="Espacios sagrados de transformación", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "5.5 Sección: Galería de Retiros"
+        verbose_name_plural = "5.5 Sección: Galería de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetirosGalleryImage(models.Model):
+    section = models.ForeignKey(RetirosGallerySection, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to="eventos/gallery/", help_text="Imagen para la galería")
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Texto alternativo")
+
+    class Meta:
+        verbose_name = "Imagen de la Galería de Retiros"
+        verbose_name_plural = "Imágenes de la Galería de Retiros"
+
+    def __str__(self):
+        return self.alt_text or f"Imagen {self.id}"
+
+class RetirosTestimonialSection(models.Model):
+    title = models.CharField(max_length=160, default="Voces de transformación", verbose_name="Título")
+
+    class Meta:
+        verbose_name = "5.6 Sección: Testimonios de Retiros"
+        verbose_name_plural = "5.6 Sección: Testimonios de Retiros"
+
+    def __str__(self):
+        return self.title
+
+class RetiroTestimonial(models.Model):
+    section = models.ForeignKey(RetirosTestimonialSection, on_delete=models.CASCADE, related_name='testimonials')
+    quote = models.TextField(verbose_name="Testimonio")
+    author = models.CharField(max_length=120, verbose_name="Autor")
+    location = models.CharField(max_length=120, blank=True, verbose_name="Ubicación")
+    image = models.ImageField(upload_to="eventos/testimonials/", help_text="Imagen del autor", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Testimonio de Retiro"
+        verbose_name_plural = "Testimonios de Retiro"
+
+    def __str__(self):
+        return f"Testimonio de {self.author}"
