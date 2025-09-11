@@ -24,25 +24,30 @@
                         Nosotros
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url 'nuestro_camino' %}">Nuestro camino</a></li>
+                        <li><a href="{% url 'nosotros:nuestro_camino' %}">Nuestro camino</a></li>
                         <!-- Pilares con submenú -->
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Pilares</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'pilar_ecologia' %}">Ecologia</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_economia' %}">Economia comunitaria</a>
+                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='ecologia' %}">Ecología</a>
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_bienestar' %}">Bienestar integral</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{% url 'pilar_sociocultural' %}">Sociocultural</a>
-                                </li>
+                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='economia' %}">Economía
+                                    comunitaria</a></li>
+                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='bienestar' %}">Bienestar
+                                    integral</a></li>
+                                <li><a class="dropdown-item"
+                                       href="{% url 'nosotros:pilar_detail' slug='sociocultural' %}">Sociocultural</a></li>
+
                             </ul>
                         </li>
 
 
-                        <li><a class="dropdown-item" href="{% url 'gobernanza' %}">Gobernanza</a></li>
-                        <li><a class="dropdown-item" href="{% url 'principios-valores' %}">Principios y valores</a></li>
-                        <li><a class="dropdown-item" href="{% url 'territorio' %}">Territorio</a></li>
+                       <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='gobernanza'  %}">Gobernanza</a>
+                       </li>
+                        <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='principios_valores' %}">Principios
+                            y valores</a></li>
+                        <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='territorio' %}">Territorio</a>
+                        </li>
                     </ul>
                 </li>
 

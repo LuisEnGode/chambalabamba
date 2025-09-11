@@ -74,9 +74,9 @@ class EcoAldeaSectionAdmin(admin.ModelAdmin):
     search_fields = ("title",)
 
 
-# =========================
-# P I L A R E S
-# =========================
+                        # =========================
+                        # P I L A R E S
+                        # =========================
 
 class PilarParagraphInline(admin.TabularInline):
     model = PilarParagraph
@@ -109,3 +109,39 @@ class PilarPageAdmin(admin.ModelAdmin):
     inlines = [PilarParagraphInline, PilarQuoteInline, PilarSidebarInline]
     save_on_top = True
     list_per_page = 20
+
+# ──────────────────────────────────────────────────────────────────────────────
+# NOSOTROS: Secciones (Gobernanza, Principios y valores, Territorio)
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+from .models import (
+    TopicPage, TopicParagraph, TopicQuote, TopicSidebarWidget,
+)
+
+class TopicParagraphInline(admin.TabularInline):
+    model = TopicParagraph
+    extra = 0
+    fields = ("orden", "publicado", "body")
+    ordering = ("orden",)
+
+class TopicQuoteInline(admin.TabularInline):
+    model = TopicQuote
+    extra = 0
+    fields = ("orden", "publicado", "text")
+    ordering = ("orden",)
+
+class TopicSidebarInline(admin.TabularInline):
+    model = TopicSidebarWidget
+    extra = 0
+    fields = ("orden", "publicado", "title", "text")
+    ordering = ("orden",)
+
+@admin.register(TopicPage)
+class TopicPageAdmin(admin.ModelAdmin):
+    list_display = ("slug", "title")
+    list_filter = ("slug",)
+    search_fields = ("title",)
+    inlines = [TopicParagraphInline, TopicQuoteInline, TopicSidebarInline]
+    save_on_top = True
+

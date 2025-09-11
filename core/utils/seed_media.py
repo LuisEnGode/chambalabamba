@@ -9,13 +9,21 @@ DEFAULT_PAIRS = [
     (Path("nosotros/static/nosotros/images"), Path("nosotros")),
     (Path("nosotros/static/nosotros/images/pilares/ecologia"), Path("nosotros/headers")),
     (Path("nosotros/static/nosotros/images/pilares/ecologia"), Path("nosotros/pilares/hero")),
-(Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
-(Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
-(Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/headers")),
-(Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/pilares/hero")),
+    (Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
+    (Path("nosotros/static/nosotros/images/pilares/economia-comunitaria"), Path("nosotros/pilares/hero")),
+    (Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/headers")),
+    (Path("nosotros/static/nosotros/images/pilares/sociocultural"), Path("nosotros/pilares/hero")),
 
     (Path("nosotros/static/nosotros/images/pilares"), Path("nosotros/pilares/hero")),
     (Path("nosotros/static/nosotros/images/pilares"), Path("nosotros/headers")),
+
+    (Path("nosotros/static/nosotros/images/pilares"), Path("nosotros/sections/hero")),
+
+    (Path("nosotros/static/nosotros/images"), Path("nosotros/headers")),
+    (Path("nosotros/static/nosotros/images"), Path("nosotros/sections/hero")),
+
+    (Path("nosotros/static/nosotros/images/pilares/ecologia"), Path("nosotros/images/pilares/ecologia")),
+
 
     # INICIO (coinciden con upload_to de los modelos)
     (Path("inicio/static/inicio/hero"), Path("inicio/hero")),
@@ -34,8 +42,8 @@ DEFAULT_PAIRS = [
 
     (Path("tienda/static/images"), Path("productos/portadas")),
 
-
 ]
+
 
 def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:
     base = Path(settings.BASE_DIR)
@@ -57,4 +65,3 @@ def copy_seed_media(pairs=DEFAULT_PAIRS, force=False) -> int:
                 copy2(f, target)
                 total += 1
     return total
-

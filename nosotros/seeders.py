@@ -9,6 +9,9 @@ SEEDS = [
     ("pilar_economia.json", "nosotros:pilar:economia:v2"),  # nuevo
     ("pilar_sociocultural.json", "nosotros:pilar:sociocultural:v2"),  # nuevo
     ("pilar_bienestar.json", "nosotros:pilar:bienestar:v2"),  # nuevo
+    ("gobernanza.json", "nosotros:topic:gobernanza:v4"),
+    ("principios_valores.json", "nosotros:topic:principios:v3"),
+    ("territorio.json", "nosotros:topic:territorio:v2"),
 ]
 
 def _seed_nosotros_once(sender, **kwargs):

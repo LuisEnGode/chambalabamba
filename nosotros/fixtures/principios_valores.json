@@ -1,0 +1,62 @@
+[
+  {
+    "model": "nosotros.pageheader",
+    "pk": 21,
+    "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Principios y Valores",
+      "background": "nosotros/headers/valorescabeza.png"
+    }
+  },
+  {
+    "model": "nosotros.topicpage",
+    "pk": 201,
+    "fields": {
+      "slug": "principios_valores",
+      "header": 21,
+      "hero_image": "nosotros/sections/hero/principios.png",
+      "title": "Principios y Valores",
+      "lead": ""
+    }
+  },
+
+  { "model": "nosotros.topicparagraph", "pk": 3001, "fields": {
+      "page": 201, "publicado": true, "orden": 1,
+      "body": "The environment includes; the surface of the earth, natural re­sources, land and water, mountains and plains, fertile lands and deserts, oceans, storms and cy­clones, weather and climatic factors, seasons, etc. It also includes biological conditions such as plants, animals with all their complexities.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+  { "model": "nosotros.topicparagraph", "pk": 3002, "fields": {
+      "page": 201, "publicado": true, "orden": 2,
+      "body": "We are going to run a solid educational campaign for the orphan children study. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+  { "model": "nosotros.topicparagraph", "pk": 3003, "fields": {
+      "page": 201, "publicado": true, "orden": 3,
+      "body": "You need to be sure there isn't anything embarrassing hidden in the middle of text. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+  { "model": "nosotros.topicparagraph", "pk": 3004, "fields": {
+      "page": 201, "publicado": true, "orden": 4,
+      "body": "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+
+  { "model": "nosotros.topicquote", "pk": 3101, "fields": {
+      "page": 201, "publicado": true, "orden": 1,
+      "text": "The inner environment is the society itself. It is the social envi­ronment & endures only so long as the society endures. It consists of the organisations and regula­tions, the traditions and institutions.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+
+  { "model": "nosotros.topicsidebarwidget", "pk": 3201, "fields": {
+      "page": 201, "publicado": true, "orden": 1,
+      "title": "Principios y valores",
+      "text": "En Chambalabamba el voluntariado es aprendizaje en acción. Podrás acompañar procesos en la Escuela Viva, apoyar el cuidado de nuestros huertos y participar en prácticas de agricultura regenerativa.\n\nSembramos, compostamos, regamos y cosechamos respetando los ciclos de la naturaleza, mientras facilitamos experiencias educativas para niñas, niños, jóvenes y adultos. Es un espacio para servir a la comunidad, compartir saberes ancestrales y cultivar autonomía a través del trabajo en la tierra.",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }},
+  { "model": "nosotros.topicsidebarwidget", "pk": 3202, "fields": {
+      "page": 201, "publicado": true, "orden": 2,
+      "title": "Proyectos Actuales",
+      "text": "- Cuidado del agua\n- Economia circular\n- Huerta Sintropica",
+      "creado": "2025-09-11T21:35:00Z", "actualizado": "2025-09-11T21:35:00Z"
+  }}
+]
