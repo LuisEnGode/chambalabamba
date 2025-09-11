@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Festival, TallerDetail, TalleresPage, FestivalesPage, ArtesPage
+from .models import Festival, TallerDetail, TalleresPage, FestivalesPage, ArtesPage, EscuelaPage
 
 # Create your views here.
 
 def escuela_viva(request):
-    return render(request, 'eventos/escuela.html')
+    page_content = EscuelaPage.objects.first()
+    return render(request, 'eventos/escuela.html', {'page': page_content})
 
 def talleres(request):
     talleres = TallerDetail.objects.all()

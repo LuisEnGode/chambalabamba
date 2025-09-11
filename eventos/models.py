@@ -76,6 +76,87 @@ class TalleresHeader(models.Model):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Página de Escuela
+# ──────────────────────────────────────────────────────────────────────────────
+
+class EscuelaPage(models.Model):
+    enabled = models.BooleanField(default=True, verbose_name="Habilitado")
+    header = models.OneToOneField("EscuelaHeader", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Header")
+    intro = models.OneToOneField("EscuelaIntroSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Introducción")
+    sidebar = models.OneToOneField("EscuelaSidebar", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sidebar")
+
+    class Meta:
+        verbose_name = "4. Página: Escuela"
+        verbose_name_plural = "4. Página: Escuela"
+
+    def __str__(self):
+        return "Página de Escuela"
+
+class EscuelaHeader(models.Model):
+    title = models.CharField(max_length=120, default="Escuela Viva", verbose_name="Título")
+    breadcrumb_label = models.CharField(max_length=120, default="Escuela", verbose_name="Breadcrumb actual")
+    background = models.ImageField(upload_to="eventos/", help_text="Imagen de fondo del header", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "4.1 Sección: Header de Escuela"
+        verbose_name_plural = "4.1 Sección: Header de Escuela"
+
+    def __str__(self):
+        return self.title
+
+class EscuelaIntroSection(models.Model):
+    main_image = models.ImageField(upload_to="eventos/", help_text="Imagen principal de la sección de introducción", null=True, blank=True)
+    title = models.CharField(max_length=160, default="Conoce la escuela, nuestra filosofía e infraestructura", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+    quote = models.CharField(max_length=255, blank=True, verbose_name="Cita")
+    gallery_title = models.CharField(max_length=160, default="Nuestro dia a dia", verbose_name="Título de la galería")
+
+    class Meta:
+        verbose_name = "4.2 Sección: Introducción de Escuela"
+        verbose_name_plural = "4.2 Sección: Introducción de Escuela"
+
+    def __str__(self):
+        return self.title
+
+class EscuelaGalleryImage(models.Model):
+    section = models.ForeignKey(EscuelaIntroSection, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ImageField(upload_to="eventos/gallery/", help_text="Imagen para la galería")
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Texto alternativo")
+
+    class Meta:
+        verbose_name = "Imagen de la Galería de Escuela"
+        verbose_name_plural = "Imágenes de la Galería de Escuela"
+
+    def __str__(self):
+        return self.alt_text or f"Imagen {self.id}"
+
+class EscuelaSidebar(models.Model):
+    title = models.CharField(max_length=160, default="Un ambiente diseñado para el desarrollo infantil", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+    instagram_url = models.URLField(blank=True, verbose_name="URL del post de Instagram")
+    projects_title = models.CharField(max_length=160, default="Proyectos de la escuela en curso", verbose_name="Título de los proyectos")
+
+    class Meta:
+        verbose_name = "4.3 Sección: Sidebar de Escuela"
+        verbose_name_plural = "4.3 Sección: Sidebar de Escuela"
+
+    def __str__(self):
+        return self.title
+
+class EscuelaProject(models.Model):
+    sidebar = models.ForeignKey(EscuelaSidebar, on_delete=models.CASCADE, related_name='projects')
+    name = models.CharField(max_length=120, verbose_name="Nombre del proyecto")
+    url = models.URLField(blank=True, verbose_name="URL del proyecto")
+
+    class Meta:
+        verbose_name = "Proyecto de Escuela"
+        verbose_name_plural = "Proyectos de Escuela"
+
+    def __str__(self):
+        return self.name
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Página de Artes
 # ──────────────────────────────────────────────────────────────────────────────
 

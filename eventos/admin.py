@@ -3,7 +3,9 @@ from .models import (
     Festival, TallerDetail, TalleresPage, TalleresHeader, TalleresIntroSection,
     FestivalesPage, FestivalesHeader, FestivalesIntroSection,
     ArtesPage, ArtesHeader, ArtesIntroSection, ArtesDiversitySection, Arte,
-    ArtesGallerySection, ArtesGalleryImage
+    ArtesGallerySection, ArtesGalleryImage,
+    EscuelaPage, EscuelaHeader, EscuelaIntroSection, EscuelaGalleryImage,
+    EscuelaSidebar, EscuelaProject
 )
 
 @admin.register(FestivalesPage)
@@ -87,3 +89,31 @@ class ArtesDiversitySectionAdmin(admin.ModelAdmin):
 class ArtesGallerySectionAdmin(admin.ModelAdmin):
     list_display = ("title",)
     inlines = [ArtesGalleryImageInline]
+
+class EscuelaGalleryImageInline(admin.TabularInline):
+    model = EscuelaGalleryImage
+    extra = 1
+
+class EscuelaProjectInline(admin.TabularInline):
+    model = EscuelaProject
+    extra = 1
+
+@admin.register(EscuelaPage)
+class EscuelaPageAdmin(admin.ModelAdmin):
+    list_display = ("id", "enabled", "header", "intro", "sidebar")
+    def has_add_permission(self, request):
+        return not EscuelaPage.objects.exists()
+
+@admin.register(EscuelaHeader)
+class EscuelaHeaderAdmin(admin.ModelAdmin):
+    list_display = ("title", "breadcrumb_label")
+
+@admin.register(EscuelaIntroSection)
+class EscuelaIntroSectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [EscuelaGalleryImageInline]
+
+@admin.register(EscuelaSidebar)
+class EscuelaSidebarAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [EscuelaProjectInline]
