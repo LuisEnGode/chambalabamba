@@ -4,6 +4,7 @@
 {% load inicio_extras %}
 {% load participa_extras %}
 {% load donaciones_extras %}
+{% load tienda_extras %}
 {% block title %}
 Inicio – Chambalabamba
 {% endblock %}
@@ -356,151 +357,22 @@ Inicio – Chambalabamba
 -->
 
 <!--Why Ecova + Facts End-->
+
+
 <!--Online Products Start-->
 <section class="online-shop wf100 p80">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title-2 text-center">
-                    <a href="{% url 'tienda' %}">
-                    <h2>Visita nuestra seccion de productos</h2></a>
+  <div class="container">
 
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!--Pro Box Start-->
-            <div class="col-md-3 col-sm-6">
-                <div class="product-box">
-                    <div class="pro-thumb"><img src="{% static 'images/productos/miel.png' %}" alt="">
-                    </div>
-                    <div class="pro-txt">
-                        <h6><a href="{% url 'tienda' %}">Miel</a></h6>
-                        <p class="pro-price">
-                            <!--
-                            <del>$25.00</del>
-                            $19.00
-                            -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--Pro Box End-->
-            <!--Pro Box Start-->
-            <div class="col-md-3 col-sm-6">
-                <div class="product-box">
-                    <div class="pro-thumb"><img src="{% static 'images/productos/comodin.png' %}"
-                                                alt=""></div>
-                    <div class="pro-txt">
-                        <h6><a href="{% url 'tienda' %}">Comodin</a></h6>
-                        <p class="pro-price">
-                             <!--
-                            <del>$25.00</del>
-                            $19.00
-                             -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--Pro Box End-->
-            <!--Pro Box Start-->
-            <div class="col-md-3 col-sm-6">
-                <div class="product-box">
-                    <div class="pro-thumb"><img src="{% static 'images/productos/guayusa.png' %}" alt="">
-                    </div>
-                    <div class="pro-txt">
-                        <h6><a href="{% url 'tienda' %}">Guayusa</a></h6>
-                        <p class="pro-price">
-                            <!--
-                            <del>$25.00</del>
-                            $19.00
-                             -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--Pro Box End-->
-            <!--Pro Box Start-->
-            <div class="col-md-3 col-sm-6">
-                <div class="product-box">
-                    <div class="pro-thumb"><img src="{% static 'images/productos/javoncombu.png' %}" alt="">
-                    </div>
-                    <div class="pro-txt">
-                        <h6><a href="{% url 'tienda' %}">Javon</a></h6>
-                        <p class="pro-price">
-                            <!--
-                            <del>$25.00</del>
-                            $19.00
-                             -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--Pro Box End-->
-        </div>
-    </div>
+{% load tienda_extras %}
+{% products_tabs header_h5="Visita nuestra tienda" header_h2="Productos" %}
+
+
+  </div>
 </section>
 
 
-<!-- ===== Intermedio estático (entre Why Ecova y Online Products) ===== -->
+<!-- ===== /GALERIA ESTANCIAS ===== -->
 
-<section class="wf100 p80" id="intro-casas">
-    <div class="container">
-        <div class="row justify-content-center text-center">
+{% gallery_headers_estancias "participa_estancias" title="Últimos alojamientos" subtitle="Descanzo" limit=6 %}
 
-            <!-- Título + texto centrados -->
-            <div class="col-12 col-lg-9 mx-auto">
-                <h2 class="display-5 fw-bold mb20">Arquitectura viva</h2>
-                <p class="lead text-muted mb20">
-                    En Chambalabamba cada casa es una obra hecha con tierra, madera y técnicas naturales.
-                    Buscamos confort térmico, eficiencia y una estética que dialoga con el bosque y la montaña.
-                </p>
-
-                <ul class="list-inline mb20">
-                    <li class="list-inline-item mx-2">• Materiales locales y naturales</li>
-                    <li class="list-inline-item mx-2">• Diseños orgánicos y funcionales</li>
-                    <li class="list-inline-item mx-2">• Integración al paisaje</li>
-                </ul>
-
-
-            </div>
-
-
-
-        </div>
-    </div>
-</section>
-
-<!-- ===== /Intermedio estático ===== -->
-<!--Online Products End-->
-<!--InstaGram Start-->
-
-
-
-
-
-
-{% gallery_headers_estancias "participa_estancias" title="ÚLTIMOS ALOJAMIENTOS" subtitle="Semillas que florecen" limit=6 %}
-<!--
-<div class="instagram">
-    <ul>
-        {% load static %}
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
-                src="{% static 'images/galerias/casas/voluntarios.png' %}" alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galerias/casas/arbol.png' %}"
-                                                                 alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
-                src="{% static 'images/galerias/casas/casa-bioconstruccion.png' %}" alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
-                src="{% static 'images/galerias/casas/casa-loma.png' %}" alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
-                src="{% static 'images/galerias/casas/casa-madera.png' %}" alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'images/galerias/casas/domo.png' %}"
-                                                                 alt=""></li>
-        <li><a href="#"> <i class="fas fa-search"></i> </a> <img
-                src="{% static 'images/galerias/casas/domo-paja.png' %}" alt=""></li>
-    </ul>
-</div>
--->
-<!--InstaGram End-->
 {% endblock %}

@@ -20,7 +20,7 @@
       <div class="col-md-4 col-sm-6">
         <div class="product-box">
           <div class="pro-thumb">
-            <a href="{% url 'detalle-producto' p.slug %}">Ver</a>
+            <a href="{% url 'tienda:detalle-producto' p.slug %}">Ver</a>
             {% if p.imagen_portada %}
               <img src="{{ p.imagen_portada.url }}" alt="{{ p.titulo }}">
             {% else %}
@@ -28,7 +28,7 @@
             {% endif %}
           </div>
           <div class="pro-txt">
-            <h6><a href="{% url 'detalle-producto' p.slug %}">{{ p.titulo }}</a></h6>
+            <h6><a href="{% url 'tienda:detalle-producto' p.slug %}">{{ p.titulo }}</a></h6>
             <p class="pro-price">
               {% if p.precio_tachado %}<del>${{ p.precio_tachado }}</del>{% endif %}
               ${{ p.precio }}

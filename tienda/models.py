@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class ProductoCategoria(models.Model):
     nombre = models.CharField(max_length=120)
@@ -34,6 +35,10 @@ class Producto(models.Model):
     publicado = models.BooleanField(default=True)
     orden = models.PositiveIntegerField(default=0)
     creado = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        # Ajusta al nombre real de tu ruta de detalle si existe:
+        return reverse("tienda:detalle-producto", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["orden", "-creado"]
