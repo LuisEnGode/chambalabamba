@@ -8,7 +8,9 @@ from .models import (
     EscuelaSidebar, EscuelaProject,
     RetirosPage, RetirosHeader, RetirosIntroSection, RetirosTypesSection, RetiroType,
     RetirosActivitiesSection, RetiroActivity, RetirosGallerySection, RetirosGalleryImage,
-    RetirosTestimonialSection, RetiroTestimonial
+    RetirosTestimonialSection, RetiroTestimonial,
+    TerapiasPage, TerapiasHeader, TerapiasIntroSection, TerapiasBenefitsSection, TerapiaBenefit,
+    TerapiasGallerySection, TerapiasGalleryImage
 )
 
 @admin.register(FestivalesPage)
@@ -170,3 +172,35 @@ class RetirosGallerySectionAdmin(admin.ModelAdmin):
 class RetirosTestimonialSectionAdmin(admin.ModelAdmin):
     list_display = ("title",)
     inlines = [RetiroTestimonialInline]
+
+class TerapiaBenefitInline(admin.TabularInline):
+    model = TerapiaBenefit
+    extra = 1
+
+class TerapiasGalleryImageInline(admin.TabularInline):
+    model = TerapiasGalleryImage
+    extra = 1
+
+@admin.register(TerapiasPage)
+class TerapiasPageAdmin(admin.ModelAdmin):
+    list_display = ("id", "enabled", "header", "intro", "benefits_section", "gallery_section")
+    def has_add_permission(self, request):
+        return not TerapiasPage.objects.exists()
+
+@admin.register(TerapiasHeader)
+class TerapiasHeaderAdmin(admin.ModelAdmin):
+    list_display = ("title", "breadcrumb_label")
+
+@admin.register(TerapiasIntroSection)
+class TerapiasIntroSectionAdmin(admin.ModelAdmin):
+    list_display = ("title", "sidebar_title")
+
+@admin.register(TerapiasBenefitsSection)
+class TerapiasBenefitsSectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [TerapiaBenefitInline]
+
+@admin.register(TerapiasGallerySection)
+class TerapiasGallerySectionAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [TerapiasGalleryImageInline]

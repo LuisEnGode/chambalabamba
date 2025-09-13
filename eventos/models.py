@@ -450,3 +450,95 @@ class RetiroTestimonial(models.Model):
 
     def __str__(self):
         return f"Testimonio de {self.author}"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Página de Terapias
+# ──────────────────────────────────────────────────────────────────────────────
+
+class TerapiasPage(models.Model):
+    enabled = models.BooleanField(default=True, verbose_name="Habilitado")
+    header = models.OneToOneField("TerapiasHeader", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Header")
+    intro = models.OneToOneField("TerapiasIntroSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Introducción")
+    benefits_section = models.OneToOneField("TerapiasBenefitsSection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Beneficios")
+    second_quote = models.TextField(blank=True, verbose_name="Segunda Cita")
+    gallery_section = models.OneToOneField("TerapiasGallerySection", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Sección de Galería")
+
+    class Meta:
+        verbose_name = "6. Página: Terapias"
+        verbose_name_plural = "6. Página: Terapias"
+
+    def __str__(self):
+        return "Página de Terapias"
+
+class TerapiasHeader(models.Model):
+    title = models.CharField(max_length=120, default="Terapias", verbose_name="Título")
+    breadcrumb_label = models.CharField(max_length=120, default="Terapias", verbose_name="Breadcrumb actual")
+    background = models.ImageField(upload_to="eventos/", help_text="Imagen de fondo del header", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "6.1 Sección: Header de Terapias"
+        verbose_name_plural = "6.1 Sección: Header de Terapias"
+
+    def __str__(self):
+        return self.title
+
+class TerapiasIntroSection(models.Model):
+    main_image = models.ImageField(upload_to="eventos/", help_text="Imagen principal de la sección de introducción", null=True, blank=True)
+    title = models.CharField(max_length=160, default="Sanación y Equilibrio para tu Ser", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+    sidebar_title = models.CharField(max_length=160, default="Bienestar", verbose_name="Título del sidebar")
+    sidebar_subtitle = models.CharField(max_length=160, default="Físico, emocional, mental, espiritual", verbose_name="Subtítulo del sidebar")
+    sidebar_paragraph = models.TextField(blank=True, verbose_name="Párrafo del sidebar")
+
+    class Meta:
+        verbose_name = "6.2 Sección: Introducción de Terapias"
+        verbose_name_plural = "6.2 Sección: Introducción de Terapias"
+
+    def __str__(self):
+        return self.title
+
+class TerapiasBenefitsSection(models.Model):
+    title = models.CharField(max_length=160, default="Beneficios de Nuestras Terapias", verbose_name="Título")
+
+    class Meta:
+        verbose_name = "6.3 Sección: Beneficios de Terapias"
+        verbose_name_plural = "6.3 Sección: Beneficios de Terapias"
+
+    def __str__(self):
+        return self.title
+
+class TerapiaBenefit(models.Model):
+    section = models.ForeignKey(TerapiasBenefitsSection, on_delete=models.CASCADE, related_name='benefits')
+    title = models.CharField(max_length=120, verbose_name="Título")
+    description = models.TextField(verbose_name="Descripción")
+
+    class Meta:
+        verbose_name = "Beneficio de Terapia"
+        verbose_name_plural = "Beneficios de Terapias"
+
+    def __str__(self):
+        return self.title
+
+class TerapiasGallerySection(models.Model):
+    title = models.CharField(max_length=160, default="Espacios de Contención y Sanación", verbose_name="Título")
+    paragraph = models.TextField(blank=True, verbose_name="Párrafo")
+
+    class Meta:
+        verbose_name = "6.4 Sección: Galería de Terapias"
+        verbose_name_plural = "6.4 Sección: Galería de Terapias"
+
+    def __str__(self):
+        return self.title
+
+class TerapiasGalleryImage(models.Model):
+    section = models.ForeignKey(TerapiasGallerySection, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to="eventos/gallery/", help_text="Imagen para la galería")
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Texto alternativo")
+
+    class Meta:
+        verbose_name = "Imagen de la Galería de Terapias"
+        verbose_name_plural = "Imágenes de la Galería de Terapias"
+
+    def __str__(self):
+        return self.alt_text or f"Imagen {self.id}"
