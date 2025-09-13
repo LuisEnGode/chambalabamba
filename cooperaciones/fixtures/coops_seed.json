@@ -1,0 +1,92 @@
+[
+  {
+    "model": "cooperaciones.cabeceracoops",
+    "pk": 1,
+    "fields": {
+      "h5": "Alianzas que nos potencian",
+      "h2": "Cooperaciones",
+      "subtitulo": "Organizaciones y colectivos que caminan junto a Chambalabamba",
+      "hero": "coops/hero/coops-hero.jpg",
+      "publicado": true
+    }
+  },
+  {
+    "model": "cooperaciones.coopcategoria",
+    "pk": 1,
+    "fields": { "nombre": "Nacional", "slug": "nacional", "publicado": true, "orden": 1 }
+  },
+  {
+    "model": "cooperaciones.coopcategoria",
+    "pk": 2,
+    "fields": { "nombre": "Internacional", "slug": "internacional", "publicado": true, "orden": 2 }
+  },
+  {
+    "model": "cooperaciones.cooperacion",
+    "pk": 1,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Red Agroecológica",
+      "slug": "red-agroecologica",
+      "pais": "Ecuador",
+      "logo": "coops/logos/red-agroecologica.png",
+      "portada": "coops/portadas/red-agroecologica.jpg",
+      "excerpt": "Intercambio de semillas y talleres comunitarios.",
+      "descripcion": "Trabajamos junto a nodos locales para promover la soberanía alimentaria y prácticas agroecológicas.",
+      "url_externa": "https://ejemplo.org/red-agroecologica",
+      "publicado": true,
+      "orden": 1,
+      "creado": "2025-09-10T12:00:00Z"
+    }
+  },
+  {
+    "model": "cooperaciones.cooperacion",
+    "pk": 2,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Universidad Verde",
+      "slug": "universidad-verde",
+      "pais": "Chile",
+      "logo": "coops/logos/universidad-verde.png",
+      "portada": "coops/portadas/universidad-verde.jpg",
+      "excerpt": "Pasantías y apoyo técnico en permacultura.",
+      "descripcion": "Convenio para pasantías, investigación aplicada y transferencia de conocimientos.",
+      "url_externa": "https://ejemplo.edu/universidad-verde",
+      "publicado": true,
+      "orden": 2,
+      "creado": "2025-09-11T09:30:00Z"
+    }
+  },
+  {
+    "model": "cooperaciones.coopfoto",
+    "pk": 1,
+    "fields": {
+      "coop": 1,
+      "imagen": "coops/fotos/red-agroecologica/siembra-1.jpg",
+      "alt": "Jornada de siembra comunitaria",
+      "publicado": true,
+      "orden": 1
+    }
+  },
+  {
+    "model": "cooperaciones.coopfoto",
+    "pk": 2,
+    "fields": {
+      "coop": 1,
+      "imagen": "coops/fotos/red-agroecologica/trueque-1.jpg",
+      "alt": "Intercambio de semillas",
+      "publicado": true,
+      "orden": 2
+    }
+  },
+  {
+    "model": "cooperaciones.coopfoto",
+    "pk": 3,
+    "fields": {
+      "coop": 2,
+      "imagen": "coops/fotos/universidad-verde/pasantia-1.jpg",
+      "alt": "Pasantía en bio-construcción",
+      "publicado": true,
+      "orden": 1
+    }
+  }
+]

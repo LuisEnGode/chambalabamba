@@ -1,0 +1,110 @@
+{% load static %}
+<section class="wf100 p80 current-projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-title-2">
+          <h5>
+            {% if link_to_list %}<a href="{% url 'coops:lista' %}">{{ header_h5 }}</a>
+            {% else %}{{ header_h5 }}{% endif %}
+          </h5>
+          <h2>{{ header_h2 }}</h2>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <ul class="nav" id="coopsTabs" role="tablist">
+          {% for t in tabs %}
+            <li class="nav-item">
+              <a class="nav-link {% if forloop.first %}active{% endif %}"
+                 id="coops-{{ t.id }}-tab" href="#coops-{{ t.id }}"
+                 role="tab" aria-controls="coops-{{ t.id }}"
+                 aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                 data-toggle="tab" data-bs-toggle="tab">
+                {{ t.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    {% if show_cta_button %}
+      <div class="text-right mb-3">
+        <a class="btn btn-outline-primary" href="{% url 'coops:lista' %}">{{ cta_label }}</a>
+      </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab-content" id="coopsTabContent">
+          {% for t in tabs %}
+            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}"
+                 id="coops-{{ t.id }}" role="tabpanel"
+                 aria-labelledby="coops-{{ t.id }}-tab">
+              <div class="cpro-slider owl-carousel owl-theme">
+                {% for c in t.items %}
+                  <div class="item">
+                    <div class="pro-box" style="position:relative;">
+                      {% if c.logo %}
+                        <img src="{{ c.logo.url }}" alt="{{ c.nombre }}">
+                      {% elif c.portada %}
+                        <img src="{{ c.portada.url }}" alt="{{ c.nombre }}">
+                      {% else %}
+                        <img src="{% static 'images/placeholder-logo.png' %}" alt="{{ c.nombre }}">
+                      {% endif %}
+                      <h5>{{ c.nombre }}</h5>
+                      <div class="pro-hover">
+                        <h6>{{ c.nombre }}</h6>
+                        {% if c.excerpt %}<p>{{ c.excerpt }}</p>
+                        {% elif c.descripcion %}<p>{{ c.descripcion|truncatechars:140 }}</p>
+                        {% else %}<p>&nbsp;</p>{% endif %}
+                        <a href="{{ c.get_absolute_url }}">Ver detalle</a>
+                      </div>
+                    </div>
+                  </div>
+                {% empty %}
+                  <div class="item">
+                    <div class="pro-box">
+                      <img src="{% static 'images/placeholder-logo.png' %}" alt="Sin datos">
+                      <h5>Pronto nuevas cooperaciones</h5>
+                      <div class="pro-hover">
+                        <h6>Pronto nuevas cooperaciones</h6>
+                        <p>Estamos gestionando nuevas alianzas.</p>
+                        <a href="{% url 'coops:lista' %}">Ver todas</a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  function initOwl($root){
+    $root.find('.cpro-slider.owl-carousel').each(function(){
+      var $el = $(this);
+      if ($el.data('owl-inited')) return;
+      $el.owlCarousel({
+        loop:false, margin:20, nav:true, dots:false,
+        responsive:{0:{items:1},576:{items:2},992:{items:3},1200:{items:4}}
+      });
+      $el.data('owl-inited', true);
+    });
+  }
+  $(function(){
+    initOwl($(document));
+    $('a[data-toggle="tab"], a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e){
+      var $target = $($(e.target).attr('href'));
+      initOwl($target);
+      $target.find('.cpro-slider.owl-carousel').trigger('refresh.owl.carousel');
+    });
+  });
+})();
+</script>

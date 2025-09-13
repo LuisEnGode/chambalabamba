@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'contenido',
     "eventos.apps.EventosConfig",
     "nosotros.apps.NosotrosConfig",
+    "cooperaciones",
+
 
 ]
 

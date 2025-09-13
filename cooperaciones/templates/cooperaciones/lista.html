@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Cooperaciones – Chambalabamba{% endblock %}
+
+{% block content %}
+<section class="wf100 p80 current-projects">
+  <div class="container">
+
+    <div class="section-title-2 text-center">
+      <h5>{{ cab.h5|default:"Alianzas que nos potencian" }}</h5>
+      <h2>{{ cab.h2|default:"Cooperaciones" }}</h2>
+      {% if cab.subtitulo %}<p class="mt-2">{{ cab.subtitulo }}</p>{% endif %}
+    </div>
+
+    {% if cab.hero %}
+      <div class="text-center mb-4">
+        <img src="{{ cab.hero.url }}" alt="{{ cab.h2 }}" style="max-width:100%;height:auto;">
+      </div>
+    {% endif %}
+
+    <div class="row">
+      {% for it in coops %}
+        <div class="col-6 col-sm-4 col-md-3 p-3 text-center">
+          <a class="d-block p-3 rounded border" href="{{ it.get_absolute_url }}">
+            {% if it.logo %}
+              <img src="{{ it.logo.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
+            {% elif it.portada %}
+              <img src="{{ it.portada.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
+            {% else %}
+              <img src="{% static 'images/placeholder-logo.png' %}" alt="{{ it.nombre }}">
+            {% endif %}
+            <div class="mt-2">{{ it.nombre }}</div>
+            {% if it.pais %}<div class="text-muted small">{{ it.pais }}</div>{% endif %}
+          </a>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center text-muted">Pronto anunciaremos nuevas cooperaciones 🤝</div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endblock %}
