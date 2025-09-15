@@ -20,23 +20,21 @@
     {% endif %}
 
     <div class="row">
-      {% for it in coops %}
-        <div class="col-6 col-sm-4 col-md-3 p-3 text-center">
-          <a class="d-block p-3 rounded border" href="{{ it.get_absolute_url }}">
-            {% if it.logo %}
-              <img src="{{ it.logo.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
-            {% elif it.portada %}
-              <img src="{{ it.portada.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
-            {% else %}
-              <img src="{% static 'images/placeholder-logo.png' %}" alt="{{ it.nombre }}">
-            {% endif %}
-            <div class="mt-2">{{ it.nombre }}</div>
-            {% if it.pais %}<div class="text-muted small">{{ it.pais }}</div>{% endif %}
-          </a>
+
+        <div class="col-6 col-sm-4 col-md-3 p-2">
+
+{% load coops_extras %}
+{% _home_cooperaciones subtitle="Alianzas que nos potencian" title="Cooperaciones" limit=12 %}
+
         </div>
-      {% empty %}
+
         <div class="col-12 text-center text-muted">Pronto anunciaremos nuevas cooperaciones 🤝</div>
-      {% endfor %}
+
+    </div>
+
+    <div class="text-center mt-4">
+      <a class="btn btn-outline-primary" href="{% url 'contacto:contacto' %}">¿Quieres cooperar?</a>
+      {# Si aún no tienes esa vista, apunta temporalmente a /contacto/ #}
     </div>
 
   </div>

@@ -9,6 +9,6 @@ class NosotrosConfig(AppConfig):
     label = "nosotros"
 
     def ready(self):
-        post_migrate.connect(_seed_nosotros_once, dispatch_uid="seed_nosotros_once")
+        post_migrate.connect(_seed_nosotros_once, sender=self)
 
 

@@ -42,6 +42,11 @@ DEFAULT_PAIRS = [
 
     (Path("tienda/static/images"), Path("productos/portadas")),
 
+    (Path("cooperaciones/static/images/coops/fotos/"), Path("coops/fotos/red-agroecologica")),
+    (Path("cooperaciones/static/images/coops/logos/"), Path("coops/logos")),
+    (Path("cooperaciones/static/images/coops/portadas/"), Path("coops/portadas")),
+    (Path("cooperaciones/static/images/coops/hero/"), Path("coops/hero")),
+
 ]
 
 

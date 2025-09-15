@@ -29,24 +29,34 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Pilares</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='ecologia' %}">Ecología</a>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='ecologia' %}">Ecología</a>
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='economia' %}">Economía
-                                    comunitaria</a></li>
-                                <li><a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='bienestar' %}">Bienestar
-                                    integral</a></li>
-                                <li><a class="dropdown-item"
-                                       href="{% url 'nosotros:pilar_detail' slug='sociocultural' %}">Sociocultural</a></li>
-
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='economia' %}">Economía
+                                        comunitaria
+                                    </a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'nosotros:pilar_detail' slug='bienestar' %}">Bienestar
+                                        integral
+                                    </a></li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{% url 'nosotros:pilar_detail' slug='sociocultural' %}">Sociocultural</a>
+                                </li>
                             </ul>
                         </li>
 
 
-                       <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='gobernanza'  %}">Gobernanza</a>
-                       </li>
+                        <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='gobernanza'  %}">Gobernanza</a>
+                        </li>
                         <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='principios_valores' %}">Principios
                             y valores</a></li>
                         <li><a class="dropdown-item" href="{% url 'nosotros:topic_detail' slug='territorio' %}">Territorio</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="{% url  'coops:lista' %}">Cooperaciones</a>
                         </li>
                     </ul>
                 </li>
@@ -125,54 +135,54 @@
                     </div>
                 </li>
 
-                    <li class="login-reg">
-                        <a href="{% url 'perfil' %}">Mi perfil</a>
-                         <a href="{% url 'perfil_editar' %}">Actualizar Perfil</a> |
-                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary">Salir</button>
-                          </form>
-                    </li>
-                </ul>
-                {% else %}
-                <ul class="topnav-right">
-                    <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
-                    <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
-                    <li class="dropdown">
-                        <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
-                            Últimos artículos añadidos
-                            <ul class="list">
-                                <li class="item">
-                                    <a href="#" class="preview-image"><img class="preview"
-                                                                           src="{% static 'images/pro.jpg' %}"
-                                                                           alt=""></a>
-                                    <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
-                                        $44.95</strong>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <a href="#" class="preview-image"><img class="preview"
-                                                                           src="{% static 'images/pro.jpg' %}"
-                                                                           alt=""></a>
-                                    <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
-                                        $44.95</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="total">Total: <strong>$89.90</strong></div>
-                            <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
-                        </div>
-                    </li>
-                    <li class="login-reg">
-                         <a href="{% url 'login' %}">Login</a> | <a href="{% url 'registro' %}">Registrarse</a>
-                    </li>
+                <li class="login-reg">
+                    <a href="{% url 'perfil' %}">Mi perfil</a>
+                    <a href="{% url 'perfil_editar' %}">Actualizar Perfil</a> |
+                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Salir</button>
+                    </form>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="topnav-right">
+                <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
+                <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                <li class="dropdown">
+                    <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
+                        Últimos artículos añadidos
+                        <ul class="list">
+                            <li class="item">
+                                <a href="#" class="preview-image"><img class="preview"
+                                                                       src="{% static 'images/pro.jpg' %}"
+                                                                       alt=""></a>
+                                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                    $44.95</strong>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <a href="#" class="preview-image"><img class="preview"
+                                                                       src="{% static 'images/pro.jpg' %}"
+                                                                       alt=""></a>
+                                <div class="description"><a href="#">Producto ejemplo</a> <strong class="price">1 x
+                                    $44.95</strong>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="total">Total: <strong>$89.90</strong></div>
+                        <div class="view-link"><a href="#">Ir a Pagar</a> <a href="#">Ver carrito</a></div>
+                    </div>
+                </li>
+                <li class="login-reg">
+                    <a href="{% url 'login' %}">Login</a> | <a href="{% url 'registro' %}">Registrarse</a>
+                </li>
 
 
-                </ul>
-                {% endif %}
+            </ul>
+            {% endif %}
         </div>
 
     </nav>

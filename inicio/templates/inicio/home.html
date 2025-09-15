@@ -372,12 +372,20 @@ Inicio – Chambalabamba
 
 
 <!-- ===== /GALERIA ESTANCIAS ===== -->
-
+<section class="online-shop wf100 p80">
+  <div class="container">
 {% gallery_headers_estancias "participa_estancias" title="Últimos alojamientos" subtitle="Descanzo" limit=6 %}
+  </div>
+</section>
+
+<!-- ===== /GALERIA ALIADOS ===== -->
+<section class="online-shop wf100 p80">
+  <div class="container">
+{% load coops_extras %}
+{% _home_cooperaciones subtitle="Alianzas que nos potencian" title="Cooperaciones" limit=12 %}
+</div>
+</section>
 
 {% endblock %}
 
-<!-- ===== /GALERIA ALIADOS ===== -->
 
-{% load coops_extras %}
-{% coops_tabs header_h5="Alianzas que nos potencian" header_h2="Cooperaciones" limit=8 link_to_list=True show_cta_button=True cta_label="Ver todas" %}
