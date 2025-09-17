@@ -1,5 +1,18 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Estancia,ParticipaPage
+from .models import ParticipaHeader, ParticipaPage, Estancia, InstaGallery
+
+def voluntariado(request):
+    header = ParticipaHeader.objects.first()
+    page = ParticipaPage.objects.first()
+    # Grid corto de estancias (p.ej. 6) + bloque Instagram
+    estancias = Estancia.objects.filter(publicado=True).order_by("orden", "-creado")[:6]
+    insta = InstaGallery.objects.filter(publicado=True, seccion="participa_instagram").first()
+    return render(request, "participa/voluntariado.html", {
+        "header": header,
+        "page": page,
+        "estancias": estancias,
+        "insta": insta,
+    })
 
 def estancias_list(request):
     page = ParticipaPage.objects.select_related("header").first()
@@ -18,7 +31,7 @@ def estancia_detail(request, slug):
                   {"page": page, "e": e, "fotos": fotos, "specs": specs, "phone": e.phone_whatsapp or ""})
 
 def voluntariado(request):
-    return render(request, 'participa/voluntariado.html')
+    return render(request, 'participa/voluntariado/voluntariado.html')
 
 def visitas(request):
     return render(request, 'participa/visitas-guiadas.html')

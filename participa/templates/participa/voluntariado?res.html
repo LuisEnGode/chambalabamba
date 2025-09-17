@@ -1,18 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static%}
 {% block content %}
+{% load participa_extras %}
 
 <!--Inner Header Start-->
-<section class="wf100 p100 inner-header"
-         style="background-image: url({% static 'nosotros/images/pilares/ecologia/cabeza-ecologia.png' %}); background-size: cover; background-position: center;">
-    <div class="container">
-        <h1>Participa</h1>
-        <ul>
-            <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Voluntariado</a></li>
-        </ul>
-    </div>
-</section>
+
 <!--Inner Header End-->
 
 <section class="wf100 p80 blog">
@@ -43,7 +35,8 @@
                             <section class="online-shop wf100 p80">
                                 <div class="container">
                                     {% load coops_extras %}
-                                    {% _home_cooperaciones subtitle="Alianzas que nos potencian" title="Cooperaciones" limit=12 %}
+                                    {# Opción A: usar el tag de participa_extras #}
+    {% participa_cooperaciones title="Cooperaciones" subtitle="Alianzas que nos potencian" limit=12 %}
                                 </div>
                             </section>
                         </div>

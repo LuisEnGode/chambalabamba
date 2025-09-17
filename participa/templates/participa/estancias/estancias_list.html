@@ -64,7 +64,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="event-post">
             <div class="event-thumb">
-              <a href="{% url 'estancia_detail' it.slug %}"><i class="fas fa-link"></i></a>
+              <a href="{% url 'participa:estancia_detail' it.slug %}"><i class="fas fa-link"></i></a>
               {% if it.portada %}
                 <img src="{{ it.portada.url }}" alt="{{ it.alt_portada|default:it.titulo }}">
               {% else %}
@@ -72,7 +72,7 @@
               {% endif %}
             </div>
             <div class="event-txt">
-              <h5><a href="{% url 'estancia_detail' it.slug %}">{{ it.titulo }}</a></h5>
+              <h5><a href="{% url 'participa:estancia_detail' it.slug %}">{{ it.titulo }}</a></h5>
               <ul class="etime">
                 {% if it.tipo %}<li><strong>Tipo:</strong> {{ it.tipo }}</li>{% endif %}
               </ul>

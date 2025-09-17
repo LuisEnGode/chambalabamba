@@ -11,7 +11,7 @@
     <h1>Estancias</h1>
     <ul>
       <li><a href="{% url 'home' %}">Inicio</a></li>
-      <li><a href="{% url 'estancias' %}"> Estancias </a></li>
+      <li><a href="{% url 'participa:estancias' %}"> Estancias </a></li>
       <li><a href="#"> {{ e.titulo }} </a></li>
     </ul>
   </div>
@@ -28,7 +28,7 @@
     <h1>{{ page.header.title|default:"Participa" }}</h1>
     <ul>
       <li><a href="{% url 'home' %}">Inicio</a></li>
-      <li><a href="{% url 'estancias' %}">{{ page.header.breadcrumb_label|default:"Estancias" }}</a></li>
+      <li><a href="{% url 'participa:estancias' %}">{{ page.header.breadcrumb_label|default:"Estancias" }}</a></li>
       <li><a href="#">{{ e.titulo }}</a></li>
     </ul>
   </div>

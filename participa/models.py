@@ -2,7 +2,7 @@
 from django.db import models
 from django.utils.text import slugify
 from inicio.models import BaseOrdenPublicado  # reutiliza tu base
-
+from django.db.models.functions import Now
 
 # --- Header + Página (patrón similar a 'Nosotros') ---
 class ParticipaHeader(models.Model):
@@ -131,3 +131,99 @@ class InstaItem(BaseOrdenPublicado):
 
     def __str__(self):
         return self.titulo or self.alt or self.imagen.name
+
+
+# LOS MODELOS PARA PARTICIPA voluntariado BASADO EN EL TEMPLATE
+
+# participa/models.py
+from django.db import models
+from django.utils.text import slugify
+
+class ContentBlock(models.Model):
+    """Bloques reutilizables: título + HTML + imagen opcional."""
+    title = models.CharField(max_length=150)
+    body_html = models.TextField(blank=True)
+    image = models.ImageField(upload_to="participa/blocks/", blank=True, null=True)
+
+    publicado = models.BooleanField(default=True)
+    orden = models.PositiveIntegerField(default=0)
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+
+    class Meta:
+        ordering = ("orden", "title")
+        verbose_name = "Bloque de contenido"
+        verbose_name_plural = "Bloques de contenido"
+
+    def __str__(self):
+        return self.title
+
+
+class VoluntariadoPage(models.Model):
+    """Singleton editable para la página de Voluntariado."""
+    titulo = models.CharField(max_length=150, default="Voluntariado: nuestra filosofía y cómo involucrarte")
+    subtitulo = models.CharField(max_length=200, blank=True)
+
+    # Cabecera + miniatura del artículo
+    background = models.ImageField(upload_to="participa/voluntariado/hero/", blank=True, null=True)
+    thumb = models.ImageField(upload_to="participa/voluntariado/thumb/", blank=True, null=True)
+
+    # Bloques administrables (estilo 'Nosotros' con selects y botón de +)
+    about_block = models.ForeignKey(
+        ContentBlock, on_delete=models.SET_NULL, null=True, blank=True, related_name="vol_about"
+    )
+    ambiente_block = models.ForeignKey(
+        ContentBlock, on_delete=models.SET_NULL, null=True, blank=True, related_name="vol_ambiente"
+    )
+
+    # Texto libre opcional (fallback)
+    intro_html = models.TextField(blank=True)
+
+    # Quote
+    quote_text = models.CharField(max_length=300, blank=True)
+    quote_author = models.CharField(max_length=120, blank=True)
+
+    # Instagram
+    instagram_embed_url = models.URLField(blank=True, help_text="Permalink canónico del Reel/Post")
+
+    # CTA de contacto (administrable)
+    contact_cta_label = models.CharField(max_length=80, blank=True, default="Proponer cooperación")
+    contact_cta_url = models.URLField(blank=True, help_text="URL absoluta o relativa; si vacío, usa {% url 'contacto:contacto' %}")
+
+    publicado = models.BooleanField(default=True)
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Página de Voluntariado"
+        verbose_name_plural = "Página de Voluntariado"
+
+    def __str__(self):
+        return self.titulo
+
+    @classmethod
+    def get_solo(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
+class ProyectoVoluntariado(models.Model):
+    nombre = models.CharField(max_length=120)
+    slug = models.SlugField(unique=True, blank=True)
+    descripcion = models.TextField(blank=True)
+    orden = models.PositiveIntegerField(default=0)
+    link = models.URLField(blank=True)
+    publicado = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ("orden", "nombre")
+        verbose_name = "Proyecto de voluntariado"
+        verbose_name_plural = "Proyectos de voluntariado"
+
+    def __str__(self):
+        return self.nombre
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nombre)[:50]
+        super().save(*args, **kwargs)

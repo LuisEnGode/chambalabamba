@@ -45,7 +45,9 @@ DEFAULT_PAIRS = [
     (Path("cooperaciones/static/images/coops/fotos/"), Path("coops/fotos/red-agroecologica")),
     (Path("cooperaciones/static/images/coops/logos/"), Path("coops/logos")),
     (Path("cooperaciones/static/images/coops/portadas/"), Path("coops/portadas")),
-    (Path("cooperaciones/static/images/coops/hero/"), Path("coops/hero")),
+    (Path("participa/static/participa/images/voluntariado/"), Path("participa/voluntariado/hero")),
+    (Path("participa/static/participa/images/"), Path("images")),
+    (Path("participa/static/participa/images/"), Path("participa/voluntariado/thumb")),
 
 ]
 
