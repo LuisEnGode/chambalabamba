@@ -37,7 +37,7 @@ urlpatterns = [
     path("cooperaciones/", include(("cooperaciones.urls", "coops"), namespace="coops")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 ]
-"""
+
 # PROD (Render): si optaste por servir media con Django (no CDN), deja este fallback:
 if not settings.DEBUG:
     urlpatterns += [
@@ -48,3 +48,4 @@ if not settings.DEBUG:
 # DEV: sirve media automáticamente si DEBUG=True
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+"""
