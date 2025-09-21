@@ -11,8 +11,8 @@ class ParticipaHeader(models.Model):
     background = models.ImageField(upload_to="participa/headers/", blank=True, null=True)
 
     class Meta:
-        verbose_name = "Sección: Header (Participa)"
-        verbose_name_plural = "Sección: Header (Participa)"
+        verbose_name = "5) Sección: Header (Participa)"
+        verbose_name_plural = "5) Sección: Header (Participa)"
 
     def __str__(self):
         return self.title
@@ -23,8 +23,8 @@ class ParticipaPage(models.Model):
     header = models.OneToOneField(ParticipaHeader, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Página: Participa"
-        verbose_name_plural = "Página: Participa"
+        verbose_name = "6) Página: Participa"
+        verbose_name_plural = "6) Página: Participa"
 
     def __str__(self):
         return "Página Participa"
@@ -53,8 +53,8 @@ class Estancia(BaseOrdenPublicado):
     phone_whatsapp = models.CharField(max_length=32, blank=True, help_text="Solo números con código de país, ej: 5939XXXXXXX")
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "Estancia"
-        verbose_name_plural = "Estancias"
+        verbose_name = "3) Estancias"
+        verbose_name_plural = "3) Estancias"
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -152,8 +152,8 @@ class ContentBlock(models.Model):
 
     class Meta:
         ordering = ("orden", "title")
-        verbose_name = "Bloque de contenido"
-        verbose_name_plural = "Bloques de contenido"
+        verbose_name = "4) Bloques de contenido "
+        verbose_name_plural = "4) Bloques de contenido"
 
     def __str__(self):
         return self.title
@@ -195,8 +195,8 @@ class VoluntariadoPage(models.Model):
     actualizado = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Página de Voluntariado"
-        verbose_name_plural = "Página de Voluntariado"
+        verbose_name = "1) Página de Voluntariado"
+        verbose_name_plural = "1) Página de Voluntariado"
 
     def __str__(self):
         return self.titulo
@@ -217,8 +217,8 @@ class ProyectoVoluntariado(models.Model):
 
     class Meta:
         ordering = ("orden", "nombre")
-        verbose_name = "Proyecto de voluntariado"
-        verbose_name_plural = "Proyectos de voluntariado"
+        verbose_name = "2) Proyectos de voluntariado"
+        verbose_name_plural = "2) Proyectos de voluntariado"
 
     def __str__(self):
         return self.nombre
@@ -227,3 +227,163 @@ class ProyectoVoluntariado(models.Model):
         if not self.slug:
             self.slug = slugify(self.nombre)[:50]
         super().save(*args, **kwargs)
+
+
+
+
+# ------------------------------
+# 1) Página (singleton) Visitas guiadas
+# ------------------------------
+
+
+class GuidedVisitsPage(models.Model):
+    """Página principal de la sección 'Visitas guiadas' (singleton)."""
+    publicado = models.BooleanField(default=True)
+
+    # Cabecera
+    titulo = models.CharField(
+        max_length=160,
+        default="Visitas guiadas: conoce Chambalabamba en comunidad",
+    )
+    subtitulo = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text="Frase bajo el título (opcional).",
+    )
+    background = models.ImageField(
+        upload_to="participa/visitas/hero/",
+        blank=True, null=True,
+        help_text="Imagen grande de cabecera (si usas header dinámico)."
+    )
+    thumb = models.ImageField(
+        upload_to="participa/visitas/thumb/",
+        blank=True, null=True,
+        help_text="Imagen usada dentro del contenido (fallback si no hay hero)."
+    )
+
+    # Bloques administrables (estilo 'Nosotros')
+    about_block = models.ForeignKey(
+        ContentBlock, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="visitas_about"
+    )
+    info_block = models.ForeignKey(
+        ContentBlock, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="visitas_info",
+        help_text="Información práctica/FAQ/indicaciones (opcional)."
+    )
+
+    # Fallback / extras
+    intro_html = models.TextField(blank=True)
+    quote_text = models.CharField(max_length=300, blank=True)
+    quote_author = models.CharField(max_length=120, blank=True)
+    instagram_embed_url = models.URLField(blank=True)
+
+    # CTA de contacto
+    contact_cta_label = models.CharField(max_length=80, blank=True, default="Consultar disponibilidad")
+    contact_cta_url = models.URLField(blank=True, help_text="Si lo dejas vacío, puedes usar una URL relativa en la plantilla.")
+
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+
+    class Meta:
+        verbose_name = "1) Página de Visitas guiadas"
+        verbose_name_plural = "1) Página de Visitas guiadas"
+
+    def __str__(self):
+        return self.titulo
+
+    @classmethod
+    def get_solo(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
+# ------------------------------
+# 2) Visita guiada (cada “cabecera” con su propia galería)
+# ------------------------------
+class GuidedVisit(models.Model):
+    """Elemento listable: cada visita con su ficha y su galería."""
+    publicado = models.BooleanField(default=True)
+    orden = models.PositiveIntegerField(default=0)
+
+    titulo = models.CharField(max_length=160)
+    slug = models.SlugField(unique=True, blank=True)
+
+    # Resúmenes/descrición
+    breve = models.CharField(
+        max_length=200, blank=True,
+        help_text="Texto breve que aparece en tarjetas/listas."
+    )
+    descripcion_html = models.TextField(blank=True, help_text="Cuerpo en HTML (admin).")
+
+    # Logística básica
+    ubicacion = models.CharField(max_length=140, blank=True, help_text="Ej: Chambalabamba / punto de encuentro")
+    punto_encuentro = models.CharField(max_length=140, blank=True)
+    duracion_minutos = models.PositiveIntegerField(default=60, help_text="Duración aproximada.")
+    cupo_maximo = models.PositiveIntegerField(blank=True, null=True)
+
+    # Fechas / horarios (flexible)
+    fecha_inicio = models.DateField(blank=True, null=True)
+    fecha_fin = models.DateField(blank=True, null=True)
+    horario_text = models.CharField(max_length=120, blank=True, help_text="Ej: Sábados 10h – 12h")
+    frecuencia_text = models.CharField(max_length=120, blank=True, help_text="Ej: Semanal / Quincenal / Bajo reserva")
+
+    # Aportes/organización
+    aporte_text = models.CharField(max_length=120, blank=True, help_text="Ej: Aporte consciente / $5 por persona")
+    organizador = models.CharField(max_length=120, blank=True)
+    organizador_url = models.URLField(blank=True)
+    contacto_email = models.EmailField(blank=True)
+    contacto_whatsapp = models.CharField(max_length=40, blank=True)
+
+    # Imágenes
+    portada = models.ImageField(
+        upload_to="participa/visitas/portadas/",
+        blank=True, null=True, help_text="Imagen destacada (aparece en listados)."
+    )
+
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+
+    class Meta:
+        ordering = ("orden", "titulo")
+        verbose_name = "2) Visita guiada"
+        verbose_name_plural = "2) Visitas guiadas"
+
+    def __str__(self):
+        return self.titulo
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)[:50]
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        # ajusta a tu patrón de URL real
+        return f"/participa/visitas/{self.slug}/"
+
+
+class GuidedVisitPhoto(models.Model):
+    """Galería de cada visita (varias fotos por visita)."""
+    visita = models.ForeignKey(GuidedVisit, on_delete=models.CASCADE, related_name="fotos")
+    publicado = models.BooleanField(default=True)
+    orden = models.PositiveIntegerField(default=0)
+
+    titulo = models.CharField(max_length=140, blank=True)
+    imagen = models.ImageField(upload_to="participa/visitas/galeria/")
+    alt = models.CharField(max_length=200, blank=True)
+    creditos = models.CharField(max_length=140, blank=True)
+    is_header = models.BooleanField(
+        default=True,
+        help_text="Si está activo, participa en el slider/galería de cabecera de esta visita."
+    )
+
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+
+    class Meta:
+        ordering = ("visita", "orden")
+        verbose_name = "2.1) Foto de visita guiada"
+        verbose_name_plural = "2.1) Fotos de visita guiada"
+
+    def __str__(self):
+        return f"{self.visita} · {self.titulo or self.imagen.name}"
