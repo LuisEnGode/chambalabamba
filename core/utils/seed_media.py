@@ -49,6 +49,8 @@ DEFAULT_PAIRS = [
     (Path("participa/static/participa/images/"), Path("images")),
     (Path("participa/static/participa/images/"), Path("participa/voluntariado/thumb")),
 
+    (Path("participa/static/participa/visitas-guiadas/"), Path("participa/visitas/hero")),
+
 ]
 
 

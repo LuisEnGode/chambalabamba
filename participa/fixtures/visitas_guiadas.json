@@ -1,0 +1,140 @@
+[
+  {
+  "model": "participa.innerheader",
+  "pk": 1,
+  "fields": {
+    "title": "Visitas guiadas",
+    "breadcrumb_label": "Visitas guiadas",
+    "background": "participa/images/visitas-guiadas/cabeza-visitas.png"
+  }
+},
+  {
+    "model": "participa.contentblock",
+    "pk": 101,
+    "fields": {
+      "title": "Sobre las visitas",
+      "body_html": "<p>Te invitamos a recorrer la ecoaldea en una visita guiada de 60–90 minutos. Caminaremos por la <strong>Escuela Viva</strong>, los <strong>huertos</strong> y espacios de <strong>bioconstrucción</strong>, compartiendo historia, filosofía y prácticas regenerativas.</p>",
+      "image": null,
+      "publicado": true,
+      "orden": 1
+    }
+  },
+  {
+    "model": "participa.contentblock",
+    "pk": 102,
+    "fields": {
+      "title": "Información práctica",
+      "body_html": "<ul><li>Lugar: Chambalabamba – Vilcabamba</li><li>Duración: 60–120 min</li><li>Aporte: Consciente</li><li>Trae agua, sombrero y calzado cómodo</li></ul>",
+      "image": null,
+      "publicado": true,
+      "orden": 2
+    }
+  },
+
+  {
+    "model": "participa.guidedvisitspage",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "titulo": "Visitas guiadas: conoce Chambalabamba en comunidad",
+      "subtitulo": "Explora, aprende y comparte en un recorrido vivo por la ecoaldea.",
+      "background": "participa/visitas/hero/inner-header-visitas.jpg",
+      "thumb": "participa/visitas/thumb/placeholder.jpg",
+      "about_block": 101,
+      "info_block": 102,
+      "intro_html": "<p>Las visitas están pensadas para familias, grupos y viajeros. Sugerimos un <strong>aporte consciente</strong> para sostener el proyecto. Para coordinar horarios y punto de encuentro, por favor contáctanos con antelación.</p>",
+      "quote_text": "Caminar la tierra, escuchar y preguntar: así aprendemos juntos.",
+      "quote_author": "Comunidad Chambalabamba",
+      "instagram_embed_url": "",
+      "contact_cta_label": "Consultar disponibilidad",
+      "contact_cta_url": "",
+      "breadcrumb_slug": "visitas-guiadas"
+    }
+  },
+
+  { "model": "participa.breadcrumbitem", "pk": 1,
+    "fields": { "seccion_slug": "visitas-guiadas", "label": "Inicio", "url": "/", "orden": 1, "publicado": true } },
+  { "model": "participa.breadcrumbitem", "pk": 2,
+    "fields": { "seccion_slug": "visitas-guiadas", "label": "Participa", "url": "/participa/", "orden": 2, "publicado": true } },
+  { "model": "participa.breadcrumbitem", "pk": 3,
+    "fields": { "seccion_slug": "visitas-guiadas", "label": "Visitas guiadas", "url": "/participa/visitas-guiadas/", "orden": 3, "publicado": true } },
+
+  {
+    "model": "participa.guidedvisit",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Recorrido por la Ecoaldea",
+      "slug": "recorrido-ecoaldea",
+      "breve": "Escuela Viva, huertos y bioconstrucción.",
+      "descripcion_html": "<p>Visita introductoria a los espacios principales de Chambalabamba, con enfoque en prácticas regenerativas y cultura comunitaria.</p>",
+      "ubicacion": "Chambalabamba – Vilcabamba",
+      "punto_encuentro": "Maloca central",
+      "duracion_minutos": 90,
+      "cupo_maximo": 20,
+      "fecha_inicio": "2025-09-27",
+      "fecha_fin": "2025-09-27",
+      "horario_text": "Sáb 10h–11h30",
+      "frecuencia_text": "Semanal",
+      "aporte_text": "Aporte consciente",
+      "organizador": "EcoCentro Chambalabamba",
+      "organizador_url": "",
+      "contacto_email": "",
+      "contacto_whatsapp": "5939XXXXXXXX",
+      "portada": "participa/visitas/portadas/recorrido-ecoaldea.jpg"
+    }
+  },
+  {
+    "model": "participa.guidedvisit",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "titulo": "Amanecer en el Mirador",
+      "slug": "amanecer-mirador",
+      "breve": "Respiración y contemplación al amanecer.",
+      "descripcion_html": "<p>Salida temprana para ver el amanecer, respiración consciente y breve caminata. Trae abrigo ligero.</p>",
+      "ubicacion": "Mirador de la Loma – Chambalabamba",
+      "punto_encuentro": "Maloca central",
+      "duracion_minutos": 90,
+      "cupo_maximo": 20,
+      "fecha_inicio": "2025-10-01",
+      "fecha_fin": "2025-10-01",
+      "horario_text": "Mié 05h30–07h00",
+      "frecuencia_text": "Ocasional",
+      "aporte_text": "Libre",
+      "organizador": "Andes Verticales",
+      "organizador_url": "",
+      "contacto_email": "",
+      "contacto_whatsapp": "5939YYYYYYYY",
+      "portada": "participa/visitas/portadas/amanecer-mirador.jpg"
+    }
+  },
+  {
+    "model": "participa.guidedvisit",
+    "pk": 3,
+    "fields": {
+      "publicado": true,
+      "orden": 3,
+      "titulo": "Cascadas del Río Chamba",
+      "slug": "cascadas-rio-chamba",
+      "breve": "Sendero selvático y baño ritual en pozas.",
+      "descripcion_html": "<p>Recorrido guiado hasta pozas y cascadas; cuidado del agua y respiración consciente.</p>",
+      "ubicacion": "Chambalabamba – Vilcabamba",
+      "punto_encuentro": "Maloca central",
+      "duracion_minutos": 120,
+      "cupo_maximo": 12,
+      "fecha_inicio": "2025-10-05",
+      "fecha_fin": "2025-10-05",
+      "horario_text": "Dom 09h00–11h00",
+      "frecuencia_text": "Bajo reserva",
+      "aporte_text": "Aporte consciente",
+      "organizador": "EcoCentro Chambalabamba",
+      "organizador_url": "",
+      "contacto_email": "",
+      "contacto_whatsapp": "5939ZZZZZZZZ",
+      "portada": "participa/visitas/portadas/cascadas-chamba.jpg"
+    }
+  }
+]

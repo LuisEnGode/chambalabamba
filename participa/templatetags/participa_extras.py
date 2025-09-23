@@ -18,7 +18,7 @@ except Exception:
 
 
 # ====== ESTANCIAS (si las usas) ======
-@register.inclusion_tag("participa/_gallery_headers_estancias.html")
+@register.inclusion_tag("participa/estancias/_gallery_headers_estancias.html")
 def gallery_headers_estancias(seccion="participa_estancias", title=None, subtitle=None, limit=None, only_with_portada=True):
     if Estancia is None:
         return {"estancias": [], "title": title, "subtitle": subtitle}
@@ -97,7 +97,7 @@ def participa_cooperaciones(title=None, subtitle=None, limit=None, seccion=None,
 
 
 # ====== SIDEBAR PROYECTOS VOLUNTARIADO ======
-@register.inclusion_tag("participa/_sidebar_proyectos_voluntariado.html")
+@register.inclusion_tag("participa/voluntariado/_sidebar_proyectos_voluntariado.html")
 def voluntariado_sidebar_projects(limit=10):
     if ProyectoVoluntariado is None:
         return {"proyectos": []}

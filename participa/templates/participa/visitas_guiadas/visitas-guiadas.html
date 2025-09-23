@@ -1,19 +1,23 @@
 {% extends 'core/base.html' %}
 {% load static%}
 {% block content %}
+{% static 'participa/images/visitas-guiadas/cabeza-visitas.png' as BG_FALLBACK %}
 
 <!--Inner Header Start-->
 <section class="wf100 p100 inner-header"
-         style="background-image: url({% static 'nosotros/images/pilares/ecologia/cabeza-ecologia.png' %}); background-size: cover; background-position: center;">
-    <div class="container">
-        <h1>Participa</h1>
-        <ul>
-            <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Visitas guiadas</a></li>
-        </ul>
-    </div>
+  style="background-image: url('{% if header and header.background %}{{ header.background.url }}{% else %}{{ BG_FALLBACK }}{% endif %}');
+         background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>{{ header.title|default:"Visitas guiadas" }}</h1>
+    <ul>
+      {% for bc in breadcrumbs %}
+        <li>{% if bc.url %}<a href="{{ bc.url }}">{{ bc.label }}</a>{% else %}{{ bc.label }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
 </section>
 <!--Inner Header End-->
+
 
 <section class="wf100 p80 blog">
     <div class="blog-details">

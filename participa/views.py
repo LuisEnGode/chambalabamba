@@ -33,8 +33,7 @@ def estancia_detail(request, slug):
 def voluntariado(request):
     return render(request, 'participa/voluntariado/voluntariado.html')
 
-def visitas(request):
-    return render(request, 'participa/visitas-guiadas.html')
 
 def donaciones(request,id):
     return render(request, 'donaciones/donaciones.html')
+
