@@ -1,6 +1,23 @@
 from django.db import models
 from django.urls import reverse
 
+
+
+class TiendaLanding(models.Model):
+    publicado = models.BooleanField(default=True)
+    title = models.CharField(max_length=160, default="Tienda")
+    intro_html = models.TextField(blank=True, help_text="Texto de bienvenida (HTML).")
+    cta_text = models.CharField(max_length=60, blank=True, default="Ver productos")
+    cta_url = models.CharField(max_length=200, blank=True, default="/tienda/")  # ajusta si tu ruta difiere
+
+    class Meta:
+        verbose_name = "Página de Tienda (landing)"
+        verbose_name_plural = "Página de Tienda (landing)"
+
+    def __str__(self):
+        return "Landing de Tienda"
+
+
 class ProductoCategoria(models.Model):
     nombre = models.CharField(max_length=120)
     slug = models.SlugField(max_length=140, unique=True)

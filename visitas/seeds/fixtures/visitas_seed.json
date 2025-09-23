@@ -1,0 +1,196 @@
+[
+  {
+    "model": "visitas.visitslanding",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "title": "Visitas guiadas",
+      "background": "visitas/landing/cabeza-visitas.png",
+      "intro_image": "visitas/landing/escuela_01.png",
+      "intro_html": "<p>Te invitamos a recorrer la ecoaldea y conocer nuestros espacios vivos, la escuela, el río y los huertos. Cada visita es guiada por anfitriones que comparten la visión y el modo de vida.</p>",
+      "sidebar_html": "<h4 style='color:#1b5e20'>Info útil</h4><ul><li>Trae gorra y agua</li><li>Protector solar y sandalias</li><li>Aporte consciente</li></ul>",
+      "instagram_embed": "https://www.instagram.com/p/XXXXXXXXXXX/"
+    }
+  },
+
+  {
+    "model": "visitas.guidedvisit",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Recorrido por la Escuela Viva",
+      "slug": "recorrido-escuela-viva",
+      "breve": "Caminata por espacios clave de aprendizaje y convivencia.",
+      "descripcion_html": "<p>Visitamos aulas abiertas, espacios comunes y proyectos en marcha. Ideal para una primera aproximación a la ecoaldea.</p>",
+      "ubicacion": "Chambalabamba",
+      "punto_encuentro": "Maloca principal",
+      "duracion_minutos": 90,
+      "cupo_maximo": 12,
+      "fecha_inicio": "2025-10-01",
+      "fecha_fin": null,
+      "horario_text": "Sábados 10h – 12h",
+      "frecuencia_text": "Semanal",
+      "aporte_text": "Aporte consciente",
+      "organizador": "Equipo Chambalabamba",
+      "organizador_url": "https://chambalabamba.ec",
+      "contacto_email": "info@chambalabamba.ec",
+      "contacto_whatsapp": "+593900000000",
+      "portada": "visitas/portadas/escuela_01.png",
+      "inner_bg_override": "visitas/inner/escuela_01.png",
+      "meta_title": "",
+      "meta_description": ""
+    }
+  },
+  {
+    "model": "visitas.guidedvisit",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "titulo": "Río y sistemas de Agua Viva",
+      "slug": "rio-y-sistemas-de-agua-viva",
+      "breve": "Exploramos el cauce del río y los biofiltros.",
+      "descripcion_html": "<p>Comprendemos cómo se cuida el agua, los sistemas de retorno y el vínculo con el entorno natural.</p>",
+      "ubicacion": "Ribera del río",
+      "punto_encuentro": "Puente de entrada",
+      "duracion_minutos": 75,
+      "cupo_maximo": 10,
+      "fecha_inicio": "2025-10-05",
+      "fecha_fin": null,
+      "horario_text": "Domingos 09h – 10h15",
+      "frecuencia_text": "Quincenal",
+      "aporte_text": "Aporte consciente",
+      "organizador": "Equipo Agua Viva",
+      "organizador_url": "",
+      "contacto_email": "agua@chambalabamba.ec",
+      "contacto_whatsapp": "",
+      "portada": "visitas/portadas/cuidado-agua.png",
+      "inner_bg_override": "",
+      "meta_title": "",
+      "meta_description": ""
+    }
+  },
+  {
+    "model": "visitas.guidedvisit",
+    "pk": 3,
+    "fields": {
+      "publicado": true,
+      "orden": 3,
+      "titulo": "Huertas y Permacultura",
+      "slug": "huertas-y-permacultura",
+      "breve": "Prácticas de suelo vivo, compost y policultivos.",
+      "descripcion_html": "<p>Recorrido práctico por canteros, compostajes y semilleros; ideal para amantes de la agroecología.</p>",
+      "ubicacion": "Sector Huertas",
+      "punto_encuentro": "Portal de la huerta",
+      "duracion_minutos": 80,
+      "cupo_maximo": 15,
+      "fecha_inicio": "2025-10-12",
+      "fecha_fin": null,
+      "horario_text": "Miércoles 16h – 17h20",
+      "frecuencia_text": "Bajo reserva",
+      "aporte_text": "Aporte consciente",
+      "organizador": "Equipo Huerta",
+      "organizador_url": "",
+      "contacto_email": "",
+      "contacto_whatsapp": "",
+      "portada": "visitas/portadas/huerta.png",
+      "inner_bg_override": "",
+      "meta_title": "",
+      "meta_description": ""
+    }
+  },
+
+  { "model": "visitas.guidedvisitphoto", "pk": 1,
+    "fields": {
+      "visita": 1, "publicado": true, "orden": 1,
+      "titulo": "Aula abierta",
+      "imagen": "visitas/galeria/escuela_01.jpg",
+      "alt": "Aula abierta con pizarra",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 2,
+    "fields": {
+      "visita": 1, "publicado": true, "orden": 2,
+      "titulo": "Maloca",
+      "imagen": "visitas/galeria/escuela2.jpg",
+      "alt": "Maloca central",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 3,
+    "fields": {
+      "visita": 1, "publicado": true, "orden": 3,
+      "titulo": "Convivio",
+      "imagen": "visitas/galeria/escuela-3.png",
+      "alt": "Espacio de convivencia",
+      "creditos": "Equipo",
+      "is_header": false
+    }
+  },
+
+  { "model": "visitas.guidedvisitphoto", "pk": 4,
+    "fields": {
+      "visita": 2, "publicado": true, "orden": 1,
+      "titulo": "Ribera",
+      "imagen": "visitas/galeria/agua-1.png",
+      "alt": "Ribera del río",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 5,
+    "fields": {
+      "visita": 2, "publicado": true, "orden": 2,
+      "titulo": "Biofiltros",
+      "imagen": "visitas/galeria/agua-2.png",
+      "alt": "Sistema de biofiltros",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 6,
+    "fields": {
+      "visita": 2, "publicado": true, "orden": 3,
+      "titulo": "Retorno",
+      "imagen": "visitas/galeria/agua-3.png",
+      "alt": "Ciclo del agua",
+      "creditos": "Equipo",
+      "is_header": false
+    }
+  },
+
+  { "model": "visitas.guidedvisitphoto", "pk": 7,
+    "fields": {
+      "visita": 3, "publicado": true, "orden": 1,
+      "titulo": "Camas de cultivo",
+      "imagen": "visitas/galeria/huerta-1.png",
+      "alt": "Camas de cultivo",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 8,
+    "fields": {
+      "visita": 3, "publicado": true, "orden": 2,
+      "titulo": "Compost",
+      "imagen": "visitas/galeria/huerta-2.png",
+      "alt": "Compost y materia orgánica",
+      "creditos": "Equipo",
+      "is_header": true
+    }
+  },
+  { "model": "visitas.guidedvisitphoto", "pk": 9,
+    "fields": {
+      "visita": 3, "publicado": true, "orden": 3,
+      "titulo": "Semilleros",
+      "imagen": "visitas/galeria/huerta-3.png",
+      "alt": "Semilleros y plantines",
+      "creditos": "Equipo",
+      "is_header": false
+    }
+  }
+]

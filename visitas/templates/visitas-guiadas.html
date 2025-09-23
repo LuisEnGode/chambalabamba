@@ -1,0 +1,147 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% static 'participa/images/visitas-guiadas/cabeza-visitas.png' as BG_FALLBACK %}
+
+<section class="wf100 p100 inner-header"
+         style="background-image: url('{% if header.background %}{{ header.background.url }}{% else %}{{ BG_FALLBACK }}{% endif %}');
+                background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>{{ header.title|default:"Visitas guiadas" }}</h1>
+    <ul>
+      {% for bc in breadcrumbs %}
+        <li>{% if bc.url %}<a href="{{ bc.url }}">{{ bc.label }}</a>{% else %}{{ bc.label }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+<section class="wf100 p60" style="background-color:#f8f9fa; margin-top:40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <div class="section-title-2">
+          <h2>{{ landing.title|default:"Visitas guiadas" }}</h2>
+        </div>
+
+        {# Texto inicial proveniente del fixture (acepta <p>, <blockquote>, etc.) #}
+        {% if landing.intro_html %}
+          <div style="font-size:18px; line-height:1.6; color:#555; text-align:justify;">
+            {{ landing.intro_html|safe }}
+          </div>
+        {% endif %}
+
+        {# CTA: lleva al índice de visitas (ajusta el texto si quieres) #}
+        <div style="margin-top:30px;">
+          <a href="{% url 'visitas:visitas-guiadas' %}"
+             style="background-color:#66bb6a; color:white; padding:12px 30px; border-radius:25px; text-decoration:none; font-weight:600;">
+            Ver todas las visitas
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="wf100 p80 blog">
+  <div class="container">
+    <div class="row">
+
+      <!-- Columna principal -->
+      <div class="col-lg-8 col-md-8">
+<!--
+        {% if landing and landing.intro_image %}
+          <div class="blog-single-thumb">
+            <img src="{{ landing.intro_image.url }}" alt="Visitas guiadas">
+          </div>
+        {% endif %}
+
+        {% if landing and landing.intro_html %}
+          <div class="blog-single-content mb-4">
+            {{ landing.intro_html|safe }}
+          </div>
+        {% endif %}
+-->
+        <!-- Grilla 3× de cabeceras -->
+        <section class="wf100 p80 events" id="visitas-grid">
+          <div class="event-grid-2">
+            <div class="container">
+              <div class="row equal-height">
+                {% for v in visitas %}
+                  <!-- Card Visita Start -->
+                  <div class="col-lg-4 col-md-6">
+                    <div class="event-post h-100 d-flex flex-column">
+                      <div class="event-thumb" style="position:relative">
+  {# overlay clickeable que cubre toda la miniatura #}
+  <a href="{% url 'visitas:detalle-visitas' v.slug %}"
+     style="position:absolute; inset:0; z-index:2;">
+     <span class="sr-only">Abrir {{ v.titulo }}</span>
+  </a>
+
+  {# IMAGEN: portada -> primera foto -> placeholder #}
+  {% with ph=v.fotos.all.0 %}
+    {% if v.portada %}
+      <img src="{{ v.portada.url }}" alt="{{ v.titulo }}">
+    {% elif ph %}
+      <img src="{{ ph.imagen.url }}" alt="{{ ph.alt|default:v.titulo }}">
+    {% else %}
+      <img src="{% static 'images/placeholder-4x3.jpg' %}" alt="{{ v.titulo }}">
+    {% endif %}
+  {% endwith %}
+
+  <i class="fas fa-link" style="position:absolute; top:10px; right:10px; z-index:3;"></i>
+</div>
+
+                      <div class="event-txt mt-auto">
+                        <h5>
+                          <a href="{% url 'visitas:detalle-visitas' v.slug %}">{{ v.titulo }}</a>
+                        </h5>
+
+                        <div class="mb-2">
+                          {% if v.frecuencia_text %}
+                            <span class="badge">{{ v.frecuencia_text }}</span>
+                          {% endif %}
+                          {% if v.cupo_maximo %}
+                            <span class="badge">Cupo {{ v.cupo_maximo }}</span>
+                          {% endif %}
+                          {% if v.duracion_minutos %}
+                            <span class="badge">{{ v.duracion_minutos }} min</span>
+                          {% endif %}
+                        </div>
+
+                        <ul class="etime">
+                          {% if v.horario_text %}
+                            <li><strong>Horario:</strong> {{ v.horario_text }}</li>
+                          {% endif %}
+                          {% if v.fecha_inicio %}
+                            <li>
+                              <strong>Fecha:</strong> {{ v.fecha_inicio }}{% if v.fecha_fin %} – {{ v.fecha_fin }}{% endif %}
+                            </li>
+                          {% endif %}
+                        </ul>
+
+                        {% if v.ubicacion %}
+                          <p class="venue"><span>Lugar:</span> {{ v.ubicacion }}</p>
+                        {% endif %}
+                        {% if v.aporte_text %}
+                          <p class="venue"><span>Aporte:</span> {{ v.aporte_text }}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Card Visita End -->
+                {% empty %}
+                  <div class="col-12"><p>No hay visitas publicadas todavía.</p></div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

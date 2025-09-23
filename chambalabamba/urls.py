@@ -30,6 +30,7 @@ urlpatterns = [
     path('eventos/', include('eventos.urls')),
     path('blog/', include('blog.urls')),
     path('participa/', include('participa.urls')),
+    path('visitas/', include('visitas.urls',"visitas")),
     path('donaciones/', include('donaciones.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('tienda/', include('tienda.urls')),
