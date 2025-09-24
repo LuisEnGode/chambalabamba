@@ -29,7 +29,7 @@ class ParticipaPage(models.Model):
     def __str__(self):
         return "Página Participa"
 
-
+#####################ESTANCIAS###################
 
 class Estancia(BaseOrdenPublicado):
     SECCIONES = [
