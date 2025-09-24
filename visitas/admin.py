@@ -18,6 +18,9 @@ class GuidedVisitPhotoInline(admin.TabularInline):
 @admin.register(GuidedVisit)
 class GuidedVisitAdmin(admin.ModelAdmin):
     list_display = ("orden","titulo","publicado","fecha_inicio","ubicacion")
+    list_display_links = ("titulo",)   # <- el link es el TÍTULO
+    list_editable = ("orden", "publicado")  # asegúrate de NO poner 'titulo' aquí
+    ordering = ("orden", "-fecha_inicio")
     list_filter = ("publicado",)
     search_fields = ("titulo","breve","descripcion_html")
     prepopulated_fields = {"slug": ("titulo",)}

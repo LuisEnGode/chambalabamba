@@ -71,8 +71,8 @@ class GuidedVisit(models.Model):
 
     class Meta:
         ordering = ("orden", "titulo")
-        verbose_name = "2) Visita guiada"
-        verbose_name_plural = "2) Visitas guiadas"
+        verbose_name = "2) Galeria visita guiada"
+        verbose_name_plural = "2) Galeria visitas guiadas"
 
     def __str__(self): return self.titulo
     def save(self, *a, **kw):
