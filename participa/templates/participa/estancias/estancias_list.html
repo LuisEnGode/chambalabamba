@@ -39,22 +39,33 @@
   </div>
 </section>
 
-<section class="wf100 p60" style="background-color:#f8f9fa;margin-top:40px;">
+{% with intro=page.intro %}
+<section class="wf100 p60"
+         style="background-color: {{ intro.bg_color|default:'#f8f9fa' }};
+                margin-top: {{ intro.margin_top_px|default:40 }}px;">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto text-center">
-        <h2 style="color:#1b5e20;margin-bottom:20px;">¡Vive Eco-Centro Chambalabamba: Elige tu estancia!</h2>
+        <h2 style="color:#1b5e20;margin-bottom:20px;">
+          {{ intro.title|default:"¡Vive Eco-Centro Chambalabamba: Elige tu estancia!" }}
+        </h2>
+
         <p style="font-size:18px;line-height:1.6;color:#555;">
-          Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos.
-          Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.
+          {% if intro and intro.body_html %}{{ intro.body_html|safe }}{% else %}
+            Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos.
+            Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.
+          {% endif %}
         </p>
-        <p style="font-size:16px;color:#666;font-style:italic;">
-          "El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"
-        </p>
+
+        {% if intro and intro.quote_text %}
+          <p style="font-size:16px;color:#666;font-style:italic;">{{ intro.quote_text }}</p>
+        {% endif %}
       </div>
     </div>
   </div>
 </section>
+{% endwith %}
+
 
 <section class="wf100 p80 events" id="talleres-grid">
   <div class="event-grid-2">

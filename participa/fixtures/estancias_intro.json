@@ -1,0 +1,15 @@
+[
+  {
+    "model": "participa.estanciasintro",
+    "pk": 1,
+    "fields": {
+      "page": 1,
+      "title": "¡Vive Eco-Centro Chambalabamba: Eligeee tu estancia!",
+      "body_html": "Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos. Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.",
+      "quote_text": "\"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría\"",
+      "bg_color": "#f8f9fa",
+      "margin_top_px": 40,
+      "publicado": true
+    }
+  }
+]

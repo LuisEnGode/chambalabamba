@@ -5,7 +5,8 @@ from django.urls import reverse
 from django.utils.html import format_html
 from .models import (VoluntariadoPage,
                      ContentBlock,               # ya lo usas en Voluntariado
-                    GuidedVisitsPage,           # singleton de la sección
+                    GuidedVisitsPage,
+    EstanciasIntro# singleton de la sección
                     )
 
 class SingletonAdmin(admin.ModelAdmin):
@@ -69,12 +70,22 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.shortcuts import redirect
+from django.db import models
 
 from .models import (
     ParticipaPage, ParticipaHeader,
     Estancia, EstanciaFoto, EstanciaSpec,
     InstaGallery, InstaItem,  # si no los usas aún, quedan ocultos
 )
+
+class EstanciasIntroInline(admin.StackedInline):
+    model = EstanciasIntro
+    can_delete = False
+    extra = 0
+    fieldsets = (
+        (None, {"fields": ("publicado", "title", "body_html", "quote_text")}),
+        ("Estilo", {"fields": ("bg_color", "margin_top_px")}),
+    )
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Utilidades
@@ -197,7 +208,7 @@ class ParticipaPageAdmin(SingletonAdmin):
                 return format_html('<span style="color:#999">URL no disponible ({})</span>', url_name)
         return "—"
 
-
+    inlines = [EstanciasIntroInline]
 # Ocultar del sidebar: Header + modelos “base”
 try:
     admin.site.register(ParticipaHeader, HiddenModelAdmin)

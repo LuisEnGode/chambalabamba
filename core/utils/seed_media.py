@@ -55,6 +55,8 @@ DEFAULT_PAIRS = [
     (Path("visitas/static/visitas/galeria"), Path("visitas/galeria")),
     (Path("visitas/static/visitas/galeria"), Path("visitas/galeria")),
 
+    (Path("donaciones/static/images/cabezadonaciones.png"), Path("donaciones")),
+
 ]
 
 

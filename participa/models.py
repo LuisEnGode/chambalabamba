@@ -5,6 +5,35 @@ from inicio.models import BaseOrdenPublicado  # reutiliza tu base
 from django.db.models.functions import Now
 
 # --- Header + Página (patrón similar a 'Nosotros') ---
+
+from django.db import models
+
+class EstanciasIntro(models.Model):
+    page = models.OneToOneField("ParticipaPage", on_delete=models.CASCADE, related_name="intro")
+    title = models.CharField(max_length=160, default="¡Vive Eco-Centro Chambalabamba: Elige tu estancia!")
+    body_html = models.TextField(
+        blank=True,
+        default=(
+            "Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos. "
+            "Un alquiler con sentido: comodidad simple, naturaleza y quietud interior."
+        ),
+    )
+    quote_text = models.CharField(
+        max_length=300,
+        blank=True,
+        default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"'
+    )
+    bg_color = models.CharField(max_length=20, default="#f8f9fa")
+    margin_top_px = models.PositiveIntegerField(default=40)
+    publicado = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Bloque intro Estancias"
+        verbose_name_plural = "Bloque intro Estancias"
+
+    def __str__(self):
+        return self.title
+
 class ParticipaHeader(models.Model):
     title = models.CharField("Título", max_length=120, default="Participa")
     breadcrumb_label = models.CharField("Breadcrumb actual", max_length=120, default="Estancias")
