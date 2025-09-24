@@ -27,8 +27,8 @@ class ProductoCategoria(models.Model):
 
     class Meta:
         ordering = ["orden", "nombre"]
-        verbose_name = "Categoría de producto"
-        verbose_name_plural = "Categorías de producto"
+        verbose_name = "2. Categoría de producto"
+        verbose_name_plural = "2. Categorías de producto"
 
     def __str__(self):
         return self.nombre
@@ -59,8 +59,8 @@ class Producto(models.Model):
 
     class Meta:
         ordering = ["orden", "-creado"]
-        verbose_name = "Producto"
-        verbose_name_plural = "Productos"
+        verbose_name = "1) Producto"
+        verbose_name_plural = "1) Productos"
 
     def __str__(self):
         return self.titulo
