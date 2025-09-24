@@ -52,8 +52,8 @@ class ParticipaPage(models.Model):
     header = models.OneToOneField(ParticipaHeader, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = "6) Página: Participa"
-        verbose_name_plural = "6) Página: Participa"
+        verbose_name = "3) Página: Galeria Estancias"
+        verbose_name_plural = "3) Página: Participa/Estancias"
 
     def __str__(self):
         return "Página Participa"
@@ -82,8 +82,8 @@ class Estancia(BaseOrdenPublicado):
     phone_whatsapp = models.CharField(max_length=32, blank=True, help_text="Solo números con código de país, ej: 5939XXXXXXX")
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "3) Estancias"
-        verbose_name_plural = "3) Estancias"
+        verbose_name = "3) Galeria Estancias"
+        verbose_name_plural = "3) Galeria Estancias"
 
     def save(self, *args, **kwargs):
         if not self.slug:
