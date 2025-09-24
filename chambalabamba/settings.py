@@ -146,3 +146,7 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# PayPal settings
+PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL', default='sb-wtmbn45974096@business.example.com')
+PAYPAL_TEST = config('PAYPAL_TEST', default=True, cast=bool)

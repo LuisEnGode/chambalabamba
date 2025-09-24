@@ -1,0 +1,25 @@
+[
+  {
+"model": "donaciones.donacionsection",
+    "pk": 1,
+    "fields": {
+      "slug": "home_callout",
+      "titulo_superior": "Llamado Consciente",
+      "titulo": "Sanación y Regeneración en Chambalabamba",
+      "descripcion": "En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan.",
+      "progreso": 55,
+      "cta_titulo": "Apoya este Espacio",
+      "cta_boton_texto": "Contribuir con Amor",
+      "cta_placeholder_otro": "$ Otro",
+      "intro_text": "Tu generosa contribución nos permite continuar nuestra misión de crear un futuro sostenible y armonioso. Cada donación, sin importar el tamaño, tiene un impacto significativo. Únete a nosotros para marcar la diferencia hoy.",
+      "success_title": "¡Gracias por tu generosa donación!",
+      "success_message": "Tu apoyo es invaluable para nosotros. Hemos recibido tu donación exitosamente y la estamos poniendo a trabajar de inmediato. Se te ha enviado un correo electrónico de confirmación.",
+      "canceled_title": "Tu donación fue cancelada",
+      "canceled_message": "Parece que tu donación no se completó. Si encontraste algún problema o tienes alguna pregunta, no dudes en contactar a nuestro equipo de soporte. Estamos aquí para ayudarte.",
+      "paypal_redirect_message": "Estás siendo redirigido de forma segura a PayPal para completar tu donación. Por favor, espera un momento.",
+      "publicado": true,
+      "orden": 0,
+      "donation_image": "/images/cabezadonaciones.png"
+    }
+  }
+]
