@@ -35,6 +35,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('tienda/', include('tienda.urls')),
     path("auth/", include("autenticacion.urls")),
+    path("auth/", include("proyectos.urls")),
     path("cooperaciones/", include(("cooperaciones.urls", "coops"), namespace="coops")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 ]

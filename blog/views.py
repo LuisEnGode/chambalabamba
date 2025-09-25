@@ -12,7 +12,8 @@ from django.db.models import Count
 # Create your views here.
 
 def blog(request):
-
     return render(request, "blog/blog.html")
 
+def detail(request):
+    return render(request, "blog/blog-details.html")
 

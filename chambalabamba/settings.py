@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "nosotros.apps.NosotrosConfig",
     "cooperaciones.apps.CooperacionesConfig",
     'visitas',
+    "proyectos.apps.ProyectosConfig",
 
 
 
