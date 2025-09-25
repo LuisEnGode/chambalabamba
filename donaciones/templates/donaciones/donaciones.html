@@ -6,7 +6,7 @@
          style="background-image: url({% static '/images/cabezadonaciones.png' %}); background-size: cover; background-position: center;">
     <div class="container">
         <h1>Donaciones</h1>
-        <ul class="breadcrumb">
+        <ul class="breadcrumb" style="background-color: transparent">
             <li><a href="{% url 'home' %}">Inicio</a></li>
             <li class="active"><a href="#">Donaciones</a></li>
         </ul>
@@ -21,9 +21,9 @@
                 <div class="row">
                     <div class="col-md-6 text-center">
                         {% if section.donation_image %}
-                        <img src="{{ section.donation_image.url }}" alt="Impact of your donation" class="img-fluid rounded mb-4">
+<img src="{{ section.donation_image.url }}" alt="Impact of your donation" class="img-fluid rounded mb-4 responsive-image">
                         {% else %}
-                        <img src="{% static '/images/cabezadonaciones.png' %}" alt="Default donation impact image" class="img-fluid rounded mb-4">
+<img src="{% static '/images/donacion_1.png' %}" alt="Default donation impact image" class="img-fluid rounded mb-4 responsive-image">
                         {% endif %}
                     </div>
                     <div class="col-md-6">
@@ -69,4 +69,12 @@
         {% endfor %}
     </div>
 </section>
+<style>
+.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensures no extra space below the image */
+}
+</style>
+
 {% endblock %}

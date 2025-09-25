@@ -3,11 +3,10 @@
 "model": "donaciones.donacionsection",
     "pk": 1,
     "fields": {
-      "slug": "home_callout",
+      "slug": "Pagina Principal Donaciones",
       "titulo_superior": "Llamado Consciente",
       "titulo": "Sanación y Regeneración en Chambalabamba",
       "descripcion": "En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan.",
-      "progreso": 55,
       "cta_titulo": "Apoya este Espacio",
       "cta_boton_texto": "Contribuir con Amor",
       "cta_placeholder_otro": "$ Otro",
