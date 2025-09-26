@@ -57,6 +57,10 @@ DEFAULT_PAIRS = [
 
     (Path("donaciones/static/images/cabezadonaciones.png"), Path("donaciones")),
 
+    (Path("blog/static/blog/header"), Path("blog/header")),
+    (Path("blog/static/blog/portadas"), Path("blog/portadas")),
+    (Path("blog/static/blog/gallery"), Path("blog/gallery")),
+
 ]
 
 

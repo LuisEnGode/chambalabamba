@@ -1,10 +1,19 @@
 from django import forms
+from .models import BlogComment
 
+class BlogCommentForm(forms.ModelForm):
+    # honeypot
+    hp = forms.CharField(required=False, widget=forms.HiddenInput)
 
-class PostForm(forms.ModelForm):
     class Meta:
-
-        fields = ['titulo', 'contenido', 'imagen', 'categorias']
+        model = BlogComment
+        fields = ("nombre", "email", "website", "cuerpo", "hp")
         widgets = {
-            'categorias': forms.CheckboxSelectMultiple()
+            "cuerpo": forms.Textarea(attrs={"rows": 4}),
         }
+
+    def clean_hp(self):
+        v = self.cleaned_data.get("hp")
+        if v:  # si el bot lo rellena
+            raise forms.ValidationError("Error de validación.")
+        return v

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.shortcuts import redirect
+from .models import BlogComment
 
 from .models import (
     BlogPage, BlogHeader,
@@ -95,6 +96,34 @@ class BlogTagAdmin(admin.ModelAdmin):
     search_fields = ("nombre", "slug")
     prepopulated_fields = {"slug": ("nombre",)}
 
+
+class BlogCommentInline(admin.TabularInline):
+    model = BlogComment
+    extra = 0
+    fields = ("status", "nombre", "email", "cuerpo", "creado")
+    readonly_fields = ("creado",)
+    ordering = ("-creado",)
+
+@admin.register(BlogComment)
+class BlogCommentAdmin(admin.ModelAdmin):
+    list_display = ("post", "nombre", "email", "status", "creado")
+    list_filter = ("status", "creado", "post")
+    search_fields = ("nombre", "email", "cuerpo", "post__titulo")
+    ordering = ("-creado",)
+    actions = ["aprobar", "rechazar", "marcar_spam"]
+
+    def aprobar(self, request, queryset):
+        queryset.update(status=BlogComment.Status.APPROVED)
+    aprobar.short_description = "Aprobar seleccionados"
+
+    def rechazar(self, request, queryset):
+        queryset.update(status=BlogComment.Status.REJECTED)
+    rechazar.short_description = "Rechazar seleccionados"
+
+    def marcar_spam(self, request, queryset):
+        queryset.update(status=BlogComment.Status.SPAM)
+    marcar_spam.short_description = "Marcar como spam"
+
 # Posts
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
@@ -107,3 +136,7 @@ class BlogPostAdmin(admin.ModelAdmin):
     inlines = [BlogPostPhotoInline]
     date_hierarchy = "fecha_publicacion"
     ordering = ("-fecha_publicacion", "orden", "titulo")
+    inlines = [BlogPostPhotoInline, BlogCommentInline]
+
+
+

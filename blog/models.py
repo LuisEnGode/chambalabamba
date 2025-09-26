@@ -185,4 +185,50 @@ class BlogSidebarWidget(BaseOrdenPublicado):
     def __str__(self):
         return f"{self.get_tipo_display()} · {self.titulo or 'sin título'}"
 
+###############################comentarios###############################
+from django.conf import settings
+from django.utils import timezone
 
+class BlogComment(models.Model):
+    class Status(models.TextChoices):
+        PENDING  = "pending",  "Pendiente"
+        APPROVED = "approved", "Aprobado"
+        REJECTED = "rejected", "Rechazado"
+        SPAM     = "spam",     "Spam"
+
+    post = models.ForeignKey("BlogPost", on_delete=models.CASCADE, related_name="comentarios")
+    parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE, related_name="replies")
+
+    # Autoría (usuario autenticado opcional + campos públicos)
+    user = models.ForeignKey(getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+                             null=True, blank=True, on_delete=models.SET_NULL,
+                             related_name="blog_comments")
+    nombre = models.CharField(max_length=120, blank=True)
+    email = models.EmailField(blank=True)
+    website = models.URLField(blank=True)
+
+    cuerpo = models.TextField()
+
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
+    creado = models.DateTimeField(default=timezone.now, null=True, blank=True)
+    actualizado = models.DateTimeField(default=timezone.now, null=True, blank=True)
+
+    # Anti-spam / trazas (opcionales)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    user_agent = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        ordering = ("creado", "id")
+        indexes = [
+            models.Index(fields=["post", "status", "creado"]),
+        ]
+        verbose_name = "Comentario"
+        verbose_name_plural = "Comentarios"
+
+    def __str__(self):
+        who = self.user or self.nombre or "Anónimo"
+        return f"{who} → {self.post.titulo}"
+
+    @property
+    def visible(self):
+        return self.status == self.Status.APPROVED
