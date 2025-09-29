@@ -71,7 +71,7 @@
       "tags": [2],
       "resumen": "Galería con momentos de la semana.",
       "cuerpo_html": "<p>Imágenes de siembra, riego y cosecha.</p>",
-      "portada": "",
+      "portada": "blog/portadas/siembra.jpg",
       "tipo": "gallery",
       "video_url": "",
       "audio_url": "",

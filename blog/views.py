@@ -5,21 +5,35 @@ from .models import BlogPage, BlogPost, BlogCategory, BlogTag, BlogAuthor
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import BlogCommentForm
-from .models import BlogComment
+from .models import BlogComment,BlogSidebarWidget
+from django.db.models import Count, Q
 
 COMMON_PREFETCH = ("tags", "fotos")
 COMMON_SELECT   = ("autor", "categoria")
 
 def _base_ctx():
-    page = BlogPage.objects.select_related("header").prefetch_related("widgets").first()
-    # Fechas para “Archives” (lista de meses con posts)
-    archives = BlogPost.objects.filter(publicado=True).dates("fecha_publicacion", "month", order="DESC")
-    # Tags (con conteo, opcional)
+    page = (BlogPage.objects
+            .select_related("header")
+            .prefetch_related("widgets")
+            .first())
+
+    # Widgets publicados y ordenados
+    widgets = BlogSidebarWidget.objects.none()
+    if page:
+        widgets = page.widgets.filter(publicado=True).order_by("orden")
+
+    # Archives & tags/cats con conteo de publicados
+    archives = (BlogPost.objects.filter(publicado=True)
+                .dates("fecha_publicacion", "month", order="DESC"))
     tags = (BlogTag.objects
-            .annotate(n=Count("posts", filter=~BlogPost.objects.none()))
+            .annotate(n=Count("posts", filter=Q(posts__publicado=True), distinct=True))
             .order_by("nombre"))
-    cats = BlogCategory.objects.order_by("nombre")
-    return {"page": page, "archives": archives, "all_tags": tags, "all_categories": cats}
+    cats = (BlogCategory.objects
+            .annotate(n=Count("posts", filter=Q(posts__publicado=True)))
+            .order_by("nombre"))
+
+    return {"page": page, "widgets": widgets, "archives": archives,
+            "all_tags": tags, "all_categories": cats}
 
 def blog_list(request):
     q = request.GET.get("q", "").strip()
@@ -28,7 +42,7 @@ def blog_list(request):
              .order_by("-fecha_publicacion"))
 
     if q:
-        posts = posts.filter(titulo__icontains=q) | posts.filter(resumen__icontains=q)
+        posts = posts.filter(Q(titulo__icontains=q) | Q(resumen__icontains=q))
 
     ctx = {"posts": posts, "q": q}
     ctx.update(_base_ctx())

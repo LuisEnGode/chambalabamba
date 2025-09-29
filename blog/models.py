@@ -1,5 +1,21 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+
+
+def validate_local_or_url(value):
+    """Permite http(s)://… o rutas internas que comiencen con /"""
+    if not value:
+        return
+    if value.startswith("/"):
+        return  # aceptamos rutas locales
+    try:
+        URLValidator(schemes=("http", "https"))(value)
+    except ValidationError:
+        raise ValidationError("Ingrese una URL válida (http(s)://…) o una ruta interna que empiece con '/'.")
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Base reutilizable
