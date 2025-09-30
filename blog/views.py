@@ -1,5 +1,5 @@
 # blog/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.db.models import Count
 from .models import BlogPage, BlogPost, BlogCategory, BlogTag, BlogAuthor
 from django.contrib import messages
@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from .forms import BlogCommentForm
 from .models import BlogComment,BlogSidebarWidget
 from django.db.models import Count, Q
+from django.db.models import Prefetch, Q   # <- agrega Prefetch (y Q si lo usas)
 
 COMMON_PREFETCH = ("tags", "fotos")
 COMMON_SELECT   = ("autor", "categoria")
@@ -18,11 +19,21 @@ def _base_ctx():
             .first())
 
     # Widgets publicados y ordenados
-    widgets = BlogSidebarWidget.objects.none()
-    if page:
-        widgets = page.widgets.filter(publicado=True).order_by("orden")
+    widgets = page.widgets.filter(publicado=True).order_by("orden") if page else BlogSidebarWidget.objects.none()
 
-    # Archives & tags/cats con conteo de publicados
+    # Máximo límite que pidan los widgets de tipo "latest_posts"
+    max_latest = max([w.limite or 5 for w in widgets if w.tipo == "latest_posts"] or [0])
+
+    # Trae posts publicados hasta el máximo necesario (evitas consultas por widget)
+    latest_posts = []
+    if max_latest:
+        latest_posts = (BlogPost.objects
+                        .filter(publicado=True)
+                        .select_related("autor", "categoria")
+                        .prefetch_related("tags", "fotos")
+                        .order_by("-fecha_publicacion")[:max_latest])
+
+    # Archives & taxonomías
     archives = (BlogPost.objects.filter(publicado=True)
                 .dates("fecha_publicacion", "month", order="DESC"))
     tags = (BlogTag.objects
@@ -32,8 +43,14 @@ def _base_ctx():
             .annotate(n=Count("posts", filter=Q(posts__publicado=True)))
             .order_by("nombre"))
 
-    return {"page": page, "widgets": widgets, "archives": archives,
-            "all_tags": tags, "all_categories": cats}
+    return {
+        "page": page,
+        "widgets": widgets,
+        "latest_posts": latest_posts,
+        "archives": archives,
+        "all_tags": tags,
+        "all_categories": cats,
+    }
 
 def blog_list(request):
     q = request.GET.get("q", "").strip()
@@ -97,34 +114,55 @@ def blog_detail(request, slug):
 
 
 def blog_detail(request, slug):
-    post = get_object_or_404(BlogPost.objects.select_related(*COMMON_SELECT)
-                             .prefetch_related(*COMMON_PREFETCH),
-                             slug=slug, publicado=True)
+    post = get_object_or_404(
+        BlogPost.objects.select_related(*COMMON_SELECT).prefetch_related(*COMMON_PREFETCH),
+        slug=slug, publicado=True
+    )
 
-    # Envío de comentario
-    form = BlogCommentForm()
     if request.method == "POST":
         form = BlogCommentForm(request.POST)
         if form.is_valid():
             c = form.save(commit=False)
             c.post = post
-            # datos de traza
-            c.ip_address = request.META.get("REMOTE_ADDR")
-            c.user_agent = request.META.get("HTTP_USER_AGENT", "")[:255]
-            # si el usuario está autenticado, lo asociamos
+            #c.status = BlogComment.Status.APPROVED
+
+            # Evita parent de otro post
+            if c.parent and c.parent.post_id != post.id:
+                c.parent = None
+
+            # Traza
+            # Usa los nombres que EXISTAN en tu modelo:
+            # Si tu modelo tiene 'ip' y 'ua':
+            c.ip = request.META.get("REMOTE_ADDR")
+            c.ua = (request.META.get("HTTP_USER_AGENT") or "")[:255]
+            # Si en tu modelo son 'ip_address' y 'user_agent', cambia las 2 líneas anteriores.
+
+            # Usuario autenticado (opcional)
             if request.user.is_authenticated:
                 c.user = request.user
                 if not c.nombre:
                     c.nombre = request.user.get_full_name() or request.user.get_username()
-                if not c.email and hasattr(request.user, "email"):
+                if not c.email and getattr(request.user, "email", ""):
                     c.email = request.user.email
-            # queda PENDING por defecto; moderas en admin
+
+            # Estado por defecto
+            if not c.status:
+                c.status = BlogComment.Status.PENDING
+
             c.save()
             messages.success(request, "¡Gracias! Tu comentario quedará visible cuando sea aprobado.")
-            return HttpResponseRedirect(request.path)
+            return redirect(request.path + "#comments")
+    else:
+        form = BlogCommentForm()
 
-    # Comentarios visibles (aprobados)
-    comentarios = post.comentarios.filter(status=BlogComment.Status.APPROVED).select_related("user")
+    # Comentarios visibles: solo top-level aprobados, con replies aprobadas prefetch
+    aprobados_qs = BlogComment.objects.filter(status=BlogComment.Status.APPROVED)
+    comentarios = (post.comentarios
+                   .filter(status=BlogComment.Status.APPROVED, parent__isnull=True)
+                   .select_related("user")
+                   .prefetch_related(Prefetch("replies", queryset=aprobados_qs.order_by("creado"))))
+
+    comentarios = comentarios.order_by("-creado")
 
     related = (BlogPost.objects.filter(publicado=True, categoria=post.categoria)
                .exclude(id=post.id).order_by("-fecha_publicacion")[:3])

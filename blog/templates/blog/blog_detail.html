@@ -9,378 +9,320 @@
         <h1>{% if page.header and page.header.title %}{{ page.header.title }}{% else %}Nosotros{% endif %}</h1>
         <ul>
             <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Pilares</a></li>
-            <li><a href="#">{% if page.header and page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{%
-                else %}Ecología{% endif %}</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">{% if page.header and page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}Blog{% endif %}</a></li>
         </ul>
     </div>
 </section>
 <!--Inner Header End-->
 <!--Blog Start-->
+{% load static %}
+
 <section class="wf100 p80 blog">
     <div class="blog-details">
         <div class="container">
             <div class="row">
+                <!-- Columna principal -->
                 <div class="col-lg-9 col-md-8">
-                    <!--Blog Single Content Start-->
                     <div class="blog-single-content">
-                        <div class="blog-single-thumb"><img src="{% static 'images/blog/bf4.jpg' %}" alt=""></div>
-                        <h3>Awareness Campaign to Save & Planting Forest</h3>
+
+                        {# Imagen/galería de cabecera #}
+                        {% if post.header_image %}
+                        <div class="blog-single-thumb">
+                            <img src="{{ post.header_image.url }}" alt="{{ post.titulo }}">
+                        </div>
+                        {% endif %}
+
+                        <h3>{{ post.titulo }}</h3>
+
                         <ul class="post-meta">
-                            <li><i class="fas fa-user-circle"></i> John Ashley</li>
-                            <li><i class="fas fa-calendar-alt"></i> 29 September, 2018</li>
-                            <li><i class="fas fa-comments"></i> 134 Comments</li>
-                            <li class="tags"><i class="fas fa-tags"></i> <a href="#">Plant</a> <a href="#">Trees</a> <a
-                                    href="#">Water</a> <a href="#">Recycling</a></li>
+                            {% if post.autor %}
+                            <li><i class="fas fa-user-circle"></i>
+                                <a href="{% url 'blog_by_author' slug=post.autor.slug %}">{{ post.autor.nombre }}</a>
+                            </li>
+                            {% endif %}
+                            <li><i class="fas fa-calendar-alt"></i> {{ post.fecha_publicacion|date:"d M, Y" }}</li>
+                            <li><i class="fas fa-comments"></i> {{ post.comentarios_count }} Comentarios</li>
+                            {% if post.tags.all %}
+                            <li class="tags"><i class="fas fa-tags"></i>
+                                {% for t in post.tags.all %}
+                                <a href="{% url 'blog_by_tag' slug=t.slug %}">{{ t.nombre }}</a>{% if not forloop.last %} {% endif %}
+                                {% endfor %}
+                            </li>
+                            {% endif %}
                         </ul>
-                        <p> The environment includes; the surface of the earth, natural re­sources, land and water,
-                            mountains and plains, fertile lands and deserts, oceans, storms and cy­clones, weather and
-                            climatic factors, seasons, etc. It also includes biological conditions such as plants,
-                            animals with all their complexities.</p>
-                        <p>We are going to run a solid educational campaign for the orphan children study. There are
-                            many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
-                        <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. To take a
-                            trivial example, which of us ever undertakes laborious physical exercise, except to obtain
-                            some advantage. </p>
-                        <blockquote>
-                            <p> The inner environment is the society itself. It is the social envi­ronment & endures
-                                only so long as the society endures. It consists of the organisations and regula­tions,
-                                the traditions and institutions. </p>
-                        </blockquote>
-                        <p> Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because
-                            it is pain, but because occasionally circumstances occur in which toil and pain can procure
-                            him some great pleasure. because it is pain, but because occasionally circumstances occur in
-                            which toil and pain can procure him some great pleasure. </p>
-                        <h5>Elect the Leader who is Peacemaker for the country</h5>
-                        <p> Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
-                            et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-                            sapien delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
-                            perferendis. </p>
-                        <ul class="check-list">
-                            <li>Aliquam eget tellus sed dolor accumsan imperdiet.</li>
-                            <li> Nunc interdum arcu vel massa faucibus imperdiet.</li>
-                            <li> Vestibulum sollicitudin odio nec faucibus venenatis.</li>
-                            <li> Etiam iaculis nunc et iaculis sodales.</li>
-                        </ul>
+
+                        {# Cuerpo del post #}
+                        {% if post.cuerpo_html %}
+                        <div class="post-body">{{ post.cuerpo_html|safe }}</div>
+                        {% elif post.resumen %}
+                        <p>{{ post.resumen|safe }}</p>
+                        {% endif %}
+
+                        {# Mini galería opcional (primeras 3) #}
+                        {% with thumbs=post.fotos.all %}
+                        {% if thumbs %}
                         <ul class="small-gallery">
-                            <li><img src="{% static 'images/blog/bsmall1.jpg' %}" alt=""></li>
-                            <li><img src="{% static 'images/blog/bsmall2.jpg' %}" alt=""></li>
-                            <li><img src="{% static 'images/blog/bsmall3.jpg' %}" alt=""></li>
+                            {% for f in thumbs|slice:":3" %}
+                            <li><img src="{{ f.imagen.url }}" alt="{{ f.alt|default:post.titulo }}"></li>
+                            {% endfor %}
                         </ul>
-                        <!--Post Tags Start-->
-                        <div class="single-post-tags wf100"><a href="#">Solar Energy</a> <a href="#"> Plant Ecology </a>
-                            <a href="#"> Wildlife </a> <a href="#"> Eco Ideas </a> <a href="#"> Waste Management </a> <a
-                                    href="#"> Water </a> <a href="#"> Forest Planting </a> <a href="#"> Donation </a> <a
-                                    href="#"> Wind Energy </a> <a href="#"> Recycling </a></div>
-                        <!--Post Tags End-->
-                        <!--Author Box Start-->
+                        {% endif %}
+                        {% endwith %}
+
+                        {# Tags (chips) #}
+                        {% if post.tags.all %}
+                        <div class="single-post-tags wf100">
+                            {% for t in post.tags.all %}
+                            <a href="{% url 'blog_by_tag' slug=t.slug %}">{{ t.nombre }}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {# Caja de autor #}
+                        {% if post.autor %}
                         <div class="author-box wf100">
-                            <img src="{% static 'images/auser.jpg'%}" alt="">
-                            <h5>About Post Author</h5>
-                            <p> Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibe saepe eveniet
-                                ut et voluptates repudiandae sint et molestiaerecusanda Itaque earum rerum hic tenetur a
-                                sapien delectus, ut aut reiciendis. </p>
+                            {% if post.autor.foto %}
+                            <img src="{{ post.autor.foto.url }}" alt="{{ post.autor.nombre }}">
+                            {% endif %}
+                            <h5>Sobre el autor</h5>
+                            <p><strong>{{ post.autor.nombre }}</strong></p>
+                            {% if post.autor.bio %}<p>{{ post.autor.bio }}</p>{% endif %}
+
                         </div>
-                        <!--Author Box End-->
-                        <!--Author Comments Start-->
-                        <div class="post-comments wf100">
-                            <h4>Comments on Post</h4>
+                        {% endif %}
+
+                        {# Comentarios visibles (aprobados) #}
+                            <h4>Comentarios ({{ comentarios|length }})</h4>
                             <ul class="comments">
-                                <!--Comment Start-->
-                                <li class="comment">
-                                    <div class="user-thumb"><img src="{% static 'images/auser.jpg'%}" alt=""></div>
-                                    <div class="comment-txt">
-                                        <h6> Mason Gray </h6>
-                                        <p> Personally I think a combination of all these methods is most effective, but
-                                            in today’s post I will be focusing specifically on how to use and style
-                                            WordPress’ built-in sticky post feature and highlighting it’s best use case
-                                            based on my own experience. </p>
-                                        <ul class="comment-time">
-                                            <li>Posted: 09 July, 2018 at 2:37 pm</li>
-                                            <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
-                                        </ul>
+                                {% for c in comentarios %}
+                                {% if not c.parent_id %}
+                                <li id="comment-{{ c.id }}" class="comment">
+                                    <div class="user-thumb">
+                                        <img src="{% static 'images/auser.jpg' %}" alt="">
                                     </div>
+                                    <div class="comment-txt">
+                                        <h6>
+                                            {{ c.nombre|default:'Anónimo' }}
+                                            {% if c.website %}
+                                                <small> · <a href="{{ c.website }}" target="_blank" rel="nofollow noopener noreferrer">web</a></small>
+                                            {% endif %}
+
+                                        </h6>
+                                        <p>{{ c.cuerpo|linebreaks }}</p>
+                                        <ul class="comment-time">
+                                            <li>Publicado: {{ c.creado|date:"d M, Y H:i" }}</li>
+                                            <li><a href="#comment-form" class="reply-link" data-parent="{{ c.id }}"><i class="fas fa-reply"></i> Responder</a></li>
+                                        </ul>
+                                        <div class="reply-slot"></div>  {# <- lugar donde se inserta el form #}
+                                        {% if c.replies.all %}
+                                        <ul class="children">
+                                          {% for r in c.replies.all %}
+                                            <li id="comment-{{ r.id }}" class="comment"> ... </li>
+                                          {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+
+                                    {# Respuestas aprobadas #}
+                                    {% if c.replies.all %}
                                     <ul class="children">
-                                        <!--Comment Start-->
+                                        {% for r in c.replies.all %}
+                                        {% if r.status == "approved" %}
                                         <li class="comment">
                                             <div class="user-thumb"><img src="{% static 'images/auser.jpg' %}" alt="">
                                             </div>
                                             <div class="comment-txt">
-                                                <h6> Johny Elite </h6>
-                                                <p> Personally I think a combination of all these methods is most
-                                                    effective, but in today’s post I will be focusing specifically on
-                                                    how to use and style WordPress’ built-in sticky post feature and
-                                                    highlighting it’s best use case based on my own experience. </p>
+                                                <h6>{{ r.nombre|default:r.user.get_full_name|default:r.user.get_username|default:'Anónimo' }}</h6>
+                                                <p>{{ r.cuerpo|linebreaks }}</p>
                                                 <ul class="comment-time">
-                                                    <li>Posted: 09 July, 2018 at 2:37 pm</li>
-                                                    <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
+                                                    <li>Publicado: {{ r.creado|date:"d M, Y H:i" }}</li>
                                                 </ul>
                                             </div>
                                         </li>
-                                        <!--Comment End-->
-                                        <!--Comment Start-->
-                                        <li class="comment">
-                                            <div class="user-thumb"><img src="{% static 'images/auser.jpg' %}" alt="">
-                                            </div>
-                                            <div class="comment-txt">
-                                                <h6> Rog Kelly </h6>
-                                                <p> Personally I think a combination of all these methods is most
-                                                    effective, but in today’s post I will be focusing specifically on
-                                                    how to use and style WordPress’ built-in sticky post feature and
-                                                    highlighting it’s best use case based on my own experience. </p>
-                                                <ul class="comment-time">
-                                                    <li>Posted: 09 July, 2018 at 2:37 pm</li>
-                                                    <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <!--Comment End-->
+                                        {% endif %}
+                                        {% endfor %}
                                     </ul>
+                                    {% endif %}
                                 </li>
-                                <!--Comment End-->
-                                <!--Comment Start-->
-                                <li class="comment">
-                                    <div class="user-thumb"><img src="{% static 'images/auser.jpg' %}" alt=""></div>
-                                    <div class="comment-txt">
-                                        <h6> Harry Butler </h6>
-                                        <p> Personally I think a combination of all these methods is most effective, but
-                                            in today’s post I will be focusing specifically on how to use and style
-                                            WordPress’ built-in sticky post feature and highlighting it’s best use case
-                                            based on my own experience. </p>
-                                        <ul class="comment-time">
-                                            <li>Posted: 09 July, 2018 at 2:37 pm</li>
-                                            <li><a href="#"><i class="fas fa-reply"></i> Reply</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <!--Comment End-->
+                                {% endif %}
+                                {% empty %}
+                                <li class="text-muted">Sé el primero en comentar.</li>
+                                {% endfor %}
                             </ul>
                         </div>
-                        <!--Author Comments End-->
-                        <!--Related Posts Start-->
-                        <div class="wf100 related-posts">
-                            <h4>Related Posts</h4>
-                            <ul>
-                                <li>
-                                    <div class="rp-box">
-                                        <h6><a href="#">Social innovation of nonprofit, think tank, outcome to
-                                            donate</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a>
-                                            </li>
-                                            <li><a href="#"><i class="fas fa-comments"></i> 134 Comments </a></li>
-                                            <li><a href="#"><i class="fas fa-share-alt"></i> 206 Share </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="rp-box">
-                                        <h6><a href="#">Social innovation of nonprofit, think tank, outcome to
-                                            donate</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a>
-                                            </li>
-                                            <li><a href="#"><i class="fas fa-comments"></i> 134 Comments </a></li>
-                                            <li><a href="#"><i class="fas fa-share-alt"></i> 206 Share </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="rp-box">
-                                        <h6><a href="#">Social innovation of nonprofit, think tank, outcome to
-                                            donate</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fas fa-calendar-alt"></i> 29 September, 2018</a>
-                                            </li>
-                                            <li><a href="#"><i class="fas fa-comments"></i> 134 Comments </a></li>
-                                            <li><a href="#"><i class="fas fa-share-alt"></i> 206 Share </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--Related Posts End-->
-                        <!--Leave a Comment Start-->
+
+                        {# Formulario para comentar #}
                         <div class="wf100 comment-form">
-                            <h4>Leave a Comment</h4>
+                            <h4>Deja un comentario</h4>
+                            <form id="comment-form" action="{% url 'blog_detail' slug=post.slug %}" method="post">
+                                {% csrf_token %}
+                                {{ form.non_field_errors }}
+                                {{ form.parent }} {# <-- importante #}
+                                {{ form.hp }} {# honeypot #}
+                                <ul>
+                                    <li class="w3">{{ form.nombre }}</li>
+                                    <li class="w3">{{ form.email }}</li>
+                                    <li class="w3 np">{{ form.website }}</li>
+                                    <li class="full">{{ form.cuerpo }}</li>
+                                    <li class="full">
+                                        <button class="post-btn">Enviar</button>
+                                        <a id="cancel-reply" href="#" style="display:none;margin-left:10px">Cancelar respuesta</a>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+
+                        {# Relacionados #}
+                        {% if related %}
+                        <div class="wf100 related-posts">
+                            <h4>Posts relacionados</h4>
                             <ul>
-                                <li class="w3">
-                                    <input type="text" class="form-control" placeholder="Full Name">
+                                {% for p in related %}
+                                <li>
+                                    <div class="rp-box">
+                                        <h6><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></h6>
+                                        <ul class="post-meta">
+                                            <li><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}
+                                            </li>
+                                            <li><i class="fas fa-comments"></i> {{ p.comentarios_count }} Comentarios
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="w3">
-                                    <input type="text" class="form-control" placeholder="Email">
-                                </li>
-                                <li class="w3 np">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </li>
-                                <li class="full">
-                                    <textarea class="form-control" placeholder="Write Comments"></textarea>
-                                </li>
-                                <li class="full">
-                                    <button class="post-btn">Post Your Comment</button>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
-                        <!--Leave a Comment End-->
+                        {% endif %}
+
                     </div>
-                    <!--Blog Single Content End-->
                 </div>
-                <!--Sidebar Start-->
+
+                <!-- Sidebar (usa los mismos widgets que la lista) -->
                 <div class="col-lg-3 col-md-4">
                     <div class="sidebar">
-                        <!--Widget Start-->
-                        <div class="side-widget">
-                            <h5>Search</h5>
+                        {% for w in widgets %}
+                        <div class="side-widget {% if w.tipo == 'text' %}text-widget{% endif %}">
+                            {% if w.titulo %}<h5>{{ w.titulo }}</h5>{% endif %}
+
+                            {% if w.tipo == "search" %}
                             <div class="side-search">
-                                <form>
-                                    <input type="search" class="form-control" placeholder="Search">
+                                <form method="get" action="{% url 'blog_list' %}">
+                                    <input type="search" name="q" class="form-control" placeholder="Buscar">
                                     <button><i class="fas fa-search"></i></button>
                                 </form>
                             </div>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget text-widget">
-                            <h5>Text Widget</h5>
-                            <p> We are Ecova: eco & environmental community. We need your support and help to Stop
-                                Globar Warning. Few generations ago it to seemed like world’s resources were infinite,
-                                and the people needed only to access them to create business, Lorem ipsum dolor it amet
-                                consect adipiscing. </p>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget">
-                            <h5>News & Articles</h5>
+                            {% elif w.tipo == "text" %}
+                            <p>{{ w.body_html|safe }}</p>
+                            {% elif w.tipo == "latest_posts" %}
                             <ul class="lastest-products">
-                                <li><img src="{% static 'images/flp1.jpg' %}" alt=""> <strong><a href="#">How you can
-                                    keep alive wild animals for...</a></strong> <span class="pdate"><i
-                                        class="fas fa-calendar-alt"></i> 29 September, 2018</span></li>
-                                <li><img src="{% static 'images/flp2.jpg' %}" alt=""> <strong><a href="#">Eliminate your
-                                    plastic bottle pollution</a></strong> <span class="pdate"><i
-                                        class="fas fa-calendar-alt"></i> 29 September, 2018</span></li>
-                                <li><img src="{% static 'images/flp3.jpg' %}" alt=""> <strong><a href="#">How you can
-                                    keep alive wild animals for...</a></strong> <span class="pdate"><i
-                                        class="fas fa-calendar-alt"></i> 29 September, 2018</span></li>
+                                {% for p in latest_posts %}
+                                {% if forloop.counter0 < w.limite %}
+                                <li>
+                                    {% if p.header_image %}
+                                    <img src="{{ p.header_image.url }}" alt="{{ p.titulo }}"
+                                         style="width:64px;height:64px;object-fit:cover;border-radius:6px;">
+                                    {% endif %}
+                                    <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
+                                    <span class="pdate"><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}</span>
+                                </li>
+                                {% endif %}
+                                {% empty %}
+                                <li class="text-muted">No hay publicaciones recientes.</li>
+                                {% endfor %}
                             </ul>
-                        </div>
-                        <!--Widget Start-->
-                        <!--Widget Start-->
-                        <div class="side-widget project-list-widget">
-                            <h5>Current Projects</h5>
-                            <ul>
-                                <li><a href="#">Waste Management</a></li>
-                                <li><a href="#">Solar Energy</a></li>
-                                <li><a href="#">Eco Ideas</a></li>
-                                <li><a href="#">Recycling Materials</a></li>
-                                <li><a href="#">Plant Ecology</a></li>
-                                <li><a href="#">Saving Wildlife</a></li>
-                                <li><a href="#">Water Resources</a></li>
-                                <li><a href="#">Forest & Tree Planting</a></li>
-                                <li><a href="#">Wing Energy</a></li>
-                            </ul>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget">
-                            <h5>Tags</h5>
-                            <div class="single-post-tags"><a href="#">Solar Energy</a> <a href="#"> Plant Ecology </a>
-                                <a href="#"> Wildlife </a> <a href="#"> Eco Ideas </a> <a href="#"> Waste
-                                    Management </a> <a href="#"> Water </a> <a href="#"> Forest Planting </a> <a
-                                        href="#"> Donation </a> <a href="#"> Wind Energy </a> <a href="#">
-                                    Recycling </a></div>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget">
-                            <h5>Recent Work</h5>
-                            <div id="side-slider" class="owl-carousel owl-theme">
-                                <!--Item Start-->
-                                <div class="item">
-                                    <div class="pro-box">
-                                        <img src="{% static 'images/current-pro5.jpg' %}" alt="">
-                                        <h5>Forest &amp; Tree Planting</h5>
-                                        <div class="pro-hover">
-                                            <h6>Forest &amp; Tree Planting</h6>
-                                            <p>We are working over 20 years on Waste Management &amp; Material Recycling
-                                                Projects.</p>
-                                            <a href="#">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Item End-->
-                                <!--Item Start-->
-                                <div class="item">
-                                    <div class="pro-box">
-                                        <img src="{% static 'images/current-pro2.jpg' %}" alt="">
-                                        <h5>Forest &amp; Tree Planting</h5>
-                                        <div class="pro-hover">
-                                            <h6>Forest &amp; Tree Planting</h6>
-                                            <p>We are working over 20 years on Waste Management &amp; Material Recycling
-                                                Projects.</p>
-                                            <a href="#">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Item End-->
-                                <!--Item Start-->
-                                <div class="item">
-                                    <div class="pro-box">
-                                        <img src="{%static 'images/current-pro1.jpg' %}" alt="">
-                                        <h5>Forest &amp; Tree Planting</h5>
-                                        <div class="pro-hover">
-                                            <h6>Forest &amp; Tree Planting</h6>
-                                            <p>We are working over 20 years on Waste Management &amp; Material Recycling
-                                                Projects.</p>
-                                            <a href="#">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Item End-->
+                            {% elif w.tipo == "tags" %}
+                            <div class="single-post-tags">
+                                {% for t in all_tags %}
+                                <a href="{% url 'blog_by_tag' slug=t.slug %}">{{ t.nombre }}</a>
+                                {% endfor %}
                             </div>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget archives">
-                            <h5>Archives</h5>
+                            {% elif w.tipo == "archives" %}
                             <ul>
-                                <li><a href="#"> November 2018</a></li>
-                                <li><a href="#"> October 2018</a></li>
-                                <li><a href="#"> September 2018</a></li>
-                                <li><a href="#"> August 2018</a></li>
-                                <li><a href="#"> July 2018</a></li>
-                                <li><a href="#"> June 2018</a></li>
-                                <li><a href="#"> May 2018</a></li>
-                                <li><a href="#"> April 2018</a></li>
-                                <li><a href="#"> March 2018</a></li>
-                                <li><a href="#"> February 2018</a></li>
-                                <li><a href="#"> January 2018</a></li>
-                                <li><a href="#"> December 2017</a></li>
+                                {% for d in archives %}
+                                <li><a href="{% url 'blog_by_month' year=d|date:'Y' month=d|date:'n' %}">{{ d|date:"F Y" }}</a></li>
+                                {% endfor %}
                             </ul>
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget side-volunteer-form">
-                            <h5><a href="{% url 'contacto:contacto' %}">Become a Volunteer</a></h5>
-
-                        </div>
-                        <!--Widget End-->
-                        <!--Widget Start-->
-                        <div class="side-widget">
+                            {% elif w.tipo == "cta_volunteer" %}
+                            <h5><a href="{{ w.link_url|default:page.volunteer_url }}">{{ w.link_label|default:'Súmate' }}</a></h5>
+                            {% elif w.tipo == "cta_donate" %}
                             <div class="donation-amount">
-                                <h5><a href="{%url 'donaciones'%}">Make a Donation</a></h5>
-
+                                <h5><a href="{{ w.link_url|default:page.donate_url }}">{{ w.link_label|default:'Dona'
+                                    }}</a></h5>
                             </div>
+                            {% elif w.tipo == "custom_html" %}
+                            {{ w.body_html|safe }}
+                            {% endif %}
                         </div>
-                        <!--Widget End-->
+                        {% empty %}
+                        <p class="text-muted">Sin widgets configurados.</p>
+                        {% endfor %}
                     </div>
                 </div>
-                <!--Sidebar End-->
+
             </div>
         </div>
     </div>
 </section>
+
+{# Responder a un comentario (rellena el hidden "parent") #}
+<script>
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('.reply-link');
+      if (!a) return;
+      e.preventDefault();
+      const inp = document.querySelector('form [name="parent"]');
+      if (inp) { inp.value = a.dataset.parent; inp.scrollIntoView({behavior:'smooth'}); }
+    });
+</script>
+
+<script>
+(function () {
+  const form = document.getElementById('comment-form');
+  if (!form) return;
+
+  const parentInput = form.querySelector('[name="parent"]');
+  const cancel = document.getElementById('cancel-reply');
+
+  // Guardamos el lugar original del form
+  const home = document.createElement('div');
+  home.id = 'comment-form-home';
+  form.parentNode.insertBefore(home, form);
+
+  function moveFormTo(commentId) {
+    const li = document.getElementById('comment-' + commentId);
+    if (!li) return;
+    const slot = li.querySelector('.reply-slot') || li;
+    slot.appendChild(form);
+    cancel.style.display = 'inline-block';
+  }
+
+  function resetFormPosition() {
+    parentInput.value = '';
+    home.parentNode.insertBefore(form, home.nextSibling);
+    cancel.style.display = 'none';
+  }
+
+  // Click en “Responder”
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('.reply-link');
+    if (!a) return;
+    e.preventDefault();
+    const id = a.getAttribute('data-parent');
+    parentInput.value = id;
+    moveFormTo(id);
+    form.scrollIntoView({behavior: 'smooth', block: 'center'});
+  });
+
+  // Cancelar respuesta
+  cancel.addEventListener('click', function (e) {
+    e.preventDefault();
+    resetFormPosition();
+    form.scrollIntoView({behavior: 'smooth', block: 'center'});
+  });
+})();
+</script>
+
 <!--Blog End-->
 <!--Footer Start-->
 {% endblock %}

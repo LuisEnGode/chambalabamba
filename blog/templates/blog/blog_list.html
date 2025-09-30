@@ -154,17 +154,24 @@
                 <p>{{ w.body_html|safe }}</p>
 
               {% elif w.tipo == "latest_posts" %}
-                <ul class="lastest-products">
-                  {% for p in latest_posts %}
-                  <li>
-                    {% if p.header_image %}<img src="{{ p.header_image.url }}" alt="{{ p.titulo }}">{% endif %}
-                    <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
-                    <span class="pdate"><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}</span>
-                  </li>
-                  {% empty %}
+              {% if w.body_html %}<p>{{ w.body_html|safe }}</p>{% endif %}
+              <ul class="lastest-products">
+                {% for p in latest_posts %}
+                  {# mostramos solo los primeros w.limite #}
+                  {% if forloop.counter0 < w.limite %}
+                    <li>
+                      {% if p.header_image %}
+                        <img src="{{ p.header_image.url }}" alt="{{ p.titulo }}"
+                 style="width:64px;height:64px;object-fit:cover;border-radius:6px;">
+                      {% endif %}
+                      <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
+                      <span class="pdate"><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}</span>
+                    </li>
+                  {% endif %}
+                {% empty %}
                   <li class="text-muted">No hay publicaciones recientes.</li>
-                  {% endfor %}
-                </ul>
+                {% endfor %}
+              </ul>
 
               {% elif w.tipo == "projects" or w.tipo == "recent_work" %}
                 <div id="side-slider-{{ w.id }}" class="owl-carousel owl-theme">

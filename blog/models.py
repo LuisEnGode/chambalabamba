@@ -35,7 +35,7 @@ class BaseOrdenPublicado(models.Model):
 # ──────────────────────────────────────────────────────────────────────────────
 class BlogHeader(models.Model):
     title = models.CharField(max_length=120, default="Blog")
-    breadcrumb_label = models.CharField(max_length=120, default="Blog")
+    breadcrumb_label = models.CharField(max_length=120, default="Blog-Detail")
     background = models.ImageField(upload_to="blog/header/", blank=True, null=True)
 
     class Meta:
