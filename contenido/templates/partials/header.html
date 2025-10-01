@@ -90,9 +90,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'blog_list' %}">
+                     <a class="nav-link dropdown-toggle" href="{% url 'blog_list' %}" role="button" data-toggle="dropdown">
                         Blog
                     </a>
+                     <ul class="dropdown-menu">
+                         <li><a href="{% url 'blog_list' %}">Ver Posts</a></li>
+                        <li><a href="{% url 'blog_create' %}">Crear entrada</a></li>
+
+                    </ul>
                 </li>
 
 
@@ -103,15 +108,20 @@
             </ul>
 
             {% if user.is_authenticated %}
-            <strong> - {{ user.username }} - </strong>
+
+
             <!-- Íconos del lado derecho -->
             <ul class="topnav-right">
-                <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
-                <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                <li><a class="mdonate" href="{% url 'donaciones' %}"><span>Haz una Donación</span></a></li>
+                <!--
+                    <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                -->
                 <li class="dropdown">
+                    <!--
                     <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
+                    -->
                     <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
                         Últimos artículos añadidos
                         <ul class="list">
@@ -136,11 +146,14 @@
                 </li>
 
                 <li class="login-reg">
-                    <a href="{% url 'perfil' %}">Mi perfil</a>
+                    <a href="{% url 'perfil' %}">Mi perfil</a>|
                     <a href="{% url 'perfil_editar' %}">Actualizar Perfil</a> |
+                    <a href="{% url 'perfil_editar' %}">-  👤 {{ user.username|upper }} - </a>|
+
                     <form action="{% url 'logout' %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Salir</button>
+
+                          <button type="submit" class="link-like">Salir</button>
                     </form>
                 </li>
             </ul>
@@ -149,9 +162,11 @@
                 <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
                 <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
                 <li class="dropdown">
+                    <!--
                     <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
+                    -->
                     <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
                         Últimos artículos añadidos
                         <ul class="list">

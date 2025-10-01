@@ -17,7 +17,7 @@
                         <h4>Sobre Chambalabamba</h4>
                         <p>Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia.
                             Promovemos un estilo de vida autosostenible y en armonía con la Tierra.</p>
-                        <a href="{% url 'home' %}" class="lm">Conócenos</a>
+                        <a href="{% url 'nosotros:nuestro_camino' %}" class="lm">Conócenos</a>
                     </div>
                 </div>
 
@@ -37,12 +37,12 @@
 
                 <!-- Noticias o últimas publicaciones -->
                {% latest_posts_footer 2 %}
-
                 <!-- Productos / donaciones -->
 
-
                 {% url 'donaciones' as donaciones_url %}
-                {% get_placement 'donaciones_banner' as slot %}
+      <img class="footer-logo" src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Chambalabamba" loading="lazy" decoding="async">
+
+
                 {% if slot and slot.flyer and slot.flyer.publicado and slot.flyer.imagen %}
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="f-product">

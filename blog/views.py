@@ -1,13 +1,17 @@
 # blog/views.py
 from django.shortcuts import render, get_object_or_404,redirect
-from django.db.models import Count
-from .models import BlogPage, BlogPost, BlogCategory, BlogTag, BlogAuthor
+from .models import BlogPage, BlogCategory, BlogTag, BlogAuthor
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 from .forms import BlogCommentForm
 from .models import BlogComment,BlogSidebarWidget
 from django.db.models import Count, Q
 from django.db.models import Prefetch, Q   # <- agrega Prefetch (y Q si lo usas)
+from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import CreateView, UpdateView
+from django.urls import reverse_lazy
+from .forms import BlogPostForm
+from .models import BlogPost, BlogAuthor
 
 COMMON_PREFETCH = ("tags", "fotos")
 COMMON_SELECT   = ("autor", "categoria")
@@ -170,3 +174,106 @@ def blog_detail(request, slug):
     ctx = {"post": post, "related": related, "comentarios": comentarios, "form": form}
     ctx.update(_base_ctx())
     return render(request, "blog/blog_detail.html", ctx)
+
+def _get_author_for_user(user):
+    """
+    Devuelve BlogAuthor para el usuario:
+      1) slug == username
+      2) nombre == full_name/username
+      3) si es staff, lo crea automáticamente
+    """
+    username = (user.get_username() or "").strip()
+    full_name = (user.get_full_name() or "").strip() or username
+
+    author = BlogAuthor.objects.filter(slug=username).first()
+    if author: return author
+
+    author = BlogAuthor.objects.filter(nombre__iexact=full_name).first()
+    if author: return author
+
+    if user.is_staff:
+        from django.utils.text import slugify
+        return BlogAuthor.objects.create(nombre=full_name, slug=slugify(username or full_name))
+    return None
+
+class BlogPostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = "blog.add_blogpost"
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = "blog/post_form.html"
+    success_url = reverse_lazy("blog_list")
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form = self.get_form()
+        action = request.POST.get("action")
+        if action == "preview" and form.is_valid():
+            draft = form.save(commit=False)
+            author = _get_author_for_user(request.user)
+            draft.autor = author
+            if not draft.slug:
+                draft.slug = form.generate_unique_slug(form.cleaned_data.get("titulo",""))
+            context = self.get_context_data(form=form, preview_obj=draft, is_preview=True)
+            return self.render_to_response(context)
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        author = _get_author_for_user(self.request.user)
+        if not author:
+            form.add_error(None, "No se pudo asociar un autor a tu usuario. Pide a un admin que te cree un BlogAuthor.")
+            return self.form_invalid(form)
+
+        post.autor = author
+
+        action = self.request.POST.get("action")
+        if action == "publish":
+            post.publicado = True
+            if not post.fecha_publicacion:
+                post.fecha_publicacion = timezone.now()
+        else:
+            post.publicado = False  # guardar como borrador
+
+        if not post.slug:
+            post.slug = form.generate_unique_slug(form.cleaned_data.get("titulo",""))
+
+        post.save()
+        form.save_m2m()
+        messages.success(self.request, "¡Post creado!" if action != "publish" else "¡Post publicado!")
+        return super().form_valid(form)
+
+class BlogPostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    permission_required = "blog.change_blogpost"
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = "blog/post_form.html"
+    slug_field = "slug"
+    slug_url_kwarg = "slug"
+    success_url = reverse_lazy("blog_list")
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        action = request.POST.get("action")
+        if action == "preview" and form.is_valid():
+            draft = form.save(commit=False)
+            draft.autor = self.object.autor  # conserva el autor
+            context = self.get_context_data(form=form, preview_obj=draft, is_preview=True)
+            return self.render_to_response(context)
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        action = self.request.POST.get("action")
+        if action == "publish":
+            post.publicado = True
+            if not post.fecha_publicacion:
+                post.fecha_publicacion = timezone.now()
+        else:
+            post.publicado = False
+        if not post.slug:
+            post.slug = form.generate_unique_slug(form.cleaned_data.get("titulo",""))
+        post.save()
+        form.save_m2m()
+        messages.success(self.request, "¡Post actualizado!" if action != "publish" else "¡Post publicado!")
+        return super().form_valid(form)

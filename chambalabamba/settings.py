@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "cooperaciones.apps.CooperacionesConfig",
     'visitas',
     "proyectos.apps.ProyectosConfig",
+    "storages",  # para S3/Spaces/B2
 
 
 
@@ -82,6 +83,24 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 ROOT_URLCONF = 'chambalabamba.urls'
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Format", "Bold", "Italic", "Underline", "Strike"],
+            ["NumberedList", "BulletedList", "Blockquote"],
+            ["Link", "Unlink"],
+            ["Image", "Table"],
+            ["RemoveFormat", "Source"],
+        ],
+        "height": 300,
+        "width": "100%",
+        "extraPlugins": ",".join(["uploadimage", "justify", "autolink"]),
+        "removePlugins": "stylesheetparser",
+        "forcePasteAsPlainText": False,
+    }
+}
 
 TEMPLATES = [
     {
