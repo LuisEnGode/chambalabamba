@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "tienda.apps.TiendaConfig",
     'noticias',
     'contacto',
-    'blog.apps.BlogConfig',
+     "blog",   # <-- debe estar
     'contenido',
     "eventos.apps.EventosConfig",
     "nosotros.apps.NosotrosConfig",

@@ -1,5 +1,6 @@
 {% load static%}
 {% load contenido_extras %}
+{% load blog_extras %}
 <footer class="footer">
     <div class="footer-top wf100">
         <!-- Marca de agua en el footer -->
@@ -35,21 +36,7 @@
                 </div>
 
                 <!-- Noticias o últimas publicaciones -->
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>Últimas publicaciones</h4>
-                        <ul class="lastest-products">
-                            <li><img src="{% static 'images/flp1.jpg' %}" alt="">
-                                <strong><a href="#">Festival del Agua y la Tierra</a></strong>
-                                <span class="pdate"><i>Publicado:</i> 10 Julio, 2025</span>
-                            </li>
-                            <li><img src="{% static 'images/flp2.jpg' %}" alt="">
-                                <strong><a href="#">Nueva cúpula de bioconstrucción</a></strong>
-                                <span class="pdate"><i>Publicado:</i> 5 Julio, 2025</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+               {% latest_posts_footer 2 %}
 
                 <!-- Productos / donaciones -->
 

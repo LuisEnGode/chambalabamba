@@ -166,7 +166,14 @@
                                     <li class="w3 np">{{ form.website }}</li>
                                     <li class="full">{{ form.cuerpo }}</li>
                                     <li class="full">
-                                        <button class="post-btn">Enviar</button>
+                                        <button id="comment-submit"
+                                              class="post-btn"
+                                              type="submit"
+                                              data-default="ENVIAR"
+                                              data-loading="Enviando…"
+                                              aria-live="polite">
+                                              ENVIAR
+                                            </button>
                                         <a id="cancel-reply" href="#" style="display:none;margin-left:10px">Cancelar respuesta</a>
                                     </li>
                                 </ul>

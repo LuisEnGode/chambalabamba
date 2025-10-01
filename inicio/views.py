@@ -14,3 +14,4 @@ def gallery_detail(request, slug):
     gal = get_object_or_404(Gallery, slug=slug, publicado=True)
     items = gal.items.filter(publicado=True).order_by("orden", "-creado")
     return render(request, "inicio/gallery_detail.html", {"gal": gal, "items": items})
+
