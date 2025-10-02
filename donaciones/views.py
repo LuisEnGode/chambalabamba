@@ -8,9 +8,11 @@ import json
 from .models import DonacionSection, Donacion
 import uuid
 from decimal import Decimal, InvalidOperation
+from django.contrib import messages
 
 # Import the make_paypal_payment function from the new utility file
-from .paypal_utils import make_paypal_payment
+from .paypal_utils import make_paypal_payment, execute_paypal_payment
+from .emails import send_thank_you_email
 
 def index(request):
     donacion_sections = DonacionSection.objects.filter(publicado=True)
@@ -66,34 +68,41 @@ def donacion_paypal(request):
     return redirect('donaciones')
 
 def donacion_exitosa(request):
-    # Retrieve the custom_id (Donacion ID) from the URL parameters
     custom_id = request.GET.get('custom_id')
-    payment_id = request.GET.get('paymentId') # Also get paymentId if available
+    payment_id = request.GET.get('paymentId')
+    payer_id = request.GET.get('PayerID')
 
-    if custom_id:
-        try:
-            donacion = Donacion.objects.get(id=custom_id)
-            # Update the donation status to completed
-            donacion.completado = True
-            if payment_id: # Only update paypal_id if paymentId is present
-                donacion.paypal_id = payment_id
-            donacion.save()
-            print(f"Donacion {custom_id} marked as completed. PayPal ID: {payment_id}")
-        except Donacion.DoesNotExist:
-            # Handle case where Donacion object is not found
-            print(f"Donacion with custom_id {custom_id} not found.")
-        except Exception as e:
-            # Handle other potential errors during update
-            print(f"Error updating Donacion status for custom_id {custom_id}: {e}")
+    if not all([custom_id, payment_id, payer_id]):
+        messages.error(request, "Faltan parámetros para verificar el pago.")
+        return redirect('donaciones')
+
+    try:
+        donacion = Donacion.objects.get(id=custom_id)
+    except Donacion.DoesNotExist:
+        messages.error(request, "Donación no encontrada.")
+        return redirect('donaciones')
+
+    if donacion.completado:
+        messages.info(request, "Esta donación ya ha sido procesada.")
+        return redirect('donaciones')
+
+    success, message = execute_paypal_payment(payment_id, payer_id, donacion.monto, "USD")
+
+    if success:
+        donacion.completado = True
+        donacion.paypal_id = payment_id
+        donacion.save()
+        send_thank_you_email(donacion)
+        
+        # Fetch the DonacionSection to display success message
+        donacion_section = DonacionSection.objects.filter(publicado=True).first()
+        context = {
+            'donacion_section': donacion_section
+        }
+        return render(request, 'donaciones/donacion_exitosa.html', context)
     else:
-        print("No custom_id found in URL parameters for donacion_exitosa.")
-
-    # Fetch the DonacionSection to display success message
-    donacion_section = DonacionSection.objects.filter(publicado=True).first()
-    context = {
-        'donacion_section': donacion_section
-    }
-    return render(request, 'donaciones/donacion_exitosa.html', context)
+        messages.error(request, f"Error al procesar el pago: {message}")
+        return redirect('donaciones')
 
 def donacion_cancelada(request):
     # Fetch the DonacionSection to display cancellation message

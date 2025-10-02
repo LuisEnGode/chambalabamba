@@ -1,0 +1,8 @@
+Hola {{ donacion.nombre }},
+
+¡Muchas gracias por tu generosa donación de ${{ donacion.monto }}!
+
+Tu apoyo es fundamental para nosotros y nos ayuda a continuar con nuestra misión. Estamos muy agradecidos por tu contribución.
+
+Con gratitud,
+El equipo de Chambalabamba
