@@ -14,33 +14,67 @@ from .models import (
 # N O S O T R O S
 # =========================
 
-@admin.register(NosotrosPage)
-class NosotrosPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "about", "history", "ecoaldea")
-    def has_add_permission(self, request):
-        # singleton
-        return not NosotrosPage.objects.exists()
+# ======= N O S O T R O S  (ADMIN CENTRALIZADO) =======
+from django.contrib import admin
+from django.utils.html import format_html
+from django.urls import reverse
+from django.shortcuts import redirect
 
-@admin.register(InnerHeader)
-class InnerHeaderAdmin(admin.ModelAdmin):
-    list_display = ("title", "breadcrumb_label")
-    search_fields = ("title", "breadcrumb_label")
+from .models import (
+    NosotrosPage, InnerHeader, AboutSection, HistorySection, TimelinePeriod, TimelineItem,
+    EcoAldeaSection, EcoAldeaCard,
+    PageHeader, PilarPage, PilarParagraph, PilarQuote, PilarSidebarWidget,
+    TopicPage, TopicParagraph, TopicQuote, TopicSidebarWidget,
+    GobernanzaPage, PrincipiosValoresPage, TerritorioPage,
+)
 
-@admin.register(AboutSection)
-class AboutSectionAdmin(admin.ModelAdmin):
-    list_display = ("title", "cta_text", "video_url")
-    search_fields = ("title", "cta_text", "video_url")
+# --- Utilidades ---
+class HiddenModelAdmin(admin.ModelAdmin):
+    """No aparece en el índice, pero mantiene funcionalidades al entrar por URL."""
+    def get_model_perms(self, request): return {}
 
+class SingletonAdmin(admin.ModelAdmin):
+    """Redirige el changelist al único registro y evita múltiples 'add'."""
+    def has_add_permission(self, request): return not self.model.objects.exists()
+    def changelist_view(self, request, extra_context=None):
+        obj = self.model.objects.first()
+        if obj: return redirect(f"./{obj.pk}/change/")
+        return super().changelist_view(request, extra_context)
+
+# --- Inlines que ya tenías (timeline y ecoaldea) ---
 class TimelineItemInline(admin.TabularInline):
     model = TimelineItem
     extra = 1
     fields = ("order", "title", "body")
     ordering = ("order",)
 
-class HiddenModelAdmin(admin.ModelAdmin):
-    # No aparece en el índice, pero sigue accesible
-    def get_model_perms(self, request):
-        return {}
+class TimelinePeriodInline(admin.StackedInline):
+    model = TimelinePeriod
+    extra = 0
+    show_change_link = True
+
+class EcoAldeaCardInline(admin.TabularInline):
+    model = EcoAldeaCard
+    extra = 0
+    fields = ("order", "icon", "title", "text", "link_text", "link_url")
+    ordering = ("order",)
+
+# --- Admin “ocultos” para secciones, conservando sus inlines ---
+@admin.register(InnerHeader)
+class InnerHeaderAdmin(HiddenModelAdmin):
+    list_display = ("title", "breadcrumb_label")
+    search_fields = ("title", "breadcrumb_label")
+
+@admin.register(AboutSection)
+class AboutSectionAdmin(HiddenModelAdmin):
+    list_display = ("title", "cta_text", "video_url")
+    search_fields = ("title", "cta_text", "video_url")
+
+@admin.register(HistorySection)
+class HistorySectionAdmin(HiddenModelAdmin):
+    list_display = ("title", "subtitle")
+    inlines = [TimelinePeriodInline]
+    search_fields = ("title", "subtitle")
 
 @admin.register(TimelinePeriod)
 class TimelinePeriodAdmin(HiddenModelAdmin):
@@ -50,33 +84,98 @@ class TimelinePeriodAdmin(HiddenModelAdmin):
     ordering = ("history", "order")
     search_fields = ("label",)
 
-class TimelinePeriodInline(admin.StackedInline):
-    model = TimelinePeriod
-    extra = 0
-    show_change_link = True
-
-@admin.register(HistorySection)
-class HistorySectionAdmin(admin.ModelAdmin):
-    list_display = ("title", "subtitle")
-    inlines = [TimelinePeriodInline]
-    search_fields = ("title", "subtitle")
-
-class EcoAldeaCardInline(admin.TabularInline):
-    model = EcoAldeaCard
-    extra = 0
-    fields = ("order", "icon", "title", "text", "link_text", "link_url")
-    ordering = ("order",)
-
 @admin.register(EcoAldeaSection)
-class EcoAldeaSectionAdmin(admin.ModelAdmin):
+class EcoAldeaSectionAdmin(HiddenModelAdmin):
     list_display = ("title",)
     inlines = [EcoAldeaCardInline]
     search_fields = ("title",)
+
+# --- Página centralizada (única entrada visible) ---
+@admin.register(NosotrosPage)
+class NosotrosPageAdmin(SingletonAdmin):
+    readonly_fields = (
+        "header_preview", "edit_header_link",
+        "edit_about_link",
+        "edit_history_link",
+        "edit_ecoaldea_link",
+    )
+    fieldsets = (
+        ("Estado", {"fields": ("enabled",)}),
+        ("1) Cabecera (InnerHeader)", {
+            "description": "Imagen de fondo, título y breadcrumb actual.",
+            "fields": ("header", "header_preview", "edit_header_link"),
+        }),
+        ("2) Acerca + Video", {
+            "description": "Bloque de introducción, botón/URL y video.",
+            "fields": ("about", "edit_about_link"),
+        }),
+        ("3) Historia (timeline)", {
+            "description": "Incluye periodos y cajas del timeline (edítalas en la sección con inlines).",
+            "fields": ("history", "edit_history_link"),
+        }),
+        ("4) EcoAldea (tarjetas)", {
+            "description": "Tres tarjetas con icono, texto y link.",
+            "fields": ("ecoaldea", "edit_ecoaldea_link"),
+        }),
+    )
+    list_display = ("id", "enabled", "header", "about", "history", "ecoaldea")
+    save_on_top = True
+
+    # --- Previews / Links ---
+    def header_preview(self, obj):
+        hdr = obj.header
+        if hdr and getattr(hdr, "background", None):
+            return format_html('<img src="{}" style="height:80px;border-radius:6px;" />', hdr.background.url)
+        return "—"
+    header_preview.short_description = "Preview fondo"
+
+    def _edit_link(self, obj, rel_attr, change_url_name, add_url_name, label):
+        sec = getattr(obj, rel_attr)
+        if sec:
+            url = reverse(change_url_name, args=[sec.pk])
+            return format_html('<a class="button" href="{}">Editar {}</a>', url, label)
+        else:
+            url = reverse(add_url_name)
+            return format_html('<a class="button" href="{}">Crear {}</a>', url, label)
+
+    def edit_header_link(self, obj):
+        return self._edit_link(obj, "header", "admin:nosotros_innerheader_change", "admin:nosotros_innerheader_add", "Cabecera")
+    def edit_about_link(self, obj):
+        return self._edit_link(obj, "about", "admin:nosotros_aboutsection_change", "admin:nosotros_aboutsection_add", "About")
+    def edit_history_link(self, obj):
+        return self._edit_link(obj, "history", "admin:nosotros_historysection_change", "admin:nosotros_historysection_add", "Historia")
+    def edit_ecoaldea_link(self, obj):
+        return self._edit_link(obj, "ecoaldea", "admin:nosotros_ecoaldeasection_change", "admin:nosotros_ecoaldeasection_add", "EcoAldea")
+
+    # --- Bootstrap automático de secciones faltantes al guardar ---
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        created = False
+        if obj.header is None:
+            obj.header = InnerHeader.objects.create()
+            created = True
+        if obj.about is None:
+            obj.about = AboutSection.objects.create()
+            created = True
+        if obj.history is None:
+            obj.history = HistorySection.objects.create()
+            created = True
+        if obj.ecoaldea is None:
+            obj.ecoaldea = EcoAldeaSection.objects.create()
+            created = True
+        if created:
+            obj.save()
+
+# ======= (El resto de tu admin de Pilares y Secciones temáticas puede quedarse igual) =======
+# Si quieres, también puedes ocultar TopicPage / PilarPage del índice aplicando HiddenModelAdmin con sus inlines.
 
 
                         # =========================
                         # P I L A R E S
                         # =========================
+class NoAddButtonAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False  # oculta el "+ Add" del sidebar y el botón "Add" del changelist
 
 class PilarParagraphInline(admin.TabularInline):
     model = PilarParagraph
@@ -98,7 +197,7 @@ class PilarSidebarInline(admin.TabularInline):
 
 
 @admin.register(PilarPage)
-class PilarPageAdmin(admin.ModelAdmin):
+class PilarPageAdmin(NoAddButtonAdmin):
     list_display = ("slug", "title",)
     list_filter = ("slug",)
     search_fields = ("title",)

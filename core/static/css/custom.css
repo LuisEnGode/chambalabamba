@@ -7040,4 +7040,32 @@ section.wf100.p80.fcampaigns {
 .flyer-max-480 { max-width: 480px; }
 .flyer-max-480 .flyer-frame { margin: 0 auto; }
 
-/*SECCION DE GALERIA DE ALIADOS*/
+/*SECCION DE FOTO LOGO FOOTER*/
+
+
+
+/* Evita que el theme fuerce tamaño a todas las imágenes del footer */
+.footer-widget img { width: auto; height: auto; }
+
+/* Tamaño proporcional del logo */
+.footer-logo{
+  height: 144px;           /* controlas alto */
+  width: auto !important; /* mantiene proporción */
+  display: block;
+  max-width: 200px;       /* opcional: límite de ancho */
+   margin-top: 48px;
+}
+
+/*LINK PARA BOTON*/
+
+button.link-like {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;       /* usa la misma fuente que el texto */
+}
+button.link-like:hover { text-decoration: none; }

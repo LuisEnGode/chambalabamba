@@ -24,7 +24,8 @@ class Gallery(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = "Galerías"
+        verbose_name_plural = "Galerías de Inicio/Home"
+        verbose_name_plural = "Galeria de Inicio/Home"
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -47,6 +48,11 @@ class GalleryItem(models.Model):
         return f"{self.gallery} · {self.asset} ({self.orden})"
 
 class Flyer(models.Model):
+    class Meta:
+        verbose_name_plural = "Flyers de Inicio/Home"
+        verbose_name_plural = "Flyers de Inicio/Home"
+
+
     RATIO_CHOICES = [
         ("1x1", "1:1"),
         ("4x5", "4:5 (IG 1080×1350)"),

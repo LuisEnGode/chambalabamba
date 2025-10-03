@@ -16,3 +16,4 @@ django-crispy-forms>=2.0
 crispy-bootstrap4>=2022.1
 django-cleanup==8.1.0
 
+

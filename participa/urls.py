@@ -5,9 +5,7 @@ from .views import estancias_list,estancia_detail
 app_name = "participa"
 urlpatterns = [
     path("", views.voluntariado, name="voluntariado"),
-    path("visitas-guiadas", views.visitas, name="visitas-guiadas"),
     path("donaciones/", views.donaciones, name="donaciones"),
-
     path("estancias", estancias_list, name="estancias"),
     path("estancias/<slug:slug>/", estancia_detail, name="estancia_detail"),
 ]

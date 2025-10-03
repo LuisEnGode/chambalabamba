@@ -1,5 +1,16 @@
 [
   {
+    "model": "tienda.tiendalanding",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "title": "Nuestra Tienda",
+      "intro_html": "<p>Bienvenido/a a la tienda de Chambalabamba: bebidas vivas, alimentos de la huerta y cuidado personal artesanal.</p>",
+      "cta_text": "Explorar productos",
+      "cta_url": "/tienda/"
+    }
+  },
+  {
     "model": "tienda.productocategoria",
     "pk": 1,
     "fields": {

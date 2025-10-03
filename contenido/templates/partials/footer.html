@@ -1,5 +1,6 @@
 {% load static%}
 {% load contenido_extras %}
+{% load blog_extras %}
 <footer class="footer">
     <div class="footer-top wf100">
         <!-- Marca de agua en el footer -->
@@ -16,7 +17,7 @@
                         <h4>Sobre Chambalabamba</h4>
                         <p>Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia.
                             Promovemos un estilo de vida autosostenible y en armonía con la Tierra.</p>
-                        <a href="{% url 'home' %}" class="lm">Conócenos</a>
+                        <a href="{% url 'nosotros:nuestro_camino' %}" class="lm">Conócenos</a>
                     </div>
                 </div>
 
@@ -35,27 +36,13 @@
                 </div>
 
                 <!-- Noticias o últimas publicaciones -->
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>Últimas publicaciones</h4>
-                        <ul class="lastest-products">
-                            <li><img src="{% static 'images/flp1.jpg' %}" alt="">
-                                <strong><a href="#">Festival del Agua y la Tierra</a></strong>
-                                <span class="pdate"><i>Publicado:</i> 10 Julio, 2025</span>
-                            </li>
-                            <li><img src="{% static 'images/flp2.jpg' %}" alt="">
-                                <strong><a href="#">Nueva cúpula de bioconstrucción</a></strong>
-                                <span class="pdate"><i>Publicado:</i> 5 Julio, 2025</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
+               {% latest_posts_footer 2 %}
                 <!-- Productos / donaciones -->
 
-
                 {% url 'donaciones' as donaciones_url %}
-                {% get_placement 'donaciones_banner' as slot %}
+      <img class="footer-logo" src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Chambalabamba" loading="lazy" decoding="async">
+
+
                 {% if slot and slot.flyer and slot.flyer.publicado and slot.flyer.imagen %}
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="f-product">

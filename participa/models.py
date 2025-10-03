@@ -5,14 +5,43 @@ from inicio.models import BaseOrdenPublicado  # reutiliza tu base
 from django.db.models.functions import Now
 
 # --- Header + Página (patrón similar a 'Nosotros') ---
+
+from django.db import models
+
+class EstanciasIntro(models.Model):
+    page = models.OneToOneField("ParticipaPage", on_delete=models.CASCADE, related_name="intro")
+    title = models.CharField(max_length=160, default="¡Vive Eco-Centro Chambalabamba: Elige tu estancia!")
+    body_html = models.TextField(
+        blank=True,
+        default=(
+            "Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos. "
+            "Un alquiler con sentido: comodidad simple, naturaleza y quietud interior."
+        ),
+    )
+    quote_text = models.CharField(
+        max_length=300,
+        blank=True,
+        default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"'
+    )
+    bg_color = models.CharField(max_length=20, default="#f8f9fa")
+    margin_top_px = models.PositiveIntegerField(default=40)
+    publicado = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Bloque intro Estancias"
+        verbose_name_plural = "Bloque intro Estancias"
+
+    def __str__(self):
+        return self.title
+
 class ParticipaHeader(models.Model):
     title = models.CharField("Título", max_length=120, default="Participa")
     breadcrumb_label = models.CharField("Breadcrumb actual", max_length=120, default="Estancias")
     background = models.ImageField(upload_to="participa/headers/", blank=True, null=True)
 
     class Meta:
-        verbose_name = "Sección: Header (Participa)"
-        verbose_name_plural = "Sección: Header (Participa)"
+        verbose_name = "5) Sección: Header (Participa)"
+        verbose_name_plural = "5) Sección: Header (Participa)"
 
     def __str__(self):
         return self.title
@@ -23,13 +52,13 @@ class ParticipaPage(models.Model):
     header = models.OneToOneField(ParticipaHeader, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Página: Participa"
-        verbose_name_plural = "Página: Participa"
+        verbose_name = "3) Página: Galeria Estancias"
+        verbose_name_plural = "3) Página: Participa/Estancias"
 
     def __str__(self):
         return "Página Participa"
 
-
+#####################ESTANCIAS###################
 
 class Estancia(BaseOrdenPublicado):
     SECCIONES = [
@@ -53,8 +82,8 @@ class Estancia(BaseOrdenPublicado):
     phone_whatsapp = models.CharField(max_length=32, blank=True, help_text="Solo números con código de país, ej: 5939XXXXXXX")
 
     class Meta(BaseOrdenPublicado.Meta):
-        verbose_name = "Estancia"
-        verbose_name_plural = "Estancias"
+        verbose_name = "3) Galeria Estancias"
+        verbose_name_plural = "3) Galeria Estancias"
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -152,8 +181,8 @@ class ContentBlock(models.Model):
 
     class Meta:
         ordering = ("orden", "title")
-        verbose_name = "Bloque de contenido"
-        verbose_name_plural = "Bloques de contenido"
+        verbose_name = "4) Bloques de contenido "
+        verbose_name_plural = "4) Bloques de contenido"
 
     def __str__(self):
         return self.title
@@ -195,8 +224,8 @@ class VoluntariadoPage(models.Model):
     actualizado = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Página de Voluntariado"
-        verbose_name_plural = "Página de Voluntariado"
+        verbose_name = "1) Página de Voluntariado"
+        verbose_name_plural = "1) Página de Voluntariado"
 
     def __str__(self):
         return self.titulo
@@ -217,8 +246,8 @@ class ProyectoVoluntariado(models.Model):
 
     class Meta:
         ordering = ("orden", "nombre")
-        verbose_name = "Proyecto de voluntariado"
-        verbose_name_plural = "Proyectos de voluntariado"
+        verbose_name = "2) Proyectos de voluntariado"
+        verbose_name_plural = "2) Proyectos de voluntariado"
 
     def __str__(self):
         return self.nombre
@@ -227,3 +256,72 @@ class ProyectoVoluntariado(models.Model):
         if not self.slug:
             self.slug = slugify(self.nombre)[:50]
         super().save(*args, **kwargs)
+
+
+
+
+# ------------------------------
+# 1) Página (singleton) Visitas guiadas
+# ------------------------------
+
+
+class GuidedVisitsPage(models.Model):
+    """Página principal de la sección 'Visitas guiadas' (singleton)."""
+    publicado = models.BooleanField(default=True)
+
+    # Cabecera
+    titulo = models.CharField(
+        max_length=160,
+        default="Visitas guiadas: conoce Chambalabamba en comunidad",
+    )
+    subtitulo = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text="Frase bajo el título (opcional).",
+    )
+    background = models.ImageField(
+        upload_to="participa/visitas/hero/",
+        blank=True, null=True,
+        help_text="Imagen grande de cabecera (si usas header dinámico)."
+    )
+    thumb = models.ImageField(
+        upload_to="participa/visitas/thumb/",
+        blank=True, null=True,
+        help_text="Imagen usada dentro del contenido (fallback si no hay hero)."
+    )
+
+    # Bloques administrables (estilo 'Nosotros')
+    about_block = models.ForeignKey(
+        ContentBlock, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="visitas_about"
+    )
+    info_block = models.ForeignKey(
+        ContentBlock, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="visitas_info",
+        help_text="Información práctica/FAQ/indicaciones (opcional)."
+    )
+
+    # Fallback / extras
+    intro_html = models.TextField(blank=True)
+    quote_text = models.CharField(max_length=300, blank=True)
+    quote_author = models.CharField(max_length=120, blank=True)
+    instagram_embed_url = models.URLField(blank=True)
+
+    # CTA de contacto
+    contact_cta_label = models.CharField(max_length=80, blank=True, default="Consultar disponibilidad")
+    contact_cta_url = models.URLField(blank=True, help_text="Si lo dejas vacío, puedes usar una URL relativa en la plantilla.")
+
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+
+    class Meta:
+        verbose_name = "1) Página de Visitas guiadas"
+        verbose_name_plural = "1) Página de Visitas guiadas"
+
+    def __str__(self):
+        return self.titulo
+
+    @classmethod
+    def get_solo(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj

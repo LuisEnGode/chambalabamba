@@ -12,7 +12,31 @@
     </ul>
   </div>
 </section>
+<section class="wf100 p60" style="background-color:#f8f9fa; margin-top:40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <div class="section-title-2">
+          <h2>{{ tienda_landing.title|default:"Tienda" }}</h2>
+        </div>
 
+        {% if tienda_landing and tienda_landing.intro_html %}
+          <div style="font-size:18px; line-height:1.6; color:#555; text-align:justify;">
+            {{ tienda_landing.intro_html|safe }}
+          </div>
+        {% else %}
+          <p style="font-size:18px; line-height:1.6; color:#555;">
+            Productos artesanales y alimentos vivos de la ecoaldea.
+          </p>
+        {% endif %}
+
+        <div style="margin-top:30px;">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="shop wf100 p80">
   <div class="container">
     <div class="row">
