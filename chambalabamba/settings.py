@@ -9,14 +9,14 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 STATIC_URL = "/static/"
 
 # para Local
-"""
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 """
 # para Render:
 MEDIA_ROOT = "/opt/render/project/src/media"
 MEDIA_URL = "/media/"
-
+"""
 print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
