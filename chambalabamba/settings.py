@@ -7,8 +7,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config('DEBUG', default=True, cast=bool)
 # Archivos estáticos
 STATIC_URL = "/static/"
+
+# para Local
+"""
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
+"""
+# para Render:
+MEDIA_ROOT = "/opt/render/project/src/media"
+MEDIA_URL = "/media/"
 
 print ("BD",BASE_DIR)
 # Seguridad

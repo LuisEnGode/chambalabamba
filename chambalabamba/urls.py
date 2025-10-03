@@ -52,7 +52,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 """
 
-# En dev (DEBUG=True): usa helper estándar
+# En dev (DEBUG=True): usa helper estándar esto para withenoise
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
@@ -60,3 +60,4 @@ else:
     urlpatterns += [
         re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     ]
+
