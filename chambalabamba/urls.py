@@ -35,7 +35,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('tienda/', include('tienda.urls')),
     path("auth/", include("autenticacion.urls")),
-    path("auth/", include("proyectos.urls")),
+    path("proyectos/", include("proyectos.urls")),
     path("cooperaciones/", include(("cooperaciones.urls", "coops"), namespace="coops")),
    # path('login/', auth_views.LoginView.as_view(template_name='autenticacion/login.html'), name='login'),
 ]
@@ -45,7 +45,7 @@ if not settings.DEBUG:
     urlpatterns += [
         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     ]
-"""
+
 
 # DEV: sirve media automáticamente si DEBUG=True
 if settings.DEBUG:
@@ -60,4 +60,4 @@ else:
     urlpatterns += [
         re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     ]
-"""
+
