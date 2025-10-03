@@ -1,0 +1,96 @@
+[
+  {
+    "model": "nosotros.pageheader",
+    "pk": 22,
+    "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Territorio",
+      "background": "nosotros/images/pilares/ecologia/cabeza-ecologia.png"
+    }
+  },
+  {
+    "model": "nosotros.topicpage",
+    "pk": 202,
+    "fields": {
+      "slug": "territorio",
+      "header": 22,
+      "hero_image": "nosotros/images/pilares/ecologia/huerta.png",
+      "title": "Territorio",
+      "lead": "Habitamos el valle con respeto por sus ríos, montañas y comunidades."
+    }
+  },
+  {
+    "model": "nosotros.topicparagraph",
+    "pk": 4001,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 1,
+      "body": "El entorno comprende la superficie de la Tierra, los recursos naturales, tierras y aguas; montañas y llanuras, suelos fértiles y desiertos, océanos, tormentas y estaciones. También abarca la vida: plantas y animales con toda su complejidad.",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  },
+  {
+    "model": "nosotros.topicparagraph",
+    "pk": 4002,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 2,
+      "body": "Impulsamos procesos educativos y comunitarios que fortalecen el cuidado del territorio, con énfasis en niñas, niños y adolescentes, así como campañas de sensibilización para toda la comunidad.",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  },
+  {
+    "model": "nosotros.topicparagraph",
+    "pk": 4003,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 3,
+      "body": "Actuamos con transparencia y responsabilidad para que nada quede oculto ni se pierda el sentido común en nuestras acciones colectivas, priorizando el bienestar del territorio.",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  },
+  {
+    "model": "nosotros.topicquote",
+    "pk": 4101,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 1,
+      "text": "El ambiente interior es la sociedad misma: sus organizaciones, normas, tradiciones e instituciones.",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  },
+  {
+    "model": "nosotros.topicsidebarwidget",
+    "pk": 4201,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 1,
+      "title": "Fundamentos de nuestra convivencia",
+      "text": "La rápida difusión de la palabra desde los años 1990 parece traducir la conciencia de un cambio de paradigma en las relaciones de poder. Se ha percibido la insuficiencia del concepto clásico de “gobierno” para describir transformaciones en el contexto de la globalización. Ante el surgimiento de empresas multinacionales con presupuestos superiores a ciertos estados soberanos…",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  },
+  {
+    "model": "nosotros.topicsidebarwidget",
+    "pk": 4202,
+    "fields": {
+      "page": 202,
+      "publicado": true,
+      "orden": 2,
+      "title": "Proyectos actuales",
+      "text": "• Bienestar integral • Cuidado del agua • Economía circular",
+      "creado": "2025-09-11T17:02:00Z",
+      "actualizado": "2025-09-11T17:02:00Z"
+    }
+  }
+]

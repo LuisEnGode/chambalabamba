@@ -1,83 +1,149 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block title %}Terapias | Chambalabamba{% endblock %}
 
 {% block content %}
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url({% static 'images/terapias-header.png' %}) no-repeat center center; background-size: cover;">
-    <div class="container">
-        <h1>Terapias</h1>
-        <h3 style="color: white;">Sanación y bienestar</h3>
-    </div>
-    </section>
-    <!--Inner Header End--> 
-    <!--Terapias Start-->
-    <section class="wf100 p80 blog">
-    <div class="blog-details">
+    <section class="wf100 p100 inner-header" style="background: url('{% static "images/terapias-header.png" %}') no-repeat center center; background-size: cover;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                <!--Blog Single Content Start-->
-                <div class="blog-single-content">
-                    <div class="blog-single-thumb"><img src="{% static 'eventos/images/terapia_01.jpg' %}" alt=""></div>
-                    <div class="single-counter-box">
-                        <ul>
-                            <li class="col1"><strong>Agenda tu Cita<br> con Anticipación</strong></li>
-                            <li class="col2">
-                            <div class="countdown"></div>
-                            </li>
-                            <li class="col3"> <a href="#">Contacta Ahora</a> </li>
-                        </ul>
+            <h1>Terapias</h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="#">Terapias</a></li>
+            </ul>
+        </div>
+    </section>
+    <!--Inner Header End-->
+
+    <!--Terapias Content Start-->
+    <section class="wf100 p80 blog">
+        <div class="blog-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!--Intro Content Start-->
+                        <div class="blog-single-content">
+                            <div class="blog-single-thumb">
+                                <img src="{% static 'images/terapias-00.png' %}" alt="Terapia holística en Chambalabamba">
+                            </div>
+                            <div class="row">
+                                <div class="section-title-2">
+                                    <h2>Sanación y Equilibrio para tu Ser</h2>
+                                </div>
+                                <p>Integramos saberes ancestrales y técnicas contemporáneas para ofrecerte una experiencia terapéutica integral. Cada sesión es un espacio sagrado, adaptado a tus necesidades particulares, para que puedas liberar lo que ya no te sirve y florecer en tu máximo potencial.</p>
+                            </div>
+                        </div>
+                        <!--Intro Content End-->
                     </div>
-                    <ul class="post-meta">
-                        <li><i class="fas fa-user-circle"></i> Terapeutas de la Comunidad</li>
-                        <li><i class="fas fa-calendar-alt"></i> Citas Disponibles</li>
-                        <li><i class="fas fa-comments"></i> Encuentra tu Equilibrio</li>
-                        <li class="tags"><i class="fas fa-tags"></i> <a href="#">Reiki</a> <a href="#">Masajes</a> <a href="#">Sonoterapia</a> <a href="#">Herbolaria</a></li>
-                    </ul>
-                    <p>En Chambalabamba, entendemos la salud como un estado de equilibrio entre el cuerpo, la mente y el espíritu. Ofrecemos una variedad de terapias holísticas y alternativas para acompañarte en tu camino de sanación y autoconocimiento. Nuestros terapeutas son miembros de la comunidad con una profunda conexión con saberes ancestrales y técnicas de sanación natural.</p>
-                    <p>Ponemos a tu disposición terapias como Reiki, masajes terapéuticos, sonoterapia con cuencos y tambores, limpiezas energéticas, y consultas de herbolaria para el bienestar físico y emocional. Cada sesión es un espacio sagrado de cuidado y respeto, diseñado para ayudarte a liberar bloqueos, restaurar tu energía vital y encontrar la armonía interior.</p>
-                    <blockquote>
-                        <p>Sanar es un acto de amor hacia uno mismo. Permítenos acompañarte en este viaje de regreso a tu centro.</p>
-                    </blockquote>
-    
-                    <!--Event Gallery Start-->
-                    <div class="event-gallery gallery wf100">
-                        <h4>Espacios de Sanación</h4>
-                        <ul>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_01.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_01.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_02.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_02.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_03.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_03.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_04.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_04.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_05.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_05.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_06.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_06.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_07.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_07.jpg' %}" alt=""> </div>
-                            </li>
-                            <li>
-                            <div class="gallery-img"> <a href="{% static 'eventos/images/terapia_galeria_08.jpg' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'eventos/images/terapia_galeria_08.jpg' %}" alt=""> </div>
-                            </li>
-                        </ul>
+                    <div class="col-lg-4">
+                        <div class="blog-single-content">
+                            <div class="section-title-2">
+                                <h2>Bienestar</h2>
+                                <h5>Físico, emocional, mental, espiritual</h5>
+                            </div>
+                            <p>Nuestras terapias en Chambalabamba son un acompañamiento amoroso en tu proceso de autoconocimiento y sanación. Ofrecemos un abanico de terapias holísticas diseñadas para nutrir tu cuerpo, mente y espíritu en un entorno de paz y conexión con la naturaleza.</p>
+                        </div>
+                        {% include 'core/contact_button.html' %}
                     </div>
-                    <!--Event Gallery End-->                            
+
+
+                    <div class="col-lg-12">
+                        
+                        <!--Benefits Section Start-->
+                        <div class="wf100" style="margin-top: 50px;">
+                            <div class="section-title-2 text-center">
+                                <h2>Beneficios de Nuestras Terapias</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="section-title-2">
+                                        <h5>✨ Claridad Mental y Enfoque</h5>
+                                    </div>
+                                    <p>Aprende a gestionar tus emociones y a encontrar calma interior a través de técnicas de relajación y conciencia plena.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="section-title-2">
+                                        <h5>✨ Claridad Mental y Enfoque</h5>
+                                    </div>
+                                    <p>Despeja tu mente, mejora tu concentración y toma decisiones más alineadas con tu propósito de vida.</p>
+                                </div>
+                                <div class="col-md-6" style="margin-top: 25px;">
+                                    <div class="section-title-2">
+                                        <h5>💖 Sanación Emocional</h5>
+                                    </div>
+                                    <p>Libera cargas del pasado, sana heridas emocionales y abre tu corazón a nuevas posibilidades de amor y alegría.</p>
+                                </div>
+                                <div class="col-md-6" style="margin-top: 25px;">
+                                    <div class="section-title-2">
+                                        <h5>🧘‍♀️ Conexión Cuerpo-Mente-Espíritu</h5>
+                                    </div>
+                                    <p>Integra todos los aspectos de tu ser, logrando un estado de coherencia y armonía que se refleja en tu salud y vitalidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Benefits Section End-->
+
+                        <blockquote style="margin-top: 40px;">
+                            <p>La sanación es el arte de volver a casa, a tu esencia. En Chambalabamba, te ofrecemos el mapa y la compañía para que emprendas ese viaje sagrado de regreso a ti mismo.</p>
+                        </blockquote>
+
+                        <!--Event Gallery Start-->
+                        <div class="event-gallery gallery wf100" style="margin-top: 50px;">
+                            <div class="section-title-2 text-center">
+                                <h2>Espacios de Contención y Sanación</h2>
+                            </div>
+                            <div id="terapias-gallery-carousel" class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-01.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-01.png' %}" alt="Espacio de terapia en la naturaleza"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-02.png' %}" alt="Armonía y paz en Chambalabamba"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-03.png' %}" alt="Conexión terapéutica con la naturaleza"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-04.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-05.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                </div>
+                                <div class="item">
+                                    <div class="gallery-img"> <a href="{% static 'images/terapias-06.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/terapias-06.png' %}" alt="Terapias en un entorno sagrado"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Event Gallery End-->
+                    </div>
+
                 </div>
-                <!--Blog Single Content End--> 
-                </div>                     
             </div>
         </div>
-    </div>
     </section>
-    <!--Terapias End--> 
+    <!--Terapias Content End-->
+    <script>
+        $(document).ready(function() {
+            $("#terapias-gallery-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

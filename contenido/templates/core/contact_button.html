@@ -1,0 +1,22 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    .contact-invitation .btn-outline-primary {
+        color: #66bb6a;
+        border-color: #66bb6a;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-invitation .btn-outline-primary:hover {
+        background-color: #66bb6a;
+        color: white;
+        border-color: #66bb6a;
+    }
+</style>
+
+<div class="contact-invitation text-center my-4">
+    <p class="mb-2">¿Quieres saber más o necesitas ayuda?</p>
+    <a href="{% url 'contacto:contacto' %}" class="btn btn-outline-primary btn-lg" >Contáctanos</a>
+</div>

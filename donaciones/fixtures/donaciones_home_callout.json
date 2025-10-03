@@ -1,0 +1,22 @@
+[
+  {
+    "model": "donaciones.donacionsection",
+    "pk": 1,
+    "fields": {
+      "slug": "home_callout",
+      "titulo_superior": "Llamado Consciente",
+      "titulo": "Sanación y Regeneración en Chambalabamba",
+      "descripcion": "En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual...",
+      "progreso": 55,
+      "cta_titulo": "Apoya este Espacio",
+      "cta_boton_texto": "Contribuir con Amor",
+      "cta_placeholder_otro": "$ Otro",
+      "publicado": true,
+      "orden": 0
+    }
+  },
+  { "model": "donaciones.donacionmonto", "pk": 1, "fields": { "section": 1, "etiqueta": "$100",  "orden": 1 }},
+  { "model": "donaciones.donacionmonto", "pk": 2, "fields": { "section": 1, "etiqueta": "$250",  "orden": 2 }},
+  { "model": "donaciones.donacionmonto", "pk": 3, "fields": { "section": 1, "etiqueta": "$500",  "orden": 3 }},
+  { "model": "donaciones.donacionmonto", "pk": 4, "fields": { "section": 1, "etiqueta": "$1000", "orden": 4 }}
+]

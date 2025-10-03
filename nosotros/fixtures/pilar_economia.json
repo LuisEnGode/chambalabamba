@@ -1,0 +1,49 @@
+[
+  { "model": "nosotros.pageheader", "pk": 11, "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Economía",
+      "background": "nosotros/headers/cabeza-economia.png"
+  }},
+  { "model": "nosotros.pilarpage", "pk": 101, "fields": {
+      "slug": "economia",
+      "header": 11,
+      "hero_image": "nosotros/pilares/hero/economia.png",
+      "title": "Pilar Economía",
+      "lead": "Impulsamos una economía comunitaria, solidaria y circular que fortalece la autonomía local."
+  }},
+
+  { "model": "nosotros.pilarparagraph", "pk": 2001, "fields": {
+      "page": 101, "publicado": true, "orden": 1,
+      "body": "Promovemos prácticas de intercambio justo, redes de apoyo y circuitos cortos entre productores y consumidores para asegurar precios dignos y acceso a bienes esenciales.",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 2002, "fields": {
+      "page": 101, "publicado": true, "orden": 2,
+      "body": "La economía circular guía nuestras decisiones: reusar, reparar y reciclar para minimizar residuos y dar nuevas vidas a los materiales.",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 2003, "fields": {
+      "page": 101, "publicado": true, "orden": 3,
+      "body": "Fomentamos ferias comunitarias, bancos de tiempo y proyectos colaborativos que distribuyen valor y conocimiento de forma equitativa.",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }},
+
+  { "model": "nosotros.pilarquote", "pk": 2101, "fields": {
+      "page": 101, "publicado": true, "orden": 1,
+      "text": "La cooperación y la reciprocidad son el verdadero capital de una comunidad.",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }},
+
+  { "model": "nosotros.pilarsidebarwidget", "pk": 2201, "fields": {
+      "page": 101, "publicado": true, "orden": 1,
+      "title": "Fundamentos de la economía comunitaria",
+      "text": "Transparencia, precios justos, apoyo mutuo y fortalecimiento de cadenas locales de producción.",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }},
+  { "model": "nosotros.pilarsidebarwidget", "pk": 2202, "fields": {
+      "page": 101, "publicado": true, "orden": 2,
+      "title": "Proyectos actuales",
+      "text": "- Banco de semillas\n- Tienda comunitaria\n- Ferias de trueque",
+      "creado": "2025-09-11T16:35:00Z", "actualizado": "2025-09-11T16:35:00Z"
+  }}
+]

@@ -13,8 +13,13 @@ venv/
 .idea/
 .vscode/
 
+db.sqlite3
+*.sqlite3
 # Archivos estáticos y media
 /static/
 media/
 
+# Archivos de conexion con gith
+keypair
+keypair.pub
 

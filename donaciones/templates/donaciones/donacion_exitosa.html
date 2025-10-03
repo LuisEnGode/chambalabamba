@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="card shadow-sm" style="max-width: 600px; margin: auto;">
+        <div class="card-body p-5">
+            <img src="{% static 'donations/success_icon.png' %}" alt="Success" style="width: 100px; height: 100px; margin-bottom: 20px;">
+            <h2 class="h3 font-weight-bold">{{ donacion_section.success_title|default:"¡Gracias por tu donación!" }}</h2>
+            <p class="lead">{{ donacion_section.success_message|default:"Tu generosidad nos ayuda a seguir adelante." }}</p>
+            <hr class="my-4">
+            <p>Comparte tu apoyo:</p>
+            <div>
+                <!-- Add real social sharing links here -->
+                <a href="#" class="btn btn-primary mx-1"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="btn btn-info mx-1"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" class="btn btn-success mx-1"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary mt-4">Volver al Inicio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

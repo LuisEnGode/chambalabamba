@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="card shadow-sm" style="max-width: 600px; margin: auto;">
+        <div class="card-body p-5">
+            <img src="{% static 'donations/cancel_icon.png' %}" alt="Canceled" style="width: 100px; height: 100px; margin-bottom: 20px;">
+            <h2 class="h3 font-weight-bold">{{ donacion_section.canceled_title|default:"La donación fue cancelada" }}</h2>
+            <p class="lead">{{ donacion_section.canceled_message|default:"Parece que algo salió mal. Por favor, inténtalo de nuevo." }}</p>
+            <a href="{% url 'donaciones' %}" class="btn btn-primary btn-lg mt-4">Volver a Intentarlo</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

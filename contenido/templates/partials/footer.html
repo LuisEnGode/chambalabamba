@@ -1,0 +1,94 @@
+{% load static%}
+{% load contenido_extras %}
+{% load blog_extras %}
+<footer class="footer">
+    <div class="footer-top wf100">
+        <!-- Marca de agua en el footer -->
+        <!--
+        <div class="footer-logo-overlay">
+           <img src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Logo Chambalabamba">
+        </div>
+        -->
+        <div class="container">
+            <div class="row">
+                <!-- Quiénes somos -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Sobre Chambalabamba</h4>
+                        <p>Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia.
+                            Promovemos un estilo de vida autosostenible y en armonía con la Tierra.</p>
+                        <a href="{% url 'nosotros:nuestro_camino' %}" class="lm">Conócenos</a>
+                    </div>
+                </div>
+
+                <!-- Nuestra propuesta -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Nuestra propuesta</h4>
+                        <ul class="quick-links">
+                            <li><a href="">Filosofía de vida</a></li>
+                            <li><a href="">Saberes y prácticas</a></li>
+                            <li><a href="">Escuela verde</a></li>
+                            <li><a href="">Voluntariado</a></li>
+                            <li><a href="">Eventos</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Noticias o últimas publicaciones -->
+               {% latest_posts_footer 2 %}
+                <!-- Productos / donaciones -->
+
+                {% url 'donaciones' as donaciones_url %}
+      <img class="footer-logo" src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Chambalabamba" loading="lazy" decoding="async">
+
+
+                {% if slot and slot.flyer and slot.flyer.publicado and slot.flyer.imagen %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="f-product">
+                        <a href="{{ donaciones_url }}" class="d-block">
+                            {% include "contenido/_flyer.html" with flyer=slot.flyer show_badge=False %}
+
+                        </a>
+                        <div class="fp-text">
+                            <h6><a href="{{ donaciones_url }}">{{ slot.flyer.titulo }}</a></h6>
+
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer-copyr wf100">
+
+        <div class="container">
+            <div class="row">
+                <!--
+                <div class="col-md-4 col-sm-4">
+                   <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="Chambalabamba Logo">
+                </div>
+                -->
+                <div class="col-md-8 col-sm-8">
+                    <p>© {{ now|date:"Y" }} Chambalabamba. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!--Footer End-->
+
+<!--   JS Files Start  -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.4.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/isotope.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>

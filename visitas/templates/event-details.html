@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% static 'participa/images/visitas-guiadas/cabeza-visitas.png' as BG_FALLBACK %}
+
+<section class="wf100 p100 inner-header"
+         style="background-image: url('{% if header.background %}{{ header.background.url }}{% else %}{{ BG_FALLBACK }}{% endif %}'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1>{{ header.title }}</h1>
+        <ul>
+            {% for bc in breadcrumbs %}
+            <li>{% if bc.url %}<a href="{{ bc.url }}">{{ bc.label }}</a>{% else %}{{ bc.label }}{% endif %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="wf100 p80 blog">
+    <div class="blog-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-8">
+                    <div class="blog-single-content">
+                        <div class="blog-single-thumb">
+                            {% with fotos=visita.fotos.all %}
+                            {% if visita.portada %}
+                            <!-- <img src="{{ visita.portada.url }}" alt="{{ visita.titulo }}">-->
+                            {% elif fotos|length %}
+                            {% with ph=fotos|first %}
+                            <img src="{{ ph.imagen.url }}" alt="{{ ph.alt|default:visita.titulo }}">
+                            {% endwith %}
+                            {% else %}
+                            <img src="{% static 'images/placeholder-16x9.jpg' %}" alt="{{ visita.titulo }}">
+                            {% endif %}
+                            {% endwith %}
+
+
+                        </div>
+
+                        <h2 style="color:#1b5e20">{{ visita.titulo }}</h2>
+                        {{ visita.descripcion_html|safe }}
+
+                        <ul class="post-meta">
+                            {% if visita.ubicacion %}
+                            <li><i class="fas fa-map-marker-alt"></i> {{ visita.ubicacion }}</li>
+                            {% endif %}
+                            {% if visita.horario_text %}
+                            <li><i class="fas fa-clock"></i> {{ visita.horario_text }}</li>
+                            {% endif %}
+                            {% if visita.aporte_text %}
+                            <li><i class="fas fa-hand-holding-usd"></i> {{ visita.aporte_text }}</li>
+                            {% endif %}
+                        </ul>
+
+                        <!--Event Gallery Start-->
+                        <div class="event-gallery gallery wf100">
+                            <h4>Galería reciente</h4>
+                            <ul>
+                                {% for f in visita.fotos.all %}
+                                <li>
+                                    <div class="gallery-img">
+                                        <a href="{{ f.imagen.url }}" data-rel="prettyPhoto[gallery1]"><i
+                                                class="fas fa-search"></i></a>
+                                        <img src="{{ f.imagen.url }}" alt="{{ f.alt }}">
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--Event Gallery End-->
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="sidebar">
+                        <!-- Espacio para widgets extra -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

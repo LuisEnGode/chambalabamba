@@ -1,0 +1,18 @@
+{# templates/contenido/_flyer.html #}
+{% load static %}
+
+{# Si prefieres, mueve este <link> a base.html para no repetirlo en cada include #}
+<link rel="stylesheet" href="{% static 'core/css/flyer.css' %}">
+
+{% with cb=flyer.updated_at|date:'U' %}
+<div class="flyer-frame flyer-{{ flyer.ratio }}">
+  {% if href %}<a href="{{ href }}">{% endif %}
+  <img
+    src="{{ flyer.imagen.url }}{% if cb %}?v={{ cb }}{% endif %}"
+    alt="{{ flyer.alt|default:flyer.titulo }}"
+    class="img-fluid"
+    loading="lazy" decoding="async">
+  {% if href %}</a>{% endif %}
+</div>
+
+{% endwith %}

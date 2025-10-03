@@ -1,0 +1,49 @@
+{% if section %}
+<section class="urgent-causes wf100 p80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-title-2 white">
+          <h5>{{ section.titulo_superior }}</h5>
+          <h2>{{ section.titulo }}</h2>
+        </div>
+        <p>{{ section.descripcion|linebreaksbr }}</p>
+
+        <div class="progress">
+          <div class="progress-bar" role="progressbar"
+               style="width: {{ section.progreso }}%"
+               aria-valuenow="{{ section.progreso }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        {# Si quisieras las métricas debajo, puedes añadirlas como campos y mostrarlas aquí #}
+      </div>
+
+      <div class="col-md-6">
+        <div class="donation-amount">
+          <h5>{{ section.cta_titulo }}</h5>
+          <form>
+            <ul class="radio-boxes">
+              {% for m in section.montos.all %}
+              <li>
+                <div class="radio custom">
+                  <input name="donation" id="don-{{ section.id }}-{{ forloop.counter }}" type="radio" class="css-radio">
+                  <label for="don-{{ section.id }}-{{ forloop.counter }}" class="css-label">{{ m.etiqueta }}</label>
+                </div>
+              </li>
+              {% endfor %}
+              <li>
+                <div class="inputs">
+                  <input class="enter" type="text" placeholder="{{ section.cta_placeholder_otro }}">
+                </div>
+              </li>
+              <li class="form-submit">
+                <button type="submit">{{ section.cta_boton_texto }}</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}

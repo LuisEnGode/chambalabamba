@@ -1,101 +1,105 @@
+# apps/autenticacion/views.py
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.forms import forms
-from django.shortcuts import render, redirect
-from django.views.generic import View
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
-from autenticacion.forms import RegistroFormulario
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy, reverse
+
+from django.contrib.auth import get_user_model
+from .forms import (
+    SignupForm,
+    PerfilExternoForm,
+    PerfilResidenteForm,
+    PerfilRoleForm,
+)
 from .models import PerfilUsuario
-from .forms import PerfilBasicoForm, PerfilProfesionalForm
-from .models import PerfilUsuario,TipoUsuario
 
-# Create your views here.
-
-class VRegistro(View):
-    def get(self, request):
-        form = RegistroFormulario()  # Usamos el formulario personalizado
-        return render(request, "autenticacion/autenticacion.html", {"formulario": form})
-
-    def post(self, request):
-        form = RegistroFormulario(request.POST)
-        if form.is_valid():
-            # Guardar el nuevo usuario
-            usuario = form.save()
-            tipo_usuario = form.cleaned_data['tipo_usuario']
-
-            # Verificar si el perfil ya existe
-            perfil_usuario, created = PerfilUsuario.objects.get_or_create(usuario=usuario, tipo_usuario=tipo_usuario)
-
-            # Si el perfil se crea, se manejará automáticamente por get_or_create
-            # Si ya existe, simplemente no lo tocamos
-
-            # Iniciar sesión después del registro
-            login(request, usuario)
-            return redirect('home')  # Redirige a la página principal
-        else:
-            return render(request, "autenticacion/autenticacion.html", {"formulario": form})
+User = get_user_model()
 
 
-def cerrar_sesion(request):
-    print("Cerrando sesion")
-    logout(request)
-    return redirect('home')
+class IngresarView(LoginView):
+    template_name = "autenticacion/login.html"
+    redirect_authenticated_user = True
 
-def logear(request):
+class SalirView(LogoutView):
+    next_page = reverse_lazy("home")  # ajusta a tu home
+
+
+def registro(request):
+    if request.user.is_authenticated:
+        return redirect("perfil")
+
     if request.method == "POST":
-        form = AuthenticationForm(request,data=request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
-            usuario = form.cleaned_data.get("username")
-            password = form.cleaned_data.get('password')
-            usuario = authenticate(username=usuario, password=password)
-            if usuario is not None:
-                login(request, usuario)
-                return redirect('home')
-            else:
-                messages.error(request,"usuario no valido")
-                return render(request, "login/login.html", {"formulario": form})
-        else:
-            messages.error(request, "informacion incorrecta")
+            user = form.save()
+            messages.success(request, "¡Cuenta creada! Ya puedes iniciar sesión.")
+            return redirect("login")
+    else:
+        form = SignupForm()
 
-    form = AuthenticationForm()
-    return render(request, "login/login.html", {"formulario": form})
+    return render(request, "autenticacion/registro.html", {"form": form})
 
 
 @login_required
-def actualizar_perfil(request):
-    if request.user.is_superuser:
-        tipo_defecto = TipoUsuario.objects.get_or_create(nombre='Administrador')[0]
+def perfil(request):
+    perfil, _ = PerfilUsuario.objects.get_or_create(user=request.user)
+    return render(request, "autenticacion/perfil.html", {"perfil": perfil})
+
+
+@login_required
+def editar_perfil(request):
+    perfil = request.user.perfilusuario
+    rol_slug = getattr(perfil.tipo_usuario, "slug", "externo")
+    FormClass = PerfilResidenteForm if rol_slug == "residente" else PerfilExternoForm
+
+    if request.method == "POST":
+        form = FormClass(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil actualizado.")
+            return redirect("perfil")
     else:
-        tipo_defecto = TipoUsuario.objects.get_or_create(nombre='Usuario')[0]
+        form = FormClass(instance=perfil)
 
-    perfil_usuario, created = PerfilUsuario.objects.get_or_create(
-        usuario=request.user,
-        defaults={'tipo_usuario': tipo_defecto}
+    return render(
+        request,
+        "autenticacion/perfil_editar.html",
+        {"form": form, "perfil": perfil, "rol": rol_slug},
     )
 
-    if perfil_usuario.tipo_usuario is None:
-        perfil_usuario.tipo_usuario = tipo_defecto
-        perfil_usuario.save()
 
-    # Usar solo un formulario completo
-    perfil_form = PerfilProfesionalForm(
-        request.POST or None,
-        request.FILES or None,
-        instance=perfil_usuario,
-        initial={
-            'first_name': request.user.first_name,
-            'last_name': request.user.last_name,
-            'email': request.user.email,
-        }
-    )
+# ---- Área restringida a residentes (ejemplo) ----------------------------------
+def es_residente(u):
+    try:
+        return u.perfilusuario.es_residente
+    except PerfilUsuario.DoesNotExist:
+        return False
 
-    if request.method == 'POST':
-        if perfil_form.is_valid():
-            perfil = perfil_form.save()  # Este save() ya guarda el usuario también
-            messages.success(request, "✅ Perfil actualizado correctamente.")
-            return redirect('actualizar_perfil')
+@login_required
+@user_passes_test(es_residente)
+def area_residentes(request):
+    return render(request, "autenticacion/area_residentes.html")
 
-    return render(request, 'perfil/actualizar_perfil.html', {
-        'perfil_form': perfil_form,
-    })
+
+# ---- Vista Staff para cambiar rol de un usuario -------------------------------
+def es_staff(u):
+    return u.is_staff
+
+@login_required
+@user_passes_test(es_staff)
+def cambiar_rol_usuario(request, user_id):
+    perfil = get_object_or_404(PerfilUsuario, user_id=user_id)
+
+    if request.method == "POST":
+        form = PerfilRoleForm(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()  # signals sincronizan grupos
+            messages.success(request, "Rol actualizado correctamente.")
+            return redirect(reverse("admin_perfil_detalle", args=[perfil.user_id]) if
+                            "admin_perfil_detalle" in [p.name for p in request.resolver_match.namespaces]
+                            else reverse("perfil"))
+    else:
+        form = PerfilRoleForm(instance=perfil)
+
+    return render(request, "autenticacion/cambiar_rol.html", {"form": form, "perfil": perfil})

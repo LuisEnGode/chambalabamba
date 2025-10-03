@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% include "partials/head.html" %}
+</head>
+
+{# en base.html, cerca del <body> o dentro de .container #}
+{% if messages %}
+  <div class="container" style="margin-top:1rem">
+    {% for m in messages %}
+      <div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">
+        {{ m }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+<body>
+<div class="wrapper home2">
+    {% include "partials/header.html" %}
+
+    {% block content %}{% endblock %}
+</div>
+    {% include "partials/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+[
+  {
+    "model": "participa.contentblock",
+    "pk": 101,
+    "fields": {
+      "title": "AAbout Voluntariado",
+      "body_html": "<p>1Desde el voluntariado podrás involucrarte en talleres y cursos…</p>",
+      "publicado": true,
+      "orden": 1,
+      "creado": "2025-09-17T00:00:00Z",
+      "actualizado": "2025-09-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "participa.contentblock",
+    "pk": 102,
+    "fields": {
+      "title": "Ambiente de voluntariado",
+      "body_html": "<p>En Chambalabamba el voluntariado es aprendizaje en acción…</p>",
+      "publicado": true,
+       "orden": 2,
+      "creado": "2025-09-17T00:00:00Z",
+      "actualizado": "2025-09-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "participa.voluntariadopage",
+    "pk": 1,
+    "fields": {
+      "titulo": "Voluntariado: nuestra filosofía y cómo involucrarte",
+      "subtitulo": "Aprender haciendo, integrar cuerpo-mente-espíritu",
+      "background": "participa/voluntariado/hero/escuela-header.png",
+      "thumb": "participa/voluntariado/thumb/escuela_01.png",
+      "about_block": 101,
+      "ambiente_block": 102,
+      "intro_html": "",
+      "quote_text": "Aprender haciendo, sentir pensando y vivir soñando. La educación es el camino hacia la libertad y la transformación.",
+      "quote_author": "",
+      "instagram_embed_url": "https://www.instagram.com/reel/DMtzHhNsv2H/",
+      "contact_cta_label": "Proponer cooperación",
+      "contact_cta_url": "",
+      "publicado": true,
+      "creado": "2025-09-17T00:00:00Z",
+      "actualizado": "2025-09-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "participa.proyectovoluntariado",
+    "pk": 1,
+    "fields": {
+      "nombre": "Casa de voluntarios y huertos",
+      "slug": "casa-de-voluntarios-y-huertos",
+      "descripcion": "Mantenimiento y mejora de la casa de voluntarios; siembra, riego y compostaje.",
+      "orden": 1,
+      "link": "",
+      "publicado": true
+    }
+  },
+  {
+    "model": "participa.proyectovoluntariado",
+    "pk": 2,
+    "fields": {
+      "nombre": "Economía circular",
+      "slug": "economia-circular",
+      "descripcion": "Reutilización de materiales, gestión de residuos, talleres de reciclaje.",
+      "orden": 2,
+      "link": "",
+      "publicado": true
+    }
+  },
+  {
+    "model": "participa.proyectovoluntariado",
+    "pk": 3,
+    "fields": {
+      "nombre": "Artesanías",
+      "slug": "artesanias",
+      "descripcion": "Elaboración y venta de artesanías locales para apoyar proyectos comunitarios.",
+      "orden": 3,
+      "link": "",
+      "publicado": true
+    }
+  }
+]

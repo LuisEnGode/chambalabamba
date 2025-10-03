@@ -1,0 +1,74 @@
+[
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 1,
+        "fields": {
+            "name": "Taller de Bioconstrucción",
+            "description": "Aprende técnicas ancestrales y modernas para construir tu propio espacio de manera sostenible y ecológica. Conecta con la tierra y crea con tus manos.",
+            "schedule": "Primer fin de semana de cada mes",
+            "place": "Zona de Construcción, Chambalabamba",
+            "image": "images/taller-01.png",
+            "slug": "taller-de-bioconstruccion"
+        }
+    },
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 2,
+        "fields": {
+            "name": "Taller de Huertos Orgánicos",
+            "description": "Descubre los secretos de la agricultura regenerativa. Aprende a cultivar tus propios alimentos de forma saludable y respetuosa con el medio ambiente.",
+            "schedule": "Segundos sábados del mes",
+            "place": "Huertos Comunitarios, Chambalabamba",
+            "image": "images/taller-02.png",
+            "slug": "taller-de-huertos-organicos"
+        }
+    },
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 3,
+        "fields": {
+            "name": "Taller de Cocina Saludable",
+            "description": "Explora el arte de la cocina viva y nutritiva. Prepara platos deliciosos y energizantes que nutren tu cuerpo y alma.",
+            "schedule": "Terceros domingos del mes",
+            "place": "Cocina Comunitaria, Chambalabamba",
+            "image": "images/taller-03.png",
+            "slug": "taller-de-cocina-saludable"
+        }
+    },
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 4,
+        "fields": {
+            "name": "Taller de Comunicación No Violenta",
+            "description": "Desarrolla habilidades para una comunicación empática y efectiva. Transforma tus relaciones a través de la escucha activa y la expresión honesta.",
+            "schedule": "Cuarto fin de semana de cada mes",
+            "place": "Maloka de Reuniones, Chambalabamba",
+            "image": "images/taller-04.png",
+            "slug": "taller-de-comunicacion-no-violenta"
+        }
+    },
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 5,
+        "fields": {
+            "name": "Taller de Círculos de Palabra",
+            "description": "Sumérgete en la sabiduría de la tradición oral. Comparte historias, escucha con el corazón y fortalece los lazos comunitarios.",
+            "schedule": "Todos los miércoles",
+            "place": "Fuego Sagrado, Chambalabamba",
+            "image": "images/taller-05.png",
+            "slug": "taller-de-circulos-de-palabra"
+        }
+    },
+    {
+        "model": "eventos.tallerdetail",
+        "pk": 6,
+        "fields": {
+            "name": "Taller de Elaboración de Productos Naturales",
+            "description": "Crea tus propios cosméticos, limpiadores y remedios caseros con ingredientes naturales. Conecta con la sabiduría de las plantas.",
+            "schedule": "Un fin de semana por estación",
+            "place": "Taller de Artesanías, Chambalabamba",
+            "image": "images/taller-06.png",
+            "slug": "taller-de-elaboracion-de-productos-naturales"
+        }
+    }
+]

@@ -1,0 +1,102 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Estancias | Chambalabamba{% endblock %}
+{% block content %}
+
+<style>
+  .event-thumb img{width:100%;height:250px;object-fit:cover;}
+  .event-post{margin-bottom:30px;height:100%;}
+  .row.equal-height>[class*='col-']{display:flex;margin-bottom:15px;}
+</style>
+
+<!--
+<section class="wf100 p100 inner-header"
+  style="background-image:url({{ STATIC_URL }}participa/images/estancias/cabeza-estancias.png);
+         background-size:cover;background-position:center;">
+  <div class="container">
+    <h1>Participa</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="#"> Estancias </a></li>
+    </ul>
+  </div>
+</section>
+-->
+
+<section class="wf100 p100 inner-header"
+  style="background-image:url({% if page.header and page.header.background %}
+                               {{ page.header.background.url }}
+                               {% else %}
+                               {% static 'participa/images/estancias/cabeza-estancias.png' %}
+                               {% endif %});
+         background-size:cover;background-position:center;">
+  <div class="container">
+    <h1>{{ page.header.title|default:"Participa" }}</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="#">{{ page.header.breadcrumb_label|default:"Estancias" }}</a></li>
+    </ul>
+  </div>
+</section>
+
+{% with intro=page.intro %}
+<section class="wf100 p60"
+         style="background-color: {{ intro.bg_color|default:'#f8f9fa' }};
+                margin-top: {{ intro.margin_top_px|default:40 }}px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <h2 style="color:#1b5e20;margin-bottom:20px;">
+          {{ intro.title|default:"¡Vive Eco-Centro Chambalabamba: Elige tu estancia!" }}
+        </h2>
+
+        <p style="font-size:18px;line-height:1.6;color:#555;">
+          {% if intro and intro.body_html %}{{ intro.body_html|safe }}{% else %}
+            Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos.
+            Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.
+          {% endif %}
+        </p>
+
+        {% if intro and intro.quote_text %}
+          <p style="font-size:16px;color:#666;font-style:italic;">{{ intro.quote_text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endwith %}
+
+
+<section class="wf100 p80 events" id="talleres-grid">
+  <div class="event-grid-2">
+    <div class="container">
+      <div class="row equal-height">
+        {% for it in estancias %}
+        <div class="col-lg-4 col-md-6">
+          <div class="event-post">
+            <div class="event-thumb">
+              <a href="{% url 'participa:estancia_detail' it.slug %}"><i class="fas fa-link"></i></a>
+              {% if it.portada %}
+                <img src="{{ it.portada.url }}" alt="{{ it.alt_portada|default:it.titulo }}">
+              {% else %}
+                <img src="{% static 'participa/images/estancias/casas/estancias-loma.png' %}" alt="{{ it.titulo }}">
+              {% endif %}
+            </div>
+            <div class="event-txt">
+              <h5><a href="{% url 'participa:estancia_detail' it.slug %}">{{ it.titulo }}</a></h5>
+              <ul class="etime">
+                {% if it.tipo %}<li><strong>Tipo:</strong> {{ it.tipo }}</li>{% endif %}
+              </ul>
+              {% if it.lugar %}<p class="venue"><span>Lugar:</span> {{ it.lugar }}</p>{% endif %}
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12"><p class="text-center text-muted">Aún no hay estancias publicadas.</p></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

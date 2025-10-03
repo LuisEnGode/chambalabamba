@@ -1,0 +1,57 @@
+[
+  {
+    "model": "nosotros.pageheader",
+    "pk": 20,
+    "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Gobernanza",
+      "background": "nosotros/headers/cabeza-gobernanza.png"
+    }
+  },
+  {
+    "model": "nosotros.topicpage",
+    "pk": 200,
+    "fields": {
+      "slug": "gobernanza",
+      "header": 20,
+      "hero_image": "nosotros/sections/hero/cabeza-economia.png",
+      "title": "Gobernanza",
+      "lead": ""
+    }
+  },
+
+  { "model": "nosotros.topicparagraph", "pk": 2001, "fields": {
+      "page": 200, "publicado": true, "orden": 1,
+      "body": "The environment includes; the surface of the earth, natural re­sources, land and water, mountains and plains, fertile lands and deserts, oceans, storms and cy­clones, weather and climatic factors, seasons, etc. It also includes biological conditions such as plants, animals with all their complexities.",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }},
+  { "model": "nosotros.topicparagraph", "pk": 2002, "fields": {
+      "page": 200, "publicado": true, "orden": 2,
+      "body": "We are going to run a solid educational campaign for the orphan children study. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }},
+  { "model": "nosotros.topicparagraph", "pk": 2003, "fields": {
+      "page": 200, "publicado": true, "orden": 3,
+      "body": "You need to be sure there isn't anything embarrassing hidden in the middle of text. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage.",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }},
+
+  { "model": "nosotros.topicquote", "pk": 2101, "fields": {
+      "page": 200, "publicado": true, "orden": 1,
+      "text": "The inner environment is the society itself. It is the social envi­ronment & endures only so long as the society endures. It consists of the organisations and regula­tions, the traditions and institutions.",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }},
+
+  { "model": "nosotros.topicparagraph", "pk": 2004, "fields": {
+      "page": 200, "publicado": true, "orden": 4,
+      "body": "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }},
+
+  { "model": "nosotros.topicsidebarwidget", "pk": 2201, "fields": {
+      "page": 200, "publicado": true, "orden": 1,
+      "title": "Fundamentos de nuestra convivencia",
+      "text": "La rápida difusión de la palabra desde los años 1990 parece traducir la conciencia de un cambio de paradigma en las relaciones de poder. Se ha percibido la insuficiencia del concepto clásico de “gobierno” para describir las transformaciones que se han ido produciendo en el contexto de la globalización. Ante el surgimiento de empresas multinacionales con presupuestos superiores a los de ciertos estados soberanos o de…",
+      "creado": "2025-09-11T21:20:00Z", "actualizado": "2025-09-11T21:20:00Z"
+  }}
+]

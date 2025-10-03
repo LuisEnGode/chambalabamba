@@ -1,0 +1,82 @@
+[
+  {
+    "model": "proyectos.project",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "titulo": "Huerta sintropica",
+      "slug": "huerta-sintropica",
+      "resumen": "Agricultura regenerativa con sucesión dinámica.",
+      "body_html": "",
+      "estado": "current",
+      "url": "",
+      "creado": "2025-09-25T12:20:24",
+      "actualizado": "2025-09-25T12:20:24"
+    }
+  },
+  {
+    "model": "proyectos.project",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "titulo": "Cuidado del agua",
+      "slug": "cuidado-del-agua",
+      "resumen": "Sistemas de captación y tratamiento natural.",
+      "body_html": "",
+      "estado": "current",
+      "url": "",
+      "creado": "2025-09-25T12:20:24",
+      "actualizado": "2025-09-25T12:20:24"
+    }
+  },
+  {
+    "model": "proyectos.projectphoto",
+    "pk": 101,
+    "fields": {
+      "project": 1,
+      "publicado": true,
+      "orden": 1,
+      "imagen": "proyectos/gallery/huerta-01.jpg",
+      "titulo": "Semillas nativas",
+      "alt": "Semillas",
+      "creditos": "",
+      "is_header": true,
+      "creado": "2025-09-25T12:20:24",
+      "actualizado": "2025-09-25T12:20:24"
+    }
+  },
+  {
+    "model": "proyectos.projectphoto",
+    "pk": 102,
+    "fields": {
+      "project": 1,
+      "publicado": true,
+      "orden": 2,
+      "imagen": "proyectos/gallery/huerta-02.jpg",
+      "titulo": "Camas de cultivo",
+      "alt": "Camas",
+      "creditos": "",
+      "is_header": false,
+      "creado": "2025-09-25T12:20:24",
+      "actualizado": "2025-09-25T12:20:24"
+    }
+  },
+  {
+    "model": "proyectos.projectphoto",
+    "pk": 201,
+    "fields": {
+      "project": 2,
+      "publicado": true,
+      "orden": 1,
+      "imagen": "proyectos/gallery/agua-01.jpg",
+      "titulo": "Filtro biológico",
+      "alt": "Filtro",
+      "creditos": "",
+      "is_header": true,
+      "creado": "2025-09-25T12:20:24",
+      "actualizado": "2025-09-25T12:20:24"
+    }
+  }
+]
