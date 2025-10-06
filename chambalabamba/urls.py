@@ -52,7 +52,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """
-# En dev (DEBUG=True): usa helper estándar esto para withenoise
+# En dev (DEBUG=True): usa helper estándar esto para withenoise configuracion para storage en render disco montado 1GB
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
