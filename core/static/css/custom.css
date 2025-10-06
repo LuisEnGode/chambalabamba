@@ -7048,12 +7048,22 @@ section.wf100.p80.fcampaigns {
 .footer-widget img { width: auto; height: auto; }
 
 /* Tamaño proporcional del logo */
-.footer-logo{
-  height: 144px;           /* controlas alto */
-  width: auto !important; /* mantiene proporción */
+.footer-logo {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 193 / 234; /* proporción real de tu imagen */
+  height: auto;
   display: block;
-  max-width: 200px;       /* opcional: límite de ancho */
-   margin-top: 48px;
+  margin-top: 48px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .footer-logo {
+    max-width: 150px;
+    max-height: 100px;
+    margin-top: 24px;
+  }
 }
 
 /*LINK PARA BOTON*/

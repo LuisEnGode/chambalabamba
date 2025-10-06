@@ -37,10 +37,11 @@
 
                 <!-- Noticias o últimas publicaciones -->
                {% latest_posts_footer 2 %}
-                <!-- Productos / donaciones -->
 
-                {% url 'donaciones' as donaciones_url %}
-      <img class="footer-logo" src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Chambalabamba" loading="lazy" decoding="async">
+                <!-- Productos / donaciones
+                {% url 'donaciones' as donaciones_url %}-->
+
+                 <img class="footer-logo" src="{% static 'images/logo/logo-chambalabamba.png' %}" alt="Chambalabamba" loading="lazy" decoding="async">
 
 
                 {% if slot and slot.flyer and slot.flyer.publicado and slot.flyer.imagen %}
