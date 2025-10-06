@@ -6833,46 +6833,46 @@ section.wf100.p80.fcampaigns {
   }
 }
 
-/*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
+/* ------------ LOGO PEQUEÑO SUPERIOR IZQUIERDO ------------------ */
 
-/* Logo superpuesto como marca de agua centrada */
+/* Logo superpuesto como marca de agua (modo escritorio) */
 .slider-wrapper .logo-overlay-s {
   position: absolute;
   top: 0%;
   left: 10%;
-  transform: translate(-33%, -55%); /* Ajusta aquí */
-  z-index: 10;
+  transform: translate(-33%, -55%);
+  z-index: 5; /* menor que el menú, pero suficiente para verse */
   opacity: 1;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
 }
 
-/* Aumentar tamaño en pantallas grandes */
 .slider-wrapper .logo-overlay-s img {
   max-width: 457px;
   width: 25%;
   height: auto;
 }
 
+/* Evita que el logo tape el menú */
+.logo-overlay-s {
+  position: absolute;
+  z-index: 1;
+}
 
-/* Versión responsive para móviles */
-@media (max-width: 767px) {
+/* Menú móvil por encima */
+.mobile-menu {
+  position: relative;
+  z-index: 20;
+}
+
+
+/* --- FIX DEFINITIVO PARA MOVIL: OCULTAR EL LOGO --- */
+@media (max-width: 920px), (hover: none) and (pointer: coarse) {
   .slider-wrapper .logo-overlay-s {
-    top: 0%;
-    left: 10%;
-    transform: translate(-50%, -50%)
-    opacity: 1;
-    pointer-events: none;
-    filter: brightness(1.2) contrast(1.2);
-
-  }
-
-  .slider-wrapper .logo-overlay-s img {
-    max-width: 120px;
-    width: 100%;
-    height: auto;
+    display: none !important;
   }
 }
+
 /***************************************************************/
 
 /*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
