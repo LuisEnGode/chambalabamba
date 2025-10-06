@@ -105,13 +105,27 @@
                     <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
                 </li>
 
+                {% if user.is_authenticated %}
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'perfil_editar' %}">Actualizar Perfil</a></li>
+                  <li class="nav-item d-lg-none">
+                    <form action="{% url 'logout' %}" method="post" class="px-3 py-2 m-0">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-link p-0 nav-link">Salir</button>
+                    </form>
+                  </li>
+                {% else %}
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'registro' %}">Registrarse</a></li>
+                {% endif %}
+
             </ul>
 
             {% if user.is_authenticated %}
 
 
             <!-- Íconos del lado derecho -->
-            <ul class="topnav-right">
+           <ul class="topnav-right d-none d-lg-flex align-items-center ml-lg-auto">
                 <li><a class="mdonate" href="{% url 'donaciones' %}"><span>Haz una Donación</span></a></li>
                 <!--
                     <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
@@ -152,13 +166,12 @@
 
                     <form action="{% url 'logout' %}" method="post" style="display:inline;">
                         {% csrf_token %}
-
                           <button type="submit" class="link-like">Salir</button>
                     </form>
                 </li>
             </ul>
             {% else %}
-            <ul class="topnav-right">
+            <ul class="topnav-right ">
                 <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
                 <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
                 <li class="dropdown">
