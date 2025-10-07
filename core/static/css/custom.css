@@ -7118,3 +7118,32 @@ button.link-like:hover { text-decoration: none; }
   color: #66bb6a;
   margin-right: 8px;
 }
+
+/* === Botones verdes del template ECO === */
+.btn-primary {
+  background-color: #66bb6a;   /* Verde principal ECO */
+  border-color: #66bb6a;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #5ba85d;   /* tono más oscuro para hover */
+  border-color: #5ba85d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-outline-primary {
+  border-color: #66bb6a;
+  color: #66bb6a;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+  color: #fff;
+}
