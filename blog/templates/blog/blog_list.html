@@ -199,9 +199,12 @@
 
               {% elif w.tipo == "archives" %}
                 <ul>
+                  <div class="side-widget archives">
                   {% for d in archives %}
-                    <li><a href="{% url 'blog_by_month' year=d|date:'Y' month=d|date:'n' %}">{{ d|date:"F Y" }}</a></li>
+
+                    <li><a href="{% url 'blog_by_month' year=d|date:'Y' month=d|date:'n' %}" >{{ d|date:"F Y" }}</a></li>
                   {% endfor %}
+                  </div>
                 </ul>
 
               {% elif w.tipo == "cta_volunteer" %}
