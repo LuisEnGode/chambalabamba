@@ -6,16 +6,22 @@
   {% voluntariado_page as vp %}
   {% static 'images/escuela_01.png' as escuela_img %}
 
-  <section class="wf100 p100 inner-header"
-           style="background-image: url({% static 'participa/images/cabeza-voluntariado.png' %}); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Participa</h1>
-      <ul>
-        <li><a href="{% url 'home' %}">Inicio</a></li>
-        <li><a href="{% url 'participa:voluntariado' %}">Voluntariado</a></li>
-      </ul>
-    </div>
-  </section>
+  {% load page_headers %}
+
+
+
+<section class="wf100 p100 inner-header"
+         style="background-image: url('{{ header_bg_url }}');
+                background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>{{ header_title }}</h1>
+    <ul>
+      {% for bc in breadcrumbs %}
+        <li>{% if bc.url %}<a href="{{ bc.url }}">{{ bc.label }}</a>{% else %}{{ bc.label }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 
   <section class="wf100 p80 blog">
     <div class="blog-details">

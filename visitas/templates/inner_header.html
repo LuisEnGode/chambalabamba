@@ -1,0 +1,18 @@
+{# templates/components/inner_header.html #}
+<section class="wf100 p100 inner-header"
+         style="background-image: url('{% if header and header.background %}{{ header.background.url }}{% else %}{{ BG_FALLBACK }}{% endif %}');
+                background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>{{ header.title|default:default_title|default:"Voluntariado" }}</h1>
+    {% if header.subtitle or default_subtitle %}
+      <p class="subtitle">{{ header.subtitle|default:default_subtitle }}</p>
+    {% endif %}
+    {% if breadcrumbs %}
+      <ul>
+        {% for bc in breadcrumbs %}
+          <li>{% if bc.url %}<a href="{{ bc.url }}">{{ bc.label }}</a>{% else %}{{ bc.label }}{% endif %}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>
