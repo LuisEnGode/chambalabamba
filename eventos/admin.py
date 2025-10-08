@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Festival, FestivalImage, TallerDetail, TalleresPage, TalleresHeader, TalleresIntroSection,
+    Festival, FestivalImage, TallerDetail, TallerImage, TalleresPage, TalleresHeader, TalleresIntroSection,
     FestivalesPage, FestivalesHeader, FestivalesIntroSection,
     ArtesPage, ArtesHeader, ArtesIntroSection, ArtesDiversitySection, Arte,
     ArtesGallerySection, ArtesGalleryImage,
@@ -46,9 +46,14 @@ class FestivalAdmin(admin.ModelAdmin):
     inlines = [FestivalImageInline]
 
 
+class TallerImageInline(admin.TabularInline):
+    model = TallerImage
+    extra = 1
+
+
 @admin.register(TalleresPage)
 class TalleresPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro")
+    list_display = ("header", "intro")
     def has_add_permission(self, request):
         return not TalleresPage.objects.exists()
 
@@ -70,6 +75,7 @@ class TallerDetailAdmin(admin.ModelAdmin):
             'fields': ('name', 'slug', 'description', 'schedule', 'place', 'image', 'flyer')
         }),
     )
+    inlines = [TallerImageInline]
 
 class ArteInline(admin.TabularInline):
     model = Arte

@@ -60,6 +60,19 @@ class TallerDetail(models.Model):
         db_table = 'eventos_taller'
 
 
+class TallerImage(models.Model):
+    taller = models.ForeignKey(TallerDetail, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ImageField(upload_to='talleres/gallery/', verbose_name="Imagen de Galería")
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Texto alternativo")
+
+    class Meta:
+        verbose_name = "Imagen de Galería del Taller"
+        verbose_name_plural = "Imágenes de Galería del Taller"
+
+    def __str__(self):
+        return self.alt_text or f"Imagen para {self.taller.name}"
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Página de Talleres
 # ──────────────────────────────────────────────────────────────────────────────
