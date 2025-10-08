@@ -34,10 +34,47 @@
         font-size: 16px;
         line-height: 1.8;
     }
+
+    /* Gallery Image Standardization */
+    .event-gallery .gallery-img img {
+        height: 250px; /* Standardized height */
+        width: 100%;
+        object-fit: cover; /* Prevents image distortion */
+        border-radius: 8px;
+    }
+
+    /* Owl Carousel Navigation Buttons Styling */
+    #festival-gallery-carousel .owl-nav button.owl-prev,
+    #festival-gallery-carousel .owl-nav button.owl-next {
+        background: rgba(27, 94, 32, 0.8) !important;
+        color: white !important;
+        border-radius: 50% !important;
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+        transition: background 0.3s ease;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #festival-gallery-carousel .owl-nav button.owl-prev:hover,
+    #festival-gallery-carousel .owl-nav button.owl-next:hover {
+        background: #1b5e20 !important;
+    }
+
+    #festival-gallery-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    #festival-gallery-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
 </style>
 
 <!--Inner Header Start-->
-<section class="wf100 p100 inner-header" style="background: url('{% static festival.image %}') no-repeat center center; background-size: cover;">
+<section class="wf100 p100 inner-header" style="background: url('{% if festival.image %}{{ festival.image.url }}{% else %}{% static festival.image %}{% endif %}') no-repeat center center; background-size: cover;">
     <div class="container">
         <h1>{{ festival.name }}</h1>
         <ul>
@@ -52,8 +89,9 @@
 <section class="festival-detail-container">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto" style="margin-top: 80px;">                
-                <ul class="festival-meta">
+            <div class="col-lg-8">
+                
+                <ul class="festival-meta" style="margin-top: 80px;">
                     <li><i class="fas fa-calendar-alt"></i><strong>Fecha:</strong> {{ festival.date }}</li>
                     <li><i class="fas fa-clock"></i><strong>Hora:</strong> {{ festival.time }}</li>
                     <li><i class="fas fa-map-marker-alt"></i><strong>Lugar:</strong> {{ festival.place }}</li>
@@ -62,7 +100,77 @@
                     {{ festival.description|safe }}
                 </div>
             </div>
+            {% if festival.flyer %}
+            <div class="col-lg-4">
+                <img src="{{ festival.flyer.url }}" alt="{{ festival.name }} Flyer" class="img-fluid rounded">
+            </div>
+            {% endif %}
         </div>
+
+        <!--Event Gallery Start-->
+        <div class="event-gallery gallery wf100" style="margin-top: 50px;">
+            <div class="section-title-2 text-center">
+                <h2>Galería del Festival</h2>
+            </div>
+            <div id="festival-gallery-carousel" class="owl-carousel owl-theme">
+                {% if festival.gallery_images.all %}
+                    {% for image in festival.gallery_images.all %}
+                    <div class="item">
+                        <div class="gallery-img">
+                            <a href="{{ image.image.url }}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
+                            <img src="{{ image.image.url }}" alt="{{ image.alt_text|default:festival.name }}">
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-01.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-01.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-02.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-03.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-04.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-05.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-06.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-06.png' %}" alt="Imagen de festival por defecto"> </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--Event Gallery End-->
+
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+        $("#festival-gallery-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}

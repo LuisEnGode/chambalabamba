@@ -1,0 +1,140 @@
+[
+    {
+        "model": "eventos.terapiaspage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1,
+            "benefits_section": 1,
+            "second_quote": "La sanación es el arte de volver a casa, a tu esencia. En Chambalabamba, te ofrecemos el mapa y la compañía para que emprendas ese viaje sagrado de regreso a ti mismo.",
+            "gallery_section": 1
+        }
+    },
+    {
+        "model": "eventos.terapiasheader",
+        "pk": 1,
+        "fields": {
+            "title": "Terapias",
+            "breadcrumb_label": "Terapias",
+            "background": "images/terapias-header.png"
+        }
+    },
+    {
+        "model": "eventos.terapiasintrosection",
+        "pk": 1,
+        "fields": {
+            "main_image": "images/terapias-00.png",
+            "title": "Sanación y Equilibrio para tu Ser",
+            "paragraph": "Integramos saberes ancestrales y técnicas contemporáneas para ofrecerte una experiencia terapéutica integral. Cada sesión es un espacio sagrado, adaptado a tus necesidades particulares, para que puedas liberar lo que ya no te sirve y florecer en tu máximo potencial.",
+            "sidebar_title": "Bienestar",
+            "sidebar_subtitle": "Físico, emocional, mental, espiritual",
+            "sidebar_paragraph": "Nuestras terapias en Chambalabamba son un acompañamiento amoroso en tu proceso de autoconocimiento y sanación. Ofrecemos un abanico de terapias holísticas diseñadas para nutrir tu cuerpo, mente y espíritu en un entorno de paz y conexión con la naturaleza."
+        }
+    },
+    {
+        "model": "eventos.terapiasbenefitssection",
+        "pk": 1,
+        "fields": {
+            "title": "Beneficios de Nuestras Terapias"
+        }
+    },
+    {
+        "model": "eventos.terapiabenefit",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "title": "✨ Claridad Mental y Enfoque",
+            "description": "Aprende a gestionar tus emociones y a encontrar calma interior a través de técnicas de relajación y conciencia plena."
+        }
+    },
+    {
+        "model": "eventos.terapiabenefit",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "title": "✨ Claridad Mental y Enfoque",
+            "description": "Despeja tu mente, mejora tu concentración y toma decisiones más alineadas con tu propósito de vida."
+        }
+    },
+    {
+        "model": "eventos.terapiabenefit",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "title": "💖 Sanación Emocional",
+            "description": "Libera cargas del pasado, sana heridas emocionales y abre tu corazón a nuevas posibilidades de amor y alegría."
+        }
+    },
+    {
+        "model": "eventos.terapiabenefit",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "title": "🧘‍♀️ Conexión Cuerpo-Mente-Espíritu",
+            "description": "Integra todos los aspectos de tu ser, logrando un estado de coherencia y armonía que se refleja en tu salud y vitalidad."
+        }
+    },
+    {
+        "model": "eventos.terapiasgallerysection",
+        "pk": 1,
+        "fields": {
+            "title": "Espacios de Contención y Sanación",
+            "paragraph": "Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura."
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-01.png",
+            "alt_text": "Espacio de terapia en la naturaleza"
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-02.png",
+            "alt_text": "Armonía y paz en Chambalabamba"
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-03.png",
+            "alt_text": "Conexión terapéutica con la naturaleza"
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-04.png",
+            "alt_text": "Terapias en un entorno sagrado"
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 5,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-05.png",
+            "alt_text": "Terapias en un entorno sagrado"
+        }
+    },
+    {
+        "model": "eventos.terapiasgalleryimage",
+        "pk": 6,
+        "fields": {
+            "section": 1,
+            "image": "images/terapias-06.png",
+            "alt_text": "Terapias en un entorno sagrado"
+        }
+    }
+]

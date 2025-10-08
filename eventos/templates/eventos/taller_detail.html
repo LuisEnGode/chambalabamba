@@ -34,6 +34,43 @@
         font-size: 16px;
         line-height: 1.8;
     }
+
+    /* Gallery Image Standardization */
+    .event-gallery .gallery-img img {
+        height: 250px; /* Standardized height */
+        width: 100%;
+        object-fit: cover; /* Prevents image distortion */
+        border-radius: 8px;
+    }
+
+    /* Owl Carousel Navigation Buttons Styling */
+    #taller-gallery-carousel .owl-nav button.owl-prev,
+    #taller-gallery-carousel .owl-nav button.owl-next {
+        background: rgba(27, 94, 32, 0.8) !important;
+        color: white !important;
+        border-radius: 50% !important;
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+        transition: background 0.3s ease;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #taller-gallery-carousel .owl-nav button.owl-prev:hover,
+    #taller-gallery-carousel .owl-nav button.owl-next:hover {
+        background: #1b5e20 !important;
+    }
+
+    #taller-gallery-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    #taller-gallery-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
 </style>
 
 <!--Inner Header Start-->
@@ -68,6 +105,71 @@
             </div>
             {% endif %}
         </div>
+
+        <!--Taller Gallery Start-->
+        <div class="event-gallery gallery wf100" style="margin-top: 50px;">
+            <div class="section-title-2 text-center">
+                <h2>Galería del Taller</h2>
+            </div>
+            <div id="taller-gallery-carousel" class="owl-carousel owl-theme">
+                {% if taller.gallery_images.all %}
+                    {% for image in taller.gallery_images.all %}
+                    <div class="item">
+                        <div class="gallery-img">
+                            <a href="{{ image.image.url }}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
+                            <img src="{{ image.image.url }}" alt="{{ image.alt_text|default:taller.name }}">
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-01.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-01.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-02.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-03.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-04.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-05.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                    <div class="item">
+                        <div class="gallery-img"> <a href="{% static 'images/festivales-06.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/festivales-06.png' %}" alt="Imagen de taller por defecto"> </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--Taller Gallery End-->
+
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+        $("#taller-gallery-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -1,16 +1,16 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Retiros | Chambalabamba{% endblock %}
+{% block title %}{% if page.header.title %}{{ page.header.title }}{% else %}Retiros{% endif %} | Chambalabamba{% endblock %}
 
 {% block content %}
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url('{% static "images/retiros-header.png" %}') no-repeat center center; background-size: cover;">
+    <section class="wf100 p100 inner-header" style="background: url('{% if page.header.background %}{{ page.header.background.url }}{% else %}{% static "images/retiros-header.png" %}{% endif %}') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1>Retiros</h1>  
+            <h1>{% if page.header.title %}{{ page.header.title }}{% else %}Retiros{% endif %}</h1>  
             <ul>
                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="#">Retiros</a></li>
+                <li><a href="#">{% if page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}Retiros{% endif %}</a></li>
             </ul>
         </div>
     </section>
@@ -25,15 +25,15 @@
                     <!--Blog Single Content Start-->
                     <div class="blog-single-content">
                         <div class="blog-single-thumb">
-                            <img src="{% static 'images/retiros-00.png' %}" alt="Retiro en la naturaleza de Chambalabamba">
+                            <img src="{% if page.intro.main_image %}{{ page.intro.main_image.url }}{% else %}{% static 'images/retiros-00.png' %}{% endif %}" alt="Retiro en la naturaleza de Chambalabamba">
                         </div>
                         <div class="section-title-2">
-                            <h2>Descubre y conecta con tu esencia</h2>
+                            <h2>{% if page.intro.title %}{{ page.intro.title }}{% else %}Descubre y conecta con tu esencia{% endif %}</h2>
                         </div>
                         
                         <p/>
                         <blockquote>
-                            <p>En el silencio de la naturaleza, el alma encuentra su verdadero hogar. Cada respiración es una oportunidad de renacer, cada momento una invitación a la paz interior.</p>
+                            <p>{% if page.intro.quote %}{{ page.intro.quote }}{% else %}En el silencio de la naturaleza, el alma encuentra su verdadero hogar. Cada respiración es una oportunidad de renacer, cada momento una invitación a la paz interior.{% endif %}</p>
                         </blockquote>                          
                     </div>
                     <!--Blog Single Content End--> 
@@ -44,12 +44,12 @@
                         <!--Blog Single Content Start-->
                         <div class="blog-single-content">
                             <div class="section-title-2">
-                                <h2>Un viaje hacia tu interior</h2>
+                                <h2>{% if page.intro.sidebar_title %}{{ page.intro.sidebar_title }}{% else %}Un viaje hacia tu interior{% endif %}</h2>
                             </div>                            
                             <p/>                       
-                            <p>Nuestros retiros en Chambalabamba son una invitación sagrada a desconectar del mundo exterior para reconectar contigo mismo en un entorno de paz y belleza natural excepcional. Ofrecemos una variedad de experiencias transformadoras enfocadas en el bienestar integral del ser.</p>
-                            <p>Combinamos sabiamente prácticas ancestrales como la meditación, el yoga, la sonoterapia, los baños de bosque y el contacto directo con los elementos naturales. Cada retiro está cuidadosamente diseñado para facilitar un profundo proceso de introspección, sanación y renovación espiritual.</p>
-                            <p>Acompañado por facilitadores experimentados y en un ambiente de total respeto y contención, tendrás la oportunidad única de explorar las profundidades de tu mundo interior, liberar tensiones acumuladas y encontrar ese estado natural de equilibrio y armonía que todos llevamos dentro.</p>
+                            <p>{% if page.intro.sidebar_paragraph1 %}{{ page.intro.sidebar_paragraph1 }}{% else %}Nuestros retiros en Chambalabamba son una invitación sagrada a desconectar del mundo exterior para reconectar contigo mismo en un entorno de paz y belleza natural excepcional. Ofrecemos una variedad de experiencias transformadoras enfocadas en el bienestar integral del ser.{% endif %}</p>
+                            <p>{% if page.intro.sidebar_paragraph2 %}{{ page.intro.sidebar_paragraph2 }}{% else %}Combinamos sabiamente prácticas ancestrales como la meditación, el yoga, la sonoterapia, los baños de bosque y el contacto directo con los elementos naturales. Cada retiro está cuidadosamente diseñado para facilitar un profundo proceso de introspección, sanación y renovación espiritual.{% endif %}</p>
+                            <p>{% if page.intro.sidebar_paragraph3 %}{{ page.intro.sidebar_paragraph3 }}{% else %}Acompañado por facilitadores experimentados y en un ambiente de total respeto y contención, tendrás la oportunidad única de explorar las profundidades de tu mundo interior, liberar tensiones acumuladas y encontrar ese estado natural de equilibrio y armonía que todos llevamos dentro.{% endif %}</p>
                         </div>
                         <!--Blog Single Content End-->    
                     </div>    
@@ -62,43 +62,23 @@
                         <!--Tipos de Retiros Start-->
                         <div class="chief-guest team-grid wf100">                        
                             <div class="section-title-2">
-                                 <h2>Modalidades de transformación</h2>
+                                 <h2>{% if page.types_section.title %}{{ page.types_section.title }}{% else %}Modalidades de transformación{% endif %}</h2>
                             </div> 
-                            <p>Cada persona es única y por eso ofrecemos diferentes modalidades de retiro para honrar tu proceso personal. Ya sea que busques una experiencia individual de profunda introspección o prefieras la riqueza del intercambio grupal, tenemos el espacio perfecto para tu crecimiento espiritual.</p>
+                            <p>{% if page.types_section.paragraph %}{{ page.types_section.paragraph }}{% else %}Cada persona es única y por eso ofrecemos diferentes modalidades de retiro para honrar tu proceso personal. Ya sea que busques una experiencia individual de profunda introspección o prefieras la riqueza del intercambio grupal, tenemos el espacio perfecto para tu crecimiento espiritual.{% endif %}</p>
                             <div class="row">
+                                {% for type in page.types_section.types.all %}
                                 <!--Retiro Box Start-->
                                 <div class="col-md-4">
                                     <div class="team-box">
-                                        <img src="{% static 'images/retiros-03.png' %}" alt="Retiros Individuales">
+                                        <img src="{% if type.image %}{{ type.image.url }}{% else %}{% static 'images/retiros-03.png' %}{% endif %}" alt="{{ type.title }}">
                                         <div class="team-info">
-                                            <h5>Retiros Individuales</h5>
-                                            <p>Un espacio íntimo para el encuentro contigo mismo, con acompañamiento personalizado y total privacidad.</p>
+                                            <h5>{{ type.title }}</h5>
+                                            <p>{{ type.description }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <!--Retiro Box End--> 
-                                <!--Retiro Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/retiros-06.png' %}" alt="Retiros Grupales">
-                                        <div class="team-info">
-                                            <h5>Retiros Grupales</h5>
-                                            <p>La magia del crecimiento compartido, donde cada participante enriquece la experiencia colectiva.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Retiro Box End--> 
-                                <!--Retiro Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/retiros-05.png' %}" alt="Retiros Temáticos">
-                                        <div class="team-info">
-                                            <h5>Retiros Temáticos</h5>
-                                            <p>Experiencias especializadas en meditación, yoga, sonoterapia o conexión con los elementos.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Retiro Box End--> 
+                                {% endfor %}
                             </div>
                         </div>
                         <!--Tipos de Retiros End--> 
@@ -106,61 +86,40 @@
                         <!--Actividades del Retiro Start-->
                         <div class="wf100" style="margin-top: 50px;">
                             <div class="section-title-2">
-                                 <h2>Prácticas y experiencias</h2>
+                                 <h2>{% if page.activities_section.title %}{{ page.activities_section.title }}{% else %}Prácticas y experiencias{% endif %}</h2>
                             </div>
-                            <p>Nuestros retiros integran una rica variedad de prácticas milenarias y contemporáneas, todas orientadas a facilitar tu proceso de autoconocimiento y sanación. Cada actividad está pensada para nutrir diferentes aspectos de tu ser: cuerpo, mente y espíritu.</p>
+                            <p>{% if page.activities_section.paragraph %}{{ page.activities_section.paragraph }}{% else %}Nuestros retiros integran una rica variedad de prácticas milenarias y contemporáneas, todas orientadas a facilitar tu proceso de autoconocimiento y sanación. Cada actividad está pensada para nutrir diferentes aspectos de tu ser: cuerpo, mente y espíritu.{% endif %}</p>
                             
                             <div class="row" style="margin-top: 30px;">
+                                {% for activity in page.activities_section.activities.all %}
                                 <div class="col-md-6">
                                     <div class="section-title-2">
-                                        <h5>🧘‍♀️ Meditación y Mindfulness</h5>
+                                        <h5>{{ activity.title }}</h5>
                                     </div>
-                                    <p>Sesiones diarias de meditación en diferentes modalidades: silenciosa, guiada, caminando y en conexión con la naturaleza.</p>
-                                    
-                                    <div class="section-title-2">
-                                       <h5>🌿 Baños de Bosque</h5> 
-                                    </div>
-                                    <p>Inmersión consciente en la naturaleza para activar tus sentidos y conectar profundamente con los ritmos naturales.</p>
+                                    <p>{{ activity.description }}</p>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="section-title-2">
-                                        <h5>🎵 Sonoterapia</h5>
-                                    </div>
-                                    <p>Sesiones de sanación através del sonido con cuencos tibetanos, tambores chamánicos y instrumentos ancestrales.</p>
-                                    
-                                    <div class="section-title-2">
-                                        <h5>🧘‍♂️ Yoga y Movimiento</h5>
-                                    </div>
-                                    <p>Prácticas de yoga adaptadas a todos los niveles, focalizadas en la conexión cuerpo-mente-espíritu.</p>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <!--Actividades del Retiro End-->
 
                         <blockquote style="margin-top: 40px;">
-                            <p>El silencio es el lienzo donde el alma pinta sus más bellos paisajes. En Chambalabamba, cada amanecer es una nueva oportunidad de renacer, cada atardecer una invitación a la gratitud.</p>
+                            <p>{% if page.second_quote %}{{ page.second_quote }}{% else %}El silencio es el lienzo donde el alma pinta sus más bellos paisajes. En Chambalabamba, cada amanecer es una nueva oportunidad de renacer, cada atardecer una invitación a la gratitud.{% endif %}</p>
                         </blockquote>
 
                         <!--Event Gallery Start-->
                         <div class="event-gallery gallery wf100" style="margin-top: 50px;">
                             <div class="section-title-2">
-                                <h2>Espacios sagrados de transformación</h2>
+                                <h2>{% if page.gallery_section.title %}{{ page.gallery_section.title }}{% else %}Espacios sagrados de transformación{% endif %}</h2>
                             </div> 
                             
-                            <p>Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura.</p>
+                            <p>{% if page.gallery_section.paragraph %}{{ page.gallery_section.paragraph }}{% else %}Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura.{% endif %}</p>
                             <div id="retiros-gallery-carousel" class="owl-carousel owl-theme">
+                                {% for item in page.gallery_section.images.all %}
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-02.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-02.png' %}" alt="Meditación al amanecer en Chambalabamba"> </div>
+                                    <div class="gallery-img"> <a href="{{ item.image.url }}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{{ item.image.url }}" alt="{{ item.alt_text }}"> </div>
                                 </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-03.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-03.png' %}" alt="Espacios naturales para la contemplación"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-04.png' %}" alt="Conexión profunda con la naturaleza"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/retiros-07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/retiros-07.png' %}" alt="Retiros en armonía con los elementos"> </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <!--Event Gallery End-->
@@ -171,33 +130,17 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="section-title-2 text-center">
-                                            <h2>Voces de transformación</h2>
+                                            <h2>{% if page.testimonial_section.title %}{{ page.testimonial_section.title }}{% else %}Voces de transformación{% endif %}</h2>
                                         </div>
                                         <div id="retiros-testimonials" class="owl-carousel owl-theme">
+                                            {% for testimonial in page.testimonial_section.testimonials.all %}
                                             <!--testimonials box start-->
                                             <div class="item">
-                                                <p>"Mi retiro en Chambalabamba fue mucho más que unas vacaciones espirituales. Fue un verdadero renacer. La conexión con la naturaleza y conmigo misma fue tan profunda que regresé siendo una persona completamente renovada."</p>
-                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>María Elena</strong> México </div>
+                                                <p>"{{ testimonial.quote }}"</p>
+                                                <div class="tuser"> <img src="{% if testimonial.image %}{{ testimonial.image.url }}{% else %}{% static 'images/tuser1.jpg' %}{% endif %}" alt=""> <strong>{{ testimonial.author }}</strong> {% if testimonial.location %}{{ testimonial.location }}{% endif %} </div>
                                             </div>
                                             <!--testimonials box End-->
-                                            <!--testimonials box start-->
-                                            <div class="item">
-                                                <p>"Los facilitadores de Chambalabamba tienen un don especial para crear espacios sagrados. Me sentí acompañado y contenido en cada momento de mi proceso de autoconocimiento."</p>
-                                                <div class="tuser"> <img src="{% static 'images/tuser2.jpg' %}" alt=""> <strong>Carlos</strong> Argentina </div>
-                                            </div>
-                                            <!--testimonials box End-->
-                                            <!--testimonials box start-->
-                                            <div class="item">
-                                                <p>"Nunca imaginé que el silencio pudiera ser tan revelador. En Chambalabamba aprendí a escuchar mi propia voz interior y a encontrar paz en medio del caos. Una experiencia que recomiendo a todos."</p>
-                                                <div class="tuser"> <img src="{% static 'images/tuser3.jpg' %}" alt=""> <strong>Ana</strong> Colombia </div>
-                                            </div>
-                                            <!--testimonials box End-->
-                                            <!--testimonials box start-->
-                                            <div class="item">
-                                                <p>"La combinación de prácticas de sanación y el entorno natural de Chambalabamba es simplemente mágica. Volví a casa con una sensación de claridad y propósito que no había sentido en años."</p>
-                                                <div class="tuser"> <img src="{% static 'images/tuser1.jpg' %}" alt=""> <strong>Javier</strong> España </div>
-                                            </div>
-                                            <!--testimonials box End-->
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
