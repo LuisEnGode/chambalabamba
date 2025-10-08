@@ -19,4 +19,7 @@ db.sqlite3
 /static/
 media/
 
+# Archivos de conexion con gith
+keypair
+keypair.pub
 

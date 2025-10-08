@@ -7,5 +7,6 @@ class ParticipaConfig(AppConfig):
     verbose_name = "Participa"
 
     def ready(self):
-        from .seed import _seed_estancias_once
+        from .seeds import _seed_estancias_once, _seed_voluntariado_once
         post_migrate.connect(_seed_estancias_once, sender=self)
+        post_migrate.connect(_seed_voluntariado_once, sender=self)

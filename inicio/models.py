@@ -62,7 +62,7 @@ class Gallery(BaseOrdenPublicado):
     ]
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_ultimo_evento")
+    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_ultimos_eventos")
     descripcion = models.TextField(blank=True)
     portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
     alt_portada = models.CharField(max_length=200, blank=True)
@@ -95,3 +95,22 @@ class GalleryItem(BaseOrdenPublicado):
     def __str__(self):
         base = self.titulo or self.alt or self.imagen.name
         return f"{self.galeria.titulo} – {base}"
+
+class SectionHeader(models.Model):
+    SECCIONES = [
+        ("home_ultimos_eventos", "Home – Últimos Eventos"),
+        ("nosotros_cabecera", "Nosotros – Cabecera"),
+        ("proyectos_movimiento", "Home – Proyectos en Movimiento"),
+        ("participa_estancias", "Participa – Estancias"),
+    ]
+    seccion = models.CharField(max_length=50, choices=SECCIONES, unique=True)
+    title = models.CharField("Título (H2)", max_length=120)
+    subtitle = models.CharField("Subtítulo (H5)", max_length=160, blank=True)
+    publicado = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Header de Sección"
+        verbose_name_plural = "Headers de Sección"
+
+    def __str__(self):
+        return f"{self.get_seccion_display()} – {self.title}"

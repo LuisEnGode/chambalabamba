@@ -1,4 +1,22 @@
 from django.db import models
+from django.urls import reverse
+
+
+
+class TiendaLanding(models.Model):
+    publicado = models.BooleanField(default=True)
+    title = models.CharField(max_length=160, default="Tienda")
+    intro_html = models.TextField(blank=True, help_text="Texto de bienvenida (HTML).")
+    cta_text = models.CharField(max_length=60, blank=True, default="Ver productos")
+    cta_url = models.CharField(max_length=200, blank=True, default="/tienda/")  # ajusta si tu ruta difiere
+
+    class Meta:
+        verbose_name = "Página de Tienda (landing)"
+        verbose_name_plural = "Página de Tienda (landing)"
+
+    def __str__(self):
+        return "Landing de Tienda"
+
 
 class ProductoCategoria(models.Model):
     nombre = models.CharField(max_length=120)
@@ -9,8 +27,8 @@ class ProductoCategoria(models.Model):
 
     class Meta:
         ordering = ["orden", "nombre"]
-        verbose_name = "Categoría de producto"
-        verbose_name_plural = "Categorías de producto"
+        verbose_name = "2. Categoría de producto"
+        verbose_name_plural = "2. Categorías de producto"
 
     def __str__(self):
         return self.nombre
@@ -35,10 +53,14 @@ class Producto(models.Model):
     orden = models.PositiveIntegerField(default=0)
     creado = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        # Ajusta al nombre real de tu ruta de detalle si existe:
+        return reverse("tienda:detalle-producto", kwargs={"slug": self.slug})
+
     class Meta:
         ordering = ["orden", "-creado"]
-        verbose_name = "Producto"
-        verbose_name_plural = "Productos"
+        verbose_name = "1) Producto"
+        verbose_name_plural = "1) Productos"
 
     def __str__(self):
         return self.titulo

@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import HeroSlide, ValorCard
-from .models import Gallery, GalleryItem
+from .models import Gallery, GalleryItem, SectionHeader
 
 class BaseOrdenPublicadoAdmin(admin.ModelAdmin):
     list_editable = ("publicado", "orden")
@@ -43,3 +43,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 
 
+@admin.register(SectionHeader)
+class SectionHeaderAdmin(admin.ModelAdmin):
+    list_display = ("seccion", "title", "subtitle", "publicado")
+    list_editable = ("publicado",)

@@ -1,0 +1,82 @@
+{% load static %}
+<section class="wf100 p80 current-projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title-2">
+                    <header class="section-title-2  mb-6">
+                        <a href="{% url 'tienda:tienda' %}"><h5>Productos</h5></a>
+                        <a href="{% url 'tienda:tienda' %}"><h2>{{ header_h5 }}</h2></a>
+                    </header>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ul class="nav" id="myTab" role="tablist">
+                    {% for t in tabs %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if forloop.first %}active{% endif %}"
+                           id="{{ t.id }}-tab" data-toggle="tab"
+                           href="#{{ t.id }}" role="tab"
+                           aria-controls="{{ t.id }}"
+                           aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                            {{ t.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-content" id="myTabContent">
+                    {% for t in tabs %}
+                    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}"
+                         id="{{ t.id }}" role="tabpanel" aria-labelledby="{{ t.id }}-tab">
+                        <div class="cpro-slider owl-carousel owl-theme">
+                            {% for p in t.items %}
+                            <div class="item">
+                                <div class="pro-box">
+                                    {% if p.imagen_portada %}
+                                    <img src="{{ p.imagen_portada.url }}" alt="{{ p.titulo }}">
+                                    {% elif p.imagenes.all|length %}
+                                    {% with f=p.imagenes.all.0 %}
+                                    <img src="{{ f.imagen.url }}" alt="{{ f.alt|default:p.titulo }}">
+                                    {% endwith %}
+                                    {% else %}
+                                    <img src="{% static 'images/current-pro-placeholder.jpg' %}" alt="{{ p.titulo }}">
+                                    {% endif %}
+
+                                    <h5>{{ p.titulo }}</h5>
+                                    <div class="pro-hover">
+                                        <h6>{{ p.titulo }}</h6>
+                                        {% if p.descripcion_corta %}
+                                        <p>{{ p.descripcion_corta }}</p>
+                                        {% elif p.descripcion %}
+                                        <p>{{ p.descripcion|truncatechars:140 }}</p>
+                                        {% else %}<p>&nbsp;</p>{% endif %}
+                                        <a href="{{ p.get_absolute_url }}" class="btn btn-sm btn-primary" >Leer mas</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <div class="item">
+                                <div class="pro-box">
+                                    <img src="{% static 'images/current-pro-placeholder.jpg' %}" alt="Sin productos">
+                                    <h5>Pronto nuevos productos</h5>
+                                    <div class="pro-hover">
+                                        <h6>Pronto nuevos productos</h6>
+                                        <p>Estamos preparando artículos para esta categoría.</p>
+                                        <a href="{% url 'tienda:tienda' %}">Ver tienda</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

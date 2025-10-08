@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ page.title }} – Chambalabamba{% endblock %}
+
+{% block content %}
+<section class="wf100 p100 inner-header"
+  {% if page.header and page.header.background %}
+    style="background-image: url({{ page.header.background.url }}); background-size: cover; background-position: center;"
+  {% endif %}>
+  <div class="container">
+    <h1>{% if page.header and page.header.title %}{{ page.header.title }}{% else %}{{ page.title }}{% endif %}</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">{% if page.header and page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}{{ page.title }}{% endif %}</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="wf100 p80 blog">
+  <div class="blog-details">
+    <div class="container">
+      <div class="row">
+
+        <!-- Principal -->
+        <div class="col-lg-9 col-md-8">
+          <div class="blog-single-content">
+            {% if page.hero_image %}
+              <div class="blog-thumb">
+                <img src="{{ page.hero_image.url }}" alt="{{ page.title }}">
+              </div>
+            {% endif %}
+
+            <h3>{{ page.title }}</h3>
+            {% if page.lead %}<p><strong>{{ page.lead|linebreaksbr }}</strong></p>{% endif %}
+
+            {# Párrafos #}
+            {% for p in page.paragraphs.all %}
+              {% if p.publicado %}<p>{{ p.body|linebreaksbr }}</p>{% endif %}
+            {% empty %}
+              <p>Pronto tendremos contenido para esta sección.</p>
+            {% endfor %}
+
+            {# Citas #}
+            {% for q in page.quotes.all %}
+              {% if q.publicado %}<blockquote>{{ q.text|linebreaksbr }}</blockquote>{% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4">
+          <div class="sidebar">
+            {% for w in page.sidebar.all %}
+              {% if w.publicado %}
+              <div class="widget">
+                <h5 class="widget-title">{{ w.title }}</h5>
+                <p>{{ w.text|linebreaksbr }}</p>
+              </div>
+              {% endif %}
+            {% empty %}
+              <div class="widget">
+                <h5 class="widget-title">Más sobre esta sección</h5>
+                <p>Actualizaremos esta información pronto.</p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+[
+  { "model": "nosotros.pageheader", "pk": 13, "fields": {
+      "title": "Nosotros",
+      "breadcrumb_label": "Sociocultural",
+      "background": "nosotros/headers/cabeza-sociocultural.png"
+  }},
+  { "model": "nosotros.pilarpage", "pk": 103, "fields": {
+      "slug": "sociocultural",
+      "header": 13,
+      "hero_image": "nosotros/pilares/hero/sociocultural.png",
+      "title": "Pilar Sociocultural",
+      "lead": "Celebramos la diversidad, el arte y las tradiciones como tejido vivo de la comunidad."
+  }},
+
+  { "model": "nosotros.pilarparagraph", "pk": 4001, "fields": {
+      "page": 103, "publicado": true, "orden": 1,
+      "body": "El arte, la música, la danza y la palabra sostienen nuestra memoria colectiva y promueven el diálogo intergeneracional.",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 4002, "fields": {
+      "page": 103, "publicado": true, "orden": 2,
+      "body": "Impulsamos espacios de aprendizaje comunitario, festivales y talleres que fortalecen la identidad local y la inclusión.",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }},
+  { "model": "nosotros.pilarparagraph", "pk": 4003, "fields": {
+      "page": 103, "publicado": true, "orden": 3,
+      "body": "El respeto por la diversidad cultural guía nuestra convivencia y el cuidado de los bienes comunes.",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }},
+
+  { "model": "nosotros.pilarquote", "pk": 4101, "fields": {
+      "page": 103, "publicado": true, "orden": 1,
+      "text": "Somos comunidad cuando compartimos saberes y creamos juntos.",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }},
+
+  { "model": "nosotros.pilarsidebarwidget", "pk": 4201, "fields": {
+      "page": 103, "publicado": true, "orden": 1,
+      "title": "Fundamentos socioculturales",
+      "text": "Participación, respeto por las diferencias, y espacios seguros para la expresión artística.",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }},
+  { "model": "nosotros.pilarsidebarwidget", "pk": 4202, "fields": {
+      "page": 103, "publicado": true, "orden": 2,
+      "title": "Proyectos actuales",
+      "text": "- Círculos de palabra\n- Festivales y presentaciones\n- Escuela de artes",
+      "creado": "2025-09-11T16:37:00Z", "actualizado": "2025-09-11T16:37:00Z"
+  }}
+]

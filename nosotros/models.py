@@ -16,8 +16,8 @@ class NosotrosPage(models.Model):
     # testimonios: a futuro
 
     class Meta:
-        verbose_name = "1. Página: Nosotros / About Us Page"
-        verbose_name_plural = "1. Página: Nosotros / About Us Page"
+        verbose_name = "1. Nuestro camino / About Us Page"
+        verbose_name_plural = "1. Nuestro camino  / About Us Page"
 
     def __str__(self):
         return "Página Nosotros"
@@ -32,8 +32,8 @@ class InnerHeader(models.Model):
     background = models.ImageField(upload_to="nosotros/", help_text="Imagen de fondo del header")
 
     class Meta:
-        verbose_name = "2. Sección: Cabecera / Header Section"
-        verbose_name_plural = "2. Sección: Cabecera / Header Section"
+        verbose_name = "1.1. Nuestro camino - Sección: Cabecera / Header Section"
+        verbose_name_plural = "1.1. Nuestro camino - Sección: Cabecera / Header Section"
 
     def __str__(self):
         return self.title
@@ -51,8 +51,8 @@ class AboutSection(models.Model):
     video_url = models.CharField("URL de video (Vimeo/YouTube)", max_length=500, validators=[URLValidator()], blank=True)
 
     class Meta:
-        verbose_name = "3. Sección: Acerca + Video / About + Video"
-        verbose_name_plural = "3. Sección: Acerca + Video / About + Video"
+        verbose_name = "1.2 Nuestro camino - Sección: Acerca + Video / About + Video"
+        verbose_name_plural = "1.2 Nuestro camino - Sección: Acerca + Video / About + Video"
 
     def __str__(self):
         return self.title
@@ -67,8 +67,8 @@ class HistorySection(models.Model):
     side_image = models.ImageField(upload_to="nosotros/", blank=True, null=True)
 
     class Meta:
-        verbose_name = "4. Sección: Historia / History Section"
-        verbose_name_plural = "4. Sección: Historia / History Section"
+        verbose_name = "1.3 Nuestro camino - Sección: Historia / History Section"
+        verbose_name_plural = "1.3 Nuestro camino - Sección: Historia / History Section"
 
     def __str__(self):
         return self.title
@@ -110,8 +110,8 @@ class EcoAldeaSection(models.Model):
     title = models.CharField(max_length=160, default="Sé parte de la Eco Aldea")
 
     class Meta:
-        verbose_name = "5. Sección: EcoAldea / EcoVillage Section"
-        verbose_name_plural = "5. Sección: EcoAldea / EcoVillage Section"
+        verbose_name = "1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section"
+        verbose_name_plural = "1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section"
 
     def __str__(self):
         return self.title
@@ -138,6 +138,133 @@ class EcoAldeaCard(models.Model):
 
     def __str__(self):
         return self.title
+
+                                            # ───────────────────────────────────────────────
+                                            # PILARES (Ecología, Economía, Bienestar, Sociocultural)
+                                            # ───────────────────────────────────────────────
+
 from django.db import models
 
-# Create your models here.
+class BaseOrdenPublicado(models.Model):
+    publicado = models.BooleanField(default=True)
+    orden = models.PositiveIntegerField(default=0)
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+        ordering = ["orden", "-creado"]
+
+# --- HEADER -------------------------------------------------
+class PageHeader(models.Model):
+    title = models.CharField(max_length=120, default="Nosotros")
+    breadcrumb_label = models.CharField(max_length=120, blank=True, help_text="Texto del breadcrumb nivel 2/3")
+    background = models.ImageField(upload_to="nosotros/headers/", blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+# --- PILAR PAGE (reutilizable: ecologia, economia, bienestar, sociocultural) ---
+class PilarPage(models.Model):
+    SLUG_CHOICES = [
+        ("ecologia", "Ecología"),
+        ("economia", "Economía comunitaria"),
+        ("bienestar", "Bienestar integral"),
+        ("sociocultural", "Sociocultural"),
+    ]
+    slug = models.SlugField(unique=True, choices=SLUG_CHOICES)
+    header = models.OneToOneField(PageHeader, on_delete=models.SET_NULL, null=True, blank=True)
+    hero_image = models.ImageField(upload_to="nosotros/pilares/hero/", blank=True, null=True)
+    title = models.CharField(max_length=150, default="Pilar")
+    # opcional: lead corto si lo necesitas más adelante
+    lead = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "2. Pilar"
+        verbose_name_plural = "2. Pilares"
+
+    def __str__(self):
+        return f"{self.get_slug_display()}"
+
+# --- BLOQUES DE TEXTO PRINCIPALES --------------------------
+class PilarParagraph(BaseOrdenPublicado):
+    page = models.ForeignKey(PilarPage, related_name="paragraphs", on_delete=models.CASCADE)
+    body = models.TextField()
+
+    def __str__(self):
+        return f"Párrafo {self.orden} · {self.page}"
+
+class PilarQuote(BaseOrdenPublicado):
+    page = models.ForeignKey(PilarPage, related_name="quotes", on_delete=models.CASCADE)
+    text = models.TextField()
+
+    def __str__(self):
+        return f"Cita {self.orden} · {self.page}"
+
+# --- SIDEBAR ------------------------------------------------
+class PilarSidebarWidget(BaseOrdenPublicado):
+    page = models.ForeignKey(PilarPage, related_name="sidebar", on_delete=models.CASCADE)
+    title = models.CharField(max_length=120)
+    text = models.TextField()
+
+    def __str__(self):
+        return f"Sidebar: {self.title} · {self.page}"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# NOSOTROS: Secciones (Gobernanza, Principios y valores, Territorio)
+# ──────────────────────────────────────────────────────────────────────────────
+class TopicPage(models.Model):
+    SLUG_CHOICES = [
+        ("gobernanza", "Gobernanza"),
+        ("principios_valores", "Principios y valores"),
+        ("territorio", "Territorio"),
+    ]
+    slug = models.SlugField(unique=True, choices=SLUG_CHOICES)
+    header = models.OneToOneField(PageHeader, on_delete=models.SET_NULL, null=True, blank=True)
+    hero_image = models.ImageField(upload_to="nosotros/sections/hero/", blank=True, null=True)
+    title = models.CharField(max_length=150, default="Sección")
+    lead = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Sección (Nosotros)"
+        verbose_name_plural = "Secciones (Nosotros)"
+
+    def __str__(self):
+        return self.get_slug_display()
+
+class TopicParagraph(BaseOrdenPublicado):
+    page = models.ForeignKey(TopicPage, related_name="paragraphs", on_delete=models.CASCADE)
+    body = models.TextField()
+    def __str__(self): return f"Párrafo {self.orden} · {self.page}"
+
+class TopicQuote(BaseOrdenPublicado):
+    page = models.ForeignKey(TopicPage, related_name="quotes", on_delete=models.CASCADE)
+    text = models.TextField()
+    def __str__(self): return f"Cita {self.orden} · {self.page}"
+
+class TopicSidebarWidget(BaseOrdenPublicado):
+    page = models.ForeignKey(TopicPage, related_name="sidebar", on_delete=models.CASCADE)
+    title = models.CharField(max_length=120)
+    text = models.TextField()
+    def __str__(self): return f"Sidebar: {self.title} · {self.page}"
+
+
+# === PROXIES ===
+class GobernanzaPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "3. Gobernanza"
+        verbose_name_plural = "3. Gobernanza"
+
+class PrincipiosValoresPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "4. Principios y valores"
+        verbose_name_plural = "4. Principios y valores"
+
+class TerritorioPage(TopicPage):
+    class Meta:
+        proxy = True
+        verbose_name = "5. Territorio"
+        verbose_name_plural = "5. Territorio"

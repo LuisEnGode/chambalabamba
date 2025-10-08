@@ -9,7 +9,7 @@
         <h1>Tienda</h1>
         <ul>
             <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="{% url 'tienda' %}">Productos</a></li>
+            <li><a href="{% url 'tienda:tienda' %}">Productos</a></li>
             <li><a href="#">Detalle del producto</a></li>
         </ul>
     </div>
@@ -134,7 +134,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="product-box">
                                 <div class="pro-thumb">
-                                    <a href="{% url 'detalle-producto' r.slug %}">Add To Cart</a>
+                                    <a href="{% url 'tienda:detalle-producto' r.slug %}">Add To Cart</a>
                                     {% if r.imagen_portada %}
                                     <img src="{{ r.imagen_portada.url }}" alt="{{ r.titulo }}">
                                     {% else %}
@@ -142,7 +142,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="pro-txt">
-                                    <h6><a href="{% url 'detalle-producto' r.slug %}">{{ r.titulo }}</a></h6>
+                                    <h6><a href="{% url 'tienda:detalle-producto' r.slug %}">{{ r.titulo }}</a></h6>
                                     <p class="pro-price">
                                         {% if r.precio_tachado %}
                                         <del>${{ r.precio_tachado }}</del>

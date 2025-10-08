@@ -1,6 +1,9 @@
+
 # apps/contenido/admin.py
 from django.contrib import admin
 from .models import MediaAsset, Gallery, GalleryItem, Flyer, Placement
+from django.contrib import admin
+from .models import FooterSettings, FooterMenu, FooterLink
 
 @admin.register(MediaAsset)
 class MediaAssetAdmin(admin.ModelAdmin):
@@ -29,3 +32,23 @@ class PlacementAdmin(admin.ModelAdmin):
     list_display = ("key", "flyer", "gallery", "activo")
     list_filter = ("activo",)
     search_fields = ("key",)
+
+
+
+@admin.register(FooterSettings)
+class FooterSettingsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ("Contenido", {"fields": ("title", "text")}),
+        ("Enlace", {"fields": ("link_label", "named_url", "named_url_kwargs", "url", "open_in_new_tab")}),
+    )
+
+class FooterLinkInline(admin.TabularInline):
+    model = FooterLink
+    extra = 1
+    fields = ("order", "label", "named_url", "named_url_kwargs", "url", "open_in_new_tab")
+
+@admin.register(FooterMenu)
+class FooterMenuAdmin(admin.ModelAdmin):
+    list_display = ("name", "order")
+    ordering = ("order", "id")
+    inlines = [FooterLinkInline]

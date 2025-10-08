@@ -6833,46 +6833,46 @@ section.wf100.p80.fcampaigns {
   }
 }
 
-/*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
+/* ------------ LOGO PEQUEÑO SUPERIOR IZQUIERDO ------------------ */
 
-/* Logo superpuesto como marca de agua centrada */
+/* Logo superpuesto como marca de agua (modo escritorio) */
 .slider-wrapper .logo-overlay-s {
   position: absolute;
   top: 0%;
   left: 10%;
-  transform: translate(-33%, -55%); /* Ajusta aquí */
-  z-index: 10;
+  transform: translate(-33%, -55%);
+  z-index: 5; /* menor que el menú, pero suficiente para verse */
   opacity: 1;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
 }
 
-/* Aumentar tamaño en pantallas grandes */
 .slider-wrapper .logo-overlay-s img {
   max-width: 457px;
   width: 25%;
   height: auto;
 }
 
+/* Evita que el logo tape el menú */
+.logo-overlay-s {
+  position: absolute;
+  z-index: 1;
+}
 
-/* Versión responsive para móviles */
-@media (max-width: 767px) {
+/* Menú móvil por encima */
+.mobile-menu {
+  position: relative;
+  z-index: 20;
+}
+
+
+/* --- FIX DEFINITIVO PARA MOVIL: OCULTAR EL LOGO --- */
+@media (max-width: 920px), (hover: none) and (pointer: coarse) {
   .slider-wrapper .logo-overlay-s {
-    top: 0%;
-    left: 10%;
-    transform: translate(-50%, -50%)
-    opacity: 1;
-    pointer-events: none;
-    filter: brightness(1.2) contrast(1.2);
-
-  }
-
-  .slider-wrapper .logo-overlay-s img {
-    max-width: 120px;
-    width: 100%;
-    height: auto;
+    display: none !important;
   }
 }
+
 /***************************************************************/
 
 /*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
@@ -7039,3 +7039,132 @@ section.wf100.p80.fcampaigns {
 /* Centrado/ancho máximo del flyer (si aún no lo tienes) */
 .flyer-max-480 { max-width: 480px; }
 .flyer-max-480 .flyer-frame { margin: 0 auto; }
+
+/*SECCION DE FOTO LOGO FOOTER*/
+
+
+
+/* Evita que el theme fuerce tamaño a todas las imágenes del footer */
+.footer-widget img { width: auto; height: auto; }
+
+/* Tamaño proporcional del logo */
+.footer-logo {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 193 / 234; /* proporción real de tu imagen */
+  height: auto;
+  display: block;
+  margin-top: 48px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .footer-logo {
+    max-width: 150px;
+    max-height: 100px;
+    margin-top: 24px;
+  }
+}
+
+/*LINK PARA BOTON*/
+
+button.link-like {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;       /* usa la misma fuente que el texto */
+}
+button.link-like:hover { text-decoration: none; }
+
+/* === BLOG SIDEBAR: colores ECO === */
+.sidebar .side-widget h5,
+.sidebar h5 {
+  color: #66bb6a !important;      /* verde del theme */
+  font-weight: 600;
+}
+
+/* enlaces laterales normales + hover */
+.sidebar a { color: #222; transition: color .2s ease; }
+.sidebar a:hover { color: #66bb6a !important; }
+
+/* “Últimos posts” (fecha con ícono) */
+.sidebar .pdate i { color: #66bb6a; }
+
+/* “Tags” chips (como la plantilla) */
+.sidebar .single-post-tags a {
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+  padding: 4px 12px;
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  font-size: 13px;
+  color: #555;
+}
+.sidebar .single-post-tags a:hover {
+  border-color: #66bb6a;
+  color: #66bb6a;
+}
+
+/* “Archivos” con check verde estilo demo */
+.sidebar .archives li { list-style: none; margin: 6px 0; }
+.sidebar .archives li::before {
+  content: "\f00c";                 /* check */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #66bb6a;
+  margin-right: 8px;
+}
+
+/* === Botones verdes del template ECO === */
+.btn-primary {
+  background-color: #66bb6a;   /* Verde principal ECO */
+  border-color: #66bb6a;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #5ba85d;   /* tono más oscuro para hover */
+  border-color: #5ba85d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-outline-primary {
+  border-color: #66bb6a;
+  color: #66bb6a;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+  color: #fff;
+}
+
+/* Verde ECO solo para el título dentro del hover de la galería */
+.pro-box .pro-hover h6 {
+  color: #66bb6a;           /* verde del tema */
+  font-weight: 600;
+}
+
+
+/* Forzar texto blanco en botones verdes */
+.btn-primary,
+.btn-primary:link,
+.btn-primary:visited {
+  color: #fff !important;
+}
+
+/* Mantener blanco también en hover/focus/active */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  color: #fff !important;
+}

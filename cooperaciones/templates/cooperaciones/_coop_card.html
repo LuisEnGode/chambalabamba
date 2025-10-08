@@ -1,0 +1,13 @@
+{# _coop_card.html #}
+{% load static %}
+<a class="d-block p-3 rounded border text-center h-100" href="{{ it.get_absolute_url }}">
+  {% if it.logo %}
+    <img src="{{ it.logo.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
+  {% elif it.portada %}
+    <img src="{{ it.portada.url }}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
+  {% else %}
+    <img src="{% static 'images/placeholder-logo.png' %}" alt="{{ it.nombre }}" style="max-height:80px;max-width:100%">
+  {% endif %}
+  <div class="mt-2 font-weight-semibold">{{ it.nombre }}</div>
+  {% if it.pais %}<div class="text-muted small">{{ it.pais }}</div>{% endif %}
+</a>

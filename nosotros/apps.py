@@ -10,3 +10,5 @@ class NosotrosConfig(AppConfig):
 
     def ready(self):
         post_migrate.connect(_seed_nosotros_once, sender=self)
+
+

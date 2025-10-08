@@ -1,88 +1,75 @@
-{% extends 'core/base.html' %}
-{% load static%}
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ page.title }} – Chambalabamba{% endblock %}
+
 {% block content %}
-
-<!--Inner Header Start-->
+<!-- Header interno -->
 <section class="wf100 p100 inner-header"
-         style="background-image: url({% static 'nosotros/images/pilares/sociocultural/cabezasociocultural.png' %}); background-size: cover; background-position: center;">
-    <div class="container">
-        <h1>Nosotros</h1>
-        <ul>
-            <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Pilares</a></li>
-            <li><a href="#">Sociocultural</a></li>
-        </ul>
-    </div>
+         style="background-image: url({% if page.header and page.header.background %}{{ page.header.background.url }}{% else %}{% static 'nosotros/images/pilares/ecologia/cabeza-ecologia.png' %}{% endif %}); background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>{% if page.header and page.header.title %}{{ page.header.title }}{% else %}Nosotros{% endif %}</h1>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="#">Pilares</a></li>
+      <li><a href="#">{% if page.header and page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}Ecología{% endif %}</a></li>
+    </ul>
+  </div>
 </section>
-<!--Inner Header End-->
 
+<!-- Contenido -->
 <section class="wf100 p80 blog">
-    <div class="blog-details">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-8">
-                    <!--Blog Single Content Start-->
-                    <div class="blog-single-content">
-                        <div class="blog-single-thumb"><img src="{% static 'nosotros/images/pilares/sociocultural/bajadasociocultural.png' %}" alt=""></div>
-                        <h3>Sociocultural</h3>
-                        <p> The environment includes; the surface of the earth, natural re­sources, land and water,
-                            mountains and plains, fertile lands and deserts, oceans, storms and cy­clones, weather and
-                            climatic factors, seasons, etc. It also includes biological conditions such as plants,
-                            animals with all their complexities.</p>
-                        <p>We are going to run a solid educational campaign for the orphan children study. There are
-                            many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
-                        <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. To take a
-                            trivial example, which of us ever undertakes laborious physical exercise, except to obtain
-                            some advantage. </p>
-                        <blockquote>
-                            <p> The inner environment is the society itself. It is the social envi­ronment & endures
-                                only so long as the society endures. It consists of the organisations and regula­tions,
-                                the traditions and institutions. </p>
-                        </blockquote>
-                        <p> Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because
-                            it is pain, but because occasionally circumstances occur in which toil and pain can procure
-                            him some great pleasure. because it is pain, but because occasionally circumstances occur in
-                            which toil and pain can procure him some great pleasure. </p>
-                        <!--Chief Guests of the Event Start-->
+  <div class="blog-details">
+    <div class="container">
+      <div class="row">
 
-                        <!--Chief Guests of the Event End-->
-
-                    </div>
-                    <!--Blog Single Content End-->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="sidebar">
-
-                        <!--Widget Start-->
-<div class="side-widget mb-4">
-                            <h5 class="mb-3">Fundamentos de nuestra convivencia</h5>
-                            <p class="mb-0">
-                                La rápida difusión de la palabra desde los años 1990 parece traducir la conciencia de un
-                                cambio de paradigma en las relaciones de poder. Se ha percibido la insuficiencia del
-                                concepto clásico de “gobierno” para describir las transformaciones que se han ido
-                                produciendo en el contexto de la globalización. Ante el surgimiento de empresas
-                                multinacionales con presupuestos superiores a los de ciertos estados soberanos o de…
-                            </p>
-                        </div>
-                        <!--Widget Start-->
-                        <!--Widget Start-->
-                        <div class="side-widget project-list-widget ">
-                            <h5>Proyectos Actuales</h5>
-                            <ul>
-                                <li><a href="#">Huerta sintropica</a></li>
-                                <li><a href="#">Cuidado del agua</a></li>
-                                <li><a href="#">Economia circular</a></li>
-
-                            </ul>
-                        </div>
-                        <!--Widget End-->
-                    </div>
-                </div>
+        <!-- Principal -->
+        <div class="col-lg-9 col-md-8">
+          <div class="blog-single-content">
+            {% if page.hero_image %}
+            <div class="blog-thumb">
+              <img src="{{ page.hero_image.url }}" alt="{{ page.title }}">
             </div>
-        </div>
-    </div>
-</section>
+            {% endif %}
 
+            <h3>{{ page.title }}</h3>
+            {% if page.lead %}<p><strong>{{ page.lead|linebreaksbr }}</strong></p>{% endif %}
+
+            {# Párrafos #}
+            {% for p in page.paragraphs.all %}
+              {% if p.publicado %}<p>{{ p.body|linebreaksbr }}</p>{% endif %}
+            {% empty %}
+              <p>Pronto tendremos contenido para este pilar.</p>
+            {% endfor %}
+
+            {# Citas #}
+            {% for q in page.quotes.all %}
+              {% if q.publicado %}<blockquote>{{ q.text|linebreaksbr }}</blockquote>{% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4">
+          <div class="sidebar">
+            {% for w in page.sidebar.all %}
+              {% if w.publicado %}
+              <div class="widget">
+                <h5 class="widget-title">{{ w.title }}</h5>
+                <p>{{ w.text|linebreaksbr }}</p>
+              </div>
+              {% endif %}
+            {% empty %}
+              <div class="widget">
+                <h5 class="widget-title">Más sobre este pilar</h5>
+                <p>Actualizaremos esta sección pronto.</p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

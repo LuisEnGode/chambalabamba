@@ -1,0 +1,83 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ coop.nombre }} – Cooperación{% endblock %}
+
+{% block content %}
+<section class="wf100 p80">
+  <div class="container">
+
+    <div class="section-title-2 text-center">
+      <h5>Cooperación</h5>
+      <h2>{{ coop.nombre }}</h2>
+      {% if coop.pais %}<p class="mt-2">{{ coop.pais }}</p>{% endif %}
+    </div>
+
+    {% if coop.portada %}
+      <div class="text-center mb-4">
+        <img src="{{ coop.portada.url }}" alt="{{ coop.nombre }}" style="max-width:100%;height:auto;">
+      </div>
+    {% endif %}
+
+    {% if coop.descripcion or coop.url_externa %}
+      <div class="row mb-4">
+        <div class="col-md-10 offset-md-1">
+          {% if coop.descripcion %}<p>{{ coop.descripcion|linebreaks }}</p>{% endif %}
+          {% if coop.url_externa %}
+            <p class="mt-3">
+              <a class="btn btn-outline-primary" href="{{ coop.url_externa }}" target="_blank" rel="noopener">
+                Sitio del aliado
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <section class="wf100 p80 events">
+  <div class="event-grid-2">
+    <div class="container">
+      <div class="row">
+        {% for f in coop.fotos.all %}
+          {% if f.publicado %}
+            <div class="col-lg-4 col-md-6">
+              <div class="event-post">
+                <div class="event-thumb">
+                  {# Enlaza a la imagen grande (o puedes enlazar al detalle si prefieres) #}
+                  <a href="{{ f.imagen.url }}" target="_blank" aria-label="Abrir {{ f.alt|default:coop.nombre }}"><i class="fas fa-link"></i></a>
+                  <img src="{{ f.imagen.url }}" alt="{{ f.alt|default:coop.nombre }}" loading="lazy" decoding="async">
+                </div>
+                <div class="event-txt">
+                  <h5>
+                    <a href="{{ f.imagen.url }}" target="_blank">
+                      {{ f.alt|default:coop.nombre }}
+                    </a>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% empty %}
+          <div class="col-12 text-center text-muted">Aún no hay fotos publicadas.</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    {% if relacionados %}
+      <hr>
+      <h4 class="mt-4 mb-3">Otras cooperaciones</h4>
+      <div class="row">
+        {% for it in relacionados %}
+          <div class="col-6 col-sm-4 col-md-3 p-2">
+           {% include "cooperaciones/_coop_card.html" with it=it %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load participa_extras %}
+
+{% block content %}
+  {% voluntariado_page as vp %}
+  {% static 'images/escuela_01.png' as escuela_img %}
+
+  <section class="wf100 p100 inner-header"
+           style="background-image: url({% static 'participa/images/cabeza-voluntariado.png' %}); background-size: cover; background-position: center;">
+    <div class="container">
+      <h1>Participa</h1>
+      <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'participa:voluntariado' %}">Voluntariado</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wf100 p80 blog">
+    <div class="blog-details">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-8 col-md-8">
+            <div class="blog-single-content">
+              <div class="blog-single-thumb">
+                <img src="{% if vp and vp.thumb %}{{ vp.thumb.url }}{% elif vp and vp.background %}{{ vp.background.url }}{% else %}{{ escuela_img }}{% endif %}" alt="">
+              </div>
+
+              <h2 style="color: #1b5e20">
+                {{ vp.titulo|default:"Voluntariado: nuestra filosofía y cómo involucrarte" }}
+              </h2>
+
+              {% if vp.about_block and vp.about_block.publicado %}
+                {{ vp.about_block.body_html|safe }}
+              {% elif vp.intro_html %}
+                {{ vp.intro_html|safe }}
+              {% else %}
+                <p>Desde el voluntariado podrás involucrarte en talleres y cursos de permacultura, bioconstrucción,
+                  agroecología, salud natural y desarrollo personal. Aprenderás haciendo, integrando cuerpo, mente y
+                  espíritu, mientras aportas a proyectos concretos que generan impacto positivo en tu vida, en la
+                  comunidad y en el territorio.</p>
+              {% endif %}
+
+              {% if vp.quote_text %}
+                <blockquote>
+                  <p>{{ vp.quote_text }}</p>
+                  {% if vp.quote_author %}<footer>— {{ vp.quote_author }}</footer>{% endif %}
+                </blockquote>
+              {% endif %}
+
+              <!-- Cooperaciones -->
+              <div class="tab-pane fade show active" id="wildlife" role="tabpanel" aria-labelledby="wildlife-tab">
+                <section class="online-shop wf100 p80">
+                  <div class="container">
+                    <div class="mt-5">
+                    {% load coops_extras %}
+{% _home_cooperaciones subtitle="Alianzas que nos potencian" title="Cooperaciones" limit=12 %}
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4">
+            <div class="sidebar">
+              <div class="blog-single-content">
+                <h4 style="color: #1b5e20">Un ambiente diseñado para el voluntariado</h4>
+
+                {% if vp.ambiente_block and vp.ambiente_block.publicado %}
+                  {{ vp.ambiente_block.body_html|safe }}
+                {% else %}
+                  <p>En Chambalabamba el voluntariado es aprendizaje en acción. Podrás acompañar procesos en la
+                    <strong>Escuela Viva</strong>, apoyar el cuidado de nuestros <strong>huertos</strong> y participar en
+                    prácticas de <strong>agricultura regenerativa</strong>.</p>
+                  <p>Sembramos, compostamos, regamos y cosechamos respetando los ciclos de la naturaleza, mientras
+                    facilitamos experiencias educativas para niñas, niños, jóvenes y adultos. Es un espacio para servir a
+                    la comunidad, compartir saberes ancestrales y cultivar autonomía a través del trabajo en la tierra.</p>
+                {% endif %}
+
+                {% if vp.instagram_embed_url %}
+                  {% with clean_ig=vp.instagram_embed_url|cut:'?utm_source=ig_embed&utm_campaign=loading' %}
+                    <blockquote class="instagram-media"
+                                data-instgrm-captioned
+                                data-instgrm-permalink="{{ clean_ig }}"
+                                data-instgrm-version="14"
+                                style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                    </blockquote>
+                    <script async src="https://www.instagram.com/embed.js"></script>
+                    <p class="text-center mt-2">
+                      <a href="{{ clean_ig }}" target="_blank" rel="noopener">Ver esta publicación en Instagram</a>
+                    </p>
+                  {% endwith %}
+                {% endif %}
+              </div>
+
+              {% voluntariado_sidebar_projects limit=10 %}
+              <div class="mt-2">
+                {% if vp.contact_cta_url %}
+                  <a class="btn btn-success btn-sm" href="{{ vp.contact_cta_url }}">{{ vp.contact_cta_label|default:"Proponer cooperación" }}</a>
+                {% else %}
+                  <a class="btn btn-success btn-sm" href="{% url 'contacto:contacto' %}">{{ vp.contact_cta_label|default:"Proponer cooperación" }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

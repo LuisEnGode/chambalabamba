@@ -7,9 +7,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config('DEBUG', default=True, cast=bool)
 # Archivos estáticos
 STATIC_URL = "/static/"
+
+# para Local
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
-
+"""
+# para Render:
+MEDIA_ROOT = "/opt/render/project/src/media"
+MEDIA_URL = "/media/"
+"""
 print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
@@ -44,10 +51,13 @@ INSTALLED_APPS = [
     "tienda.apps.TiendaConfig",
     'noticias',
     'contacto',
-    'blog.apps.BlogConfig',
+     "blog",   # <-- debe estar
     'contenido',
     "eventos.apps.EventosConfig",
     "nosotros.apps.NosotrosConfig",
+    "cooperaciones.apps.CooperacionesConfig",
+    'visitas',
+    "proyectos.apps.ProyectosConfig",
 
 ]
 
@@ -78,6 +88,24 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 ROOT_URLCONF = 'chambalabamba.urls'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Format", "Bold", "Italic", "Underline", "Strike"],
+            ["NumberedList", "BulletedList", "Blockquote"],
+            ["Link", "Unlink"],
+            ["Image", "Table"],
+            ["RemoveFormat", "Source"],
+        ],
+        "height": 300,
+        "width": "100%",
+        "extraPlugins": ",".join(["uploadimage", "justify", "autolink"]),
+        "removePlugins": "stylesheetparser",
+        "forcePasteAsPlainText": False,
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -107,6 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'participa', 'static'),
     os.path.join(BASE_DIR, 'tienda', 'static'),
     os.path.join(BASE_DIR, 'eventos', 'static'),
+    os.path.join(BASE_DIR, 'visitas', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -141,3 +170,7 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# PayPal settings
+PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL', default='sb-wtmbn45974096@business.example.com')
+PAYPAL_TEST = config('PAYPAL_TEST', default=True, cast=bool)
