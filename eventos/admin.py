@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Festival, TallerDetail, TalleresPage, TalleresHeader, TalleresIntroSection,
+    Festival, FestivalImage, TallerDetail, TalleresPage, TalleresHeader, TalleresIntroSection,
     FestivalesPage, FestivalesHeader, FestivalesIntroSection,
     ArtesPage, ArtesHeader, ArtesIntroSection, ArtesDiversitySection, Arte,
     ArtesGallerySection, ArtesGalleryImage,
@@ -15,7 +15,7 @@ from .models import (
 
 @admin.register(FestivalesPage)
 class FestivalesPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro")
+    list_display = ("header", "intro")
     def has_add_permission(self, request):
         return not FestivalesPage.objects.exists()
 
@@ -27,6 +27,12 @@ class FestivalesHeaderAdmin(admin.ModelAdmin):
 class FestivalesIntroSectionAdmin(admin.ModelAdmin):
     list_display = ("title", "cta_text")
 
+
+class FestivalImageInline(admin.TabularInline):
+    model = FestivalImage
+    extra = 1
+
+
 @admin.register(Festival)
 class FestivalAdmin(admin.ModelAdmin):
     list_display = ('name', 'date', 'time', 'place')
@@ -37,6 +43,8 @@ class FestivalAdmin(admin.ModelAdmin):
             'fields': ('name', 'slug', 'description', 'date', 'time', 'place', 'image', 'flyer')
         }),
     )
+    inlines = [FestivalImageInline]
+
 
 @admin.register(TalleresPage)
 class TalleresPageAdmin(admin.ModelAdmin):
