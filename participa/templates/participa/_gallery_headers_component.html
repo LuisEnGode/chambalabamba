@@ -27,10 +27,7 @@
                             <div class="item">
                                 <div class="pro-box">
                                     <a href="{% url 'gallery_detail' g.slug %}">
-                                        <img src="{{ g.portada.url }}"
-     alt="{{ g.alt_portada|default:g.titulo }}"
-     class="img-fluid"
-     style="width:100%; height:400px; object-fit:cover; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.25);">
+                                        <img src="{{ g.portada.url }}" alt="{{ g.alt_portada|default:g.titulo }}" class="img-fluid" style="width:100%; height:400px; object-fit:cover; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.25);">
 
                                         <h5>{{ g.titulo }}</h5>
                                         <div class="pro-hover">

@@ -7168,3 +7168,38 @@ button.link-like:hover { text-decoration: none; }
 .btn-primary:active {
   color: #fff !important;
 }
+
+
+/* ---- Donaciones: limpiar franja/overlay del hero ---- */
+#donaciones-hero {
+  background-color: transparent !important;
+  margin-top: 0 !important;                 /* evita “huecos” del mismo color */
+  position: relative;
+  overflow: hidden;
+}
+
+/* muchos temas añaden overlays con ::before/::after */
+#donaciones-hero::before,
+#donaciones-hero::after {
+  content: none !important;                  /* elimina la banda/overlay */
+  background: transparent !important;
+}
+
+/* si tu header/nav deja un espacio del color de marca, anúlalo */
+.main-header,
+.navbar,
+header.site-header {
+  margin-bottom: 0 !important;
+}
+
+/* breadcrumb dentro del hero: fondo transparente */
+#donaciones-hero .breadcrumb,
+#donaciones-hero .breadcrumb ul,
+#donaciones-hero .breadcrumb li {
+  background: transparent !important;
+}
+
+/* (opcional) altura cómoda del hero */
+#donaciones-hero { padding-top: 72px; padding-bottom: 56px; }
+
+
