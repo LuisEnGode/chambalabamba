@@ -29,13 +29,7 @@
                         {# Imagen/galería de cabecera #}
                         {% if post.header_image %}
                         <div class="blog-single-thumb text-center">
-                          <img
-                            src="{{ post.header_image.url }}"
-                            alt="{{ post.titulo }}"
-                            class="img-fluid mx-auto d-block"
-                            style="max-width: 420px;"
-                            loading="lazy"
-                          >
+                          <img src="{{ post.header_image.url }}" alt="{{ post.titulo }}" class="img-fluid mx-auto d-block" style="max-width: 420px;" loading="lazy">
                         </div>
                         {% endif %}
 
