@@ -3,10 +3,10 @@
 {% load participa_extras %}
 
 {% block content %}
-  {% voluntariado_page as vp %}
-  {% static 'images/escuela_01.png' as escuela_img %}
+{% voluntariado_page as vp %}
+{% static 'images/escuela_01.png' as escuela_img %}
 
-  {% load page_headers %}
+{% load page_headers %}
 
 
 
@@ -39,7 +39,13 @@
               </h2>
 
               {% if vp.about_block and vp.about_block.publicado %}
-                {{ vp.about_block.body_html|safe }}
+              {{ vp.about_block.body_html|safe }}
+              {% if vp.about_block and vp.about_block.image %}
+
+                <figure class="mt-2">
+                  <img src="{{ vp.about_block.image.url }}" alt="{{ vp.about_block.title|default:'Imagen' }}" class="img-fluid rounded">
+                </figure>
+              {% endif %}
               {% elif vp.intro_html %}
                 {{ vp.intro_html|safe }}
               {% else %}
@@ -73,7 +79,12 @@
           <div class="col-lg-4 col-md-4">
             <div class="sidebar">
               <div class="blog-single-content">
-                <h4 style="color: #1b5e20">Un ambiente diseñado para el voluntariado</h4>
+
+                  {% with ambiente_title=vp.ambiente_block.title|default:"Un ambiente diseñado para el voluntariado" %}
+                    <h4 style="color:#1b5e20">{{ ambiente_title }}</h4>
+                  {% endwith %}
+
+
 
                 {% if vp.ambiente_block and vp.ambiente_block.publicado %}
                   {{ vp.ambiente_block.body_html|safe }}
@@ -102,7 +113,7 @@
                 {% endif %}
               </div>
 
-              {% voluntariado_sidebar_projects limit=10 %}
+              {% voluntariado_sidebar_projects limit=10 title="Proyectos en curso" %}
               <div class="mt-2">
                 {% if vp.contact_cta_url %}
                   <a class="btn btn-success btn-sm" href="{{ vp.contact_cta_url }}">{{ vp.contact_cta_label|default:"Proponer cooperación" }}</a>
@@ -112,7 +123,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

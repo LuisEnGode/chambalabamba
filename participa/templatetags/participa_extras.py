@@ -130,11 +130,13 @@ def participa_cooperaciones(title=None, subtitle=None, limit=None, seccion=None,
 
 # ====== SIDEBAR PROYECTOS VOLUNTARIADO ======
 @register.inclusion_tag("participa/voluntariado/_sidebar_proyectos_voluntariado.html")
-def voluntariado_sidebar_projects(limit=10):
+def voluntariado_sidebar_projects(limit=10, title=None):
     if ProyectoVoluntariado is None:
-        return {"proyectos": []}
-    qs = ProyectoVoluntariado.objects.filter(publicado=True).order_by("orden", "nombre")[: int(limit)]
-    return {"proyectos": qs}
+        return {"proyectos": [], "title": title}
+    qs = (ProyectoVoluntariado.objects
+          .filter(publicado=True)
+          .order_by("orden", "nombre")[: int(limit)])
+    return {"proyectos": qs, "title": title}
 
 
 # ====== SINGLETON PAGE ======

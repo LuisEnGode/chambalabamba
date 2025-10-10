@@ -1,31 +1,46 @@
+{# ======================= HEAD DE LA PÁGINA ======================= #}
 {% load static %}
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  {# Viewport correcto para móviles (responsivo) #}
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>{% block title %}Chambalabamba{% endblock %}</title>
+  <title>{% block title %}Chambalabamba{% endblock %}</title>
 
-    <!-- JAVA SCRIPT FILES START -->
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <!-- jQuery migrate (opcional si algún plugin lo necesita) -->
-    <script src="{% static 'js/jquery-migrate-1.4.1.min.js' %}"></script>
-    <!-- prettyPhoto -->
-    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+  {# ======================= JS (ANTES): jQuery y plugins que lo requieren ======================= #}
+  {# jQuery principal. Muchos plugins del tema dependen de esta versión #}
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 
-    <!-- CSS FILES START -->
-    <link rel="stylesheet" href="{% static 'css/flyer.css' %}">
-    <link href="{% static 'css/color.css' %}" rel="stylesheet">
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}?v=3">
-    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
-    <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'contacto/css/style.css' %}">
+  {# jQuery Migrate (opcional). Útil si algún plugin viejo usa APIs antiguas #}
+  <script src="{% static 'js/jquery-migrate-1.4.1.min.js' %}"></script>
 
+  {# prettyPhoto (galerías/lightbox) depende de jQuery; por eso lo cargamos después de jQuery #}
+  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
 
-    <!-- CSS FILES END -->
+  {# ======================= CSS (ORDEN QUE TE FUNCIONA) ======================= #}
+  {# 1) Hojas del tema primero: si cambias Bootstrap de lugar, el layout puede romperse #}
+  <link rel="stylesheet" href="{% static 'css/flyer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}?v=3">
+  <link href="{% static 'css/color.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+  {# 2) CSS de plugins (carruseles, etc.) #}
+  <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+
+  {# 3) Bootstrap AL FINAL de las hojas del tema:- En este proyecto, este orden asegura que la grilla/utilidades de Bootstrap prevalezcan sobre reglas del tema que antes las pisaban (arregla responsividad). #}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  {# 4) Más CSS de plugins/iconos que no afectan la grilla base #}
+  <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/all.min.css' %}" rel="stylesheet">   {# Font Awesome #}
+  <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+
+  {# 5) CSS específico de la sección de contacto (no interfiere con la grilla) #}
+  <link rel="stylesheet" href="{% static 'contacto/css/style.css' %}">
+
+  {# ======================= FIN CSS ======================= #}
+
+  {# Notas: - Aquí NO se ve Popper/Bootstrap JS; probablemente los cargas en el footer. Si algún dropdown/tooltip falla en otra página, asegúrate de incluirlos allí. - Mantén este orden: tema -> plugins -> Bootstrap. Es el que comprobaste que mantiene el sitio responsivo. #}
 </head>

@@ -1,5 +1,5 @@
 <div class="side-widget project-list-widget">
-  <h5 style="color:#1b5e20">Proyectos de voluntariado en curso</h5>
+  <h5 style="color:#1b5e20">{{ title|default:"Proyectos de voluntariado en curso" }}</h5>
   <ul>
     {% for p in proyectos %}
       <li>

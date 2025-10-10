@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from .models import (VoluntariadoPage,
                      ContentBlock,               # ya lo usas en Voluntariado
-                    GuidedVisitsPage,
+
     EstanciasIntro# singleton de la sección
                     )
 
@@ -221,3 +221,16 @@ for mdl in (InstaGallery, InstaItem):
         admin.site.register(mdl, HiddenModelAdmin)
     except admin.sites.AlreadyRegistered:
         pass
+
+
+#*************************PROYECTOS DE VOLUNTARIADO*****************************#
+from django.contrib import admin
+from .models import ProyectoVoluntariado
+
+@admin.register(ProyectoVoluntariado)
+class ProyectoVoluntariadoAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "publicado", "orden")
+    list_editable = ("publicado", "orden")
+    search_fields = ("nombre", "descripcion", "slug")
+    prepopulated_fields = {"slug": ("nombre",)}
+    ordering = ("orden", "nombre")
