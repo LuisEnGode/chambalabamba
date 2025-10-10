@@ -181,6 +181,7 @@ class ContentBlock(models.Model):
 
     class Meta:
         ordering = ("orden", "title")
+        app_label = "participa"
         verbose_name = "4) Bloques de contenido "
         verbose_name_plural = "4) Bloques de contenido"
 

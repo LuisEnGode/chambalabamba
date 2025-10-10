@@ -1,0 +1,141 @@
+[
+    {
+        "model": "eventos.escuelapage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1,
+            "sidebar": 1
+        }
+    },
+    {
+        "model": "eventos.escuelaheader",
+        "pk": 1,
+        "fields": {
+            "title": "Escuela Viva",
+            "breadcrumb_label": "Escuela",
+            "background": "images/escuela-header.png"
+        }
+    },
+    {
+        "model": "eventos.escuelaintrosection",
+        "pk": 1,
+        "fields": {
+            "main_image": "images/escuela_01.png",
+            "title": "Conoce la escuela, nuestra filosofía e infraestructura",
+            "paragraph": "Ofrecemos talleres y cursos en áreas como la permacultura, la bioconstrucción, la agroecología, la salud natural y el desarrollo personal. Creemos en una educación que integra el cuerpo, la mente y el espíritu, preparando a las personas para ser agentes de cambio positivo en sus vidas y en el mundo.",
+            "quote": "Aprender haciendo, sentir pensando y vivir soñando. La educación es el camino hacia la libertad y la transformación.",
+            "gallery_title": "Nuestro dia a dia"
+        }
+    },
+    {
+        "model": "eventos.escuelasidebar",
+        "pk": 1,
+        "fields": {
+            "title": "Un ambiente diseñado para el desarrollo infantil",
+            "paragraph": "La Escuela Viva de Chambalabamba es un espacio de aprendizaje dinámico y en constante evolución, donde niños, jóvenes y adultos tienen la oportunidad de conectar con saberes ancestrales y prácticas sostenibles. Nuestro enfoque pedagógico se basa en la experiencia directa, el respeto por los ciclos de la naturaleza y el fomento de la autonomía y el pensamiento crítico.",
+            "instagram_url": "https://www.instagram.com/reel/Clt1a3eoPPp/?utm_source=ig_embed&utm_campaign=loading",
+            "projects_title": "Proyectos de la escuela en curso"
+        }
+    },
+    {
+        "model": "eventos.escuelaproject",
+        "pk": 1,
+        "fields": {
+            "sidebar": 1,
+            "name": "Aprendizajes ancestrales",
+            "url": "#"
+        }
+    },
+    {
+        "model": "eventos.escuelaproject",
+        "pk": 2,
+        "fields": {
+            "sidebar": 1,
+            "name": "Aprendiendo y desaprendiendo",
+            "url": "#"
+        }
+    },
+    {
+        "model": "eventos.escuelaproject",
+        "pk": 3,
+        "fields": {
+            "sidebar": 1,
+            "name": "Descubriendo la naturaleza",
+            "url": "#"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela1.png",
+            "alt_text": "Galería Escuela 1"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela2.png",
+            "alt_text": "Galería Escuela 2"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela3.png",
+            "alt_text": "Galería Escuela 3"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela4.png",
+            "alt_text": "Galería Escuela 4"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 5,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela5.png",
+            "alt_text": "Galería Escuela 5"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 6,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela6.png",
+            "alt_text": "Galería Escuela 6"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 7,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela7.png",
+            "alt_text": "Galería Escuela 7"
+        }
+    },
+    {
+        "model": "eventos.escuelagalleryimage",
+        "pk": 8,
+        "fields": {
+            "section": 1,
+            "image": "images/galeria-escuela8.png",
+            "alt_text": "Galería Escuela 8"
+        }
+    }
+]

@@ -1,18 +1,59 @@
 from django.shortcuts import render, get_object_or_404
 from .models import ParticipaHeader, ParticipaPage, Estancia, InstaGallery
+from .models import VoluntariadoPage  # tu modelo de la captura
+from django.templatetags.static import static
+
+# participa/views.py
+from django.shortcuts import render
+from django.templatetags.static import static
+from django.http import Http404
+from .models import VoluntariadoPage  # tu modelo real
 
 def voluntariado(request):
-    header = ParticipaHeader.objects.first()
-    page = ParticipaPage.objects.first()
-    # Grid corto de estancias (p.ej. 6) + bloque Instagram
-    estancias = Estancia.objects.filter(publicado=True).order_by("orden", "-creado")[:6]
-    insta = InstaGallery.objects.filter(publicado=True, seccion="participa_instagram").first()
-    return render(request, "participa/voluntariado.html", {
-        "header": header,
-        "page": page,
-        "estancias": estancias,
-        "insta": insta,
-    })
+    pagina = VoluntariadoPage.objects.filter(publicado=True).first()
+    if not pagina:
+        raise Http404("Página de Voluntariado no configurada")
+
+    # Helper para elegir el primer campo existente/no vacío
+    def pick(*names):
+        for n in names:
+            if hasattr(pagina, n):
+                val = getattr(pagina, n)
+                if val:
+                    return val
+        return None
+
+    # Título: intenta con varios nombres posibles
+    titulo = pick("title", "titulo", "name", "nombre", "heading") or "Voluntariado"
+
+    # Imagen de cabecera: prioridad background → thumb → hero → imagen → image
+    imagen_field = pick("background", "thumb", "hero", "imagen", "image")
+
+    # Construir URL segura (si es FileField/ImageField usa .url; si es string úsalo directo)
+    fallback = static("participa/images/cabeza-voluntariado.png")
+    if imagen_field:
+        try:
+            bg_url = imagen_field.url  # ImageField/FileField
+        except Exception:
+            bg_url = str(imagen_field)  # Por si vino como string
+    else:
+        bg_url = fallback
+
+    breadcrumbs = [
+        {"label": "Inicio", "url": "/"},
+        {"label": "Participa", "url": "/participa/"},
+        {"label": "Voluntariado", "url": None},
+    ]
+
+    ctx = {
+        "header_title": titulo,
+        "header_bg_url": bg_url,
+        "BG_FALLBACK": fallback,
+        "breadcrumbs": breadcrumbs,
+        "pagina": pagina,
+    }
+    return render(request, "participa/voluntariado/voluntariado.html", ctx)
+
 
 def estancias_list(request):
     page = ParticipaPage.objects.select_related("header").first()
@@ -29,9 +70,6 @@ def estancia_detail(request, slug):
     specs = e.specs.all().order_by("orden","id")
     return render(request, "participa/estancias/estancia_detail.html",
                   {"page": page, "e": e, "fotos": fotos, "specs": specs, "phone": e.phone_whatsapp or ""})
-
-def voluntariado(request):
-    return render(request, 'participa/voluntariado/voluntariado.html')
 
 
 def donaciones(request,id):

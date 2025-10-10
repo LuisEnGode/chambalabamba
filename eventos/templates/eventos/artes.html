@@ -1,20 +1,20 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Artes | Chambalabamba{% endblock %}
+{% block title %}{% if page.header.title %}{{ page.header.title }}{% else %}Artes{% endif %} | Chambalabamba{% endblock %}
 
 {% block content %}
     <!--Inner Header Start-->
-    <section class="wf100 p100 inner-header" style="background: url('{% static "images/artes-header.png" %}') no-repeat center center; background-size: cover;">
+    <section class="wf100 p100 inner-header" style="background: url('{% if page.header.background %}{{ page.header.background.url }}{% else %}{% static "images/artes-header.png" %}{% endif %}') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1>Artes</h1>
+            <h1>{% if page.header.title %}{{ page.header.title }}{% else %}Artes{% endif %}</h1>
             <ul>
                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="#">Artes</a></li>
-            </ul>        
+                <li><a href="#">{% if page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}Artes{% endif %}</a></li>
+            </ul>
         </div>
     </section>
-    <!--Inner Header End--> 
+    <!--Inner Header End-->
     <!--Blog Start-->
     <section class="wf100 p80 blog">
     <div class="blog-details">
@@ -24,33 +24,33 @@
                     <!--Blog Single Content Start-->
                     <div class="blog-single-content">
                         <div class="blog-single-thumb">
-                            <img src="{% static 'images/artes_00.png' %}" alt="">
+                            <img src="{% if page.intro.main_image %}{{ page.intro.main_image.url }}{% else %}{% static 'images/artes_00.png' %}{% endif %}" alt="">
                         </div>
 
                         <div class="section-title-2">
-                            <h5>En Chambalabamba el arte se vive</h5>
+                            <h5>{% if page.intro.subtitle %}{{ page.intro.subtitle }}{% else %}En Chambalabamba el arte se vive{% endif %}</h5>
                         </div>
-                        <p/> 
+                        <p/>
                         <blockquote>
-                            <p>El arte nos permite sanar, transformar y celebrar la vida. Es el lenguaje universal que nos conecta con lo más profundo de nuestro ser y con el alma del mundo.</p>
-                        </blockquote>                          
+                            <p>{% if page.intro.quote %}{{ page.intro.quote }}{% else %}El arte nos permite sanar, transformar y celebrar la vida. Es el lenguaje universal que nos conecta con lo más profundo de nuestro ser y con el alma del mundo.{% endif %}</p>
+                        </blockquote>
                     </div>
-                    <!--Blog Single Content End--> 
+                    <!--Blog Single Content End-->
                 </div>
-                
+
                 <div class="col-lg-4 col-md-4">
                     <div class="sidebar">
                         <!--Blog Single Content Start-->
                         <div class="blog-single-content">
                             <div class="section-title-2">
-                                <h2>El arte no se detiene en Chambalabamba</h2>
+                                <h2>{% if page.intro.sidebar_title %}{{ page.intro.sidebar_title }}{% else %}El arte no se detiene en Chambalabamba{% endif %}</h2>
                             </div>
-                            <p/>                       
-                            <p>En Chambalabamba, el arte es una manifestación del espíritu y una herramienta para la conexión con la naturaleza y la comunidad. Fomentamos la libre expresión a través de diversas disciplinas como la pintura, la escultura, la música y la danza. Nuestros talleres y encuentros artísticos están diseñados para despertar la creatividad innata que todos llevamos dentro, utilizando materiales naturales y técnicas sostenibles.</p>
-                            <p>Creemos que el arte es un pilar fundamental para el desarrollo personal y colectivo, un puente que une corazones y mentes en un diálogo constante con nuestro entorno. Invitamos a artistas, creadores y a cualquier persona con el deseo de explorar su lado creativo a unirse a nosotros. Aquí encontrarás un espacio de inspiración, colaboración y crecimiento, donde cada obra es un reflejo de nuestra filosofía de vida en armonía con la Pachamama.</p>
+                            <p/>
+                            <p>{% if page.intro.sidebar_paragraph1 %}{{ page.intro.sidebar_paragraph1 }}{% else %}En Chambalabamba, el arte es una manifestación del espíritu y una herramienta para la conexión con la naturaleza y la comunidad. Fomentamos la libre expresión a través de diversas disciplinas como la pintura, la escultura, la música y la danza. Nuestros talleres y encuentros artísticos están diseñados para despertar la creatividad innata que todos llevamos dentro, utilizando materiales naturales y técnicas sostenibles.{% endif %}</p>
+                            <p>{% if page.intro.sidebar_paragraph2 %}{{ page.intro.sidebar_paragraph2 }}{% else %}Creemos que el arte es un pilar fundamental para el desarrollo personal y colectivo, un puente que une corazones y mentes en un diálogo constante con nuestro entorno. Invitamos a artistas, creadores y a cualquier persona con el deseo de explorar su lado creativo a unirse a nosotros. Aquí encontrarás un espacio de inspiración, colaboración y crecimiento, donde cada obra es un reflejo de nuestra filosofía de vida en armonía con la Pachamama.{% endif %}</p>
                         </div>
-                        <!--Blog Single Content End-->    
-                    </div>    
+                        <!--Blog Single Content End-->
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -59,113 +59,53 @@
                         <!--Chief Guests of the Event Start-->
                         <div class="chief-guest team-grid wf100">
                             <div class="section-title-2">
-                                <h2>Danza, teatro, música y DIVERSIDAD</h2>
+                                <h2>{% if page.diversity.title %}{{ page.diversity.title }}{% else %}Danza, teatro, música y DIVERSIDAD{% endif %}</h2>
                             </div>
-                            <p>La diversidad cultural de Chambalabamba se manifiesta en una vibrante amalgama de expresiones artísticas. La danza, el teatro y la música son pilares de nuestra comunidad, espacios donde celebramos nuestras raíces, exploramos nuevas formas de comunicación y nos conectamos con la esencia de la vida. Cada movimiento, cada nota y cada palabra es un tributo a la creatividad y a la riqueza de la experiencia humana.</p>
+                            <p>{% if page.diversity.paragraph %}{{ page.diversity.paragraph }}{% else %}La diversidad cultural de Chambalabamba se manifiesta en una vibrante amalgama de expresiones artísticas. La danza, el teatro y la música son pilares de nuestra comunidad, espacios donde celebramos nuestras raíces, exploramos nuevas formas de comunicación y nos conectamos con la esencia de la vida. Cada movimiento, cada nota y cada palabra es un tributo a la creatividad y a la riqueza de la experiencia humana.{% endif %}</p>
                             <div class="row">
+                                {% for arte in page.diversity.artes.all %}
                                 <!--Team Box Start-->
                                 <div class="col-md-4">
                                     <div class="team-box">
-                                        <img src="{% static 'images/artes_01.png' %}" alt="Danza y Expresión">
+                                        <img src="{% if arte.image %}{{ arte.image.url }}{% else %}{% static 'images/artes_0'|add:forloop.counter|stringformat:'s'|add:'.png' %}{% endif %}" alt="{{ arte.title }}">
                                         <div class="team-info">
-                                            <h5>Danza y Expresión</h5>
-                                            <p>Movimiento que libera el alma y conecta con la naturaleza.</p>
+                                            <h5>{{ arte.title }}</h5>
+                                            <p>{{ arte.description }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <!--Team Box End--> 
-                                <!--Team Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/artes_02.png' %}" alt="Música y Comunidad">
-                                        <div class="team-info">
-                                            <h5>Música y Comunidad</h5>
-                                            <p>Sonidos ancestrales que unen corazones y despiertan el espíritu.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Team Box End--> 
-                                <!--Team Box Start-->
-                                <div class="col-md-4">
-                                    <div class="team-box">
-                                        <img src="{% static 'images/artes_03.png' %}" alt="Teatro y Transformación">
-                                        <div class="team-info">
-                                            <h5>Teatro y Transformación</h5>
-                                            <p>Historias que inspiran el cambio y celebran la diversidad.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Team Box End--> 
+                                <!--Team Box End-->
+                                {% endfor %}
                             </div>
                         </div>
-                        <!--Chief Guests of the Event End--> 
+                        <!--Chief Guests of the Event End-->
 
                         <!--Event Gallery Start-->
                         <div class="event-gallery gallery">
                             <div class="section-title-2">
-                                <h2>Momentos de creación colectiva</h2>
+                                <h2>{% if page.gallery.title %}{{ page.gallery.title }}{% else %}Momentos de creación colectiva{% endif %}</h2>
                             </div>
-                            <p>Nuestro espacio natural se convierte en el escenario perfecto para el arte. Aquí, bajo el cielo infinito y rodeados de la energía de la Pachamama, cada expresión artística cobra vida de manera única. La naturaleza misma participa como cómplice silencioso de nuestras creaciones, ofreciendo su belleza como telón de fondo para momentos inolvidables de pura inspiración.</p>
+                            <p>{% if page.gallery.paragraph %}{{ page.gallery.paragraph }}{% else %}Nuestro espacio natural se convierte en el escenario perfecto para el arte. Aquí, bajo el cielo infinito y rodeados de la energía de la Pachamama, cada expresión artística cobra vida de manera única. La naturaleza misma participa como cómplice silencioso de nuestras creaciones, ofreciendo su belleza como telón de fondo para momentos inolvidables de pura inspiración.{% endif %}</p>
                             <div id="artes-gallery-carousel-1" class="owl-carousel owl-theme">
+                                {% for item in page.gallery.images.all %}
                                 <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_04.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_04.png' %}" alt="Arte al aire libre en Chambalabamba"> </div>
+                                    <div class="gallery-img"> <a href="{{ item.image.url }}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{{ item.image.url }}" alt="{{ item.alt_text }}"> </div>
                                 </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_05.png' %}" alt="Expresiones artísticas en la naturaleza"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_06.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_06.png' %}" alt="Creatividad bajo el cielo abierto"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_07.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_07.png' %}" alt="Arte comunitario en Chambalabamba"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_08.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_08.png' %}" alt="Talleres de arte colaborativo"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_09.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_09.png' %}" alt="Encuentros artísticos comunitarios"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_10.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_10.png' %}" alt="Creación colectiva en Chambalabamba"> </div>
-                                </div>
-                                <div class="item">
-                                    <div class="gallery-img"> <a href="{% static 'images/artes_05.png' %}" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a> <img src="{% static 'images/artes_05.png' %}" alt="Arte y naturaleza en armonía"> </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
-                        <!--Event Gallery End-->                            
+                        <!--Event Gallery End-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     </section>
-    <!--Blog End--> 
+    <!--Blog End-->
 
     <script>
         $(document).ready(function() {
             $("#artes-gallery-carousel-1").owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                dots: false,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 3
-                    }
-                }
-            });
-
-            $("#artes-gallery-carousel-2").owlCarousel({
                 loop: true,
                 margin: 10,
                 nav: true,

@@ -55,7 +55,7 @@
                                         {% elif p.descripcion %}
                                         <p>{{ p.descripcion|truncatechars:140 }}</p>
                                         {% else %}<p>&nbsp;</p>{% endif %}
-                                        <a href="{{ p.get_absolute_url }}">Read More</a>
+                                        <a href="{{ p.get_absolute_url }}" class="btn btn-sm btn-primary" >Leer mas</a>
                                     </div>
                                 </div>
                             </div>

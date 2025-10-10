@@ -16,23 +16,55 @@ try:
 except Exception:
     Cooperacion = None
 
+# NEW: header administrable (ajusta el import al app donde esté tu SectionHeader)
+try:
+    from inicio.models import SectionHeader
+except Exception:
+    SectionHeader = None
 
-# ====== ESTANCIAS (si las usas) ======
+
+# ====== ESTANCIAS (admin-override para title/subtitle) ======
 @register.inclusion_tag("participa/estancias/_gallery_headers_estancias.html")
-def gallery_headers_estancias(seccion="participa_estancias", title=None, subtitle=None, limit=None, only_with_portada=True):
+def gallery_headers_estancias(
+    seccion="participa_estancias", title=None, subtitle=None,
+    limit=None, only_with_portada=True
+):
+    """
+    Prioridad de título/subtítulo:
+      1) SectionHeader(seccion=<seccion>, publicado=True) del admin
+      2) Parámetros title / subtitle pasados al tag
+      3) Defaults: "Estancias" / ""
+    Nota: 'seccion' debe usar el VALUE de tus choices, p.ej. 'participa_estancias'.
+    """
+    # Query de estancias (como ya lo tenías)
     if Estancia is None:
-        return {"estancias": [], "title": title, "subtitle": subtitle}
-    qs = Estancia.objects.filter(publicado=True).order_by("orden", "-creado")
-    if hasattr(Estancia, "seccion") and seccion:
-        qs = qs.filter(seccion=seccion)
-    if only_with_portada:
-        qs = qs.exclude(portada="").exclude(portada__isnull=True)
-    if limit:
-        try:
-            qs = qs[: int(limit)]
-        except (TypeError, ValueError):
-            pass
-    return {"estancias": qs, "title": title, "subtitle": subtitle}
+        qs = []
+    else:
+        qs = Estancia.objects.filter(publicado=True).order_by("orden", "-creado")
+        if hasattr(Estancia, "seccion") and seccion:
+            qs = qs.filter(seccion=seccion)
+        if only_with_portada:
+            qs = qs.exclude(portada="").exclude(portada__isnull=True)
+        if limit:
+            try:
+                qs = qs[: int(limit)]
+            except (TypeError, ValueError):
+                pass
+
+    # Header administrable (si el modelo existe)
+    admin_title = admin_subtitle = None
+    if SectionHeader is not None and seccion:
+        sh = SectionHeader.objects.filter(seccion=seccion, publicado=True).first()
+        if sh:
+            # Soporta both title/titulo, subtitle/subtitulo
+            admin_title = getattr(sh, "title", None) or getattr(sh, "titulo", None)
+            admin_subtitle = getattr(sh, "subtitle", None) or getattr(sh, "subtitulo", None)
+
+    # Resolución final
+    final_title = admin_title or title or "Estancias"
+    final_subtitle = admin_subtitle or subtitle or ""
+
+    return {"estancias": qs, "title": final_title, "subtitle": final_subtitle}
 
 
 # ====== INSTAGRAM GRID (si lo usas) ======
@@ -98,17 +130,22 @@ def participa_cooperaciones(title=None, subtitle=None, limit=None, seccion=None,
 
 # ====== SIDEBAR PROYECTOS VOLUNTARIADO ======
 @register.inclusion_tag("participa/voluntariado/_sidebar_proyectos_voluntariado.html")
-def voluntariado_sidebar_projects(limit=10):
+def voluntariado_sidebar_projects(limit=10, title=None):
     if ProyectoVoluntariado is None:
-        return {"proyectos": []}
-    qs = ProyectoVoluntariado.objects.filter(publicado=True).order_by("orden", "nombre")[: int(limit)]
-    return {"proyectos": qs}
+        return {"proyectos": [], "title": title}
+    qs = (ProyectoVoluntariado.objects
+          .filter(publicado=True)
+          .order_by("orden", "nombre")[: int(limit)])
+    return {"proyectos": qs, "title": title}
 
 
 # ====== SINGLETON PAGE ======
 @register.simple_tag
 def voluntariado_page():
-    """Acceso directo al singleton en plantillas: {% voluntariado_page as vp %}"""
+    """Uso en templates: {% voluntariado_page as vp %}"""
     if VoluntariadoPage is None:
         return None
-    return VoluntariadoPage.get_solo()
+    try:
+        return VoluntariadoPage.objects.filter(publicado=True).first() or VoluntariadoPage.get_solo()
+    except Exception:
+        return None

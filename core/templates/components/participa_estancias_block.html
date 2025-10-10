@@ -1,0 +1,26 @@
+<section class="wf100 p100">
+  <div class="container">
+    <div class="section-title-2">
+      <h2>{{ header_title }}</h2>
+      {% if header_subtitle %}<h5>{{ header_subtitle }}</h5>{% endif %}
+    </div>
+
+    <div class="row">
+      {% for gal in galerias %}
+        <div class="col-md-4 col-sm-6 mb-4">
+          <a href="{% url 'inicio:gallery_detail' gal.slug %}" class="card h-100 shadow-sm">
+            {% if gal.portada %}
+              <img src="{{ gal.portada.url }}" alt="{{ gal.alt_portada|default:gal.titulo }}" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ gal.titulo }}</h5>
+              {% if gal.descripcion %}<p class="card-text">{{ gal.descripcion|truncatewords:20 }}</p>{% endif %}
+            </div>
+          </a>
+        </div>
+      {% empty %}
+        <p>No hay alojamientos publicados por ahora.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -9,7 +9,7 @@
         <h1>{% if page.header and page.header.title %}{{ page.header.title }}{% else %}Nosotros{% endif %}</h1>
         <ul>
             <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="{% url 'blog_list' %}">Blog</a></li>
             <li><a href="#">{% if page.header and page.header.breadcrumb_label %}{{ page.header.breadcrumb_label }}{% else %}Blog{% endif %}</a></li>
         </ul>
     </div>
@@ -28,12 +28,19 @@
 
                         {# Imagen/galería de cabecera #}
                         {% if post.header_image %}
-                        <div class="blog-single-thumb">
-                            <img src="{{ post.header_image.url }}" alt="{{ post.titulo }}">
+                        <div class="blog-single-thumb text-center">
+                          <img src="{{ post.header_image.url }}" alt="{{ post.titulo }}" class="img-fluid mx-auto d-block" style="max-width: 420px;" loading="lazy">
                         </div>
                         {% endif %}
 
                         <h3>{{ post.titulo }}</h3>
+                        {% if can_edit %}
+                          <p>
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'blog_update' slug=post.slug %}">
+                              ✏️ Editar este post
+                            </a>
+                          </p>
+                        {% endif %}
 
                         <ul class="post-meta">
                             {% if post.autor %}

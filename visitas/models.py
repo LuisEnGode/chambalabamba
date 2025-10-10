@@ -104,3 +104,5 @@ class GuidedVisitPhoto(models.Model):
 
     def __str__(self):
         return f"{self.visita} · {self.titulo or self.imagen.name}"
+
+

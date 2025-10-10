@@ -107,41 +107,35 @@ def blog_list_by_month(request, year, month):
     return render(request, "blog/blog_list.html", ctx)
 
 def blog_detail(request, slug):
-    post = get_object_or_404(BlogPost.objects.select_related(*COMMON_SELECT)
-                             .prefetch_related(*COMMON_PREFETCH), slug=slug, publicado=True)
-    # relacionados (misma categoría)
-    related = (BlogPost.objects.filter(publicado=True, categoria=post.categoria)
-               .exclude(id=post.id).order_by("-fecha_publicacion")[:3])
-    ctx = {"post": post, "related": related}
-    ctx.update(_base_ctx())
-    return render(request, "blog/blog_detail.html", ctx)
-
-
-def blog_detail(request, slug):
+    # Post + relaciones
     post = get_object_or_404(
         BlogPost.objects.select_related(*COMMON_SELECT).prefetch_related(*COMMON_PREFETCH),
         slug=slug, publicado=True
     )
 
+    # Permiso de edición: dueño o staff
+    author = _get_author_for_user(request.user) if request.user.is_authenticated else None
+    can_edit = bool(
+        request.user.is_authenticated and (
+            request.user.is_staff or request.user.is_superuser or
+            (author and post.autor_id == author.id)
+        )
+    )
+
+    # --- Comentarios (form + guardado) ---
     if request.method == "POST":
         form = BlogCommentForm(request.POST)
         if form.is_valid():
             c = form.save(commit=False)
             c.post = post
-            #c.status = BlogComment.Status.APPROVED
-
             # Evita parent de otro post
             if c.parent and c.parent.post_id != post.id:
                 c.parent = None
 
-            # Traza
-            # Usa los nombres que EXISTAN en tu modelo:
-            # Si tu modelo tiene 'ip' y 'ua':
+            # Traza básica (ajusta nombres de campos según tu modelo)
             c.ip = request.META.get("REMOTE_ADDR")
             c.ua = (request.META.get("HTTP_USER_AGENT") or "")[:255]
-            # Si en tu modelo son 'ip_address' y 'user_agent', cambia las 2 líneas anteriores.
 
-            # Usuario autenticado (opcional)
             if request.user.is_authenticated:
                 c.user = request.user
                 if not c.nombre:
@@ -149,7 +143,6 @@ def blog_detail(request, slug):
                 if not c.email and getattr(request.user, "email", ""):
                     c.email = request.user.email
 
-            # Estado por defecto
             if not c.status:
                 c.status = BlogComment.Status.PENDING
 
@@ -159,19 +152,21 @@ def blog_detail(request, slug):
     else:
         form = BlogCommentForm()
 
-    # Comentarios visibles: solo top-level aprobados, con replies aprobadas prefetch
     aprobados_qs = BlogComment.objects.filter(status=BlogComment.Status.APPROVED)
-    comentarios = (post.comentarios
-                   .filter(status=BlogComment.Status.APPROVED, parent__isnull=True)
-                   .select_related("user")
-                   .prefetch_related(Prefetch("replies", queryset=aprobados_qs.order_by("creado"))))
+    comentarios = (
+        post.comentarios
+            .filter(status=BlogComment.Status.APPROVED, parent__isnull=True)
+            .select_related("user")
+            .prefetch_related(Prefetch("replies", queryset=aprobados_qs.order_by("creado")))
+            .order_by("-creado")
+    )
 
-    comentarios = comentarios.order_by("-creado")
+    related = (BlogPost.objects
+               .filter(publicado=True, categoria=post.categoria)
+               .exclude(id=post.id)
+               .order_by("-fecha_publicacion")[:3])
 
-    related = (BlogPost.objects.filter(publicado=True, categoria=post.categoria)
-               .exclude(id=post.id).order_by("-fecha_publicacion")[:3])
-
-    ctx = {"post": post, "related": related, "comentarios": comentarios, "form": form}
+    ctx = {"post": post, "related": related, "comentarios": comentarios, "form": form, "can_edit": can_edit}
     ctx.update(_base_ctx())
     return render(request, "blog/blog_detail.html", ctx)
 
@@ -250,6 +245,15 @@ class BlogPostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView
     slug_field = "slug"
     slug_url_kwarg = "slug"
     success_url = reverse_lazy("blog_list")
+
+    # 🔐 Solo puede editar su propio post (salvo staff/superuser)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        u = self.request.user
+        if u.is_superuser or u.is_staff:
+            return qs  # staff/admin pueden editar cualquiera
+        author = _get_author_for_user(u)
+        return qs.filter(autor=author)     #blog.change_blogpost)
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
