@@ -34,14 +34,16 @@
 
                                         <h5>{{ g.titulo }}</h5>
                                         <div class="pro-hover">
-                                            <h6>{{ g.titulo }}</h6>
-                                            {% if g.descripcion %}
-                                            <p>{{ g.descripcion }}</p>
-                                            {% else %}
-                                            <p>Ver la galería completa.</p>
-                                            {% endif %}
-                                            <span class="btn btn-sm btn-primary">Ver más</span>
-                                        </div>
+  <h6>{{ g.titulo }}</h6>
+  {% if g.descripcion_breve %}
+    <p>{{ g.descripcion_breve }}</p>
+  {% elif g.descripcion %}
+    <p>{{ g.descripcion|truncatechars:140 }}</p>
+  {% else %}
+    <p>Ver la galería completa.</p>
+  {% endif %}
+  <span class="btn btn-sm btn-primary">Ver más</span>
+</div>
                                     </a>
                                 </div>
                             </div>

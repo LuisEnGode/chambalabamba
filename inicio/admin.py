@@ -36,11 +36,26 @@ class GalleryItemInline(admin.TabularInline):
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ("titulo", "seccion", "publicado", "orden", "creado")
     list_filter = ("seccion", "publicado")
-    search_fields = ("titulo", "descripcion", "slug")
+    search_fields = ("titulo", "slug", "descripcion_breve", "descripcion")
     prepopulated_fields = {"slug": ("titulo",)}
     inlines = [GalleryItemInline]
 
-
+    # Orden y agrupación del formulario:
+    fieldsets = (
+        (None, {
+            "fields": (
+                "publicado",
+                "orden",
+                "titulo",
+                "slug",
+                "seccion",
+                "descripcion_breve",  # NUEVO (para portada)
+                "descripcion",  # LARGA (para la vista detalle)
+                "portada",
+                "alt_portada",
+            )
+        }),
+    )
 
 
 @admin.register(SectionHeader)

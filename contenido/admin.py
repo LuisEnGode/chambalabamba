@@ -21,7 +21,7 @@ class GalleryAdmin(admin.ModelAdmin):
     search_fields = ("titulo",)
     inlines = [GalleryItemInline]
 
-@admin.register(Flyer)
+#@admin.register(Flyer)
 class FlyerAdmin(admin.ModelAdmin):
     list_display = ("titulo", "ratio", "publicado", "creado")
     list_filter = ("publicado", "ratio")

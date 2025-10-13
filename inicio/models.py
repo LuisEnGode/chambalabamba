@@ -64,8 +64,13 @@ class Gallery(BaseOrdenPublicado):
     slug = models.SlugField(max_length=220, unique=True, blank=True)
     seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_ultimos_eventos")
     descripcion = models.TextField(blank=True)
+    descripcion_breve = models.CharField(
+        max_length=200, blank=True,
+        help_text="Texto corto que se muestra sobre la portada (tarjeta).",
+    )
     portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
     alt_portada = models.CharField(max_length=200, blank=True)
+
 
     class Meta(BaseOrdenPublicado.Meta):
         verbose_name = "3. Galerías / Galleries"

@@ -7,9 +7,11 @@
 <section class="wf100 p80">
   <div class="container">
     <header class="mb-6">
-       <h1>{{ gal.titulo }}</h1>
-      {% if gal.descripcion %}<p>{{ gal.descripcion }}</p>{% endif %}
-    </header>
+  <h1>{{ gal.titulo }}</h1>
+  {% if gal.descripcion %}
+    <div class="lead">{{ gal.descripcion|linebreaks }}</div>
+  {% endif %}
+</header>
     <div class="row">
       {% for it in items %}
         <div class="col-md-4 mb-4">
