@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.validators import URLValidator
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -179,6 +180,10 @@ class PilarPage(models.Model):
     # opcional: lead corto si lo necesitas más adelante
     lead = models.TextField(blank=True)
 
+    project_placements = GenericRelation(
+        'proyectos.ProjectPlacement', related_query_name='pilar_page'
+    )
+
     class Meta:
         verbose_name = "2. Pilar"
         verbose_name_plural = "2. Pilares"
@@ -225,6 +230,10 @@ class TopicPage(models.Model):
     hero_image = models.ImageField(upload_to="nosotros/sections/hero/", blank=True, null=True)
     title = models.CharField(max_length=150, default="Sección")
     lead = models.TextField(blank=True)
+
+    project_placements = GenericRelation(
+        'proyectos.ProjectPlacement', related_query_name='topic_page'
+    )
 
     class Meta:
         verbose_name = "Sección (Nosotros)"
