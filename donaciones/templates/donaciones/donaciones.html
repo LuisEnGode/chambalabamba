@@ -1,16 +1,15 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
-
-<section id="donaciones-hero" class="wf100 p100 inner-header"
-  style="background: url({% static 'images/cabezadonaciones.png' %}) center/cover no-repeat transparent;">
-  <div class="container">
-    <h1>Donaciones</h1>
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Donaciones</li>
-    </ul>
-  </div>
+<section class="wf100 p100 inner-header"
+         style="background-image: url({% static '/images/cabezadonaciones.png' %}); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1>Donaciones</h1>
+        <ul class="container">
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="#">Donaciones</a></li>
+        </ul>
+    </div>
 </section>
 
 <section class="wf100 p80">
@@ -44,14 +43,14 @@
               <fieldset class="mb-3">
                 <legend class="h6 text-success mb-2">{{ section.cta_titulo }}</legend>
 
-                <div class="d-flex flex-wrap gap-2">
+                <div class="row g-2">
                   {% for monto in section.montos.all %}
-                    {# Si la etiqueta es como "$100", tomamos el valor numérico: #}
-                    <input type="radio" class="btn-check" name="amount" id="d{{ forloop.counter }}"
-                           value="{{ monto.etiqueta|slice:'1:' }}">
-                    <label class="btn btn-outline-success" for="d{{ forloop.counter }}">
-                      {{ monto.etiqueta }}
-                    </label>
+                    <div class="col-md-4">
+                      <input type="radio" class="btn-check" name="amount" id="d{{ forloop.counter }}" value="{{ monto.etiqueta|slice:'1:' }}">
+                      <label class="btn w-100" for="d{{ forloop.counter }}">
+                        {{ monto.etiqueta }}
+                      </label>
+                    </div>
                   {% endfor %}
                 </div>
 
@@ -90,4 +89,30 @@
   </div>
 </section>
 
+<style>
+/* Hide the radio button */
+input[type="radio"].btn-check {
+  display: none;
+}
+
+/* Default label style */
+label.btn {
+  border: 1px solid #198754; /* Bootstrap success color */
+  color: #198754;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Selected (checked) state */
+input[type="radio"].btn-check:checked + label.btn {
+  background-color: #198754;
+  color: #fff;
+  border-color: #198754;
+}
+
+/* Optional hover style */
+label.btn:hover {
+  background-color: #19875420;
+}
+</style>
 {% endblock %}

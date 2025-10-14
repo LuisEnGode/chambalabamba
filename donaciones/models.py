@@ -14,7 +14,6 @@ class DonacionSection(models.Model):
             "espacio de transformación, donde la tierra y el ser se armonizan."
         )
     )
-    progreso = models.PositiveIntegerField(default=100, help_text="0–100 (muestra la barra de progreso)")
     cta_titulo = models.CharField(max_length=120, default="Apoya este Espacio")
     cta_boton_texto = models.CharField(max_length=60, default="Contribuir con Amor")
     cta_placeholder_otro = models.CharField(max_length=40, default="$ Otro")
