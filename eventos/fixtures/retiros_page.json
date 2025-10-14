@@ -1,0 +1,215 @@
+[
+    {
+        "model": "eventos.retirospage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1,
+            "types_section": 1,
+            "activities_section": 1,
+            "second_quote": "El silencio es el lienzo donde el alma pinta sus más bellos paisajes. En Chambalabamba, cada amanecer es una nueva oportunidad de renacer, cada atardecer una invitación a la gratitud.",
+            "gallery_section": 1,
+            "testimonial_section": 1
+        }
+    },
+    {
+        "model": "eventos.retirosheader",
+        "pk": 1,
+        "fields": {
+            "title": "Retiros",
+            "breadcrumb_label": "Retiros",
+            "background": "images/retiros-header.png"
+        }
+    },
+    {
+        "model": "eventos.retirosintrosection",
+        "pk": 1,
+        "fields": {
+            "main_image": "images/retiros-00.png",
+            "title": "Descubre y conecta con tu esencia",
+            "quote": "En el silencio de la naturaleza, el alma encuentra su verdadero hogar. Cada respiración es una oportunidad de renacer, cada momento una invitación a la paz interior.",
+            "sidebar_title": "Un viaje hacia tu interior",
+            "sidebar_paragraph1": "Nuestros retiros en Chambalabamba son una invitación sagrada a desconectar del mundo exterior para reconectar contigo mismo en un entorno de paz y belleza natural excepcional. Ofrecemos una variedad de experiencias transformadoras enfocadas en el bienestar integral del ser.",
+            "sidebar_paragraph2": "Combinamos sabiamente prácticas ancestrales como la meditación, el yoga, la sonoterapia, los baños de bosque y el contacto directo con los elementos naturales. Cada retiro está cuidadosamente diseñado para facilitar un profundo proceso de introspección, sanación y renovación espiritual.",
+            "sidebar_paragraph3": "Acompañado por facilitadores experimentados y en un ambiente de total respeto y contención, tendrás la oportunidad única de explorar las profundidades de tu mundo interior, liberar tensiones acumuladas y encontrar ese estado natural de equilibrio y armonía que todos llevamos dentro."
+        }
+    },
+    {
+        "model": "eventos.retirostypessection",
+        "pk": 1,
+        "fields": {
+            "title": "Modalidades de transformación",
+            "paragraph": "Cada persona es única y por eso ofrecemos diferentes modalidades de retiro para honrar tu proceso personal. Ya sea que busques una experiencia individual de profunda introspección o prefieras la riqueza del intercambio grupal, tenemos el espacio perfecto para tu crecimiento espiritual."
+        }
+    },
+    {
+        "model": "eventos.retirotype",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-03.png",
+            "title": "Retiros Individuales",
+            "description": "Un espacio íntimo para el encuentro contigo mismo, con acompañamiento personalizado y total privacidad."
+        }
+    },
+    {
+        "model": "eventos.retirotype",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-06.png",
+            "title": "Retiros Grupales",
+            "description": "La magia del crecimiento compartido, donde cada participante enriquece la experiencia colectiva."
+        }
+    },
+    {
+        "model": "eventos.retirotype",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-05.png",
+            "title": "Retiros Temáticos",
+            "description": "Experiencias especializadas en meditación, yoga, sonoterapia o conexión con los elementos."
+        }
+    },
+    {
+        "model": "eventos.retirosactivitiessection",
+        "pk": 1,
+        "fields": {
+            "title": "Prácticas y experiencias",
+            "paragraph": "Nuestros retiros integran una rica variedad de prácticas milenarias y contemporáneas, todas orientadas a facilitar tu proceso de autoconocimiento y sanación. Cada actividad está pensada para nutrir diferentes aspectos de tu ser: cuerpo, mente y espíritu."
+        }
+    },
+    {
+        "model": "eventos.retiroactivity",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "title": "🧘‍♀️ Meditación y Mindfulness",
+            "description": "Sesiones diarias de meditación en diferentes modalidades: silenciosa, guiada, caminando y en conexión con la naturaleza."
+        }
+    },
+    {
+        "model": "eventos.retiroactivity",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "title": "🌿 Baños de Bosque",
+            "description": "Inmersión consciente en la naturaleza para activar tus sentidos y conectar profundamente con los ritmos naturales."
+        }
+    },
+    {
+        "model": "eventos.retiroactivity",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "title": "🎵 Sonoterapia",
+            "description": "Sesiones de sanación através del sonido con cuencos tibetanos, tambores chamánicos y instrumentos ancestrales."
+        }
+    },
+    {
+        "model": "eventos.retiroactivity",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "title": "🧘‍♂️ Yoga y Movimiento",
+            "description": "Prácticas de yoga adaptadas a todos los niveles, focalizadas en la conexión cuerpo-mente-espíritu."
+        }
+    },
+    {
+        "model": "eventos.retirosgallerysection",
+        "pk": 1,
+        "fields": {
+            "title": "Espacios sagrados de transformación",
+            "paragraph": "Nuestros espacios naturales se convierten en templos al aire libre donde cada rincón invita a la contemplación y el recogimiento. La naturaleza misma actúa como co-facilitadora de tu proceso, ofreciendo su energía sanadora y su sabiduría ancestral para acompañarte en este viaje hacia tu esencia más pura."
+        }
+    },
+    {
+        "model": "eventos.retirosgalleryimage",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-02.png",
+            "alt_text": "Meditación al amanecer en Chambalabamba"
+        }
+    },
+    {
+        "model": "eventos.retirosgalleryimage",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-03.png",
+            "alt_text": "Espacios naturales para la contemplación"
+        }
+    },
+    {
+        "model": "eventos.retirosgalleryimage",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-04.png",
+            "alt_text": "Conexión profunda con la naturaleza"
+        }
+    },
+    {
+        "model": "eventos.retirosgalleryimage",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "image": "images/retiros-07.png",
+            "alt_text": "Retiros en armonía con los elementos"
+        }
+    },
+    {
+        "model": "eventos.retirostestimonialsection",
+        "pk": 1,
+        "fields": {
+            "title": "Voces de transformación"
+        }
+    },
+    {
+        "model": "eventos.retirotestimonial",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "quote": "Mi retiro en Chambalabamba fue mucho más que unas vacaciones espirituales. Fue un verdadero renacer. La conexión con la naturaleza y conmigo misma fue tan profunda que regresé siendo una persona completamente renovada.",
+            "author": "María Elena",
+            "location": "México",
+            "image": "images/tuser1.jpg"
+        }
+    },
+    {
+        "model": "eventos.retirotestimonial",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "quote": "Los facilitadores de Chambalabamba tienen un don especial para crear espacios sagrados. Me sentí acompañado y contenido en cada momento de mi proceso de autoconocimiento.",
+            "author": "Carlos",
+            "location": "Argentina",
+            "image": "images/tuser2.jpg"
+        }
+    },
+    {
+        "model": "eventos.retirotestimonial",
+        "pk": 3,
+        "fields": {
+            "section": 1,
+            "quote": "Nunca imaginé que el silencio pudiera ser tan revelador. En Chambalabamba aprendí a escuchar mi propia voz interior y a encontrar paz en medio del caos. Una experiencia que recomiendo a todos.",
+            "author": "Ana",
+            "location": "Colombia",
+            "image": "images/tuser3.jpg"
+        }
+    },
+    {
+        "model": "eventos.retirotestimonial",
+        "pk": 4,
+        "fields": {
+            "section": 1,
+            "quote": "La combinación de prácticas de sanación y el entorno natural de Chambalabamba es simplemente mágica. Volví a casa con una sensación de claridad y propósito que no había sentido en años.",
+            "author": "Javier",
+            "location": "España",
+            "image": "images/tuser1.jpg"
+        }
+    }
+]

@@ -2,13 +2,15 @@ from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from django.db.models import Q
 
-from .models import Producto
+from .models import Producto,TiendaLanding
 # ⚠️ Ajusta este import según tu app real:
 # p.ej. from inicio.models import Gallery  ó  from galeria.models import Gallery
 from inicio.models import Gallery
 
 
 def lista_productos(request):
+    landing = TiendaLanding.objects.filter(publicado=True).first()
+
     qs = (Producto.objects.filter(publicado=True)
           .select_related("categoria")
           .prefetch_related("imagenes")
@@ -28,7 +30,7 @@ def lista_productos(request):
     return render(
         request,
         "tienda/panel-productos.html",
-        {"productos": page_obj.object_list, "page_obj": page_obj, "q": q, "cat": cat},
+        {"productos": page_obj.object_list, "page_obj": page_obj, "q": q, "cat": cat, "tienda_landing": landing},
     )
 
 

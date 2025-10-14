@@ -49,6 +49,18 @@ DEFAULT_PAIRS = [
     (Path("participa/static/participa/images/"), Path("images")),
     (Path("participa/static/participa/images/"), Path("participa/voluntariado/thumb")),
 
+    (Path("visitas/static/visitas/landing"), Path("visitas/landing")),
+    (Path("visitas/static/visitas/portadas"), Path("visitas/inner")),
+    (Path("visitas/static/visitas/portadas"), Path("visitas/portadas")),
+    (Path("visitas/static/visitas/galeria"), Path("visitas/galeria")),
+    (Path("visitas/static/visitas/galeria"), Path("visitas/galeria")),
+
+    (Path("donaciones/static/images/cabezadonaciones.png"), Path("donaciones")),
+
+    (Path("blog/static/blog/header"), Path("blog/header")),
+    (Path("blog/static/blog/portadas"), Path("blog/portadas")),
+    (Path("blog/static/blog/gallery"), Path("blog/gallery")),
+
 ]
 
 

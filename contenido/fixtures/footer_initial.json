@@ -1,0 +1,85 @@
+[
+  {
+    "model": "contenido.footersettings",
+    "pk": 1,
+    "fields": {
+      "title": "Sobre Chambalabamba",
+      "text": "Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia. Promovemos un estilo de vida autosostenible y en armonía con la Tierra.",
+      "link_label": "Conócenos",
+      "named_url": "nosotros:nuestro_camino",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false
+    }
+  },
+  {
+    "model": "contenido.footermenu",
+    "pk": 1,
+    "fields": { "name": "Nuestra propuesta", "order": 1 }
+  },
+  {
+    "model": "contenido.footerlink",
+    "pk": 1,
+    "fields": {
+      "menu": 1,
+      "label": "Filosofía de vida",
+      "named_url": "nosotros:filosofia",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false,
+      "order": 1
+    }
+  },
+  {
+    "model": "contenido.footerlink",
+    "pk": 2,
+    "fields": {
+      "menu": 1,
+      "label": "Saberes y prácticas",
+      "named_url": "nosotros:saberes",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false,
+      "order": 2
+    }
+  },
+  {
+    "model": "contenido.footerlink",
+    "pk": 3,
+    "fields": {
+      "menu": 1,
+      "label": "Escuela verde",
+      "named_url": "nosotros:escuela_verde",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false,
+      "order": 3
+    }
+  },
+  {
+    "model": "contenido.footerlink",
+    "pk": 4,
+    "fields": {
+      "menu": 1,
+      "label": "Voluntariado",
+      "named_url": "voluntariado:listado",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false,
+      "order": 4
+    }
+  },
+  {
+    "model": "contenido.footerlink",
+    "pk": 5,
+    "fields": {
+      "menu": 1,
+      "label": "Eventos",
+      "named_url": "eventos:listado",
+      "named_url_kwargs": null,
+      "url": "",
+      "open_in_new_tab": false,
+      "order": 5
+    }
+  }
+]

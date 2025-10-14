@@ -6833,46 +6833,46 @@ section.wf100.p80.fcampaigns {
   }
 }
 
-/*------------LOGO PEQUENO SUPERIOR IZQUIERDO------------------*/
+/* ------------ LOGO PEQUEÑO SUPERIOR IZQUIERDO ------------------ */
 
-/* Logo superpuesto como marca de agua centrada */
+/* Logo superpuesto como marca de agua (modo escritorio) */
 .slider-wrapper .logo-overlay-s {
   position: absolute;
   top: 0%;
   left: 10%;
-  transform: translate(-33%, -55%); /* Ajusta aquí */
-  z-index: 10;
+  transform: translate(-33%, -55%);
+  z-index: 5; /* menor que el menú, pero suficiente para verse */
   opacity: 1;
   pointer-events: none;
   filter: brightness(1.2) contrast(1.2);
 }
 
-/* Aumentar tamaño en pantallas grandes */
 .slider-wrapper .logo-overlay-s img {
   max-width: 457px;
   width: 25%;
   height: auto;
 }
 
+/* Evita que el logo tape el menú */
+.logo-overlay-s {
+  position: absolute;
+  z-index: 1;
+}
 
-/* Versión responsive para móviles */
-@media (max-width: 767px) {
+/* Menú móvil por encima */
+.mobile-menu {
+  position: relative;
+  z-index: 20;
+}
+
+
+/* --- FIX DEFINITIVO PARA MOVIL: OCULTAR EL LOGO --- */
+@media (max-width: 920px), (hover: none) and (pointer: coarse) {
   .slider-wrapper .logo-overlay-s {
-    top: 0%;
-    left: 10%;
-    transform: translate(-50%, -50%)
-    opacity: 1;
-    pointer-events: none;
-    filter: brightness(1.2) contrast(1.2);
-
-  }
-
-  .slider-wrapper .logo-overlay-s img {
-    max-width: 120px;
-    width: 100%;
-    height: auto;
+    display: none !important;
   }
 }
+
 /***************************************************************/
 
 /*quitar fondo de sombra y borde al espacio del logo sup izquierdo*/
@@ -7039,3 +7039,43 @@ section.wf100.p80.fcampaigns {
 /* Centrado/ancho máximo del flyer (si aún no lo tienes) */
 .flyer-max-480 { max-width: 480px; }
 .flyer-max-480 .flyer-frame { margin: 0 auto; }
+
+/*SECCION DE FOTO LOGO FOOTER*/
+
+
+
+/* Evita que el theme fuerce tamaño a todas las imágenes del footer */
+.footer-widget img { width: auto; height: auto; }
+
+/* Tamaño proporcional del logo */
+.footer-logo {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 193 / 234; /* proporción real de tu imagen */
+  height: auto;
+  display: block;
+  margin-top: 48px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .footer-logo {
+    max-width: 150px;
+    max-height: 100px;
+    margin-top: 24px;
+  }
+}
+
+/*LINK PARA BOTON*/
+
+button.link-like {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;       /* usa la misma fuente que el texto */
+}
+button.link-like:hover { text-decoration: none; }

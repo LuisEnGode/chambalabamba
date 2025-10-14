@@ -2,7 +2,7 @@
 <header class="header-style-2">
     <nav class="navbar navbar-expand-lg">
 
-        <a class="navbar-brand">
+        <a class="navbar-brand"  href="{% url 'home' %}"></a>
             <!--
             <img src="{% static 'images/logo/logo-chambalabamba-small.png' %}" alt="">
              -->
@@ -83,16 +83,18 @@
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'participa:voluntariado' %}">Voluntariado</a></li>
                         <li><a href="{% url 'participa:estancias' %}">Estancias</a></li>
-                        <li><a href="{% url 'participa:visitas-guiadas' %}">Visitas guiadas</a></li>
+                        <li><a href="{% url 'visitas:visitas-guiadas' %}">Visitas guiadas</a></li>
                         <li><a href="{% url 'tienda:tienda' %}">Tienda comunitaria</a></li>
                         <li><a href="{% url 'donaciones' %}">Donaciones</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'Blog' %}">
-                        Blog
-                    </a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Blog</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'blog_list' %}">Ver Posts</a></li>
+                    <li><a href="{% url 'blog_create' %}">Crear entrada</a></li>
+                  </ul>
                 </li>
 
 
@@ -100,18 +102,70 @@
                     <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
                 </li>
 
+                <li class="nav-item position-relative">
+                    <!-- 🌍 Globe icon -->
+                    <a href="#" id="lang-toggle" class="nav-link">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <!-- Custom language menu -->
+                    <div id="lang-menu" class="lang-menu dropdown-menu">
+                        <button data-lang="es" class="lang-btn dropdown-item">Español</button>
+                        <button data-lang="en" class="lang-btn dropdown-item">English</button>
+                        <button data-lang="fr" class="lang-btn dropdown-item">Français</button>
+                        <button data-lang="it" class="lang-btn dropdown-item">Italiano</button>
+                    </div>
+
+                    <!-- Loading spinner -->
+                    <div id="lang-loading" class="lang-loading" style="display:none;">
+                        <div class="spinner"></div>
+                    </div>
+
+                    <!-- Hidden official GTranslate widget -->
+                    <div class="gtranslate_wrapper" style="display:none;"></div>
+
+                    <script>
+                        window.gtranslateSettings = {
+                        default_language: "es",
+                        detect_browser_language: true,
+                        languages: ["es", "fr", "it", "en"],
+                        wrapper_selector: ".gtranslate_wrapper"
+                        };
+                    </script>
+                    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+                </li>
+
+                {% if user.is_authenticated %}
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'perfil_editar' %}">Actualizar Perfil</a></li>
+                  <li class="nav-item d-lg-none">
+                    <form action="{% url 'logout' %}" method="post" class="px-3 py-2 m-0">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-link p-0 nav-link">Salir</button>
+                    </form>
+                  </li>
+                {% else %}
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                  <li class="nav-item d-lg-none"><a class="nav-link" href="{% url 'registro' %}">Registrarse</a></li>
+                {% endif %}
+
             </ul>
 
             {% if user.is_authenticated %}
-            <strong> - {{ user.username }} - </strong>
+
+
             <!-- Íconos del lado derecho -->
-            <ul class="topnav-right">
-                <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
-                <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+           <ul class="topnav-right d-none d-lg-flex align-items-center ml-lg-auto">
+                <li><a class="mdonate" href="{% url 'donaciones' %}"><span>Haz una Donación</span></a></li>
+                <!--
+                    <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
+                -->
                 <li class="dropdown">
+                    <!--
                     <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
+                    -->
                     <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
                         Últimos artículos añadidos
                         <ul class="list">
@@ -136,22 +190,26 @@
                 </li>
 
                 <li class="login-reg">
-                    <a href="{% url 'perfil' %}">Mi perfil</a>
+                    <a href="{% url 'perfil' %}">Mi perfil</a>|
                     <a href="{% url 'perfil_editar' %}">Actualizar Perfil</a> |
+                    <a href="{% url 'perfil_editar' %}">-  👤 {{ user.username|upper }} - </a>|
+
                     <form action="{% url 'logout' %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Salir</button>
+                          <button type="submit" class="link-like">Salir</button>
                     </form>
                 </li>
             </ul>
             {% else %}
-            <ul class="topnav-right">
+            <ul class="topnav-right ">
                 <li><a class="mdonate" href="#"><span>Haz una Donación</span></a></li>
                 <li><a class="search-icon" href="#search"><i class="fas fa-search"></i></a></li>
                 <li class="dropdown">
+                    <!--
                     <a class="cart-icon" href="#" role="button" id="cartdropdown" data-toggle="dropdown">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
+                    -->
                     <div class="dropdown-menu cart-box" aria-labelledby="cartdropdown">
                         Últimos artículos añadidos
                         <ul class="list">
@@ -196,3 +254,131 @@
         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
     </form>
 </div>
+
+<style>
+    /* Language dropdown similar to Bootstrap nav dropdowns */
+    .lang-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 160px;
+        background: white;
+        border: 1px solid rgba(0,0,0,0.15);
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.175);
+        z-index: 1000;
+        padding: 0.25rem 0;
+    }
+
+    .lang-btn {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        color: #212529;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .lang-btn:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Spinner overlay */
+    .lang-loading {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.25rem;
+        z-index: 2000;
+    }
+
+    .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #333;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("lang-toggle");
+      const menu = document.getElementById("lang-menu");
+      const loading = document.getElementById("lang-loading");
+
+      // Toggle menu
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+          menu.style.display = "none";
+        }
+      });
+
+      // Wait for GTranslate functions
+      const waitForTranslate = () =>
+        new Promise((resolve) => {
+          const check = setInterval(() => {
+            if (typeof window.doGTranslate === "function" &&
+                typeof window.googleTranslateElementInit2 === "function") {
+              clearInterval(check);
+              resolve();
+            }
+          }, 200);
+        });
+
+      // Language button click
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          loading.style.display = "flex"; // show spinner
+          menu.style.display = "none";
+
+          await waitForTranslate();
+          const targetLang = btn.dataset.lang;
+          const defaultLang = window.gtranslateSettings.default_language || "es";
+
+          // Reset to default language
+          if (targetLang === defaultLang) {
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+            location.reload();
+            return;
+          }
+
+          // Load translation script if not loaded
+          if (!window.gt_translate_script) {
+            const script = document.createElement("script");
+            script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2";
+            document.body.appendChild(script);
+            script.onload = () => {
+              window.doGTranslate(`${defaultLang}|${targetLang}`);
+              loading.style.display = "none";
+            };
+          } else {
+            window.doGTranslate(`${defaultLang}|${targetLang}`);
+            loading.style.display = "none"; // hide spinner
+          }
+        });
+      });
+    });
+</script>

@@ -1,4 +1,4 @@
-# apps/inicio/seeders.py
+# apps/inicio/seed_proyectos.py
 from django.core.management import call_command
 from django.db import connection, transaction
 from pathlib import Path

@@ -1,0 +1,31 @@
+[
+    {
+        "model": "eventos.festivalesheader",
+        "pk": 1,
+        "fields": {
+            "title": "Festivales",
+            "breadcrumb_label": "Festivales",
+            "background": "images/festivales-header.png"
+        }
+    },
+    {
+        "model": "eventos.festivalesintrosection",
+        "pk": 1,
+        "fields": {
+            "title": "¡Celebra con nosotros!",
+            "paragraph1": "En Chambalabamba, cada festival es una celebración de la vida, la comunidad y la cultura. Únete a nosotros para disfrutar de música, arte, danza y ceremonias que nos conectan con nuestras raíces y nos inspiran a soñar con un futuro mejor.",
+            "quote": "La alegría compartida es doble alegría",
+            "cta_text": "Ver todos los festivales",
+            "cta_url": "#festivales-grid"
+        }
+    },
+    {
+        "model": "eventos.festivalespage",
+        "pk": 1,
+        "fields": {
+            "enabled": true,
+            "header": 1,
+            "intro": 1
+        }
+    }
+]

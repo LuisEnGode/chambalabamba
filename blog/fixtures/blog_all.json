@@ -1,0 +1,136 @@
+[
+  {
+    "model": "blog.blogheader",
+    "pk": 1,
+    "fields": {
+      "title": "Blog",
+      "breadcrumb_label": "Blog",
+      "background": "blog/header/blog-header.jpg"
+    }
+  },
+  {
+    "model": "blog.blogpage",
+    "pk": 1,
+    "fields": {
+      "enabled": true,
+      "header": 1,
+      "intro_html": "Noticias, aprendizajes y vida en la ecoaldea.",
+      "volunteer_url": "/participa/voluntariado",
+      "donate_url": "/donar"
+    }
+  },
+
+  { "model": "blog.blogauthor", "pk": 1,
+    "fields": { "nombre": "Equipo Chambalabamba", "slug": "equipo-chambalabamba", "foto": "", "bio": "" }
+  },
+
+  { "model": "blog.blogcategory", "pk": 1,
+    "fields": { "nombre": "Comunidad", "slug": "comunidad" }
+  },
+
+  { "model": "blog.blogtag", "pk": 1, "fields": { "nombre": "ecologia", "slug": "ecologia" } },
+  { "model": "blog.blogtag", "pk": 2, "fields": { "nombre": "huerta",   "slug": "huerta" } },
+
+  {
+    "model": "blog.blogpost",
+    "pk": 1,
+    "fields": {
+      "publicado": true,
+      "orden": 1,
+      "creado": "2025-09-01T10:00:00",
+      "actualizado": "2025-09-01T10:00:00",
+      "titulo": "Iniciamos temporada de siembra",
+      "slug": "iniciamos-temporada-de-siembra",
+      "autor": 1,
+      "categoria": 1,
+      "tags": [1,2],
+      "resumen": "Preparando camas y semillas nativas.",
+      "cuerpo_html": "<p>Compartimos el calendario de siembra y prácticas de cuidado del suelo.</p>",
+      "portada": "blog/portadas/siembra.jpg",
+      "tipo": "standard",
+      "video_url": "",
+      "audio_url": "",
+      "enlace_externo": "",
+      "fecha_publicacion": "2025-09-05T08:00:00",
+      "comentarios_count": 0
+    }
+  },
+
+  {
+    "model": "blog.blogpost",
+    "pk": 2,
+    "fields": {
+      "publicado": true,
+      "orden": 2,
+      "creado": "2025-09-10T09:00:00",
+      "actualizado": "2025-09-10T09:00:00",
+      "titulo": "Recorrido visual por la huerta",
+      "slug": "recorrido-visual-por-la-huerta",
+      "autor": 1,
+      "categoria": 1,
+      "tags": [2],
+      "resumen": "Galería con momentos de la semana.",
+      "cuerpo_html": "<p>Imágenes de siembra, riego y cosecha.</p>",
+      "portada": "blog/portadas/siembra.jpg",
+      "tipo": "gallery",
+      "video_url": "",
+      "audio_url": "",
+      "enlace_externo": "",
+      "fecha_publicacion": "2025-09-12T09:00:00",
+      "comentarios_count": 0
+    }
+  },
+
+  { "model": "blog.blogpostphoto", "pk": 201,
+    "fields": {
+      "publicado": true, "orden": 1, "creado": "2025-09-12T09:00:00", "actualizado": "2025-09-12T09:00:00",
+      "post": 2, "imagen": "blog/gallery/huerta-1.jpg", "titulo": "Semillas", "alt": "Semillas nativas", "creditos": "", "is_header": true
+    }
+  },
+  { "model": "blog.blogpostphoto", "pk": 202,
+    "fields": {
+      "publicado": true, "orden": 2, "creado": "2025-09-12T09:00:00", "actualizado": "2025-09-12T09:00:00",
+      "post": 2, "imagen": "blog/gallery/huerta-2.jpg", "titulo": "Camas", "alt": "Camas de cultivo", "creditos": "", "is_header": false
+    }
+  },
+
+  { "model": "blog.blogsidebarwidget", "pk": 1,
+    "fields": { "publicado": true, "orden": 1, "creado": "2025-09-01T10:00:00", "actualizado": "2025-09-01T10:00:00",
+      "page": 1, "tipo": "search", "titulo": "", "body_html": "", "limite": 5, "proyectos": [], "link_label": "", "link_url": "" }
+  },
+  { "model": "blog.blogsidebarwidget", "pk": 2,
+    "fields": { "publicado": true, "orden": 2, "creado": "2025-09-01T10:00:00", "actualizado": "2025-09-01T10:00:00",
+      "page": 1, "tipo": "latest_posts", "titulo": "Últimos posts", "body_html": "", "limite": 5, "proyectos": [], "link_label": "", "link_url": "" }
+  },
+  { "model": "blog.blogsidebarwidget", "pk": 3,
+    "fields": { "publicado": true, "orden": 3, "creado": "2025-09-01T10:00:00", "actualizado": "2025-09-01T10:00:00",
+      "page": 1, "tipo": "tags", "titulo": "Tags", "body_html": "", "limite": 20, "proyectos": [], "link_label": "", "link_url": "" }
+  },
+  { "model": "blog.blogsidebarwidget", "pk": 4,
+    "fields": { "publicado": true, "orden": 4, "creado": "2025-09-01T10:00:00", "actualizado": "2025-09-01T10:00:00",
+      "page": 1, "tipo": "archives", "titulo": "Archivos", "body_html": "", "limite": 12, "proyectos": [], "link_label": "", "link_url": "" }
+  },
+  { "model": "blog.blogsidebarwidget", "pk": 5,
+    "fields": { "publicado": true, "orden": 5, "creado": "2025-09-01T10:00:00", "actualizado": "2025-09-01T10:00:00",
+      "page": 1, "tipo": "cta_volunteer", "titulo": "Súmate", "body_html": "Vive la experiencia del voluntariado.",
+      "limite": 1, "proyectos": [], "link_label": "Quiero participar", "link_url": "/participa/voluntariado" }
+  },
+  {
+  "model": "blog.blogcomment",
+  "pk": 1,
+  "fields": {
+    "post": 1,
+    "parent": null,
+    "user": null,
+    "nombre": "María",
+    "email": "maria@example.com",
+    "website": "",
+    "cuerpo": "¡Qué lindo ver la siembra!",
+    "status": "approved",
+    "creado": "2025-09-12T10:00:00",
+    "actualizado": "2025-09-12T10:00:00",
+    "ip_address": null,
+    "user_agent": ""
+  }
+}
+]
