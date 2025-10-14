@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='donacionsection',
             name='donation_image',
-            field=models.ImageField(blank=True, default='images/donacion_1.png', help_text="Image for the main donation page. Defaults to 'images/donacion_1.png'.", null=True, upload_to='donations/'),
+            field=models.ImageField(blank=True, default='donations/default_donation_image.png', help_text="Image for the main donation page. Defaults to 'donations/default_donation_image.png'.", null=True, upload_to='donations/'),
         ),
         migrations.AddField(
             model_name='donacionsection',

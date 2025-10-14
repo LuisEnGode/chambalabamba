@@ -174,21 +174,3 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # PayPal settings
 PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL', default='sb-wtmbn45974096@business.example.com')
 PAYPAL_TEST = config('PAYPAL_TEST', default=True, cast=bool)
-
-# Security settings for production
-SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=False, cast=bool)
-CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
-SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=False, cast=bool)
-
-def check_production_settings():
-    if not DEBUG:
-        if not SECURE_SSL_REDIRECT:
-            raise ValueError("SECURE_SSL_REDIRECT must be True in production")
-        if not CSRF_COOKIE_SECURE:
-            raise ValueError("CSRF_COOKIE_SECURE must be True in production")
-        if not SESSION_COOKIE_SECURE:
-            raise ValueError("SESSION_COOKIE_SECURE must be True in production")
-        if PAYPAL_TEST:
-            raise ValueError("PAYPAL_TEST must be False in production")
-
-check_production_settings()

@@ -10,13 +10,13 @@ class DonacionMontoInline(admin.TabularInline):
 
 @admin.register(DonacionSection)
 class DonacionSectionAdmin(admin.ModelAdmin):
-    list_display = ("slug", "titulo_superior", "titulo", "publicado", "orden")
-    list_editable = ("publicado", "orden")
+    list_display = ("slug", "titulo_superior", "titulo", "publicado", "orden", "progreso")
+    list_editable = ("publicado", "orden", "progreso")
     # Updated search_fields to include new text-based fields
     search_fields = ("slug", "titulo", "descripcion", "intro_text", "success_title", "success_message", "canceled_title", "canceled_message", "paypal_redirect_message")
     # Added new fields to the fields tuple
     fields = (
-        "slug", "titulo_superior", "titulo", "descripcion",
+        "slug", "titulo_superior", "titulo", "descripcion", "progreso",
         "cta_titulo", "cta_boton_texto", "cta_placeholder_otro",
         "intro_text", "donation_image", "success_title", "success_message",
         "canceled_title", "canceled_message", "paypal_redirect_message",

@@ -28,8 +28,8 @@ class Migration(migrations.Migration):
                 ('orden', models.PositiveIntegerField(default=0)),
             ],
             options={
-                'verbose_name': 'Sección de Donaciones',
-                'verbose_name_plural': 'Secciones de Donaciones',
+                'verbose_name': 'Sección de Donaciones / Donations Section',
+                'verbose_name_plural': 'Secciones de Donaciones / Donations Sections',
                 'ordering': ['orden', 'slug'],
             },
         ),
@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
                 ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='montos', to='donaciones.donacionsection')),
             ],
             options={
-                'verbose_name': 'Monto sugerido',
-                'verbose_name_plural': 'Montos sugeridos',
+                'verbose_name': 'Monto sugerido / Suggested Amount',
+                'verbose_name_plural': 'Montos sugeridos / Suggested Amounts',
                 'ordering': ['orden', 'id'],
             },
         ),
