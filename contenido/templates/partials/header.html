@@ -102,37 +102,47 @@
                     <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
                 </li>
 
+                <!-- 🌍 Language Selector -->
                 <li class="nav-item position-relative">
-                    <!-- 🌍 Globe icon -->
-                    <a href="#" id="lang-toggle" class="nav-link">
-                        <i class="fas fa-globe"></i>
-                    </a>
+                <a href="#" id="lang-toggle" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                </a>
 
-                    <!-- Custom language menu -->
-                    <div id="lang-menu" class="lang-menu dropdown-menu">
-                        <button data-lang="es" class="lang-btn dropdown-item">Español</button>
-                        <button data-lang="en" class="lang-btn dropdown-item">English</button>
-                        <button data-lang="fr" class="lang-btn dropdown-item">Français</button>
-                        <button data-lang="it" class="lang-btn dropdown-item">Italiano</button>
-                    </div>
+                <!-- Language menu -->
+                <div id="lang-menu" class="lang-menu dropdown-menu">
+                    <button data-lang="es" class="lang-btn dropdown-item">Español</button>
+                    <button data-lang="en" class="lang-btn dropdown-item">English</button>
+                    <button data-lang="fr" class="lang-btn dropdown-item">Français</button>
+                    <button data-lang="it" class="lang-btn dropdown-item">Italiano</button>
+                </div>
 
-                    <!-- Loading spinner -->
-                    <div id="lang-loading" class="lang-loading" style="display:none;">
-                        <div class="spinner"></div>
-                    </div>
+                <!-- Loading spinner -->
+                <div id="lang-loading" class="lang-loading" style="display:none;">
+                    <div class="spinner"></div>
+                </div>
 
-                    <!-- Hidden official GTranslate widget -->
-                    <div class="gtranslate_wrapper" style="display:none;"></div>
+                <!-- Hidden official GTranslate widget -->
+                <div id="google_translate_element" class="gtranslate_wrapper" style="display:none;"></div>
 
-                    <script>
-                        window.gtranslateSettings = {
-                        default_language: "es",
-                        detect_browser_language: true,
-                        languages: ["es", "fr", "it", "en"],
-                        wrapper_selector: ".gtranslate_wrapper"
-                        };
-                    </script>
-                    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+                <script>
+                    window.gtranslateSettings = {
+                    default_language: "es",
+                    detect_browser_language: true,
+                    languages: ["es", "fr", "it", "en"],
+                    wrapper_selector: ".gtranslate_wrapper"
+                    };
+
+                    // define init for Google Translate script
+                    window.googleTranslateElementInit2 = function () {
+                    new window.google.translate.TranslateElement(
+                        { pageLanguage: "es", autoDisplay: false },
+                        "google_translate_element"
+                    );
+                    };
+                </script>
+
+                <!-- Load official GTranslate dropdown -->
+                <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
                 </li>
 
                 {% if user.is_authenticated %}
@@ -317,6 +327,7 @@
     }
 </style>
 
+<!-- === MAIN MULTI-BROWSER TRANSLATION HANDLER === -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("lang-toggle");
@@ -324,7 +335,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const loading = document.getElementById("lang-loading");
   const defaultLang = window.gtranslateSettings.default_language || "es";
 
-  // Toggle language menu
+  // --- 🧠 1. Set auto cookie before GT loads (for Chrome/Edge auto-detect) ---
+  (function initAutoCookie() {
+    const domain = window.location.hostname;
+    const hasCookie = document.cookie.includes("googtrans=");
+    if (!hasCookie) {
+      const browserLang = navigator.language.slice(0, 2) || defaultLang;
+      document.cookie = `googtrans=/auto/${browserLang};path=/;`;
+      document.cookie = `googtrans=/auto/${browserLang};path=/;domain=${domain}`;
+    }
+  })();
+
+  // --- 🧩 2. Dropdown toggle logic ---
   toggle.addEventListener("click", (e) => {
     e.preventDefault();
     menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -336,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Utilities ---
+  // --- ⚙️ 3. Ensure GT script availability ---
   const ensureTranslateScript = () =>
     new Promise((resolve) => {
       const needReload =
@@ -354,73 +376,71 @@ document.addEventListener("DOMContentLoaded", () => {
       const script = document.createElement("script");
       script.src =
         "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2";
-      script.onload = () => {
-        window.googleTranslateElementInit2 = () => {
-          new window.google.translate.TranslateElement(
-            { pageLanguage: defaultLang, autoDisplay: false },
-            "google_translate_element"
-          );
-          resolve();
-        };
+      window.googleTranslateElementInit2 = () => {
+        new window.google.translate.TranslateElement(
+          { pageLanguage: defaultLang, autoDisplay: false },
+          "google_translate_element"
+        );
+        resolve();
       };
       document.body.appendChild(script);
     });
 
-  // --- Normalize /auto cookie on initial load ---
+  // --- 🔄 4. Normalize cookie on page load ---
   const normalizeCookie = () => {
     const googtransCookie = document.cookie
       .split("; ")
-      .find(row => row.startsWith("googtrans="));
-
+      .find((row) => row.startsWith("googtrans="));
     if (googtransCookie) {
       const value = googtransCookie.split("=")[1];
-      const parts = value.split("/"); // ["", "auto", "en"] or ["", "es", "en"]
+      const parts = value.split("/");
       if (parts[1] === "auto") {
+        const domain = window.location.hostname;
         document.cookie = `googtrans=/${defaultLang}/${parts[2]};path=/;`;
+        document.cookie = `googtrans=/${defaultLang}/${parts[2]};path=/;domain=${domain}`;
       }
     }
   };
   normalizeCookie();
 
-  // --- Language button clicks ---
+  // --- 🌍 5. Handle language switching ---
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
       loading.style.display = "flex";
       menu.style.display = "none";
 
       const targetLang = btn.dataset.lang;
-
       await ensureTranslateScript();
 
-      // Reset to default language (Spanish)
+      const domain = window.location.hostname;
+
       if (targetLang === defaultLang) {
-        // Get current translated language
+        // Reset to default (Spanish)
         const googtransCookie = document.cookie
           .split("; ")
-          .find(row => row.startsWith("googtrans="));
+          .find((row) => row.startsWith("googtrans="));
         let currentLang = defaultLang;
         if (googtransCookie) {
           const value = googtransCookie.split("=")[1];
-          const parts = value.split("/"); // ["", "es", "en"]
+          const parts = value.split("/");
           currentLang = parts[2] || defaultLang;
         }
 
-        // Translate back to default language
         if (typeof window.doGTranslate === "function") {
           window.doGTranslate(`${currentLang}|${defaultLang}`);
         }
 
-        // Keep cookie valid
-        const domain = window.location.hostname;
-        document.cookie = `googtrans=/${defaultLang}/${defaultLang};path=/;`;
-        document.cookie = `googtrans=/${defaultLang}/${defaultLang};path=/;domain=${domain}`;
+        // Reset cookie to /auto/es
+        document.cookie = `googtrans=/auto/${defaultLang};path=/;`;
+        document.cookie = `googtrans=/auto/${defaultLang};path=/;domain=${domain}`;
 
         loading.style.display = "none";
         return;
       }
 
-      // Manual translation: default → target
+      // Translate from default to target
       document.cookie = `googtrans=/${defaultLang}/${targetLang};path=/;`;
+      document.cookie = `googtrans=/${defaultLang}/${targetLang};path=/;domain=${domain}`;
 
       const doTranslate = () => {
         if (typeof window.doGTranslate === "function") {
@@ -433,5 +453,19 @@ document.addEventListener("DOMContentLoaded", () => {
       doTranslate();
     });
   });
+
+  // --- 💡 6. Backup loader for Chrome/Edge (in case GT doesn't initialize) ---
+  setTimeout(() => {
+    if (
+      !window.google ||
+      !window.google.translate ||
+      typeof window.google.translate.TranslateElement !== "function"
+    ) {
+      const script = document.createElement("script");
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2";
+      document.body.appendChild(script);
+    }
+  }, 1500);
 });
 </script>
