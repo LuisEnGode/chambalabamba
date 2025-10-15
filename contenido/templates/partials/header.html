@@ -318,67 +318,120 @@
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("lang-toggle");
-      const menu = document.getElementById("lang-menu");
-      const loading = document.getElementById("lang-loading");
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("lang-toggle");
+  const menu = document.getElementById("lang-menu");
+  const loading = document.getElementById("lang-loading");
+  const defaultLang = window.gtranslateSettings.default_language || "es";
 
-      // Toggle menu
-      toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
-      });
+  // Toggle language menu
+  toggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
 
-      // Close menu when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-          menu.style.display = "none";
-        }
-      });
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.style.display = "none";
+    }
+  });
 
-      // Wait for GTranslate functions
-      const waitForTranslate = () =>
-        new Promise((resolve) => {
-          const check = setInterval(() => {
-            if (typeof window.doGTranslate === "function" &&
-                typeof window.googleTranslateElementInit2 === "function") {
-              clearInterval(check);
-              resolve();
-            }
-          }, 200);
-        });
+  // --- Utilities ---
+  const ensureTranslateScript = () =>
+    new Promise((resolve) => {
+      const needReload =
+        !window.google ||
+        !window.google.translate ||
+        typeof window.google.translate.TranslateElement !== "function";
 
-      // Language button click
-      document.querySelectorAll(".lang-btn").forEach((btn) => {
-        btn.addEventListener("click", async () => {
-          loading.style.display = "flex"; // show spinner
-          menu.style.display = "none";
+      if (!needReload) {
+        resolve();
+        return;
+      }
 
-          await waitForTranslate();
-          const targetLang = btn.dataset.lang;
-          const defaultLang = window.gtranslateSettings.default_language || "es";
+      delete window.google;
 
-          // Reset to default language
-          if (targetLang === defaultLang) {
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-            location.reload();
-            return;
-          }
-
-          // Load translation script if not loaded
-          if (!window.gt_translate_script) {
-            const script = document.createElement("script");
-            script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2";
-            document.body.appendChild(script);
-            script.onload = () => {
-              window.doGTranslate(`${defaultLang}|${targetLang}`);
-              loading.style.display = "none";
-            };
-          } else {
-            window.doGTranslate(`${defaultLang}|${targetLang}`);
-            loading.style.display = "none"; // hide spinner
-          }
-        });
-      });
+      const script = document.createElement("script");
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2";
+      script.onload = () => {
+        window.googleTranslateElementInit2 = () => {
+          new window.google.translate.TranslateElement(
+            { pageLanguage: defaultLang, autoDisplay: false },
+            "google_translate_element"
+          );
+          resolve();
+        };
+      };
+      document.body.appendChild(script);
     });
+
+  // --- Normalize /auto cookie on initial load ---
+  const normalizeCookie = () => {
+    const googtransCookie = document.cookie
+      .split("; ")
+      .find(row => row.startsWith("googtrans="));
+
+    if (googtransCookie) {
+      const value = googtransCookie.split("=")[1];
+      const parts = value.split("/"); // ["", "auto", "en"] or ["", "es", "en"]
+      if (parts[1] === "auto") {
+        document.cookie = `googtrans=/${defaultLang}/${parts[2]};path=/;`;
+      }
+    }
+  };
+  normalizeCookie();
+
+  // --- Language button clicks ---
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      loading.style.display = "flex";
+      menu.style.display = "none";
+
+      const targetLang = btn.dataset.lang;
+
+      await ensureTranslateScript();
+
+      // Reset to default language (Spanish)
+      if (targetLang === defaultLang) {
+        // Get current translated language
+        const googtransCookie = document.cookie
+          .split("; ")
+          .find(row => row.startsWith("googtrans="));
+        let currentLang = defaultLang;
+        if (googtransCookie) {
+          const value = googtransCookie.split("=")[1];
+          const parts = value.split("/"); // ["", "es", "en"]
+          currentLang = parts[2] || defaultLang;
+        }
+
+        // Translate back to default language
+        if (typeof window.doGTranslate === "function") {
+          window.doGTranslate(`${currentLang}|${defaultLang}`);
+        }
+
+        // Keep cookie valid
+        const domain = window.location.hostname;
+        document.cookie = `googtrans=/${defaultLang}/${defaultLang};path=/;`;
+        document.cookie = `googtrans=/${defaultLang}/${defaultLang};path=/;domain=${domain}`;
+
+        loading.style.display = "none";
+        return;
+      }
+
+      // Manual translation: default → target
+      document.cookie = `googtrans=/${defaultLang}/${targetLang};path=/;`;
+
+      const doTranslate = () => {
+        if (typeof window.doGTranslate === "function") {
+          window.doGTranslate(`${defaultLang}|${targetLang}`);
+          loading.style.display = "none";
+        } else {
+          setTimeout(doTranslate, 200);
+        }
+      };
+      doTranslate();
+    });
+  });
+});
 </script>
