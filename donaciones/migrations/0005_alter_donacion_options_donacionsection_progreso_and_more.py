@@ -14,11 +14,6 @@ class Migration(migrations.Migration):
             name='donacion',
             options={},
         ),
-        migrations.AddField(
-            model_name='donacionsection',
-            name='progreso',
-            field=models.PositiveIntegerField(default=100, help_text='0–100 (muestra la barra de progreso)'),
-        ),
         migrations.AlterField(
             model_name='donacionsection',
             name='slug',
