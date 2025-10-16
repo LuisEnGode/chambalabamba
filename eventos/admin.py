@@ -87,7 +87,7 @@ class ArtesGalleryImageInline(admin.TabularInline):
 
 @admin.register(ArtesPage)
 class ArtesPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro", "diversity", "gallery")
+    list_display = ("header", "intro", "diversity", "gallery")
     def has_add_permission(self, request):
         return not ArtesPage.objects.exists()
 
@@ -119,7 +119,7 @@ class EscuelaProjectInline(admin.TabularInline):
 
 @admin.register(EscuelaPage)
 class EscuelaPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro", "sidebar")
+    list_display = ("header", "intro", "sidebar")
     def has_add_permission(self, request):
         return not EscuelaPage.objects.exists()
 
@@ -155,7 +155,7 @@ class RetiroTestimonialInline(admin.TabularInline):
 
 @admin.register(RetirosPage)
 class RetirosPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro", "types_section", "activities_section", "gallery_section", "testimonial_section")
+    list_display = ("header", "intro", "types_section", "activities_section", "gallery_section", "testimonial_section")
     def has_add_permission(self, request):
         return not RetirosPage.objects.exists()
 
@@ -197,7 +197,7 @@ class TerapiasGalleryImageInline(admin.TabularInline):
 
 @admin.register(TerapiasPage)
 class TerapiasPageAdmin(admin.ModelAdmin):
-    list_display = ("id", "enabled", "header", "intro", "benefits_section", "gallery_section")
+    list_display = ("header", "intro", "benefits_section", "gallery_section")
     def has_add_permission(self, request):
         return not TerapiasPage.objects.exists()
 
