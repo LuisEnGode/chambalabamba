@@ -257,7 +257,6 @@ a.con {
 	padding: 0px;
 	margin: 0px;
 	border-radius: 0px;
-	width: 220px;
 	border: 0px;
 }
 .header-style-2 .dropdown-menu li, .header-style-1 .dropdown-menu li {
@@ -1492,7 +1491,6 @@ ul.topnav-right {
 	list-style: none;
 }
 ul.topnav-right li {
-	float: left;
 	margin-right: 15px;
 }
 .mdonate {
@@ -7202,4 +7200,22 @@ header.site-header {
 /* (opcional) altura cómoda del hero */
 #donaciones-hero { padding-top: 72px; padding-bottom: 56px; }
 
+/* Hide donation button by default */
+.donation-btn {
+    display: none;
+}
 
+/* Show only on screens larger than 1400px */
+@media (min-width: 1400px) {
+    .donation-btn {
+        display: list-item; /* for <li> */
+    }
+}
+
+/* Fix for right dropdown on mobile */
+@media (max-width: 991px) {
+    .header-style-2 .topnav-right .dropdown-menu {
+        right: auto;
+        left: 0;
+    }
+}
