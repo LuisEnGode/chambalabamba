@@ -62,5 +62,24 @@ class Donacion(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     completado = models.BooleanField(default=False)
 
-    def __str__(self):
+def __str__(self):
         return f"Donación de {self.nombre} por {self.monto}"
+
+
+class DonacionesStatic(models.Model):
+    titulo = models.CharField(max_length=200, default="Apoyo a Chambalabamba")
+    contenido = models.TextField(
+        help_text="Contenido principal de la página de donaciones. Puedes usar HTML si es necesario.",
+        default="<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de...</p>"
+    )
+    email_contacto = models.EmailField(max_length=254, blank=True, null=True, help_text="Correo electrónico de contacto para donaciones.")
+    telefono_contacto = models.CharField(max_length=20, blank=True, null=True, help_text="Teléfono de contacto para donaciones.")
+    imagen = models.ImageField(upload_to='donaciones_static/', blank=True, null=True, help_text="Imagen opcional para la página de donaciones.")
+    publicado = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Página de Donaciones"
+        verbose_name_plural = "Páginas de Donaciones"
+
+    def __str__(self):
+        return self.titulo

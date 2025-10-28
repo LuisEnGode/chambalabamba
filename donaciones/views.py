@@ -5,7 +5,7 @@ from decouple import config
 import requests
 import json
 # from paypal.standard.forms import PayPalPaymentsForm # No longer needed
-from .models import DonacionSection, Donacion
+from .models import DonacionSection, Donacion, DonacionesStatic
 import uuid
 from decimal import Decimal, InvalidOperation
 
@@ -13,8 +13,34 @@ from decimal import Decimal, InvalidOperation
 from .paypal_utils import make_paypal_payment
 
 def index(request):
-    donacion_sections = DonacionSection.objects.filter(publicado=True)
-    return render(request, 'donaciones/donaciones.html', {'donacion_sections': donacion_sections})
+    # This view now renders the static donations page.
+    # It fetches the first published DonacionesStatic object.
+    static_content = DonacionesStatic.objects.filter(publicado=True).first()
+    if not static_content:
+        # If no static content is configured, provide a default object
+        # This avoids having to handle None in the template and provides a fallback.
+        from django.templatetags.static import static
+        static_content = {
+            'titulo': "Apoya Nuestra Misión",
+            'contenido': "<p>En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual.  ¡Gracias por tu apoyo!</p>",
+            'email_contacto': "info@ecoaldeachambalabamba.org",
+            'telefono_contacto': "+593 0980290103",
+            'imagen_url': static('images/donacion_1.png'),
+            'is_default': True
+        }
+    else:
+        # Add the image URL to the context if it exists
+        static_content.imagen_url = static_content.imagen.url if static_content.imagen else '/static/images/donacion_1.png'
+        static_content.is_default = False
+
+    return render(request, 'donaciones/donaciones.html', {'static_content': static_content})
+
+# The original view that displayed the donation form can be preserved if needed,
+# but for now, the URL will point to the new static page view.
+# def donacion_form_view(request):
+#     donacion_sections = DonacionSection.objects.filter(publicado=True)
+#     return render(request, 'donaciones/donaciones_form.html', {'donacion_sections': donacion_sections})
+
 
 def donacion_paypal(request):
     if request.method == 'POST':
