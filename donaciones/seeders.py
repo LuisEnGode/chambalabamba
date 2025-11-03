@@ -7,6 +7,7 @@ from .models import DonacionSection, DonacionMonto # Keep existing model imports
 SEEDS = [
     ("donaciones_defaults.json", "donaciones:defaults:v3"),
     ("donaciones_home_callout.json", "donaciones:home_callout:v1"),
+    ("donaciones_static_default.json", "donaciones:static_default:v1"),
 ]
 
 def _seed_donaciones_once(sender, **kwargs):

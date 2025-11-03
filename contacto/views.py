@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
+from .models import ContactoStatic
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):
+    static_content = ContactoStatic.objects.first()
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -46,11 +48,11 @@ def index(request):
 
                 success_message = "¡Mensaje enviado exitosamente!"
                 form = ContactForm()  # Clear the form
-                return render(request, 'contacto/donaciones.html', {'form': form, 'success_message': success_message})
+                return render(request, 'contacto/index.html', {'form': form, 'success_message': success_message, 'static_content': static_content})
             except Exception as e:
                 logger.error("Error al enviar el correo", exc_info=True)
                 form.add_error(None, "No se pudo enviar el correo. Por favor, inténtalo de nuevo más tarde.")
     else:
         form = ContactForm()
 
-    return render(request, 'contacto/index.html', {'form': form})
+    return render(request, 'contacto/index.html', {'form': form, 'static_content': static_content})

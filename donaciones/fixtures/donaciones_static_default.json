@@ -1,0 +1,14 @@
+[
+    {
+        "model": "donaciones.donacionesstatic",
+        "pk": 1,
+        "fields": {
+            "titulo": "Apoyo a Chambalabamba",
+            "contenido": "<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de nuestro correo electrónico o número de teléfono. Tu contribución es fundamental para continuar con nuestra labor.</p>",
+            "email_contacto": "info@chambalabamba.org",
+            "telefono_contacto": "+593 98 765 4321",
+            "imagen": null,
+            "publicado": true
+        }
+    }
+]
