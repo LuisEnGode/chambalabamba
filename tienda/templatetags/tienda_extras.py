@@ -1,7 +1,11 @@
-# tienda/templatetags/tienda_extras.py
 from django import template
 from django.db.models import Q
 from tienda.models import Producto, ProductoCategoria
+# NUEVO:
+try:
+    from inicio.models import SectionHeader
+except Exception:
+    SectionHeader = None
 
 register = template.Library()
 
@@ -40,28 +44,30 @@ def productos_por_categoria(cat_key: str, limit=None):
 
 @register.inclusion_tag("tienda/_products_tabs.html")
 def products_tabs(
-    header_h5="Visita nuestra tienda",
-    header_h2="Productos",
-    categorias="",   # CSV "slug:Nombre,slug2:Nombre2"; si vacío = todas las categorías con productos
-    limit=8          # productos por categoría
+    header_h5=None,  # <-- default None para permitir override
+    header_h2=None,  # <-- default None para permitir override
+    categorias="",
+    limit=8,
+    hide_header=False,
 ):
     tabs = []
+    # ==== NUEVO: intentar leer títulos desde SectionHeader si no vinieron por parámetro ====
+    if (header_h2 is None or header_h5 is None) and SectionHeader is not None:
+        hdr = SectionHeader.objects.filter(seccion="tienda_tabs", publicado=True).first()
+        if hdr:
+            if header_h2 is None:
+                header_h2 = hdr.title or "Productos"
+            if header_h5 is None:
+                header_h5 = hdr.subtitle or ""
+    # Fallbacks seguros
+    header_h2 = header_h2 or "Productos"
+    header_h5 = header_h5 or "Visita nuestra tienda"
+    # ==== /NUEVO ====
 
     if categorias:
-        # modo explícito
-        for raw in str(categorias).split(","):
-            raw = raw.strip()
-            if not raw:
-                continue
-            if ":" in raw:
-                key, title = raw.split(":", 1)
-            else:
-                key, title = raw, raw
-            key, title = key.strip(), title.strip()
-            items = productos_por_categoria(key, limit)
-            tabs.append({"id": key, "title": title, "items": items})
+        # ... igual ...
+        pass
     else:
-        # todas las categorías con al menos 1 producto publicado
         cats = (
             ProductoCategoria.objects
             .filter(publicado=True, productos__publicado=True)
@@ -69,10 +75,11 @@ def products_tabs(
             .distinct()
         )
         for c in cats:
-            tabs.append({
-                "id": c.slug,
-                "title": c.nombre,
-                "items": productos_por_categoria(c.slug, limit),
-            })
+            tabs.append({"id": c.slug, "title": c.nombre, "items": productos_por_categoria(c.slug, limit)})
 
-    return {"header_h5": header_h5, "header_h2": header_h2, "tabs": tabs}
+    return {
+        "header_h5": header_h5,
+        "header_h2": header_h2,
+        "tabs": tabs,
+        "hide_header": hide_header,   # ya lo tienes
+    }

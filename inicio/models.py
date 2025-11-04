@@ -107,6 +107,7 @@ class SectionHeader(models.Model):
         ("nosotros_cabecera", "Nosotros – Cabecera"),
         ("proyectos_movimiento", "Home – Proyectos en Movimiento"),
         ("participa_estancias", "Participa – Estancias"),
+        ("tienda_tabs", "Tienda – Tabs"),
     ]
     seccion = models.CharField(max_length=50, choices=SECCIONES, unique=True)
     title = models.CharField("Título (H2)", max_length=120)
