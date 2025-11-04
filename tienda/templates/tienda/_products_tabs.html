@@ -8,22 +8,24 @@
     <div class="section-title-2">
       <header class="section-title-2 mb-6">
         {# Subtítulo (H5) desde el tag / admin #}
-        {% if header_h5 %}
-          <h5>
-            <a href="{% url 'tienda:tienda' %}" style="text-decoration:none;">
-              {{ header_h5 }}
-            </a>
-          </h5>
-        {% endif %}
+      {% if header_h5 %}
+  <h5>
+    <a href="{% url 'tienda:tienda' %}"
+       style="color:#66bb6a; text-decoration:none;">
+      {{ header_h5 }}
+    </a>
+  </h5>
+{% endif %}
 
-        {# Título (H2) desde el tag / admin #}
-        {% if header_h2 %}
-          <h2>
-            <a href="{% url 'tienda:tienda' %}" style="text-decoration:none;">
-              {{ header_h2 }}
-            </a>
-          </h2>
-        {% endif %}
+{% if header_h2 %}
+  <h2 style="color:#66bb6a;">
+    <a href="{% url 'tienda:tienda' %}"
+       style="color:#66bb6a; text-decoration:none;">
+      {{ header_h2 }}
+    </a>
+  </h2>
+{% endif %}
+
       </header>
     </div>
   {% endif %}
