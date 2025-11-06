@@ -1,33 +1,34 @@
-
-
-  {# --- Columna: Sobre Chambalabamba --- #}
-  <div class="col-lg-3 col-md-6 col-sm-6">
+{# partials/sub_footer_info.html #}
+<div class="col-lg-4 col-md-6 col-sm-6">
+  {% if about %}
     <div class="footer-widget">
-      <h4>{{ about.title }}</h4>
-      <p>{{ about.text }}</p>
-      {% if about %}
-        <a href="{{ about.resolved_href }}" class="lm" {% if about.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
-          {{ about.link_label }}
-        </a>
+      <h5>{{ about.title }}</h5>
+      <p>{{ about.text|linebreaksbr }}</p>
+
+      {% if about.link_label and about.named_url or about.link_label and about.url %}
+        <p class="mt-2">
+          <a href="{{ about.resolved_href|default:about.url }}" {% if about.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+            {{ about.link_label }}
+          </a>
+        </p>
       {% endif %}
     </div>
-  </div>
+  {% endif %}
+</div>
 
-  {# --- Columnas de menús (ej. Nuestra propuesta) --- #}
-  {% for menu in menus %}
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="footer-widget">
-        <h4>{{ menu.name }}</h4>
-        <ul class="quick-links">
-          {% for link in menu.links.all %}
-            <li>
-              <a href="{{ link.href }}" {% if link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
-                {{ link.label }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+{% for menu in menus %}
+  <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="footer-widget">
+      <h5>{{ menu.name }}</h5>
+      <ul class="quick-links">
+        {% for link in menu.links_resolved %}
+          <li>
+            <a href="{{ link.resolved_href }}" {% if link.target_attr %}target="{{ link.target_attr }}" rel="noopener"{% endif %}>
+              {{ link.label }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
-  {% endfor %}
-
+  </div>
+{% endfor %}
