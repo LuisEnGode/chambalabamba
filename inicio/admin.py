@@ -60,5 +60,6 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(SectionHeader)
 class SectionHeaderAdmin(admin.ModelAdmin):
-    list_display = ("seccion", "title", "subtitle", "publicado")
+    list_display = ("seccion", "title", "subtitle","limit", "publicado")
     list_editable = ("publicado",)
+    search_fields = ("seccion", "title", "subtitle")

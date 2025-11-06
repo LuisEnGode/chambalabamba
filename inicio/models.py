@@ -108,10 +108,12 @@ class SectionHeader(models.Model):
         ("proyectos_movimiento", "Home – Proyectos en Movimiento"),
         ("participa_estancias", "Participa – Estancias"),
         ("tienda_tabs", "Tienda – Tabs"),
+        ("home_cooperaciones", "cooperaciones – Tabs"),
     ]
     seccion = models.CharField(max_length=50, choices=SECCIONES, unique=True)
     title = models.CharField("Título (H2)", max_length=120)
     subtitle = models.CharField("Subtítulo (H5)", max_length=160, blank=True)
+    limit = models.PositiveSmallIntegerField(default=12)
     publicado = models.BooleanField(default=True)
 
     class Meta:
