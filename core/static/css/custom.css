@@ -7203,3 +7203,23 @@ header.site-header {
 #donaciones-hero { padding-top: 72px; padding-bottom: 56px; }
 
 
+/* Verde de marca para títulos del footer */
+.footer .footer-widget h5 {
+  color: #66bb6a !important;
+}
+
+/* Links del listado del footer */
+.footer .footer-widget .quick-links li a {
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+}
+
+.footer .footer-widget .quick-links li a:hover {
+  color: #66bb6a;
+}
+
+/* Uniformar color verde en todos los títulos del footer */
+.footer-widget h4,
+.footer-widget h5 {
+  color: #66bb6a !important;
+}
