@@ -488,5 +488,15 @@ $(document).ready(function () {
   });
 });
 
+// For nested submenus
+$('.dropdown-submenu').hover(
+  function() {
+    $(this).find('> .dropdown-menu').show();
+  },
+  function() {
+    $(this).find('> .dropdown-menu').hide();
+  }
+);
+
 /*CODIGO PARA GALERIA DE IMAGENES*/
 
