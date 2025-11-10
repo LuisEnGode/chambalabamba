@@ -22,7 +22,7 @@
   {# ======================= CSS (ORDEN QUE TE FUNCIONA) ======================= #}
   {# 1) Hojas del tema primero: si cambias Bootstrap de lugar, el layout puede romperse #}
   <link rel="stylesheet" href="{% static 'css/flyer.css' %}">
-
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}?v=3">
   <link href="{% static 'css/color.css' %}" rel="stylesheet">
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 
@@ -31,7 +31,7 @@
 
   {# 3) Bootstrap AL FINAL de las hojas del tema:- En este proyecto, este orden asegura que la grilla/utilidades de Bootstrap prevalezcan sobre reglas del tema que antes las pisaban (arregla responsividad). #}
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/custom.css' %}?v=3">
+
 
   {# 4) Más CSS de plugins/iconos que no afectan la grilla base #}
   <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
