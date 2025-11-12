@@ -33,7 +33,7 @@ class DonacionSection(models.Model):
 
     class Meta:
         ordering = ["orden", "slug"]
-        verbose_name = "Sección de Donaciones / Donations Section"
+        verbose_name = "Sección de Donaciones / Donations Section"5
         verbose_name_plural = "Secciones de Donaciones / Donations Sections"
 
     def __str__(self):
