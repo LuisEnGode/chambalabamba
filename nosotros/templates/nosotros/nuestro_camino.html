@@ -126,9 +126,10 @@
                      <h2>{{ page.ecoaldea.title }}</h2>
                   </div>
                   <!--fututo administracion -->
-                   <div class="row text-center justify-content-center">
+                   <div class="row justify-content-center ecoaldea-wrapper">
                        {% for card in page.ecoaldea.cards.all %}
-                       <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+                       <div class="col-12 col-md-4 mb-4 d-flex justify-content-center align-items-start">
+
                            <div class="eco-box text-center">
                                {% if card.icon %}
                                <img src="{{ card.icon.url }}" alt="{{ card.title }}" style="height:60px;">

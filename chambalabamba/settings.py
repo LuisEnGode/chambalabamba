@@ -8,6 +8,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 # Archivos estáticos
 STATIC_URL = "/static/"
 
+
 # para Local
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
