@@ -119,13 +119,16 @@ jQuery(document).ready(function($) {
 	
 	
 	// ------- Current Project Slider ------- //
+	console.log("cpro-slider cargado!");
 	if ($('.cpro-slider').length) {
-		$('.cpro-slider').owlCarousel({
+		$('.cpro-slider').owlCarousel   ({
 			loop: true,
 			margin: 10,
 			responsiveClass: true,
 			nav: true,
 			autoplay: true,
+			autoplayTimeout: 9000,   // ⬅️ MÁS LENTO (9 segundos por slide)
+            smartSpeed: 3500,        // ⬅️ TRANSICIÓN SUAVE
 			dots: false,
 			responsive: {
 				0: {

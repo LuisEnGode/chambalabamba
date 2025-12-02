@@ -71,12 +71,22 @@ class Gallery(BaseOrdenPublicado):
     portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
     alt_portada = models.CharField(max_length=200, blank=True)
 
-
     class Meta(BaseOrdenPublicado.Meta):
         verbose_name = "3. Galerías / Galleries"
         verbose_name_plural = "3. Galerías / Galleries"
+        # ⬅️ importante: para que las más nuevas (orden alto) salgan primero
+        ordering = ["-orden", "-creado"]
 
     def save(self, *args, **kwargs):
+        # Autogenerar 'orden' si está en 0, separado por seccion
+        if self.orden == 0:
+            max_orden = (
+                Gallery.objects
+                .filter(seccion=self.seccion)
+                .aggregate(Max("orden"))["orden__max"] or 0
+            )
+            self.orden = max_orden + 1
+
         if not self.slug:
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
