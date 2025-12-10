@@ -8,7 +8,7 @@ def escuela_viva(request):
     return render(request, 'eventos/escuela.html', {'page': page_content})
 
 def talleres(request):
-    talleres = TallerDetail.objects.all()
+    talleres = TallerDetail.objects.all().order_by("-id")
     page_content = TalleresPage.objects.first()
     return render(request, 'eventos/talleres.html', {'talleres': talleres, 'page': page_content})
 
@@ -29,7 +29,7 @@ def terapias(request):
     return render(request, 'eventos/terapias.html', {'page': page_content})
 
 def festivales(request):
-    festivales = Festival.objects.all()
+    festivales = Festival.objects.all().order_by("-id")
     page_content = FestivalesPage.objects.first()
     return render(request, 'eventos/festivales.html', {'festivales': festivales, 'page': page_content})
 
