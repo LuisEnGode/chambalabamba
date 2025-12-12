@@ -63,11 +63,13 @@ Inicio – Chambalabamba
                     {% else %}
                     <img src="{% static 'images/placeholder-icon.png' %}" alt="{{ v.titulo }}">
                     {% endif %}
-                    <h6>{{ v.titulo }}</h6>
-
-                    {# Muestra descripción si existe #}
-                    {% if v.descripcion %}<p>{{ v.descripcion }}</p>{% endif %}
                 </div>
+                <div class="sinfotext">
+                  <h6>{{ v.titulo }}</h6>
+                  {# Muestra descripción si existe #}
+                  {% if v.descripcion %}<p>{{ v.descripcion }}</p>{% endif %}
+                </div>
+                 
             </li>
              {% empty %}
             <li>
@@ -123,5 +125,3 @@ Inicio – Chambalabamba
 </section>
 
 {% endblock %}
-
-
