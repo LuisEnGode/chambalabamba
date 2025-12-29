@@ -4,7 +4,7 @@ from django.db import models
 # apps/visitas/models.py
 from django.db import models
 from django.utils.text import slugify
-from django.utils.timezone import now as Now
+
 
 class VisitsLanding(models.Model):
     publicado = models.BooleanField(default=True)
@@ -18,7 +18,7 @@ class VisitsLanding(models.Model):
     sidebar_html = models.TextField(blank=True, help_text="Sidebar en HTML.")
     instagram_embed = models.URLField(blank=True, help_text="URL a reel/post (opcional).")
 
-    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "1) Página de Visitas guiadas (landing)"
@@ -66,8 +66,8 @@ class GuidedVisit(models.Model):
     meta_title = models.CharField(max_length=160, blank=True)
     meta_description = models.CharField(max_length=200, blank=True)
 
-    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
-    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("orden", "titulo")
@@ -94,8 +94,8 @@ class GuidedVisitPhoto(models.Model):
         help_text="Incluye en slider/galería de cabecera del detalle."
     )
 
-    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
-    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("visita", "orden")
