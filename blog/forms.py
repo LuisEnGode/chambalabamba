@@ -43,6 +43,12 @@ class BlogPostForm(forms.ModelForm):
             "fecha_publicacion": forms.DateTimeInput(attrs={"type": "datetime-local"}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # 🔥 QUITA EL CHECKBOX CLEAR (pero deja el campo portada)
+        self.fields["portada"].widget = forms.FileInput()
+
     # --- NUEVO: sanea HTML permitido ---
     def clean_cuerpo_html(self):
         html = self.cleaned_data.get("cuerpo_html") or ""

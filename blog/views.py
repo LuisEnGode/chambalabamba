@@ -29,7 +29,12 @@ def _base_ctx():
     max_latest = max([w.limite or 5 for w in widgets if w.tipo == "latest_posts"] or [0])
 
     # Trae posts publicados hasta el máximo necesario (evitas consultas por widget)
-    latest_posts = []
+    latest_posts = (BlogPost.objects
+                    .filter(publicado=True)
+                    .exclude(slug__isnull=True).exclude(slug="")
+                    .select_related("autor", "categoria")
+                    .prefetch_related("tags", "fotos")
+                    .order_by("-fecha_publicacion")[:max_latest])
     if max_latest:
         latest_posts = (BlogPost.objects
                         .filter(publicado=True)
@@ -58,7 +63,10 @@ def _base_ctx():
 
 def blog_list(request):
     q = request.GET.get("q", "").strip()
-    posts = (BlogPost.objects.filter(publicado=True)
+    posts = (BlogPost.objects
+             .filter(publicado=True)
+             .exclude(slug__isnull=True)
+             .exclude(slug="")
              .select_related(*COMMON_SELECT).prefetch_related(*COMMON_PREFETCH)
              .order_by("-fecha_publicacion"))
 
@@ -164,6 +172,7 @@ def blog_detail(request, slug):
     related = (BlogPost.objects
                .filter(publicado=True, categoria=post.categoria)
                .exclude(id=post.id)
+               .exclude(slug__isnull=True).exclude(slug="")
                .order_by("-fecha_publicacion")[:3])
 
     ctx = {"post": post, "related": related, "comentarios": comentarios, "form": form, "can_edit": can_edit}
@@ -221,7 +230,8 @@ class BlogPostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
 
         post.autor = author
 
-        action = self.request.POST.get("action")
+        action = (self.request.POST.get("action") or "").lower()
+        print("llego hasta aqui !!!")
         if action == "publish":
             post.publicado = True
             if not post.fecha_publicacion:
@@ -266,18 +276,74 @@ class BlogPostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView
             return self.render_to_response(context)
         return super().post(request, *args, **kwargs)
 
+    def form_invalid(self, form):
+        print("❌ FORM INVALID")
+        print(form.errors)
+        return super().form_invalid(form)
+
     def form_valid(self, form):
         post = form.save(commit=False)
-        action = self.request.POST.get("action")
+
+        action = (self.request.POST.get("action") or "").lower()
+        print("llego hasta aqui !!!")
         if action == "publish":
             post.publicado = True
             if not post.fecha_publicacion:
                 post.fecha_publicacion = timezone.now()
-        else:
+        elif action == "draft":
             post.publicado = False
+        # si action viene vacío o distinto: NO fuerces publicado
+        # (se queda con lo que el form trae o lo que ya tenía)
+
         if not post.slug:
-            post.slug = form.generate_unique_slug(form.cleaned_data.get("titulo",""))
+            post.slug = form.generate_unique_slug(form.cleaned_data.get("titulo", ""))
+
         post.save()
         form.save_m2m()
-        messages.success(self.request, "¡Post actualizado!" if action != "publish" else "¡Post publicado!")
+
+        messages.success(self.request, "¡Post actualizado!")
+        return redirect(self.get_success_url())
+
+
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.contrib import messages
+from django.utils import timezone
+
+class PublicBlogPostCreateView(CreateView):
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = "blog/post_form_public.html"
+    success_url = reverse_lazy("blog_list")  # o una página "gracias"
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+
+        # ✅ Siempre pendiente de revisión
+        post.publicado = False
+
+        # ✅ Como fecha_publicacion NO permite null, le ponemos "fecha de envío"
+        if not post.fecha_publicacion:
+            post.fecha_publicacion = timezone.now()
+
+        if not post.slug:
+            post.slug = form.generate_unique_slug(
+                form.cleaned_data.get("titulo", "")
+            )
+        # ✅ Autor invitado (si autor es requerido)
+        guest_author, _ = BlogAuthor.objects.get_or_create(
+            slug="invitado",
+            defaults={"nombre": "Invitado"}
+        )
+        post.autor = guest_author
+
+
+
+        post.save()
+        form.save_m2m()
+
+        messages.success(
+            self.request,
+            "✅ Tu post fue enviado y quedó pendiente de revisión. Un admin lo publicará cuando esté aprobado."
+        )
         return super().form_valid(form)

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import PublicBlogPostCreateView
 
 urlpatterns = [
     path("blog/", views.blog_list, name="blog_list"),
@@ -11,4 +12,5 @@ urlpatterns = [
     path("blog/autor/<slug:slug>/", views.blog_list_by_author, name="blog_by_author"),
     path("blog/archivo/<int:year>/<int:month>/", views.blog_list_by_month, name="blog_by_month"),
     path("blog/<slug:slug>/", views.blog_detail, name="blog_detail"),
+    path("enviar/", PublicBlogPostCreateView.as_view(), name="blog_public_create"),
 ]

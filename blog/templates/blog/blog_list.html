@@ -164,7 +164,14 @@
                         <img src="{{ p.header_image.url }}" alt="{{ p.titulo }}"
                  style="width:64px;height:64px;object-fit:cover;border-radius:6px;">
                       {% endif %}
-                      <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
+                      <strong>
+                        {% if post.slug %}
+                          <a href="{% url 'blog_detail' slug=post.slug %}"><i class="fas fa-link"></i></a>
+                        {% else %}
+                          <span class="text-muted">Sin enlace</span>
+                        {% endif %}
+
+                      </strong>
                       <span class="pdate"><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}</span>
                     </li>
                   {% endif %}

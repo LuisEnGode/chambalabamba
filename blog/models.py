@@ -30,6 +30,13 @@ class BaseOrdenPublicado(models.Model):
         abstract = True
         ordering = ("orden", "-creado")
 
+    def save(self, *args, **kwargs):
+        now = timezone.now()
+        if not self.creado:
+            self.creado = now
+        self.actualizado = now
+        return super().save(*args, **kwargs)
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Página & Header (inner header)
 # ──────────────────────────────────────────────────────────────────────────────

@@ -62,6 +62,42 @@
                         {# Cuerpo del post #}
                         {% if post.cuerpo_html %}
                         <div class="post-body">{{ post.cuerpo_html|safe }}</div>
+{# --- Media / Enlaces del post --- #}
+{% if post.video_url or post.audio_url or post.enlace_externo %}
+  <div class="wf100" style="margin-top:18px;">
+    <h5>Recursos</h5>
+
+    {% if post.video_url %}
+      <p style="margin-bottom:8px;">
+        <i class="fas fa-video"></i>
+        <a href="{{ post.video_url }}" target="_blank" rel="noopener">Ver video</a>
+      </p>
+    {% endif %}
+
+    {% if post.audio_url %}
+      <p style="margin-bottom:8px;">
+        <i class="fas fa-music"></i>
+        <a href="{{ post.audio_url }}" target="_blank" rel="noopener">Escuchar audio</a>
+      </p>
+
+
+
+      <audio controls preload="none" style="width:100%; margin-top:6px;">
+        <source src="{{ post.audio_url }}">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+
+    {% endif %}
+
+    {% if post.enlace_externo %}
+      <p style="margin-bottom:0;">
+        <i class="fas fa-link"></i>
+        <a href="{{ post.enlace_externo }}" target="_blank" rel="noopener">Abrir enlace externo</a>
+      </p>
+    {% endif %}
+  </div>
+{% endif %}
+
                         {% elif post.resumen %}
                         <p>{{ post.resumen|safe }}</p>
                         {% endif %}
@@ -237,7 +273,12 @@
                                     <img src="{{ p.header_image.url }}" alt="{{ p.titulo }}"
                                          style="width:64px;height:64px;object-fit:cover;border-radius:6px;">
                                     {% endif %}
-                                    <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
+                                    <strong>
+                                        {% if p.slug %}
+                                          <strong><a href="{% url 'blog_detail' slug=p.slug %}">{{ p.titulo }}</a></strong>
+                                        {% else %}
+                                          <strong>{{ p.titulo }}</strong>
+                                        {% endif %}</a></strong>
                                     <span class="pdate"><i class="fas fa-calendar-alt"></i> {{ p.fecha_publicacion|date:"d M, Y" }}</span>
                                 </li>
                                 {% endif %}
