@@ -9,7 +9,7 @@
     <header class="mb-6">
   <h1>{{ gal.titulo }}</h1>
   {% if gal.descripcion %}
-    <div class="lead">{{ gal.descripcion|linebreaks }}</div>
+    <div class="lead">{{ gal.descripcion|urlize|linebreaksbr }}</div>
   {% endif %}
 </header>
     <div class="row">

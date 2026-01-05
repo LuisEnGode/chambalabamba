@@ -54,30 +54,39 @@ Inicio – Chambalabamba
     <div class="container">
         <ul>
             {% for v in valores %}
-            <!-- Economía Circular -->
-            <li>
-                <div class="sinfo">
-                    {# Icono (desde ImageField) con fallback a un placeholder estático #}
-                    {% if v.icono %}
-                    <img src="{{ v.icono.url }}" alt="{{ v.alt|default:v.titulo }}">
-                    {% else %}
-                    <img src="{% static 'images/placeholder-icon.png' %}" alt="{{ v.titulo }}">
-                    {% endif %}
-                    <h6>{{ v.titulo }}</h6>
+  <li>
+    {% if v.link_url %}
+      <a href="{{ v.link_url }}" class="pillar-link" target="_blank" rel="noopener">
+    {% endif %}
 
-                    {# Muestra descripción si existe #}
-                    {% if v.descripcion %}<p>{{ v.descripcion }}</p>{% endif %}
-                </div>
-            </li>
-             {% empty %}
-            <li>
-          <div class="sinfo">
-            <img src="{% static 'images/placeholder-icon.png' %}" alt="Pronto">
-            <h6>Pronto más valores</h6>
-            <p>Actualizaremos esta sección desde el admin 🌱</p>
-          </div>
-        </li>
-      {% endfor %}
+    <div class="sinfo">
+      {# Icono (desde ImageField) con fallback a un placeholder estático #}
+      {% if v.icono %}
+        <img src="{{ v.icono.url }}" alt="{{ v.alt|default:v.titulo }}">
+      {% else %}
+        <img src="{% static 'images/placeholder-icon.png' %}" alt="{{ v.titulo }}">
+      {% endif %}
+
+      <h6>{{ v.titulo }}</h6>
+
+      {# Muestra descripción si existe #}
+      {% if v.descripcion %}<p>{{ v.descripcion }}</p>{% endif %}
+    </div>
+
+    {% if v.link_url %}
+      </a>
+    {% endif %}
+  </li>
+{% empty %}
+  <li>
+    <div class="sinfo">
+      <img src="{% static 'images/placeholder-icon.png' %}" alt="Pronto">
+      <h6>Pronto más valores</h6>
+      <p>Actualizaremos esta sección desde el admin 🌱</p>
+    </div>
+  </li>
+{% endfor %}
+
 
         </ul>
     </div>

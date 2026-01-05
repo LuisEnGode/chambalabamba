@@ -20,7 +20,7 @@ class HeroSlideAdmin(BaseOrdenPublicadoAdmin):
 
 @admin.register(ValorCard)
 class ValorCardAdmin(BaseOrdenPublicadoAdmin):
-    list_display = ("mini", "titulo", "descripcion", "publicado", "orden", "creado")
+    list_display = ("mini", "titulo", "descripcion", "link_url","publicado", "orden", "creado")
     def mini(self, obj):
         return format_html('<img src="{}" style="height:28px">', obj.icono.url) if obj.icono else "—"
 

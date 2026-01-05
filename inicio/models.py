@@ -37,6 +37,7 @@ class ValorCard(BaseOrdenPublicado):
     titulo = models.CharField(max_length=80)
     descripcion = models.CharField(max_length=200, blank=True)
     icono = models.ImageField(upload_to="inicio/icons/", blank=True, null=True)
+    link_url = models.URLField(blank=True, help_text="URL a donde debe llevar este pilar (opcional).")
     slug = models.SlugField(max_length=90, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
