@@ -36,7 +36,7 @@
                                         <div class="pro-hover">
   <h6>{{ g.titulo }}</h6>
   {% if g.descripcion_breve %}
-    <p>{{ g.descripcion_breve }}</p>
+    <p>{{ g.descripcion_breve|urlize }}</p>
   {% elif g.descripcion %}
     <p>{{ g.descripcion|truncatechars:140 }}</p>
   {% else %}
