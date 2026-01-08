@@ -61,11 +61,12 @@
                             <input type="number" name="quantity" min="1" max="99" value="1">
                             <input type="submit" value="Add to Cart" name="Add to Cart">
                         </div>
-                        -->
+                        
                          <div class="add-2-cart">
                             <input type="submit" value="PEDIR" name="Add to Cart" class="btn btn-primary btn-lg">
 
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
@@ -78,11 +79,11 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-one-tab" data-toggle="tab"
                                    href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">
-                                    Description
+                                    Descripción
                                 </a>
                                 <a class="nav-item nav-link" id="nav-two-tab" data-toggle="tab"
                                    href="#nav-two" role="tab" aria-controls="nav-two" aria-selected="false">
-                                    Additional Information
+                                    Información Adicional
                                 </a>
                             </div>
                         </nav>
@@ -127,14 +128,14 @@
             <section class="online-shop wf100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12"><h2>Related Products</h2></div>
+                        <div class="col-md-12"><h2>Productos Relacionados</h2></div>
                     </div>
                     <div class="row">
                         {% for r in relacionados %}
                         <div class="col-md-3 col-sm-6">
                             <div class="product-box">
                                 <div class="pro-thumb">
-                                    <a href="{% url 'tienda:detalle-producto' r.slug %}">Add To Cart</a>
+                                    <a href="{% url 'tienda:detalle-producto' r.slug %}">Ver</a>
                                     {% if r.imagen_portada %}
                                     <img src="{{ r.imagen_portada.url }}" alt="{{ r.titulo }}">
                                     {% else %}
