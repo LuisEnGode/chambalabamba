@@ -155,7 +155,7 @@ if ($('.cpro-slider').length) {
     ],
 
     autoplay: true,
-    autoplayTimeout: 7000,
+    autoplayTimeout: 6000,
     smartSpeed: 5000,
 
     responsive: {

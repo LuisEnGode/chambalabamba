@@ -7336,3 +7336,20 @@ header.site-header {
 .cpro-slider .owl-nav button span{ display:none !important; }
 .cpro-slider .owl-nav button::before,
 .cpro-slider .owl-nav button::after{ content:"" !important; display:none !important; }
+
+
+/* Forzar visibilidad de las imágenes dentro de nav */
+.cpro-slider .owl-nav button img{
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: none !important;
+}
+
+/* (Opcional) que el botón tenga fondo para que se note en móvil */
+@media (max-width: 768px){
+  .cpro-slider .owl-nav button{
+    background: rgba(0,0,0,0.08) !important;
+    border-radius: 8px;
+  }
+}
