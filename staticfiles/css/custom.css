@@ -7237,3 +7237,38 @@ header.site-header {
     padding: 20px;
     text-align: center;
 }
+
+
+
+
+#home-slider {
+  position: relative;
+}
+
+#home-slider .owl-nav {
+  display: block !important;
+}
+
+#home-slider .owl-prev,
+#home-slider .owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  background: transparent !important;
+  border: none !important;
+}
+
+#home-slider .owl-prev {
+  left: 15px;
+}
+
+#home-slider .owl-next {
+  right: 15px;
+}
+
+#home-slider .owl-arrow {
+  width: 42px;
+  height: 42px;
+  display: block;
+}
