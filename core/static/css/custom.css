@@ -7333,7 +7333,24 @@ header.site-header {
 }
 
 /* Quitar los ‹ › del theme (por si no lo pusiste aún) */
-.cpro-slider .owl-nav button span{ display:none !important; }
+/* NO ocultar el span: ahí va tu <img> */
+.cpro-slider .owl-nav button span{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 0 !important;     /* mata el texto ‹ › */
+  line-height: 0 !important;
+}
+
+/* Forzar que la imagen se vea siempre */
+.cpro-slider .owl-nav button span img{
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 28px;
+  height: 28px;
+}
+
 .cpro-slider .owl-nav button::before,
 .cpro-slider .owl-nav button::after{ content:"" !important; display:none !important; }
 
@@ -7352,4 +7369,31 @@ header.site-header {
     background: rgba(0,0,0,0.08) !important;
     border-radius: 8px;
   }
+}
+
+
+.cpro-slider .owl-prev,
+.cpro-slider .owl-next{
+  width: 44px;
+  height: 44px;
+  background-size: 28px 28px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-color: rgba(0,0,0,0.08) !important;
+  border-radius: 8px;
+}
+
+.cpro-slider .owl-prev{
+  background-image: url("/static/images/arrows/left.png") !important;
+}
+
+.cpro-slider .owl-next{
+  background-image: url("/static/images/arrows/right.png") !important;
+}
+
+/* Mata cualquier texto/icono interno */
+.cpro-slider .owl-nav button span,
+.cpro-slider .owl-nav button::before,
+.cpro-slider .owl-nav button::after{
+  display: none !important;
 }
