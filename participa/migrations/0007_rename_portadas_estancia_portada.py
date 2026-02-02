@@ -10,16 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # Evitamos tocar la BD (ya está renombrado en muchos entornos),
-        # pero mantenemos el historial de Django consistente.
-        migrations.SeparateDatabaseAndState(
-            database_operations=[],
-            state_operations=[
-                migrations.RenameField(
-                    model_name='estancia',
-                    old_name='portadas',
-                    new_name='portada',
-                ),
-            ],
+        # Rename the field in both the database and Django's state
+        migrations.RenameField(
+            model_name='estancia',
+            old_name='portadas',
+            new_name='portada',
         ),
     ]
